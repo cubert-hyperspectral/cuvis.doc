@@ -31,6 +31,8 @@ jobs:
           mkdir _build
           cmake -B ./_build .
           cmake --build "_build"
+          touch ./_build/doc/sphinx/.nojekyll
+          
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
