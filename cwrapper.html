@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuvis C API &mdash; Cuvis SDK 3.2.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=c96f8916"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cuvis C++ API" href="cppwrapper.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="sdkuserguide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Cuvis SDK
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cuvis C API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#handles">Handles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reserved-keys">Reserved Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calibration">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#measurement">Measurement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#session-file">Session File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-info-layer">The Info Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#return-values-of-sdk-functions">Return Values of SDK Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acquisition-context">Acquisition Context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#export-api">Export API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#async-programming">Async Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#processing-context">Processing Context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#viewer">Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#components">Components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cppwrapper.html">Cuvis C++ API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pythonwrapper.html">Cuvis Python API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Cuvis SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Cuvis C API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cwrapper.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cuvis-c-api">
+<h1>Cuvis C API<a class="headerlink" href="#cuvis-c-api" title="Permalink to this heading"></a></h1>
+<section id="handles">
+<h2>Handles<a class="headerlink" href="#handles" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygengroup: Cannot find group “cuvis_handle” in doxygen xml output for project “cuvis” from directory: /home/runner/work/cuvis.doc/cuvis.doc/_build/doc/xml</p>
+</div>
+</section>
+<section id="reserved-keys">
+<h2>Reserved Keys<a class="headerlink" href="#reserved-keys" title="Permalink to this heading"></a></h2>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__reserved__keys"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_reserved_keys</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_CUBE_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1gafe40dc8e2753339f739bfd6a23972630"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_CUBE_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_CUBE_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>name of the data field for the hyperspectral cube (in all modes except Preview) </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_PAN_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1ga51a7b0be8243261bd55822aacbaaff50"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_PAN_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_PAN_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>name of the pan image (pixels registered to <a class="reference internal" href="#group__cuvis__reserved__keys_1gafe40dc8e2753339f739bfd6a23972630"><span class="std std-ref">CUVIS_MESU_CUBE_KEY</span></a>) </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_GPS_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1ga78d706a6d662b7639484f1c11ff9992e"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_GPS_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_GPS_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>name of the GPS data field, if available </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_PREVIEW_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1ga0bb8494828ec1a0878454b63f8d276cb"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_PREVIEW_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_PREVIEW_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>name of the generate preview image, if available. </p>
+<p>The preview will be generated by the cuvis_proc_cont_apply function </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_DARKREF_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1ga480fceda6d8ddaf26dc845baa4500840"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_DARKREF_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_DARKREF_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>If this field is present, a dark was set while recording the measurement. </p>
+<p>This is the dark that is implicitly loaded when a processing context is created with the current measurement and used, if a dark is needed (unless overwritten by cuvis_proc_cont_set_reference ) The reference file should be located in ../Calibration/&lt;reference-name&gt;.cu3 or the precise path defined by the string value of the data tag </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_WHITEREF_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1gad59d63faeaf80719a01053e3643a5b27"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_WHITEREF_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_WHITEREF_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>If this field is present, a white was set while recording the measurement. </p>
+<p>This is the white that is implicitly loaded when a processing context is created with the current measurement and used, if a dark is needed (unless overwritten by cuvis_proc_cont_set_reference ) The reference file should be located in ../Calibration/&lt;reference-name&gt;.cu3 or the precise path defined by the string value of the data tag </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_WHITEDARKREF_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1ga8a6644917100914942ad24fecd406901"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_WHITEDARKREF_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_WHITEDARKREF_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>If this field is present, a white’s dark was set while recording the measurement. </p>
+<p>This is the white’ dark that is implicitly loaded when a processing context is created with the current measurement and used, if a dark is needed (unless overwritten by cuvis_proc_cont_set_reference ) The reference file should be located in ../Calibration/&lt;reference-name&gt;.cu3 or the precise path defined by the string value of the data tag </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_OVERILLUMINATED_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1ga399f849456f5c3b9f2b003003abfb417"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_OVERILLUMINATED_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_OVERILLUMINATED_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>see CUVIS_MESU_FLAG_OVERILLUMINATED</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_POOR_REFERENCE_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1ga1a115472895fd82a68ce0fd29ea857a9"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_POOR_REFERENCE_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_POOR_REFERENCE_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>see CUVIS_MESU_FLAG_POOR_REFERENCE</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_POOR_WHITE_BALANCING_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1ga465b99e0f8e406c4a1ef29e4d77537ad"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_POOR_WHITE_BALANCING_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_POOR_WHITE_BALANCING_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>see CUVIS_MESU_FLAG_POOR_WHITE_BALANCING</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_DARK_INTTIME_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1ga4c457542536a5c63dc200088af1c35b4"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_DARK_INTTIME_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_DARK_INTTIME_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>see CUVIS_MESU_FLAG_DARK_INTTIME</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_DARK_TEMP_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1gafd1b4e55a2ffc631e323459e4b4246e2"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_DARK_TEMP_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_DARK_TEMP_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>see CUVIS_MESU_FLAG_DARK_TEMP</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_WHITE_INTTIME_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1gab7aedd07f67082e73b359658f70d10eb"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_WHITE_INTTIME_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_WHITE_INTTIME_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>see CUVIS_MESU_FLAG_WHITE_INTTIME</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_WHITE_TEMP_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1ga1ebbc83764b10dd9babeb6db550eb1fc"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_WHITE_TEMP_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_WHITE_TEMP_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>see CUVIS_MESU_FLAG_WHITE_TEMP</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_WHITEDARK_INTTIME_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1ga38a172ffc07d85946bfe100102b3988f"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_WHITEDARK_INTTIME_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_WHITEDARK_INTTIME_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>see CUVIS_MESU_FLAG_WHITEDARK_INTTIME</p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_WHITEDARK_TEMP_KEY">
+<span class="target" id="group__cuvis__reserved__keys_1ga13dfe56165e1fca88d48de1effaf7a6b"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_WHITEDARK_TEMP_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_WHITEDARK_TEMP_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>see CUVIS_MESU_FLAG_WHITEDARK_TEMP</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="calibration">
+<h2>Calibration<a class="headerlink" href="#calibration" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygengroup: Cannot find group “cuvis_calib” in doxygen xml output for project “cuvis” from directory: /home/runner/work/cuvis.doc/cuvis.doc/_build/doc/xml</p>
+</div>
+</section>
+<section id="measurement">
+<h2>Measurement<a class="headerlink" href="#measurement" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygengroup: Cannot find group “cuvis_mesu” in doxygen xml output for project “cuvis” from directory: /home/runner/work/cuvis.doc/cuvis.doc/_build/doc/xml</p>
+</div>
+</section>
+<section id="session-file">
+<h2>Session File<a class="headerlink" href="#session-file" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygengroup: Cannot find group “cuvis_session” in doxygen xml output for project “cuvis” from directory: /home/runner/work/cuvis.doc/cuvis.doc/_build/doc/xml</p>
+</div>
+</section>
+<section id="the-info-layer">
+<h2>The Info Layer<a class="headerlink" href="#the-info-layer" title="Permalink to this heading"></a></h2>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__info__layer"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_info_layer</span></span></dt>
+<dd><p>The info layer can be retrieved with the function cuvis_measurement_get_data_image Though is appears to be an image and will also be exported and fragmented as an image it is actually a set of flags. Each position of the a info-layer pixel represents a data flag for a respective cube (or pan image).</p>
+<p>E.g. if a cube (<a class="reference internal" href="#group__cuvis__reserved__keys_1gafe40dc8e2753339f739bfd6a23972630"><span class="std std-ref">CUVIS_MESU_CUBE_KEY</span></a>) has the size of 410x410x164 (W x H x Chn), the respective info layer (<a class="reference internal" href="#group__cuvis__info__layer_1ga0d4fba4dc4dd287e7c84005da4fc8578"><span class="std std-ref">CUVIS_MESU_CUBE_INFO_KEY</span></a>) will have a size of 410x410. The info_layer value at position x,y contains the flags for the whole spectrum at position x,y in the cube.</p>
+<p>The same is true for the pan-chromatic image ((<a class="reference internal" href="#group__cuvis__info__layer_1ga0d4fba4dc4dd287e7c84005da4fc8578"><span class="std std-ref">CUVIS_MESU_CUBE_INFO_KEY</span></a>) and <a class="reference internal" href="#group__cuvis__info__layer_1ga0d4fba4dc4dd287e7c84005da4fc8578"><span class="std std-ref">CUVIS_MESU_CUBE_INFO_KEY</span></a>, respectively)</p>
+<p>The info layer pixel value is retrieved by binary operation.</p>
+<p>
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">mesu</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">measurement</span> <span class="n">already</span> <span class="n">loaded</span>
+<span class="o">//</span> <span class="n">load</span> <span class="n">the</span> <span class="n">info</span> <span class="n">channel</span> <span class="n">to</span> <span class="n">cube_info_layer_buffer</span>
+<span class="n">CUVIS_IMBUFFER</span> <span class="n">cube_info_layer_buffer</span><span class="p">;</span>
+<span class="n">cuvis_measurement_get_data_image</span><span class="p">(</span><span class="n">mesu</span><span class="p">,</span> <span class="n">CUVIS_MESU_CUBE_INFO_KEY</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cube_info_layer_buffer</span><span class="p">);</span>
+<span class="o">//</span><span class="n">now</span> <span class="n">load</span> <span class="n">pixel</span> <span class="n">x</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">17</span><span class="s1">&#39; s flag information</span>
+<span class="nb">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span>
+<span class="n">uint16_t</span> <span class="n">info_ptr</span> <span class="o">=</span> <span class="p">(</span><span class="n">const</span> <span class="n">uint16_t</span><span class="o">*</span><span class="p">)(</span><span class="n">cube_info_layer_buffer</span><span class="o">.</span><span class="n">raw</span><span class="p">);</span>
+<span class="n">cube_info_layer_buffer</span> <span class="n">pixel_info</span> <span class="o">=</span> <span class="n">IMBUFFER_GET</span><span class="p">(</span><span class="n">info_ptr</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">imbuf</span><span class="p">);</span>
+<span class="o">//</span><span class="n">check</span> <span class="k">if</span> <span class="n">the</span> <span class="n">pixel</span> <span class="ow">is</span> <span class="n">ok</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">pixel_info</span> <span class="o">==</span> <span class="n">CUVIS_MESU_INFO_OK</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;pixel 15|17 ok </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="o">//</span> <span class="n">multiple</span> <span class="n">flags</span> <span class="n">can</span> <span class="n">be</span> <span class="nb">set</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">pixel_info</span>  <span class="o">&amp;</span> <span class="n">CUVIS_MESU_INFO_BAD_PIXEL</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;pixel 15|17 is over-illuminated </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">((</span><span class="n">pixel_info</span>  <span class="o">&amp;</span> <span class="n">CUVIS_MESU_INFO_OVERILLUMINATED</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;pixel 15|17 is a bad pixel </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="o">//</span> <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The info layer may not be available on all devices.</p>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_CUBE_INFO_KEY">
+<span class="target" id="group__cuvis__info__layer_1ga0d4fba4dc4dd287e7c84005da4fc8578"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_CUBE_INFO_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_CUBE_INFO_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>name of the info channel of its respective cube. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_PAN_INFO_KEY">
+<span class="target" id="group__cuvis__info__layer_1ga25d8679f33209635d0486410485a3326"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_PAN_INFO_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_PAN_INFO_KEY" title="Permalink to this definition"></a><br /></dt>
+<dd><p>name of the info channel of its respective pan image. </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_OK">
+<span class="target" id="group__cuvis__info__layer_1gaabdf5bb871feea1a4326174befb98a49"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_OK</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_OK" title="Permalink to this definition"></a><br /></dt>
+<dd><p>no flag set, only valid, if pixel value is equal 0 </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_OVERILLUMINATED">
+<span class="target" id="group__cuvis__info__layer_1ga3910a48c4da5711f2fbc80d3e89a66a0"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_OVERILLUMINATED</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_OVERILLUMINATED" title="Permalink to this definition"></a><br /></dt>
+<dd><p>one or more channels of the spectrum are over-exposed / the pan image is over-exposed at this position </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_BAD_PIXEL">
+<span class="target" id="group__cuvis__info__layer_1ga58f40a5d62ff50bf758bfb5ecb68f387"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_BAD_PIXEL</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_BAD_PIXEL" title="Permalink to this definition"></a><br /></dt>
+<dd><p>the pixel is marked bad, eg. </p>
+<p>a pixel of the respective spectrum is dead </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_OVERILLUMINATED_REFERENCE">
+<span class="target" id="group__cuvis__info__layer_1ga39db1faff0f328bc16b1034697608fa8"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_OVERILLUMINATED_REFERENCE</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_OVERILLUMINATED_REFERENCE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>one or more channels of the spectrum of the white reference that was used to calculate this position was over-exposed </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_UNDERFLOW_MEASUREMENT_MIN_DARK">
+<span class="target" id="group__cuvis__info__layer_1ga0dcf3e4c49b0ca4863a4968c0ddcbfc1"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_UNDERFLOW_MEASUREMENT_MIN_DARK</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_UNDERFLOW_MEASUREMENT_MIN_DARK" title="Permalink to this definition"></a><br /></dt>
+<dd><p>the meausurement was darker then the dark reference at this position (underflow) </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_UNDERFLOW_WHITE_MIN_DARK">
+<span class="target" id="group__cuvis__info__layer_1gaae655c41d7cb57ad242ff54fc88f7514"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_UNDERFLOW_WHITE_MIN_DARK</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_UNDERFLOW_WHITE_MIN_DARK" title="Permalink to this definition"></a><br /></dt>
+<dd><p>the white reference was darker then the dark reference at this position (underflow) </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_REFERENCE_CALC_OVERFLOW">
+<span class="target" id="group__cuvis__info__layer_1ga0fdf11cd2dd5f19a67030fc7024e0c45"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_REFERENCE_CALC_OVERFLOW</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_REFERENCE_CALC_OVERFLOW" title="Permalink to this definition"></a><br /></dt>
+<dd><p>the reflectance value exceeded the maximum value possible by the data format (i.e. </p>
+<p>the value reflectance reached or exceeded 655.35% (uint16 value of 65535) </p>
+</dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_INCOMPLETE">
+<span class="target" id="group__cuvis__info__layer_1gac1babff036c80aab3a0270fe7367bcf1"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_INCOMPLETE</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_INCOMPLETE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>the spectrum at this position is incomplete, e.g by a bad / too close distance calibration </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="return-values-of-sdk-functions">
+<h2>Return Values of SDK Functions<a class="headerlink" href="#return-values-of-sdk-functions" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygengroup: Cannot find group “cuvis_returns” in doxygen xml output for project “cuvis” from directory: /home/runner/work/cuvis.doc/cuvis.doc/_build/doc/xml</p>
+</div>
+</section>
+<section id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this heading"></a></h2>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__log"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_log</span></span></dt>
+<dd></dd></dl>
+
+</section>
+<section id="acquisition-context">
+<h2>Acquisition Context<a class="headerlink" href="#acquisition-context" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygengroup: Cannot find group “cuvis_acq” in doxygen xml output for project “cuvis” from directory: /home/runner/work/cuvis.doc/cuvis.doc/_build/doc/xml</p>
+</div>
+</section>
+<section id="export-api">
+<h2>Export API<a class="headerlink" href="#export-api" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygengroup: Cannot find group “cuvis_exporter” in doxygen xml output for project “cuvis” from directory: /home/runner/work/cuvis.doc/cuvis.doc/_build/doc/xml</p>
+</div>
+</section>
+<section id="async-programming">
+<h2>Async Programming<a class="headerlink" href="#async-programming" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygengroup: Cannot find group “cuvis_async” in doxygen xml output for project “cuvis” from directory: /home/runner/work/cuvis.doc/cuvis.doc/_build/doc/xml</p>
+</div>
+</section>
+<section id="processing-context">
+<h2>Processing Context<a class="headerlink" href="#processing-context" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygengroup: Cannot find group “cuvis_proc” in doxygen xml output for project “cuvis” from directory: /home/runner/work/cuvis.doc/cuvis.doc/_build/doc/xml</p>
+</div>
+</section>
+<section id="viewer">
+<h2>Viewer<a class="headerlink" href="#viewer" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygengroup: Cannot find group “cuvis_viewer” in doxygen xml output for project “cuvis” from directory: /home/runner/work/cuvis.doc/cuvis.doc/_build/doc/xml</p>
+</div>
+</section>
+<section id="components">
+<h2>Components<a class="headerlink" href="#components" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygengroup: Cannot find group “cuvis_comp” in doxygen xml output for project “cuvis” from directory: /home/runner/work/cuvis.doc/cuvis.doc/_build/doc/xml</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sdkuserguide.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cppwrapper.html" class="btn btn-neutral float-right" title="Cuvis C++ API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Cubert GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
