@@ -19,8 +19,8 @@ jobs:
           sudo apt install doxygen
           wget https://cloud.cubert-gmbh.de/index.php/s/qpxkyWkycrmBK9m/download
           unzip download
-          cd latest_release
-          cd Cuvis\ 3.3.0\ beta\ 1/Ubuntu\ 20.04/
+          cd Cuvis\ 3.3.0\ beta\ 1
+          cd Ubuntu\ 20.04/
           sudo apt install ./cuviscommon_3.3.0-1.deb -y
           sudo dpkg -i --force-overwrite ./libcuvis_3.3.0-1.deb
           cd ../..
