@@ -35,7 +35,7 @@ jobs:
           source venv/bin/activate
           python --version
           mkdir _build
-          cmake -B ./_build -DPython_ROOT_DIR=venv .
+          cmake -B ./_build -DPython_ROOT_DIR=./venv .
           cmake --build "_pyil" --config Release
           cp ./_pyil/_cuvis_pyil.so ./cuvis.pyil/cuvis_il
           cp ./_pyil/_cuvis_il.py ./cuvis.pyil/cuvis_il
