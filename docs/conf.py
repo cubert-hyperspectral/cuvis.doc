@@ -9,10 +9,11 @@
 import sys
 import os
 
-sys.path.insert(0, "cuvis.python")
+sys.path.insert(0, os.path.abspath('../cuvis.python'))
+sys.path.insert(0, os.path.abspath('../cuvis.pyil'))
 
 project = 'Cuvis SDK'
-copyright = '2023, Cubert GmbH'
+copyright = '2024, Cubert GmbH'
 author = 'Cubert GmbH'
 release = '3.2.1'
 

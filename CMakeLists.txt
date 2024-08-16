@@ -10,6 +10,8 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 find_package(Cuvis REQUIRED 3.2.0)
 find_package(CuvisCpp REQUIRED)
 
+add_subdirectory(cuvis.pyil)
+
 find_package(Sphinx REQUIRED)
 set(SPHINX_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/docs)
 set(SPHINX_BUILD ${CMAKE_CURRENT_BINARY_DIR}/doc/sphinx)

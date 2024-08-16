@@ -7,3 +7,6 @@
 [submodule "cuvis.python"]
 	path = cuvis.python
 	url = https://github.com/cubert-hyperspectral/cuvis.python
+[submodule "cuvis.pyil"]
+	path = cuvis.pyil
+	url = https://github.com/cubert-hyperspectral/cuvis.pyil.git
