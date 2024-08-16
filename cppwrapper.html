@@ -45,6 +45,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdkuserguide.html">SDK User’s Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cwrapper.html">Cuvis C API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cuvis C++ API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonwrapper.html">Cuvis Python API</a></li>
@@ -87,7 +89,11 @@
 <dd><p>Set the internal log level. </p>
 <p>Log output will be redirected to cout</p>
 <p>If this function is not called, a failback logger is used, with loglevel “warning” The failback logger is de-activated, when this function is called or when a callback is registered for the log messages. However, when this function is called, messages are logged to console, even when a callaback is registered. debug = 4, info = 3, warning = 2, error = 1, fatal = 0</p>
-<p>&#64;params[in] level the log level to be set </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>level</strong> – <strong>[in]</strong> the log level to be set </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="cpp function">
@@ -101,7 +107,7 @@
 <dd><p>Register an additional logger. </p>
 <p>Only one classic callback will be set, multiple calls will overwrite the previous callback. The callback’s message argument pointer is only valid during the runtime of the callback. The “classic” logger will output original messages, instead of it’s respective translations. For localized (translated) messages, <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p>cuvis_reset_log_callback_localized. </p>
+<p><a class="reference internal" href="cwrapper.html#group__cuvis__log_1ga7c1097c268744701ca88f9c5476fada2"><span class="std std-ref">cuvis_reset_log_callback_localized</span></a>. </p>
 </div>
 </p>
 <div class="admonition note">
@@ -164,10 +170,21 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5cuvis7General4initERKNSt6stringE">
-<span id="_CPPv3N5cuvis7General4initERKNSt6stringE"></span><span id="_CPPv2N5cuvis7General4initERKNSt6stringE"></span><span id="cuvis::General::init__ssCR"></span><span class="target" id="classcuvis_1_1_general_1a081b82e9af65db7d438f0cf16405a82c"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">settings_path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis7General4initERKNSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis7General4initERKNSt6stringEi">
+<span id="_CPPv3N5cuvis7General4initERKNSt6stringEi"></span><span id="_CPPv2N5cuvis7General4initERKNSt6stringEi"></span><span id="cuvis::General::init__ssCR.i"></span><span class="target" id="classcuvis_1_1_general_1a5f3b1fe286fc8c51170f6431222dba42"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">settings_path</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">global_loglevel</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis7General4initERKNSt6stringEi" title="Permalink to this definition"></a><br /></dt>
 <dd><p>The init function set the settings path. </p>
-<p>&#64;params[in] i_settings_path The path to the settings directory. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i_settings_path</strong> – <strong>[in]</strong> The path to the settings directory. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis7General8shutdownEv">
+<span id="_CPPv3N5cuvis7General8shutdownEv"></span><span id="_CPPv2N5cuvis7General8shutdownEv"></span><span id="cuvis::General::shutdown"></span><span class="target" id="classcuvis_1_1_general_1a7381faf40d8b3a86449b3f5f11168b0b"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shutdown</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis7General8shutdownEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Function for shutting down Cuvis safely. </p>
+<p>Gently stops all threads. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -214,7 +231,7 @@
 <dd><p>Create a calibration from session file. </p>
 <p>Create a calibration from an existion session file.</p>
 <p>The calibration is lazy-loading, i.e. the <a class="reference internal" href="#classcuvis_1_1_acquisition_context"><span class="std std-ref">AcquisitionContext</span></a> and the <a class="reference internal" href="#classcuvis_1_1_processing_context"><span class="std std-ref">ProcessingContext</span></a> will only be initialized, when explicitly called.</p>
-<p>When you create a processing context from the calibration cerated with this function, you won’t have the references from the session file set. Use cuvis_proc_cont_create_from_session_file to load a processing context where the referenecs are taken from the session file.</p>
+<p>When you create a processing context from the calibration cerated with this function, you won’t have the references from the session file set. Use <a class="reference internal" href="cwrapper.html#group__cuvis__proc_1ga3114016888cf107eb19cdf0a67f1bba6"><span class="std std-ref">cuvis_proc_cont_create_from_session_file</span></a> to load a processing context where the referenecs are taken from the session file.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>do not load multiple calibration instances of the same camera</p>
@@ -232,9 +249,15 @@
 <dd><p>get calibration capabilities </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mode</strong> – Operation mode of the camera see also cuvis_operation_mode_t</p>
+<dd class="field-odd"><p><strong>mode</strong> – Operation mode of the camera see also <a class="reference internal" href="cwrapper.html#group__cuvis__acq_1gadc02bc9a0ede40567ad6549ec0dc698a"><span class="std std-ref">cuvis_operation_mode_t</span></a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11Calibration8get_infoEv">
+<span id="_CPPv3NK5cuvis11Calibration8get_infoEv"></span><span id="_CPPv2NK5cuvis11Calibration8get_infoEv"></span><span id="cuvis::Calibration::get_infoC"></span><span class="target" id="classcuvis_1_1_calibration_1a596161aae4dc94b9695361f5a9e658cb"></span><span class="n"><span class="pre">CalibrationInfo</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_info</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11Calibration8get_infoEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>get calibration infos </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -318,7 +341,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>status_ok, if the measurement could be loaded. </p>
+<dd class="field-even"><p><a class="reference internal" href="cwrapper.html#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a>, if the measurement could be loaded. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -494,6 +517,11 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11SessionFile7get_refE5int_t22cuvis_reference_type_t">
 <span id="_CPPv3NK5cuvis11SessionFile7get_refE5int_t22cuvis_reference_type_t"></span><span id="_CPPv2NK5cuvis11SessionFile7get_refE5int_t22cuvis_reference_type_t"></span><span id="cuvis::SessionFile::get_ref__int_t.cuvis_reference_type_tC"></span><span class="target" id="classcuvis_1_1_session_file_1a92cb4408547b16b60b66f50067eb9bbb"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N5cuvis11MeasurementE" title="cuvis::Measurement"><span class="n"><span class="pre">Measurement</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_ref</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">refNo</span></span>, <span class="n"><span class="pre">cuvis_reference_type_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">type</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11SessionFile7get_refE5int_t22cuvis_reference_type_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11SessionFile13get_thumbnailEv">
+<span id="_CPPv3NK5cuvis11SessionFile13get_thumbnailEv"></span><span id="_CPPv2NK5cuvis11SessionFile13get_thumbnailEv"></span><span id="cuvis::SessionFile::get_thumbnailC"></span><span class="target" id="classcuvis_1_1_session_file_1ad172076616bd3efb6c8c9b397ab7c6ba"></span><span class="n"><span class="pre">common_image_t</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_thumbnail</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11SessionFile13get_thumbnailEv" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -683,6 +711,21 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext16get_pixel_formatEi">
+<span id="_CPPv3NK5cuvis18AcquisitionContext16get_pixel_formatEi"></span><span id="_CPPv2NK5cuvis18AcquisitionContext16get_pixel_formatEi"></span><span id="cuvis::AcquisitionContext::get_pixel_format__iC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1ad885c3423c9d5820ab734b312dad50c8"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_pixel_format</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext16get_pixel_formatEi" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis18AcquisitionContext16set_pixel_formatEiNSt6stringE">
+<span id="_CPPv3N5cuvis18AcquisitionContext16set_pixel_formatEiNSt6stringE"></span><span id="_CPPv2N5cuvis18AcquisitionContext16set_pixel_formatEiNSt6stringE"></span><span id="cuvis::AcquisitionContext::set_pixel_format__i.ss"></span><span class="target" id="classcuvis_1_1_acquisition_context_1a9e2f161a18cb50b234fc34ef49e4f82a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_pixel_format</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">format</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis18AcquisitionContext16set_pixel_formatEiNSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext27get_available_pixel_formatsE5int_t">
+<span id="_CPPv3NK5cuvis18AcquisitionContext27get_available_pixel_formatsE5int_t"></span><span id="_CPPv2NK5cuvis18AcquisitionContext27get_available_pixel_formatsE5int_t"></span><span id="cuvis::AcquisitionContext::get_available_pixel_formats__int_tC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1a39834b58e5152cce9a1571e3053e012e"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_available_pixel_formats</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext27get_available_pixel_formatsE5int_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext20get_next_measurementENSt6chrono12millisecondsE">
 <span id="_CPPv3NK5cuvis18AcquisitionContext20get_next_measurementENSt6chrono12millisecondsE"></span><span id="_CPPv2NK5cuvis18AcquisitionContext20get_next_measurementENSt6chrono12millisecondsE"></span><span id="cuvis::AcquisitionContext::get_next_measurement__std::chrono::millisecondsC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1a791ba07798a671a8140eafe3c2108328"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N5cuvis11MeasurementE" title="cuvis::Measurement"><span class="n"><span class="pre">Measurement</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_next_measurement</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">milliseconds</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timeout_ms</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">milliseconds</span></span><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext20get_next_measurementENSt6chrono12millisecondsE" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -748,8 +791,8 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext16get_preview_modeEv">
-<span id="_CPPv3NK5cuvis18AcquisitionContext16get_preview_modeEv"></span><span id="_CPPv2NK5cuvis18AcquisitionContext16get_preview_modeEv"></span><span id="cuvis::AcquisitionContext::get_preview_modeC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1a936eac9301f3ab369c7a704dc5ceead9"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_preview_mode</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext16get_preview_modeEv" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext11get_binningEv">
+<span id="_CPPv3NK5cuvis18AcquisitionContext11get_binningEv"></span><span id="_CPPv2NK5cuvis18AcquisitionContext11get_binningEv"></span><span id="cuvis::AcquisitionContext::get_binningC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1a7276de2f107537e5df73a0d43b6c287f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_binning</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext11get_binningEv" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -798,8 +841,8 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext16set_preview_modeEb">
-<span id="_CPPv3NK5cuvis18AcquisitionContext16set_preview_modeEb"></span><span id="_CPPv2NK5cuvis18AcquisitionContext16set_preview_modeEb"></span><span id="cuvis::AcquisitionContext::set_preview_mode__bC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1a5fbba1db444161892f9307c9ba1bc0cb"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5cuvis5AsyncE" title="cuvis::Async"><span class="n"><span class="pre">Async</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_preview_mode</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext16set_preview_modeEb" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext11set_binningEb">
+<span id="_CPPv3NK5cuvis18AcquisitionContext11set_binningEb"></span><span id="_CPPv2NK5cuvis18AcquisitionContext11set_binningEb"></span><span id="cuvis::AcquisitionContext::set_binning__bC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1ab987b7f91bf4689a187c98369a5b9778"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5cuvis5AsyncE" title="cuvis::Async"><span class="n"><span class="pre">Async</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_binning</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext11set_binningEb" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -859,7 +902,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext15get_temperatureE6size_t">
-<span id="_CPPv3NK5cuvis18AcquisitionContext15get_temperatureE6size_t"></span><span id="_CPPv2NK5cuvis18AcquisitionContext15get_temperatureE6size_t"></span><span id="cuvis::AcquisitionContext::get_temperature__sC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1aa249b1248f9102744e4a03af71d501de"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_temperature</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext15get_temperatureE6size_t" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3NK5cuvis18AcquisitionContext15get_temperatureE6size_t"></span><span id="_CPPv2NK5cuvis18AcquisitionContext15get_temperatureE6size_t"></span><span id="cuvis::AcquisitionContext::get_temperature__sC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1a4f1d598611643d02d943d1f563200062"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_temperature</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext15get_temperatureE6size_t" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -906,7 +949,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
 <dl class="cpp type">
 <dt class="sig sig-object cpp" id="_CPPv4N5cuvis8Exporter25general_export_settings_tE">
-<span id="_CPPv3N5cuvis8Exporter25general_export_settings_tE"></span><span id="_CPPv2N5cuvis8Exporter25general_export_settings_tE"></span><span class="target" id="classcuvis_1_1_exporter_1a2e1514c5552b5c103398c5e75c1b2ee0"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">general_export_settings_t</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">cuvis_export_general_settings_t</span></span><a class="headerlink" href="#_CPPv4N5cuvis8Exporter25general_export_settings_tE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N5cuvis8Exporter25general_export_settings_tE"></span><span id="_CPPv2N5cuvis8Exporter25general_export_settings_tE"></span><span class="target" id="classcuvis_1_1_exporter_1a2e1514c5552b5c103398c5e75c1b2ee0"></span><span class="k"><span class="pre">using</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">general_export_settings_t</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="cwrapper.html#_CPPv431cuvis_export_general_settings_t" title="cuvis_export_general_settings_t"><span class="n"><span class="pre">cuvis_export_general_settings_t</span></span></a><a class="headerlink" href="#_CPPv4N5cuvis8Exporter25general_export_settings_tE" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -920,6 +963,11 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5cuvis8Exporter14get_queue_usedEv">
 <span id="_CPPv3NK5cuvis8Exporter14get_queue_usedEv"></span><span id="_CPPv2NK5cuvis8Exporter14get_queue_usedEv"></span><span id="cuvis::Exporter::get_queue_usedC"></span><span class="target" id="classcuvis_1_1_exporter_1a95aeeebc74852b54a6c94d53b286c415"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_queue_used</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis8Exporter14get_queue_usedEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis8Exporter5flushEv">
+<span id="_CPPv3N5cuvis8Exporter5flushEv"></span><span id="_CPPv2N5cuvis8Exporter5flushEv"></span><span id="cuvis::Exporter::flush"></span><span class="target" id="classcuvis_1_1_exporter_1ae0fc4c96e16ead1a01621615fd44e7bd"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">flush</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis8Exporter5flushEv" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -990,23 +1038,33 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker16set_session_fileEPK11SessionFileb">
-<span id="_CPPv3N5cuvis6Worker16set_session_fileEPK11SessionFileb"></span><span id="_CPPv2N5cuvis6Worker16set_session_fileEPK11SessionFileb"></span><span id="cuvis::Worker::set_session_file__SessionFileCP.b"></span><span class="target" id="classcuvis_1_1_worker_1a72e32378a35e8936187c6e07524c9905"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">future</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_session_file</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5cuvis11SessionFileE" title="cuvis::SessionFile"><span class="n"><span class="pre">SessionFile</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">session</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">skip_dropped_frames</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker16set_session_fileEPK11SessionFileb" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker18ingest_measurementEPK11Measurement">
+<span id="_CPPv3N5cuvis6Worker18ingest_measurementEPK11Measurement"></span><span id="_CPPv2N5cuvis6Worker18ingest_measurementEPK11Measurement"></span><span id="cuvis::Worker::ingest_measurement__MeasurementCP"></span><span class="target" id="classcuvis_1_1_worker_1acdbcac32f6493e42cc30a92ad87deaff"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ingest_measurement</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5cuvis11MeasurementE" title="cuvis::Measurement"><span class="n"><span class="pre">Measurement</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">measurement</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker18ingest_measurementEPK11Measurement" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker19ingest_session_fileEPK11SessionFileNSt6stringE">
+<span id="_CPPv3N5cuvis6Worker19ingest_session_fileEPK11SessionFileNSt6stringE"></span><span id="_CPPv2N5cuvis6Worker19ingest_session_fileEPK11SessionFileNSt6stringE"></span><span id="cuvis::Worker::ingest_session_file__SessionFileCP.ss"></span><span class="target" id="classcuvis_1_1_worker_1a377bab042db34c0bd5b98b569f7a562c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ingest_session_file</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5cuvis11SessionFileE" title="cuvis::SessionFile"><span class="n"><span class="pre">SessionFile</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">session</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frame_selection</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker19ingest_session_fileEPK11SessionFileNSt6stringE" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker22query_session_progressEv">
-<span id="_CPPv3N5cuvis6Worker22query_session_progressEv"></span><span id="_CPPv2N5cuvis6Worker22query_session_progressEv"></span><span id="cuvis::Worker::query_session_progress"></span><span class="target" id="classcuvis_1_1_worker_1a745ee7be2524503f1066279f88af2a6b"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">query_session_progress</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker22query_session_progressEv" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N5cuvis6Worker22query_session_progressEv"></span><span id="_CPPv2N5cuvis6Worker22query_session_progressEv"></span><span id="cuvis::Worker::query_session_progress"></span><span class="target" id="classcuvis_1_1_worker_1aa897883ddbeda2a331edc0a4daae87ab"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">query_session_progress</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker22query_session_progressEv" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker17get_drop_behaviorEv">
-<span id="_CPPv3N5cuvis6Worker17get_drop_behaviorEv"></span><span id="_CPPv2N5cuvis6Worker17get_drop_behaviorEv"></span><span id="cuvis::Worker::get_drop_behavior"></span><span class="target" id="classcuvis_1_1_worker_1a8c35347dd1315cc45275a49da61e822c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_drop_behavior</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker17get_drop_behaviorEv" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker20get_can_drop_resultsEv">
+<span id="_CPPv3N5cuvis6Worker20get_can_drop_resultsEv"></span><span id="_CPPv2N5cuvis6Worker20get_can_drop_resultsEv"></span><span id="cuvis::Worker::get_can_drop_results"></span><span class="target" id="classcuvis_1_1_worker_1ae4714836013f6f25196fb94a9df4d1a9"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_can_drop_results</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker20get_can_drop_resultsEv" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker17set_drop_behaviorEb">
-<span id="_CPPv3N5cuvis6Worker17set_drop_behaviorEb"></span><span id="_CPPv2N5cuvis6Worker17set_drop_behaviorEb"></span><span id="cuvis::Worker::set_drop_behavior__b"></span><span class="target" id="classcuvis_1_1_worker_1aae3ede87dabdbddf5fcf852528473681"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_drop_behavior</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">canDrop</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker17set_drop_behaviorEb" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker25get_can_skip_measurementsEv">
+<span id="_CPPv3N5cuvis6Worker25get_can_skip_measurementsEv"></span><span id="_CPPv2N5cuvis6Worker25get_can_skip_measurementsEv"></span><span id="cuvis::Worker::get_can_skip_measurements"></span><span class="target" id="classcuvis_1_1_worker_1a074db546437add7812adaf1f5dd6b18b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_can_skip_measurements</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker25get_can_skip_measurementsEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker26get_can_skip_supplementaryEv">
+<span id="_CPPv3N5cuvis6Worker26get_can_skip_supplementaryEv"></span><span id="_CPPv2N5cuvis6Worker26get_can_skip_supplementaryEv"></span><span id="cuvis::Worker::get_can_skip_supplementary"></span><span class="target" id="classcuvis_1_1_worker_1ae54af77ae9344fd84e2e45cdf784658a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_can_skip_supplementary</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker26get_can_skip_supplementaryEv" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -1015,8 +1073,68 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker15get_next_resultEv">
-<span id="_CPPv3NK5cuvis6Worker15get_next_resultEv"></span><span id="_CPPv2NK5cuvis6Worker15get_next_resultEv"></span><span id="cuvis::Worker::get_next_resultC"></span><span class="target" id="classcuvis_1_1_worker_1ae08ed7e639a42230378fe253bccaa81e"></span><a class="reference internal" href="#_CPPv4N5cuvis6Worker15worker_return_tE" title="cuvis::Worker::worker_return_t"><span class="n"><span class="pre">worker_return_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_next_result</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker15get_next_resultEv" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker15get_next_resultENSt6chrono12millisecondsE">
+<span id="_CPPv3NK5cuvis6Worker15get_next_resultENSt6chrono12millisecondsE"></span><span id="_CPPv2NK5cuvis6Worker15get_next_resultENSt6chrono12millisecondsE"></span><span id="cuvis::Worker::get_next_result__std::chrono::millisecondsC"></span><span class="target" id="classcuvis_1_1_worker_1add0308b50066eb3adb2e6757293f7d88"></span><a class="reference internal" href="#_CPPv4N5cuvis6Worker15worker_return_tE" title="cuvis::Worker::worker_return_t"><span class="n"><span class="pre">worker_return_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_next_result</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">chrono</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">milliseconds</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timeout</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker15get_next_resultENSt6chrono12millisecondsE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker14get_queue_usedEv">
+<span id="_CPPv3NK5cuvis6Worker14get_queue_usedEv"></span><span id="_CPPv2NK5cuvis6Worker14get_queue_usedEv"></span><span id="cuvis::Worker::get_queue_usedC"></span><span class="target" id="classcuvis_1_1_worker_1acf7baa8f85f04e9d96a44aeadfbceb3c"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_queue_used</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker14get_queue_usedEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker21get_input_queue_limitEv">
+<span id="_CPPv3NK5cuvis6Worker21get_input_queue_limitEv"></span><span id="_CPPv2NK5cuvis6Worker21get_input_queue_limitEv"></span><span id="cuvis::Worker::get_input_queue_limitC"></span><span class="target" id="classcuvis_1_1_worker_1a92f89f4ee2a2ab0b977fc95d9695b471"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_input_queue_limit</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker21get_input_queue_limitEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker25get_mandatory_queue_limitEv">
+<span id="_CPPv3NK5cuvis6Worker25get_mandatory_queue_limitEv"></span><span id="_CPPv2NK5cuvis6Worker25get_mandatory_queue_limitEv"></span><span id="cuvis::Worker::get_mandatory_queue_limitC"></span><span class="target" id="classcuvis_1_1_worker_1aec1121e355c87baf5fcba86cee7b949b"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_mandatory_queue_limit</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker25get_mandatory_queue_limitEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker29get_supplementary_queue_limitEv">
+<span id="_CPPv3NK5cuvis6Worker29get_supplementary_queue_limitEv"></span><span id="_CPPv2NK5cuvis6Worker29get_supplementary_queue_limitEv"></span><span id="cuvis::Worker::get_supplementary_queue_limitC"></span><span class="target" id="classcuvis_1_1_worker_1a824702543c00fee014529e2cac40a38d"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_supplementary_queue_limit</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker29get_supplementary_queue_limitEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker22get_output_queue_limitEv">
+<span id="_CPPv3NK5cuvis6Worker22get_output_queue_limitEv"></span><span id="_CPPv2NK5cuvis6Worker22get_output_queue_limitEv"></span><span id="cuvis::Worker::get_output_queue_limitC"></span><span class="target" id="classcuvis_1_1_worker_1a1db52abb2052335fe447bccd91ca76f8"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_output_queue_limit</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker22get_output_queue_limitEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker16start_processingEv">
+<span id="_CPPv3N5cuvis6Worker16start_processingEv"></span><span id="_CPPv2N5cuvis6Worker16start_processingEv"></span><span id="cuvis::Worker::start_processing"></span><span class="target" id="classcuvis_1_1_worker_1a57236094870bafb53e8828338ce45613"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">start_processing</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker16start_processingEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker15stop_processingEv">
+<span id="_CPPv3N5cuvis6Worker15stop_processingEv"></span><span id="_CPPv2N5cuvis6Worker15stop_processingEv"></span><span id="cuvis::Worker::stop_processing"></span><span class="target" id="classcuvis_1_1_worker_1a176603a1f6fff4143733bc4c70f0e224"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stop_processing</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker15stop_processingEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker15drop_all_queuedEv">
+<span id="_CPPv3N5cuvis6Worker15drop_all_queuedEv"></span><span id="_CPPv2N5cuvis6Worker15drop_all_queuedEv"></span><span id="cuvis::Worker::drop_all_queued"></span><span class="target" id="classcuvis_1_1_worker_1a256ac3982d1a171eca28b1fa14656ef4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">drop_all_queued</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker15drop_all_queuedEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker23is_processing_mandatoryEv">
+<span id="_CPPv3NK5cuvis6Worker23is_processing_mandatoryEv"></span><span id="_CPPv2NK5cuvis6Worker23is_processing_mandatoryEv"></span><span id="cuvis::Worker::is_processing_mandatoryC"></span><span class="target" id="classcuvis_1_1_worker_1a50870e6c25247955eb775f75bf11d4f7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_processing_mandatory</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker23is_processing_mandatoryEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker13is_processingEv">
+<span id="_CPPv3NK5cuvis6Worker13is_processingEv"></span><span id="_CPPv2NK5cuvis6Worker13is_processingEv"></span><span id="cuvis::Worker::is_processingC"></span><span class="target" id="classcuvis_1_1_worker_1aca3709d8ba8f1b37810e50c8398168f1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_processing</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker13is_processingEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker16get_threads_busyEv">
+<span id="_CPPv3NK5cuvis6Worker16get_threads_busyEv"></span><span id="_CPPv2NK5cuvis6Worker16get_threads_busyEv"></span><span id="cuvis::Worker::get_threads_busyC"></span><span class="target" id="classcuvis_1_1_worker_1aacad7b0a2d37880a4b6eed019072a2ae"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_threads_busy</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker16get_threads_busyEv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker9get_stateEv">
+<span id="_CPPv3NK5cuvis6Worker9get_stateEv"></span><span id="_CPPv2NK5cuvis6Worker9get_stateEv"></span><span id="cuvis::Worker::get_stateC"></span><span class="target" id="classcuvis_1_1_worker_1ad76270ce4b02183423059bd2b0b797d8"></span><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_tE" title="cuvis::Worker::worker_state_t"><span class="n"><span class="pre">worker_state_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_state</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker9get_stateEv" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -1027,21 +1145,6 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker21reset_worker_callbackEv">
 <span id="_CPPv3N5cuvis6Worker21reset_worker_callbackEv"></span><span id="_CPPv2N5cuvis6Worker21reset_worker_callbackEv"></span><span id="cuvis::Worker::reset_worker_callback"></span><span class="target" id="classcuvis_1_1_worker_1a4ffce86918e1355b236b9a54b43d1c6d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reset_worker_callback</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker21reset_worker_callbackEv" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker16get_queue_limitsEv">
-<span id="_CPPv3NK5cuvis6Worker16get_queue_limitsEv"></span><span id="_CPPv2NK5cuvis6Worker16get_queue_limitsEv"></span><span id="cuvis::Worker::get_queue_limitsC"></span><span class="target" id="classcuvis_1_1_worker_1ad1f9e3f45360e70ac837cae3b3065206"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">int32_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_queue_limits</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker16get_queue_limitsEv" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis6Worker14get_queue_usedEv">
-<span id="_CPPv3NK5cuvis6Worker14get_queue_usedEv"></span><span id="_CPPv2NK5cuvis6Worker14get_queue_usedEv"></span><span id="cuvis::Worker::get_queue_usedC"></span><span class="target" id="classcuvis_1_1_worker_1acf7baa8f85f04e9d96a44aeadfbceb3c"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_queue_used</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis6Worker14get_queue_usedEv" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker16set_queue_limitsE7int32_t7int32_t">
-<span id="_CPPv3N5cuvis6Worker16set_queue_limitsE7int32_t7int32_t"></span><span id="_CPPv2N5cuvis6Worker16set_queue_limitsE7int32_t7int32_t"></span><span id="cuvis::Worker::set_queue_limits__int32_t.int32_t"></span><span class="target" id="classcuvis_1_1_worker_1abc7814959c00d539ff26388e2dca4d22"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_queue_limits</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">hard_limit</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">soft_limit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker16set_queue_limitsE7int32_t7int32_t" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -1068,6 +1171,49 @@
 </div>
 </dd></dl>
 
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker14worker_state_tE">
+<span id="_CPPv3N5cuvis6Worker14worker_state_tE"></span><span id="_CPPv2N5cuvis6Worker14worker_state_tE"></span><span id="cuvis::Worker::worker_state_t"></span><span class="target" id="structcuvis_1_1_worker_1_1worker__state__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">worker_state_t</span></span></span><a class="headerlink" href="#_CPPv4N5cuvis6Worker14worker_state_tE" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker14worker_state_t19measurementsInQueueE">
+<span id="_CPPv3N5cuvis6Worker14worker_state_t19measurementsInQueueE"></span><span id="_CPPv2N5cuvis6Worker14worker_state_t19measurementsInQueueE"></span><span id="cuvis::Worker::worker_state_t::measurementsInQueue__s"></span><span class="target" id="structcuvis_1_1_worker_1_1worker__state__t_1a664b01a099770585aec99698ec76d188"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">measurementsInQueue</span></span></span><a class="headerlink" href="#_CPPv4N5cuvis6Worker14worker_state_t19measurementsInQueueE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker14worker_state_t19sessionFilesInQueueE">
+<span id="_CPPv3N5cuvis6Worker14worker_state_t19sessionFilesInQueueE"></span><span id="_CPPv2N5cuvis6Worker14worker_state_t19sessionFilesInQueueE"></span><span id="cuvis::Worker::worker_state_t::sessionFilesInQueue__s"></span><span class="target" id="structcuvis_1_1_worker_1_1worker__state__t_1a1ba6cc9c6e79e4a53f4c4246f4efa37a"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sessionFilesInQueue</span></span></span><a class="headerlink" href="#_CPPv4N5cuvis6Worker14worker_state_t19sessionFilesInQueueE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker14worker_state_t13framesInQueueE">
+<span id="_CPPv3N5cuvis6Worker14worker_state_t13framesInQueueE"></span><span id="_CPPv2N5cuvis6Worker14worker_state_t13framesInQueueE"></span><span id="cuvis::Worker::worker_state_t::framesInQueue__s"></span><span class="target" id="structcuvis_1_1_worker_1_1worker__state__t_1a29fcf98f71b92bfb167f367f4123cf08"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">framesInQueue</span></span></span><a class="headerlink" href="#_CPPv4N5cuvis6Worker14worker_state_t13framesInQueueE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker14worker_state_t26measurementsBeingProcessedE">
+<span id="_CPPv3N5cuvis6Worker14worker_state_t26measurementsBeingProcessedE"></span><span id="_CPPv2N5cuvis6Worker14worker_state_t26measurementsBeingProcessedE"></span><span id="cuvis::Worker::worker_state_t::measurementsBeingProcessed__s"></span><span class="target" id="structcuvis_1_1_worker_1_1worker__state__t_1a643027b4bbd6232b721162901226d64c"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">measurementsBeingProcessed</span></span></span><a class="headerlink" href="#_CPPv4N5cuvis6Worker14worker_state_t26measurementsBeingProcessedE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker14worker_state_t14resultsInQueueE">
+<span id="_CPPv3N5cuvis6Worker14worker_state_t14resultsInQueueE"></span><span id="_CPPv2N5cuvis6Worker14worker_state_t14resultsInQueueE"></span><span id="cuvis::Worker::worker_state_t::resultsInQueue__s"></span><span class="target" id="structcuvis_1_1_worker_1_1worker__state__t_1a9987f89d088001d8579a776c1cdb2cde"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">resultsInQueue</span></span></span><a class="headerlink" href="#_CPPv4N5cuvis6Worker14worker_state_t14resultsInQueueE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker14worker_state_t21hasAcquisitionContextE">
+<span id="_CPPv3N5cuvis6Worker14worker_state_t21hasAcquisitionContextE"></span><span id="_CPPv2N5cuvis6Worker14worker_state_t21hasAcquisitionContextE"></span><span id="cuvis::Worker::worker_state_t::hasAcquisitionContext__b"></span><span class="target" id="structcuvis_1_1_worker_1_1worker__state__t_1add13fb405d841fd2511da3b40299a163"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hasAcquisitionContext</span></span></span><a class="headerlink" href="#_CPPv4N5cuvis6Worker14worker_state_t21hasAcquisitionContextE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker14worker_state_t12isProcessingE">
+<span id="_CPPv3N5cuvis6Worker14worker_state_t12isProcessingE"></span><span id="_CPPv2N5cuvis6Worker14worker_state_t12isProcessingE"></span><span id="cuvis::Worker::worker_state_t::isProcessing__b"></span><span class="target" id="structcuvis_1_1_worker_1_1worker__state__t_1ad57f9c65cc350724ba81c03c8962986b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isProcessing</span></span></span><a class="headerlink" href="#_CPPv4N5cuvis6Worker14worker_state_t12isProcessingE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1083,7 +1229,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Cubert GmbH.</p>
+    <p>&#169; Copyright 2024, Cubert GmbH.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

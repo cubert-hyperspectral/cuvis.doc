@@ -74,6 +74,14 @@ Acquisition Context
 	:members:
 	:undoc-members:
 	
+Components
+----------
+
+.. doxygengroup:: cuvis_comp
+	:project: cuvis
+	:members:
+	:undoc-members:
+	
 Export API
 ----------
 
@@ -107,10 +115,18 @@ Viewer
 	:members:
 	:undoc-members:
 	
-Components
-----------
+Worker
+------
 
-.. doxygengroup:: cuvis_comp
+.. doxygengroup:: cuvis_worker
+	:project: cuvis
+	:members:
+	:undoc-members:
+	
+Examples
+------
+
+.. doxygengroup:: c_examples
 	:project: cuvis
 	:members:
 	:undoc-members:

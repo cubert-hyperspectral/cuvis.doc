@@ -42,6 +42,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdkuserguide.html">SDK User’s Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cwrapper.html">Cuvis C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cppwrapper.html">Cuvis C++ API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonwrapper.html">Cuvis Python API</a></li>
@@ -100,9 +102,13 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext17get_auto_exp_compEv">cuvis::AcquisitionContext::get_auto_exp_comp (C++ function)</a>
 </li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext27get_available_pixel_formatsE5int_t">cuvis::AcquisitionContext::get_available_pixel_formats (C++ function)</a>
+</li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext11get_averageEv">cuvis::AcquisitionContext::get_average (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext13get_bandwidthE6size_t">cuvis::AcquisitionContext::get_bandwidth (C++ function)</a>, <a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext13get_bandwidthEv">[1]</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext11get_binningEv">cuvis::AcquisitionContext::get_binning (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext19get_component_countEv">cuvis::AcquisitionContext::get_component_count (C++ function)</a>
 </li>
@@ -132,7 +138,7 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext18get_operation_modeEv">cuvis::AcquisitionContext::get_operation_mode (C++ function)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext16get_preview_modeEv">cuvis::AcquisitionContext::get_preview_mode (C++ function)</a>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext16get_pixel_formatEi">cuvis::AcquisitionContext::get_pixel_format (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext14get_queue_sizeEv">cuvis::AcquisitionContext::get_queue_size (C++ function)</a>
 </li>
@@ -158,6 +164,8 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext11set_averageEi">cuvis::AcquisitionContext::set_average (C++ function)</a>
 </li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext11set_binningEb">cuvis::AcquisitionContext::set_binning (C++ function)</a>
+</li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext18set_component_gainE6size_td">cuvis::AcquisitionContext::set_component_gain (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext37set_component_integration_time_factorE6size_td">cuvis::AcquisitionContext::set_component_integration_time_factor (C++ function)</a>
@@ -170,7 +178,7 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext18set_operation_modeE16operation_mode_t">cuvis::AcquisitionContext::set_operation_mode (C++ function)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext16set_preview_modeEb">cuvis::AcquisitionContext::set_preview_mode (C++ function)</a>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis18AcquisitionContext16set_pixel_formatEiNSt6stringE">cuvis::AcquisitionContext::set_pixel_format (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis18AcquisitionContext14set_queue_sizeE5int_t">cuvis::AcquisitionContext::set_queue_size (C++ function)</a>
 </li>
@@ -196,9 +204,13 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Calibration6get_idEv">cuvis::Calibration::get_id (C++ function)</a>
 </li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Calibration8get_infoEv">cuvis::Calibration::get_info (C++ function)</a>
+</li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis8ExporterE">cuvis::Exporter (C++ class)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis8Exporter5applyERK11Measurement">cuvis::Exporter::apply (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis8Exporter5flushEv">cuvis::Exporter::flush (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis8Exporter25general_export_settings_tE">cuvis::Exporter::general_export_settings_t (C++ type)</a>
 </li>
@@ -206,7 +218,7 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis7GeneralE">cuvis::General (C++ class)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4N5cuvis7General4initERKNSt6stringE">cuvis::General::init (C++ function)</a>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis7General4initERKNSt6stringEi">cuvis::General::init (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis7General23register_event_callbackE20cpp_event_callback_t5int_t">cuvis::General::register_event_callback (C++ function)</a>
 </li>
@@ -221,6 +233,8 @@
       <li><a href="cppwrapper.html#_CPPv4N5cuvis7General20set_exception_localeERKNSt6stringE">cuvis::General::set_exception_locale (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis7General13set_log_levelE5int_t">cuvis::General::set_log_level (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis7General8shutdownEv">cuvis::General::shutdown (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis7General25unregister_event_callbackE5int_t">cuvis::General::unregister_event_callback (C++ function)</a>
 </li>
@@ -242,8 +256,6 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Measurement8get_metaEv">cuvis::Measurement::get_meta (C++ function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Measurement15get_sensor_infoEv">cuvis::Measurement::get_sensor_info (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Measurement11get_strdataEv">cuvis::Measurement::get_strdata (C++ function)</a>
@@ -308,21 +320,49 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11SessionFile7get_refE5int_t22cuvis_reference_type_t">cuvis::SessionFile::get_ref (C++ function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11SessionFile8get_sizeE25cuvis_session_item_type_t">cuvis::SessionFile::get_size (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis11SessionFile13get_thumbnailEv">cuvis::SessionFile::get_thumbnail (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis11SessionFile11SessionFileERKNSt10filesystem4pathE">cuvis::SessionFile::SessionFile (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis6WorkerE">cuvis::Worker (C++ class)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker17get_drop_behaviorEv">cuvis::Worker::get_drop_behavior (C++ function)</a>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker15drop_all_queuedEv">cuvis::Worker::drop_all_queued (C++ function)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker15get_next_resultEv">cuvis::Worker::get_next_result (C++ function)</a>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker20get_can_drop_resultsEv">cuvis::Worker::get_can_drop_results (C++ function)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker16get_queue_limitsEv">cuvis::Worker::get_queue_limits (C++ function)</a>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker25get_can_skip_measurementsEv">cuvis::Worker::get_can_skip_measurements (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker26get_can_skip_supplementaryEv">cuvis::Worker::get_can_skip_supplementary (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker21get_input_queue_limitEv">cuvis::Worker::get_input_queue_limit (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker25get_mandatory_queue_limitEv">cuvis::Worker::get_mandatory_queue_limit (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker15get_next_resultENSt6chrono12millisecondsE">cuvis::Worker::get_next_result (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker22get_output_queue_limitEv">cuvis::Worker::get_output_queue_limit (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker14get_queue_usedEv">cuvis::Worker::get_queue_used (C++ function)</a>
 </li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker9get_stateEv">cuvis::Worker::get_state (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker29get_supplementary_queue_limitEv">cuvis::Worker::get_supplementary_queue_limit (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker16get_threads_busyEv">cuvis::Worker::get_threads_busy (C++ function)</a>
+</li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker15has_next_resultEv">cuvis::Worker::has_next_result (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker18ingest_measurementEPK11Measurement">cuvis::Worker::ingest_measurement (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker19ingest_session_fileEPK11SessionFileNSt6stringE">cuvis::Worker::ingest_session_file (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker13is_processingEv">cuvis::Worker::is_processing (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis6Worker23is_processing_mandatoryEv">cuvis::Worker::is_processing_mandatory (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker22query_session_progressEv">cuvis::Worker::query_session_progress (C++ function)</a>
 </li>
@@ -332,17 +372,15 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker12set_acq_contEPK18AcquisitionContext">cuvis::Worker::set_acq_cont (C++ function)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker17set_drop_behaviorEb">cuvis::Worker::set_drop_behavior (C++ function)</a>
-</li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker12set_exporterEPK8Exporter">cuvis::Worker::set_exporter (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker13set_proc_contEPK17ProcessingContext">cuvis::Worker::set_proc_cont (C++ function)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker16set_queue_limitsE7int32_t7int32_t">cuvis::Worker::set_queue_limits (C++ function)</a>
-</li>
-      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker16set_session_fileEPK11SessionFileb">cuvis::Worker::set_session_file (C++ function)</a>
-</li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker10set_viewerEPK6Viewer">cuvis::Worker::set_viewer (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker16start_processingEv">cuvis::Worker::start_processing (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker15stop_processingEv">cuvis::Worker::stop_processing (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker6WorkerERK10WorkerArgs">cuvis::Worker::Worker (C++ function)</a>
 </li>
@@ -355,6 +393,66 @@
       <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker15worker_return_t4mesuE">cuvis::Worker::worker_return_t::mesu (C++ member)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker15worker_return_t4viewE">cuvis::Worker::worker_return_t::view (C++ member)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker14worker_state_tE">cuvis::Worker::worker_state_t (C++ struct)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker14worker_state_t13framesInQueueE">cuvis::Worker::worker_state_t::framesInQueue (C++ member)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker14worker_state_t21hasAcquisitionContextE">cuvis::Worker::worker_state_t::hasAcquisitionContext (C++ member)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker14worker_state_t12isProcessingE">cuvis::Worker::worker_state_t::isProcessing (C++ member)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker14worker_state_t26measurementsBeingProcessedE">cuvis::Worker::worker_state_t::measurementsBeingProcessed (C++ member)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker14worker_state_t19measurementsInQueueE">cuvis::Worker::worker_state_t::measurementsInQueue (C++ member)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker14worker_state_t14resultsInQueueE">cuvis::Worker::worker_state_t::resultsInQueue (C++ member)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker14worker_state_t19sessionFilesInQueueE">cuvis::Worker::worker_state_t::sessionFilesInQueue (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv431cuvis_export_general_settings_t">cuvis_export_general_settings_t (C++ struct)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N31cuvis_export_general_settings_t17add_fullscale_panE">cuvis_export_general_settings_t::add_fullscale_pan (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N31cuvis_export_general_settings_t7add_panE">cuvis_export_general_settings_t::add_pan (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N31cuvis_export_general_settings_t13blend_opacityE">cuvis_export_general_settings_t::blend_opacity (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N31cuvis_export_general_settings_t17channel_selectionE">cuvis_export_general_settings_t::channel_selection (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N31cuvis_export_general_settings_t10export_dirE">cuvis_export_general_settings_t::export_dir (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N31cuvis_export_general_settings_t13pan_algorithmE">cuvis_export_general_settings_t::pan_algorithm (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N31cuvis_export_general_settings_t22pan_interpolation_typeE">cuvis_export_general_settings_t::pan_interpolation_type (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N31cuvis_export_general_settings_t9pan_scaleE">cuvis_export_general_settings_t::pan_scale (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N31cuvis_export_general_settings_t10permissiveE">cuvis_export_general_settings_t::permissive (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N31cuvis_export_general_settings_t18spectra_multiplierE">cuvis_export_general_settings_t::spectra_multiplier (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv428cuvis_export_tiff_settings_t">cuvis_export_tiff_settings_t (C++ struct)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N28cuvis_export_tiff_settings_t16compression_modeE">cuvis_export_tiff_settings_t::compression_mode (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N28cuvis_export_tiff_settings_t6formatE">cuvis_export_tiff_settings_t::format (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv428cuvis_export_view_settings_t">cuvis_export_view_settings_t (C++ struct)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N28cuvis_export_view_settings_t10userpluginE">cuvis_export_view_settings_t::userplugin (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv416cuvis_loglevel_t">cuvis_loglevel_t (C++ enum)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N16cuvis_loglevel_t14loglevel_debugE">cuvis_loglevel_t::loglevel_debug (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N16cuvis_loglevel_t14loglevel_errorE">cuvis_loglevel_t::loglevel_error (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N16cuvis_loglevel_t14loglevel_fatalE">cuvis_loglevel_t::loglevel_fatal (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N16cuvis_loglevel_t13loglevel_infoE">cuvis_loglevel_t::loglevel_info (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N16cuvis_loglevel_t16loglevel_warningE">cuvis_loglevel_t::loglevel_warning (C++ enumerator)</a>
 </li>
       <li><a href="cwrapper.html#c.CUVIS_MESU_CUBE_INFO_KEY">CUVIS_MESU_CUBE_INFO_KEY (C macro)</a>
 </li>
@@ -408,6 +506,62 @@
 </li>
       <li><a href="cwrapper.html#c.CUVIS_MESU_WHITEREF_KEY">CUVIS_MESU_WHITEREF_KEY (C macro)</a>
 </li>
+      <li><a href="cwrapper.html#_CPPv422cuvis_operation_mode_t">cuvis_operation_mode_t (C++ enum)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N22cuvis_operation_mode_t22OperationMode_ExternalE">cuvis_operation_mode_t::OperationMode_External (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N22cuvis_operation_mode_t22OperationMode_InternalE">cuvis_operation_mode_t::OperationMode_Internal (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N22cuvis_operation_mode_t22OperationMode_SoftwareE">cuvis_operation_mode_t::OperationMode_Software (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N22cuvis_operation_mode_t23OperationMode_UndefinedE">cuvis_operation_mode_t::OperationMode_Undefined (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv417cuvis_save_args_t">cuvis_save_args_t (C++ struct)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N17cuvis_save_args_t10allow_dropE">cuvis_save_args_t::allow_drop (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N17cuvis_save_args_t19allow_fragmentationE">cuvis_save_args_t::allow_fragmentation (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N17cuvis_save_args_t15allow_info_fileE">cuvis_save_args_t::allow_info_file (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N17cuvis_save_args_t15allow_overwriteE">cuvis_save_args_t::allow_overwrite (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N17cuvis_save_args_t18allow_session_fileE">cuvis_save_args_t::allow_session_file (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N17cuvis_save_args_t3fpsE">cuvis_save_args_t::fps (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N17cuvis_save_args_t11full_exportE">cuvis_save_args_t::full_export (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N17cuvis_save_args_t10hard_limitE">cuvis_save_args_t::hard_limit (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N17cuvis_save_args_t11max_buftimeE">cuvis_save_args_t::max_buftime (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N17cuvis_save_args_t14operation_modeE">cuvis_save_args_t::operation_mode (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N17cuvis_save_args_t10soft_limitE">cuvis_save_args_t::soft_limit (C++ member)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv414cuvis_status_t">cuvis_status_t (C++ enum)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N14cuvis_status_t15status_deferredE">cuvis_status_t::status_deferred (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N14cuvis_status_t12status_errorE">cuvis_status_t::status_error (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N14cuvis_status_t21status_no_measurementE">cuvis_status_t::status_no_measurement (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N14cuvis_status_t14status_no_viewE">cuvis_status_t::status_no_view (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N14cuvis_status_t20status_not_availableE">cuvis_status_t::status_not_available (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N14cuvis_status_t20status_not_processedE">cuvis_status_t::status_not_processed (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N14cuvis_status_t17status_not_storedE">cuvis_status_t::status_not_stored (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N14cuvis_status_t9status_okE">cuvis_status_t::status_ok (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N14cuvis_status_t18status_overwrittenE">cuvis_status_t::status_overwritten (C++ enumerator)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N14cuvis_status_t14status_timeoutE">cuvis_status_t::status_timeout (C++ enumerator)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -420,7 +574,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, Cubert GmbH.</p>
+    <p>&#169; Copyright 2024, Cubert GmbH.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

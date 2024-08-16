@@ -1,5 +1,5 @@
 Cuvis Python API
-==============
+================
 
 .. automodule:: cuvis.AcquisitionContext
    :members:
