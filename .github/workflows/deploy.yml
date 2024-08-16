@@ -32,6 +32,8 @@ jobs:
 
       - name: Build Pyil Wrapper
         run: |
+          source venv/bin/activate
+          python --version
           mkdir _build
           cmake -B ./_build -DPython_ROOT_DIR=venv .
           cmake --build "_pyil" --config Release
