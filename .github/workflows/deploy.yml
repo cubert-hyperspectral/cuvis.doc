@@ -16,7 +16,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          sudo apt install doxygen
+          sudo apt install doxygen swig -y
+          sudo apt install python3.9 python3-pip python3.9-dev python3.9-venv -y
           wget https://cloud.cubert-gmbh.de/index.php/s/qpxkyWkycrmBK9m/download
           unzip download
           cd Cuvis\ 3.3
@@ -25,9 +26,9 @@ jobs:
           sudo apt install ./cuviscommon_3.3.0-1.deb -y
           sudo dpkg -i --force-overwrite ./libcuvis_3.3.0-1.deb
           cd ../../..
-          python -m venv venv
+          python3.9 -m venv venv
           source venv/bin/activate
-          pip install -r docs/requirements.txt
+          python3.9 -m pip install -r docs/requirements.txt
 
       - name: Build Pyil Wrapper
         run: |
@@ -36,8 +37,8 @@ jobs:
           cmake --build "_pyil" --config Release
           cp ./_pyil/_cuvis_pyil.so ./cuvis.pyil/cuvis_il
           cp ./_pyil/_cuvis_il.py ./cuvis.pyil/cuvis_il
-          pip install cuvis.pyil
-          pip install cuvis.python
+          python3.9 -m pip install cuvis.pyil
+          python3.9 -m pip install cuvis.python
           
       - name: Build Documentation
         run: |
