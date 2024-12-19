@@ -1,23 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en">
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cuvis C API &mdash; Cuvis SDK 3.2.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=c96f8916"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=eb155f5e"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -54,11 +52,84 @@
 <li class="toctree-l2"><a class="reference internal" href="#measurement">Measurement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#session-file">Session File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-info-layer">The Info Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#return-values-of-sdk-functions">Return Values of SDK Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#logging">Logging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#acquisition-context">Acquisition Context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#return-values-of-sdk-functions">Return Values of SDK Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv414cuvis_status_t"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t9status_okE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_ok</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t12status_errorE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t15status_deferredE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_deferred</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t18status_overwrittenE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_overwritten</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t14status_timeoutE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_timeout</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t21status_no_measurementE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_no_measurement</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t20status_not_availableE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_not_available</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t20status_not_processedE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_not_processed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t17status_not_storedE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_not_stored</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t14status_no_viewE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_no_view</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#logging">Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv416cuvis_loglevel_t"><code class="docutils literal notranslate"><span class="pre">cuvis_loglevel_t</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t14loglevel_fatalE"><code class="docutils literal notranslate"><span class="pre">cuvis_loglevel_t::loglevel_fatal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t14loglevel_errorE"><code class="docutils literal notranslate"><span class="pre">cuvis_loglevel_t::loglevel_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t16loglevel_warningE"><code class="docutils literal notranslate"><span class="pre">cuvis_loglevel_t::loglevel_warning</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t13loglevel_infoE"><code class="docutils literal notranslate"><span class="pre">cuvis_loglevel_t::loglevel_info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t14loglevel_debugE"><code class="docutils literal notranslate"><span class="pre">cuvis_loglevel_t::loglevel_debug</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#acquisition-context">Acquisition Context</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv422cuvis_operation_mode_t"><code class="docutils literal notranslate"><span class="pre">cuvis_operation_mode_t</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_SoftwareE"><code class="docutils literal notranslate"><span class="pre">cuvis_operation_mode_t::OperationMode_Software</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_InternalE"><code class="docutils literal notranslate"><span class="pre">cuvis_operation_mode_t::OperationMode_Internal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_ExternalE"><code class="docutils literal notranslate"><span class="pre">cuvis_operation_mode_t::OperationMode_External</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t23OperationMode_UndefinedE"><code class="docutils literal notranslate"><span class="pre">cuvis_operation_mode_t::OperationMode_Undefined</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#components">Components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#export-api">Export API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#export-api">Export API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv417cuvis_save_args_t"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t19allow_fragmentationE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::allow_fragmentation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t15allow_overwriteE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::allow_overwrite</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t10allow_dropE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::allow_drop</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t18allow_session_fileE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::allow_session_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t15allow_info_fileE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::allow_info_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t14operation_modeE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::operation_mode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t3fpsE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::fps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t10soft_limitE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::soft_limit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t10hard_limitE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::hard_limit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t11max_buftimeE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::max_buftime</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t11full_exportE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::full_export</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv431cuvis_export_general_settings_t"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t10export_dirE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::export_dir</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t17channel_selectionE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::channel_selection</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t18spectra_multiplierE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::spectra_multiplier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t9pan_scaleE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::pan_scale</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t22pan_interpolation_typeE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::pan_interpolation_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t13pan_algorithmE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::pan_algorithm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t20pre_pan_sharpen_cubeE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::pre_pan_sharpen_cube</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t13blend_opacityE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::blend_opacity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t7add_panE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::add_pan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t17add_fullscale_panE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::add_fullscale_pan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t10permissiveE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::permissive</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv428cuvis_export_view_settings_t"><code class="docutils literal notranslate"><span class="pre">cuvis_export_view_settings_t</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N28cuvis_export_view_settings_t10userpluginE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_view_settings_t::userplugin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv428cuvis_export_tiff_settings_t"><code class="docutils literal notranslate"><span class="pre">cuvis_export_tiff_settings_t</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N28cuvis_export_tiff_settings_t16compression_modeE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_tiff_settings_t::compression_mode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N28cuvis_export_tiff_settings_t6formatE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_tiff_settings_t::format</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#async-programming">Async Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#processing-context">Processing Context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#viewer">Viewer</a></li>
@@ -95,9 +166,9 @@
            <div itemprop="articleBody">
              
   <section id="cuvis-c-api">
-<h1>Cuvis C API<a class="headerlink" href="#cuvis-c-api" title="Permalink to this heading"></a></h1>
+<h1>Cuvis C API<a class="headerlink" href="#cuvis-c-api" title="Link to this heading"></a></h1>
 <section id="handles">
-<h2>Handles<a class="headerlink" href="#handles" title="Permalink to this heading"></a></h2>
+<h2>Handles<a class="headerlink" href="#handles" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__handle"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_handle</span></span></dt>
@@ -111,7 +182,7 @@
 
 </section>
 <section id="reserved-keys">
-<h2>Reserved Keys<a class="headerlink" href="#reserved-keys" title="Permalink to this heading"></a></h2>
+<h2>Reserved Keys<a class="headerlink" href="#reserved-keys" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__reserved__keys"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_reserved_keys</span></span></dt>
@@ -119,101 +190,101 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_CUBE_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1gafe40dc8e2753339f739bfd6a23972630"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_CUBE_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_CUBE_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1gafe40dc8e2753339f739bfd6a23972630"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_CUBE_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_CUBE_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>name of the data field for the hyperspectral cube (in all modes except Preview) </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_PAN_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1ga51a7b0be8243261bd55822aacbaaff50"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_PAN_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_PAN_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1ga51a7b0be8243261bd55822aacbaaff50"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_PAN_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_PAN_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>name of the pan image (pixels registered to <a class="reference internal" href="#group__cuvis__reserved__keys_1gafe40dc8e2753339f739bfd6a23972630"><span class="std std-ref">CUVIS_MESU_CUBE_KEY</span></a>) </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_GPS_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1ga78d706a6d662b7639484f1c11ff9992e"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_GPS_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_GPS_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1ga78d706a6d662b7639484f1c11ff9992e"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_GPS_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_GPS_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>name of the GPS data field, if available </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_PREVIEW_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1ga0bb8494828ec1a0878454b63f8d276cb"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_PREVIEW_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_PREVIEW_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1ga0bb8494828ec1a0878454b63f8d276cb"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_PREVIEW_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_PREVIEW_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>name of the generate preview image, if available. </p>
 <p>The preview will be generated by the <a class="reference internal" href="#group__cuvis__proc_1ga84e58bab683a12bb9362b807f1a93217"><span class="std std-ref">cuvis_proc_cont_apply</span></a> function </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_DARKREF_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1ga480fceda6d8ddaf26dc845baa4500840"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_DARKREF_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_DARKREF_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1ga480fceda6d8ddaf26dc845baa4500840"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_DARKREF_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_DARKREF_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>If this field is present, a dark was set while recording the measurement. </p>
 <p>This is the dark that is implicitly loaded when a processing context is created with the current measurement and used, if a dark is needed (unless overwritten by <a class="reference internal" href="#group__cuvis__proc_1ga970393728bb751fb2a8c179aeed69796"><span class="std std-ref">cuvis_proc_cont_set_reference</span></a> ) The reference file should be located in ../Calibration/&lt;reference-name&gt;.cu3 or the precise path defined by the string value of the data tag </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_WHITEREF_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1gad59d63faeaf80719a01053e3643a5b27"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_WHITEREF_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_WHITEREF_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1gad59d63faeaf80719a01053e3643a5b27"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_WHITEREF_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_WHITEREF_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>If this field is present, a white was set while recording the measurement. </p>
 <p>This is the white that is implicitly loaded when a processing context is created with the current measurement and used, if a dark is needed (unless overwritten by <a class="reference internal" href="#group__cuvis__proc_1ga970393728bb751fb2a8c179aeed69796"><span class="std std-ref">cuvis_proc_cont_set_reference</span></a> ) The reference file should be located in ../Calibration/&lt;reference-name&gt;.cu3 or the precise path defined by the string value of the data tag </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_WHITEDARKREF_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1ga8a6644917100914942ad24fecd406901"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_WHITEDARKREF_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_WHITEDARKREF_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1ga8a6644917100914942ad24fecd406901"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_WHITEDARKREF_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_WHITEDARKREF_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>If this field is present, a white’s dark was set while recording the measurement. </p>
 <p>This is the white’ dark that is implicitly loaded when a processing context is created with the current measurement and used, if a dark is needed (unless overwritten by <a class="reference internal" href="#group__cuvis__proc_1ga970393728bb751fb2a8c179aeed69796"><span class="std std-ref">cuvis_proc_cont_set_reference</span></a> ) The reference file should be located in ../Calibration/&lt;reference-name&gt;.cu3 or the precise path defined by the string value of the data tag </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_OVERILLUMINATED_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1ga399f849456f5c3b9f2b003003abfb417"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_OVERILLUMINATED_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_OVERILLUMINATED_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1ga399f849456f5c3b9f2b003003abfb417"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_OVERILLUMINATED_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_OVERILLUMINATED_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>see CUVIS_MESU_FLAG_OVERILLUMINATED</p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_POOR_REFERENCE_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1ga1a115472895fd82a68ce0fd29ea857a9"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_POOR_REFERENCE_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_POOR_REFERENCE_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1ga1a115472895fd82a68ce0fd29ea857a9"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_POOR_REFERENCE_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_POOR_REFERENCE_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>see CUVIS_MESU_FLAG_POOR_REFERENCE</p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_POOR_WHITE_BALANCING_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1ga465b99e0f8e406c4a1ef29e4d77537ad"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_POOR_WHITE_BALANCING_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_POOR_WHITE_BALANCING_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1ga465b99e0f8e406c4a1ef29e4d77537ad"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_POOR_WHITE_BALANCING_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_POOR_WHITE_BALANCING_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>see CUVIS_MESU_FLAG_POOR_WHITE_BALANCING</p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_DARK_INTTIME_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1ga4c457542536a5c63dc200088af1c35b4"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_DARK_INTTIME_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_DARK_INTTIME_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1ga4c457542536a5c63dc200088af1c35b4"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_DARK_INTTIME_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_DARK_INTTIME_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>see CUVIS_MESU_FLAG_DARK_INTTIME</p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_DARK_TEMP_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1gafd1b4e55a2ffc631e323459e4b4246e2"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_DARK_TEMP_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_DARK_TEMP_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1gafd1b4e55a2ffc631e323459e4b4246e2"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_DARK_TEMP_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_DARK_TEMP_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>see CUVIS_MESU_FLAG_DARK_TEMP</p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_WHITE_INTTIME_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1gab7aedd07f67082e73b359658f70d10eb"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_WHITE_INTTIME_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_WHITE_INTTIME_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1gab7aedd07f67082e73b359658f70d10eb"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_WHITE_INTTIME_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_WHITE_INTTIME_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>see CUVIS_MESU_FLAG_WHITE_INTTIME</p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_WHITE_TEMP_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1ga1ebbc83764b10dd9babeb6db550eb1fc"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_WHITE_TEMP_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_WHITE_TEMP_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1ga1ebbc83764b10dd9babeb6db550eb1fc"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_WHITE_TEMP_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_WHITE_TEMP_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>see CUVIS_MESU_FLAG_WHITE_TEMP</p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_WHITEDARK_INTTIME_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1ga38a172ffc07d85946bfe100102b3988f"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_WHITEDARK_INTTIME_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_WHITEDARK_INTTIME_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1ga38a172ffc07d85946bfe100102b3988f"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_WHITEDARK_INTTIME_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_WHITEDARK_INTTIME_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>see CUVIS_MESU_FLAG_WHITEDARK_INTTIME</p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_FLAG_WHITEDARK_TEMP_KEY">
-<span class="target" id="group__cuvis__reserved__keys_1ga13dfe56165e1fca88d48de1effaf7a6b"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_WHITEDARK_TEMP_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_WHITEDARK_TEMP_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__reserved__keys_1ga13dfe56165e1fca88d48de1effaf7a6b"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_FLAG_WHITEDARK_TEMP_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_FLAG_WHITEDARK_TEMP_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>see CUVIS_MESU_FLAG_WHITEDARK_TEMP</p>
 </dd></dl>
 
@@ -222,7 +293,7 @@
 
 </section>
 <section id="calibration">
-<h2>Calibration<a class="headerlink" href="#calibration" title="Permalink to this heading"></a></h2>
+<h2>Calibration<a class="headerlink" href="#calibration" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__calib"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_calib</span></span></dt>
@@ -325,7 +396,7 @@
 
 </section>
 <section id="measurement">
-<h2>Measurement<a class="headerlink" href="#measurement" title="Permalink to this heading"></a></h2>
+<h2>Measurement<a class="headerlink" href="#measurement" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__mesu"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_mesu</span></span></dt>
@@ -624,7 +695,7 @@
 
 </section>
 <section id="session-file">
-<h2>Session File<a class="headerlink" href="#session-file" title="Permalink to this heading"></a></h2>
+<h2>Session File<a class="headerlink" href="#session-file" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__session"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_session</span></span></dt>
@@ -801,7 +872,7 @@
 
 </section>
 <section id="the-info-layer">
-<h2>The Info Layer<a class="headerlink" href="#the-info-layer" title="Permalink to this heading"></a></h2>
+<h2>The Info Layer<a class="headerlink" href="#the-info-layer" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__info__layer"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_info_layer</span></span></dt>
@@ -842,63 +913,63 @@ Example:</p>
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_CUBE_INFO_KEY">
-<span class="target" id="group__cuvis__info__layer_1ga0d4fba4dc4dd287e7c84005da4fc8578"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_CUBE_INFO_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_CUBE_INFO_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__info__layer_1ga0d4fba4dc4dd287e7c84005da4fc8578"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_CUBE_INFO_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_CUBE_INFO_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>name of the info channel of its respective cube. </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_PAN_INFO_KEY">
-<span class="target" id="group__cuvis__info__layer_1ga25d8679f33209635d0486410485a3326"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_PAN_INFO_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_PAN_INFO_KEY" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__info__layer_1ga25d8679f33209635d0486410485a3326"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_PAN_INFO_KEY</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_PAN_INFO_KEY" title="Link to this definition"></a><br /></dt>
 <dd><p>name of the info channel of its respective pan image. </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_OK">
-<span class="target" id="group__cuvis__info__layer_1gaabdf5bb871feea1a4326174befb98a49"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_OK</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_OK" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__info__layer_1gaabdf5bb871feea1a4326174befb98a49"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_OK</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_OK" title="Link to this definition"></a><br /></dt>
 <dd><p>no flag set, only valid, if pixel value is equal 0 </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_OVERILLUMINATED">
-<span class="target" id="group__cuvis__info__layer_1ga3910a48c4da5711f2fbc80d3e89a66a0"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_OVERILLUMINATED</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_OVERILLUMINATED" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__info__layer_1ga3910a48c4da5711f2fbc80d3e89a66a0"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_OVERILLUMINATED</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_OVERILLUMINATED" title="Link to this definition"></a><br /></dt>
 <dd><p>one or more channels of the spectrum are over-exposed / the pan image is over-exposed at this position </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_BAD_PIXEL">
-<span class="target" id="group__cuvis__info__layer_1ga58f40a5d62ff50bf758bfb5ecb68f387"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_BAD_PIXEL</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_BAD_PIXEL" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__info__layer_1ga58f40a5d62ff50bf758bfb5ecb68f387"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_BAD_PIXEL</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_BAD_PIXEL" title="Link to this definition"></a><br /></dt>
 <dd><p>the pixel is marked bad, eg. </p>
 <p>a pixel of the respective spectrum is dead </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_OVERILLUMINATED_REFERENCE">
-<span class="target" id="group__cuvis__info__layer_1ga39db1faff0f328bc16b1034697608fa8"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_OVERILLUMINATED_REFERENCE</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_OVERILLUMINATED_REFERENCE" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__info__layer_1ga39db1faff0f328bc16b1034697608fa8"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_OVERILLUMINATED_REFERENCE</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_OVERILLUMINATED_REFERENCE" title="Link to this definition"></a><br /></dt>
 <dd><p>one or more channels of the spectrum of the white reference that was used to calculate this position was over-exposed </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_UNDERFLOW_MEASUREMENT_MIN_DARK">
-<span class="target" id="group__cuvis__info__layer_1ga0dcf3e4c49b0ca4863a4968c0ddcbfc1"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_UNDERFLOW_MEASUREMENT_MIN_DARK</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_UNDERFLOW_MEASUREMENT_MIN_DARK" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__info__layer_1ga0dcf3e4c49b0ca4863a4968c0ddcbfc1"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_UNDERFLOW_MEASUREMENT_MIN_DARK</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_UNDERFLOW_MEASUREMENT_MIN_DARK" title="Link to this definition"></a><br /></dt>
 <dd><p>the meausurement was darker then the dark reference at this position (underflow) </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_UNDERFLOW_WHITE_MIN_DARK">
-<span class="target" id="group__cuvis__info__layer_1gaae655c41d7cb57ad242ff54fc88f7514"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_UNDERFLOW_WHITE_MIN_DARK</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_UNDERFLOW_WHITE_MIN_DARK" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__info__layer_1gaae655c41d7cb57ad242ff54fc88f7514"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_UNDERFLOW_WHITE_MIN_DARK</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_UNDERFLOW_WHITE_MIN_DARK" title="Link to this definition"></a><br /></dt>
 <dd><p>the white reference was darker then the dark reference at this position (underflow) </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_REFERENCE_CALC_OVERFLOW">
-<span class="target" id="group__cuvis__info__layer_1ga0fdf11cd2dd5f19a67030fc7024e0c45"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_REFERENCE_CALC_OVERFLOW</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_REFERENCE_CALC_OVERFLOW" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__info__layer_1ga0fdf11cd2dd5f19a67030fc7024e0c45"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_REFERENCE_CALC_OVERFLOW</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_REFERENCE_CALC_OVERFLOW" title="Link to this definition"></a><br /></dt>
 <dd><p>the reflectance value exceeded the maximum value possible by the data format (i.e. </p>
 <p>the value reflectance reached or exceeded 655.35% (uint16 value of 65535) </p>
 </dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.CUVIS_MESU_INFO_INCOMPLETE">
-<span class="target" id="group__cuvis__info__layer_1gac1babff036c80aab3a0270fe7367bcf1"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_INCOMPLETE</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_INCOMPLETE" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="group__cuvis__info__layer_1gac1babff036c80aab3a0270fe7367bcf1"></span><span class="sig-name descname"><span class="n"><span class="pre">CUVIS_MESU_INFO_INCOMPLETE</span></span></span><a class="headerlink" href="#c.CUVIS_MESU_INFO_INCOMPLETE" title="Link to this definition"></a><br /></dt>
 <dd><p>the spectrum at this position is incomplete, e.g by a bad / too close distance calibration </p>
 </dd></dl>
 
@@ -907,7 +978,7 @@ Example:</p>
 
 </section>
 <section id="return-values-of-sdk-functions">
-<h2>Return Values of SDK Functions<a class="headerlink" href="#return-values-of-sdk-functions" title="Permalink to this heading"></a></h2>
+<h2>Return Values of SDK Functions<a class="headerlink" href="#return-values-of-sdk-functions" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__returns"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_returns</span></span></dt>
@@ -917,68 +988,68 @@ Example:</p>
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="cpp enum">
 <dt class="sig sig-object cpp" id="_CPPv414cuvis_status_t">
-<span id="_CPPv314cuvis_status_t"></span><span id="_CPPv214cuvis_status_t"></span><span class="target" id="group__cuvis__returns_1gaa06c62ba25240f4763da0e590ebf3b9d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_status_t</span></span></span><a class="headerlink" href="#_CPPv414cuvis_status_t" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv314cuvis_status_t"></span><span id="_CPPv214cuvis_status_t"></span><span class="target" id="group__cuvis__returns_1gaa06c62ba25240f4763da0e590ebf3b9d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_status_t</span></span></span><a class="headerlink" href="#_CPPv414cuvis_status_t" title="Link to this definition"></a><br /></dt>
 <dd><p>return state of any SDK function </p>
 <p><em>Values:</em></p>
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N14cuvis_status_t9status_okE">
-<span id="_CPPv3N14cuvis_status_t9status_okE"></span><span id="_CPPv2N14cuvis_status_t9status_okE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_ok</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t9status_okE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14cuvis_status_t9status_okE"></span><span id="_CPPv2N14cuvis_status_t9status_okE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_ok</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t9status_okE" title="Link to this definition"></a><br /></dt>
 <dd><p>the function encountered no problems </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N14cuvis_status_t12status_errorE">
-<span id="_CPPv3N14cuvis_status_t12status_errorE"></span><span id="_CPPv2N14cuvis_status_t12status_errorE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da405da0d107497b3596a3818a48478c9f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_error</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t12status_errorE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14cuvis_status_t12status_errorE"></span><span id="_CPPv2N14cuvis_status_t12status_errorE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da405da0d107497b3596a3818a48478c9f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_error</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t12status_errorE" title="Link to this definition"></a><br /></dt>
 <dd><p>the function failed for some reason. </p>
 <p>Call cuvis_get_last_error_msg for details </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N14cuvis_status_t15status_deferredE">
-<span id="_CPPv3N14cuvis_status_t15status_deferredE"></span><span id="_CPPv2N14cuvis_status_t15status_deferredE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da6acc681a06a7b43d360c92098a2a8653"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_deferred</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t15status_deferredE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14cuvis_status_t15status_deferredE"></span><span id="_CPPv2N14cuvis_status_t15status_deferredE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da6acc681a06a7b43d360c92098a2a8653"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_deferred</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t15status_deferredE" title="Link to this definition"></a><br /></dt>
 <dd><p>a async function has not been started yet </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N14cuvis_status_t18status_overwrittenE">
-<span id="_CPPv3N14cuvis_status_t18status_overwrittenE"></span><span id="_CPPv2N14cuvis_status_t18status_overwrittenE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dab9c7d639068225756a5de56a3279fab5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_overwritten</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t18status_overwrittenE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14cuvis_status_t18status_overwrittenE"></span><span id="_CPPv2N14cuvis_status_t18status_overwrittenE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dab9c7d639068225756a5de56a3279fab5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_overwritten</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t18status_overwrittenE" title="Link to this definition"></a><br /></dt>
 <dd><p>the async call was overwritten by another async call to the same internal values </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N14cuvis_status_t14status_timeoutE">
-<span id="_CPPv3N14cuvis_status_t14status_timeoutE"></span><span id="_CPPv2N14cuvis_status_t14status_timeoutE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da19319d05fb8a35cc93f77e40e06b9617"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_timeout</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t14status_timeoutE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14cuvis_status_t14status_timeoutE"></span><span id="_CPPv2N14cuvis_status_t14status_timeoutE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da19319d05fb8a35cc93f77e40e06b9617"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_timeout</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t14status_timeoutE" title="Link to this definition"></a><br /></dt>
 <dd><p>obtaining a async function result has timed out. </p>
 <p>Call again later </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N14cuvis_status_t21status_no_measurementE">
-<span id="_CPPv3N14cuvis_status_t21status_no_measurementE"></span><span id="_CPPv2N14cuvis_status_t21status_no_measurementE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da032fa1a5c4c2acdfd16268b2d7fa6f21"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_no_measurement</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t21status_no_measurementE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14cuvis_status_t21status_no_measurementE"></span><span id="_CPPv2N14cuvis_status_t21status_no_measurementE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da032fa1a5c4c2acdfd16268b2d7fa6f21"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_no_measurement</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t21status_no_measurementE" title="Link to this definition"></a><br /></dt>
 <dd><p>polling a measurement returned no result / frame was dropped </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N14cuvis_status_t20status_not_availableE">
-<span id="_CPPv3N14cuvis_status_t20status_not_availableE"></span><span id="_CPPv2N14cuvis_status_t20status_not_availableE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da7fdd3396ac111ad131ec95e3411928a7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_not_available</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t20status_not_availableE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14cuvis_status_t20status_not_availableE"></span><span id="_CPPv2N14cuvis_status_t20status_not_availableE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da7fdd3396ac111ad131ec95e3411928a7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_not_available</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t20status_not_availableE" title="Link to this definition"></a><br /></dt>
 <dd><p>retrieving a value is (currently) not possible </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N14cuvis_status_t20status_not_processedE">
-<span id="_CPPv3N14cuvis_status_t20status_not_processedE"></span><span id="_CPPv2N14cuvis_status_t20status_not_processedE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dae0686fea387338c9d8d180d4b9b39764"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_not_processed</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t20status_not_processedE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14cuvis_status_t20status_not_processedE"></span><span id="_CPPv2N14cuvis_status_t20status_not_processedE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dae0686fea387338c9d8d180d4b9b39764"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_not_processed</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t20status_not_processedE" title="Link to this definition"></a><br /></dt>
 <dd><p>processing the measurement with the worker failed, raw data is available </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N14cuvis_status_t17status_not_storedE">
-<span id="_CPPv3N14cuvis_status_t17status_not_storedE"></span><span id="_CPPv2N14cuvis_status_t17status_not_storedE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da8b98c0d262183b9cc3bfb6e6f39f25cf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_not_stored</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t17status_not_storedE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14cuvis_status_t17status_not_storedE"></span><span id="_CPPv2N14cuvis_status_t17status_not_storedE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da8b98c0d262183b9cc3bfb6e6f39f25cf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_not_stored</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t17status_not_storedE" title="Link to this definition"></a><br /></dt>
 <dd><p>storing the measurement with the worker/exporter failed </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N14cuvis_status_t14status_no_viewE">
-<span id="_CPPv3N14cuvis_status_t14status_no_viewE"></span><span id="_CPPv2N14cuvis_status_t14status_no_viewE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dadbe77d8180549567b5749e593bf33c91"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_no_view</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t14status_no_viewE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14cuvis_status_t14status_no_viewE"></span><span id="_CPPv2N14cuvis_status_t14status_no_viewE"></span><span class="target" id="group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dadbe77d8180549567b5749e593bf33c91"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">status_no_view</span></span></span><a class="headerlink" href="#_CPPv4N14cuvis_status_t14status_no_viewE" title="Link to this definition"></a><br /></dt>
 <dd><p>obtaining the measurement’s view with the worker failed, raw data is available </p>
 </dd></dl>
 
@@ -1016,23 +1087,23 @@ Example:</p>
 
 </section>
 <section id="logging">
-<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this heading"></a></h2>
+<h2>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__log"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_log</span></span></dt>
 <dd><p>There are several ways to configure the logging behaviour in the Cuvis SDK.</p>
 <section id="group__cuvis__log_1autotoc_md7">
-<h3>Logfile Configuration Behaviour<a class="headerlink" href="#group__cuvis__log_1autotoc_md7" title="Permalink to this heading"></a></h3>
+<h3>Logfile Configuration Behaviour<a class="headerlink" href="#group__cuvis__log_1autotoc_md7" title="Link to this heading"></a></h3>
 <p id="group__cuvis__log_1autotoc_md7">The SDK provides the possibility to write the log to a logfile. For this a “log.cfg” file has to be created at a certain position.</p>
 <p>When a local “.cuvis” directory exists with an empty “log.cfg” file, the cuvis sdk will create a debug log in that directory. The log file name is the process name followed by log, e.g. “example.exe.log”, if the process is named “example.log”</p>
 <p>If a local “.cuvis” directory is not found, the system-wide configuration of the logging is used (activated by default from the installation of cuvis): The configuration can be found under PROGRAMDATA%/cuvis/log.cfg (usually “C:/Program Data/cuvis/log.cfg”) for windwos or /etc/cuvis/log.cfg for linux. The log output can be found under PROGRAMDATA%/cuvis for windows and /var/log for linux.</p>
 </section>
 <section id="group__cuvis__log_1autotoc_md8">
-<h3>Loglevel at Runtime<a class="headerlink" href="#group__cuvis__log_1autotoc_md8" title="Permalink to this heading"></a></h3>
+<h3>Loglevel at Runtime<a class="headerlink" href="#group__cuvis__log_1autotoc_md8" title="Link to this heading"></a></h3>
 <p id="group__cuvis__log_1autotoc_md8">Secondly there is the option to adapt the logging behaviour the the standard output stream via <a class="reference internal" href="#group__cuvis__log_1ga1f9fbb5bdc3f9bfc1bb69813cc1e5a7e"><span class="std std-ref">cuvis_set_log_level</span></a>.</p>
 </section>
 <section id="group__cuvis__log_1autotoc_md9">
-<h3>Registration of Log Callbacks<a class="headerlink" href="#group__cuvis__log_1autotoc_md9" title="Permalink to this heading"></a></h3>
+<h3>Registration of Log Callbacks<a class="headerlink" href="#group__cuvis__log_1autotoc_md9" title="Link to this heading"></a></h3>
 <p id="group__cuvis__log_1autotoc_md9">As a third option there is the possibility to register a function as a callback that will be called every time a new log message is recevied with the requested log level. See <a class="reference internal" href="#group__cuvis__log_1ga3f90679241d1de315fbd6da568cd27d9"><span class="std std-ref">cuvis_register_log_callback</span></a> and <a class="reference internal" href="#group__cuvis__log_1ga4a72a1af6a4a2670c7ba717de6d18e5b"><span class="std std-ref">cuvis_register_log_callback_localized</span></a> for more information. </p>
 </section>
 <div class="breathe-sectiondef docutils container">
@@ -1052,36 +1123,36 @@ Example:</p>
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="cpp enum">
 <dt class="sig sig-object cpp" id="_CPPv416cuvis_loglevel_t">
-<span id="_CPPv316cuvis_loglevel_t"></span><span id="_CPPv216cuvis_loglevel_t"></span><span class="target" id="group__cuvis__log_1ga0e991ef550030f3e6500132113c81db1"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_loglevel_t</span></span></span><a class="headerlink" href="#_CPPv416cuvis_loglevel_t" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv316cuvis_loglevel_t"></span><span id="_CPPv216cuvis_loglevel_t"></span><span class="target" id="group__cuvis__log_1ga0e991ef550030f3e6500132113c81db1"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_loglevel_t</span></span></span><a class="headerlink" href="#_CPPv416cuvis_loglevel_t" title="Link to this definition"></a><br /></dt>
 <dd><p>The available log levels. </p>
 <p><em>Values:</em></p>
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N16cuvis_loglevel_t14loglevel_fatalE">
-<span id="_CPPv3N16cuvis_loglevel_t14loglevel_fatalE"></span><span id="_CPPv2N16cuvis_loglevel_t14loglevel_fatalE"></span><span class="target" id="group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1acad7038545f4b455614bcae1a3e2ea96"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loglevel_fatal</span></span></span><a class="headerlink" href="#_CPPv4N16cuvis_loglevel_t14loglevel_fatalE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N16cuvis_loglevel_t14loglevel_fatalE"></span><span id="_CPPv2N16cuvis_loglevel_t14loglevel_fatalE"></span><span class="target" id="group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1acad7038545f4b455614bcae1a3e2ea96"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loglevel_fatal</span></span></span><a class="headerlink" href="#_CPPv4N16cuvis_loglevel_t14loglevel_fatalE" title="Link to this definition"></a><br /></dt>
 <dd><p>only report error not recoverable </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N16cuvis_loglevel_t14loglevel_errorE">
-<span id="_CPPv3N16cuvis_loglevel_t14loglevel_errorE"></span><span id="_CPPv2N16cuvis_loglevel_t14loglevel_errorE"></span><span class="target" id="group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1a8302ac80a2c546e32de33f40379067ef"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loglevel_error</span></span></span><a class="headerlink" href="#_CPPv4N16cuvis_loglevel_t14loglevel_errorE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N16cuvis_loglevel_t14loglevel_errorE"></span><span id="_CPPv2N16cuvis_loglevel_t14loglevel_errorE"></span><span class="target" id="group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1a8302ac80a2c546e32de33f40379067ef"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loglevel_error</span></span></span><a class="headerlink" href="#_CPPv4N16cuvis_loglevel_t14loglevel_errorE" title="Link to this definition"></a><br /></dt>
 <dd><p>report errors and <a class="reference internal" href="#group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1acad7038545f4b455614bcae1a3e2ea96"><span class="std std-ref">loglevel_fatal</span></a> messages </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N16cuvis_loglevel_t16loglevel_warningE">
-<span id="_CPPv3N16cuvis_loglevel_t16loglevel_warningE"></span><span id="_CPPv2N16cuvis_loglevel_t16loglevel_warningE"></span><span class="target" id="group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1a7821a374d52250d54846ab19425da8e0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loglevel_warning</span></span></span><a class="headerlink" href="#_CPPv4N16cuvis_loglevel_t16loglevel_warningE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N16cuvis_loglevel_t16loglevel_warningE"></span><span id="_CPPv2N16cuvis_loglevel_t16loglevel_warningE"></span><span class="target" id="group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1a7821a374d52250d54846ab19425da8e0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loglevel_warning</span></span></span><a class="headerlink" href="#_CPPv4N16cuvis_loglevel_t16loglevel_warningE" title="Link to this definition"></a><br /></dt>
 <dd><p>report warnings and <a class="reference internal" href="#group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1a8302ac80a2c546e32de33f40379067ef"><span class="std std-ref">loglevel_error</span></a> messages. </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N16cuvis_loglevel_t13loglevel_infoE">
-<span id="_CPPv3N16cuvis_loglevel_t13loglevel_infoE"></span><span id="_CPPv2N16cuvis_loglevel_t13loglevel_infoE"></span><span class="target" id="group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1a82eae88fdd92d6b99c533025c8fba07e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loglevel_info</span></span></span><a class="headerlink" href="#_CPPv4N16cuvis_loglevel_t13loglevel_infoE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N16cuvis_loglevel_t13loglevel_infoE"></span><span id="_CPPv2N16cuvis_loglevel_t13loglevel_infoE"></span><span class="target" id="group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1a82eae88fdd92d6b99c533025c8fba07e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loglevel_info</span></span></span><a class="headerlink" href="#_CPPv4N16cuvis_loglevel_t13loglevel_infoE" title="Link to this definition"></a><br /></dt>
 <dd><p>report status information and <a class="reference internal" href="#group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1a7821a374d52250d54846ab19425da8e0"><span class="std std-ref">loglevel_warning</span></a> messages. </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N16cuvis_loglevel_t14loglevel_debugE">
-<span id="_CPPv3N16cuvis_loglevel_t14loglevel_debugE"></span><span id="_CPPv2N16cuvis_loglevel_t14loglevel_debugE"></span><span class="target" id="group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1a2cc8667e107e2aa64a224cd4a5d25835"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loglevel_debug</span></span></span><a class="headerlink" href="#_CPPv4N16cuvis_loglevel_t14loglevel_debugE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N16cuvis_loglevel_t14loglevel_debugE"></span><span id="_CPPv2N16cuvis_loglevel_t14loglevel_debugE"></span><span class="target" id="group__cuvis__log_1gga0e991ef550030f3e6500132113c81db1a2cc8667e107e2aa64a224cd4a5d25835"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loglevel_debug</span></span></span><a class="headerlink" href="#_CPPv4N16cuvis_loglevel_t14loglevel_debugE" title="Link to this definition"></a><br /></dt>
 <dd><p>report all messages, including debug messages </p>
 </dd></dl>
 
@@ -1165,7 +1236,7 @@ Example:</p>
 
 </section>
 <section id="acquisition-context">
-<h2>Acquisition Context<a class="headerlink" href="#acquisition-context" title="Permalink to this heading"></a></h2>
+<h2>Acquisition Context<a class="headerlink" href="#acquisition-context" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__acq"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_acq</span></span></dt>
@@ -1176,30 +1247,30 @@ Example:</p>
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="cpp enum">
 <dt class="sig sig-object cpp" id="_CPPv422cuvis_operation_mode_t">
-<span id="_CPPv322cuvis_operation_mode_t"></span><span id="_CPPv222cuvis_operation_mode_t"></span><span class="target" id="group__cuvis__acq_1gadc02bc9a0ede40567ad6549ec0dc698a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_operation_mode_t</span></span></span><a class="headerlink" href="#_CPPv422cuvis_operation_mode_t" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv322cuvis_operation_mode_t"></span><span id="_CPPv222cuvis_operation_mode_t"></span><span class="target" id="group__cuvis__acq_1gadc02bc9a0ede40567ad6549ec0dc698a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_operation_mode_t</span></span></span><a class="headerlink" href="#_CPPv422cuvis_operation_mode_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Operation mode of a camera. </p>
 <p><em>Values:</em></p>
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N22cuvis_operation_mode_t22OperationMode_SoftwareE">
-<span id="_CPPv3N22cuvis_operation_mode_t22OperationMode_SoftwareE"></span><span id="_CPPv2N22cuvis_operation_mode_t22OperationMode_SoftwareE"></span><span class="target" id="group__cuvis__acq_1ggadc02bc9a0ede40567ad6549ec0dc698aa6fa14ca7bf9834fe8d6d48b3e9c25fde"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OperationMode_Software</span></span></span><a class="headerlink" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_SoftwareE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N22cuvis_operation_mode_t22OperationMode_SoftwareE"></span><span id="_CPPv2N22cuvis_operation_mode_t22OperationMode_SoftwareE"></span><span class="target" id="group__cuvis__acq_1ggadc02bc9a0ede40567ad6549ec0dc698aa6fa14ca7bf9834fe8d6d48b3e9c25fde"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OperationMode_Software</span></span></span><a class="headerlink" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_SoftwareE" title="Link to this definition"></a><br /></dt>
 <dd><p>software trigger, aka “single shot mode” or “software mode”. </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N22cuvis_operation_mode_t22OperationMode_InternalE">
-<span id="_CPPv3N22cuvis_operation_mode_t22OperationMode_InternalE"></span><span id="_CPPv2N22cuvis_operation_mode_t22OperationMode_InternalE"></span><span class="target" id="group__cuvis__acq_1ggadc02bc9a0ede40567ad6549ec0dc698aab331e0ce94abf36bc2eef750bce86005"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OperationMode_Internal</span></span></span><a class="headerlink" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_InternalE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N22cuvis_operation_mode_t22OperationMode_InternalE"></span><span id="_CPPv2N22cuvis_operation_mode_t22OperationMode_InternalE"></span><span class="target" id="group__cuvis__acq_1ggadc02bc9a0ede40567ad6549ec0dc698aab331e0ce94abf36bc2eef750bce86005"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OperationMode_Internal</span></span></span><a class="headerlink" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_InternalE" title="Link to this definition"></a><br /></dt>
 <dd><p>triggered by internal clock, aka “video mode”. </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N22cuvis_operation_mode_t22OperationMode_ExternalE">
-<span id="_CPPv3N22cuvis_operation_mode_t22OperationMode_ExternalE"></span><span id="_CPPv2N22cuvis_operation_mode_t22OperationMode_ExternalE"></span><span class="target" id="group__cuvis__acq_1ggadc02bc9a0ede40567ad6549ec0dc698aa209fee37f30dc1d9fb0323de83a0914d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OperationMode_External</span></span></span><a class="headerlink" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_ExternalE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N22cuvis_operation_mode_t22OperationMode_ExternalE"></span><span id="_CPPv2N22cuvis_operation_mode_t22OperationMode_ExternalE"></span><span class="target" id="group__cuvis__acq_1ggadc02bc9a0ede40567ad6549ec0dc698aa209fee37f30dc1d9fb0323de83a0914d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OperationMode_External</span></span></span><a class="headerlink" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_ExternalE" title="Link to this definition"></a><br /></dt>
 <dd><p>triggered by external trigger, aka “trigger mode”. </p>
 </dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N22cuvis_operation_mode_t23OperationMode_UndefinedE">
-<span id="_CPPv3N22cuvis_operation_mode_t23OperationMode_UndefinedE"></span><span id="_CPPv2N22cuvis_operation_mode_t23OperationMode_UndefinedE"></span><span class="target" id="group__cuvis__acq_1ggadc02bc9a0ede40567ad6549ec0dc698aa9f48ccea2598d27beda5304b066db2e5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OperationMode_Undefined</span></span></span><a class="headerlink" href="#_CPPv4N22cuvis_operation_mode_t23OperationMode_UndefinedE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N22cuvis_operation_mode_t23OperationMode_UndefinedE"></span><span id="_CPPv2N22cuvis_operation_mode_t23OperationMode_UndefinedE"></span><span class="target" id="group__cuvis__acq_1ggadc02bc9a0ede40567ad6549ec0dc698aa9f48ccea2598d27beda5304b066db2e5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OperationMode_Undefined</span></span></span><a class="headerlink" href="#_CPPv4N22cuvis_operation_mode_t23OperationMode_UndefinedE" title="Link to this definition"></a><br /></dt>
 <dd><p>undefiend (e.g. </p>
 <p>changing) </p>
 </dd></dl>
@@ -1437,7 +1508,7 @@ Example:</p>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1gab2cc82abc11a40239d62fc6aab09dff7"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_set_pixel_format</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">const</span> <span class="pre">*i_pPixelFormat)</span></span></dt>
+<span class="target" id="group__cuvis__acq_1ga2b574fb04d8ef578af6e04eac7b707cc"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_pixel_format_set</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">const</span> <span class="pre">*i_pPixelFormat)</span></span></dt>
 <dd><p>Set components pixelformat. </p>
 <p>Set components pixelformat</p>
 <dl class="field-list simple">
@@ -1456,7 +1527,26 @@ Example:</p>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1gaf88a552761cd117f8ac81a50cafca646"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_get_pixel_format</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">*o_pPixelFormat)</span></span></dt>
+<span class="target" id="group__cuvis__acq_1ga27dbdf7f2ce03a28ce49cae3b3014de0"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_pixel_format_set_async</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_ASYNC_CALL_RESULT</span> <span class="pre">*o_pAsyncResult,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">const</span> <span class="pre">*i_pPixelFormat)</span></span></dt>
+<dd><p>Set components pixelformat. </p>
+<p>Set components pixelformat (asynchronous)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_acq_Cont</strong> – <strong>[in]</strong> the acquisition context </p></li>
+<li><p><strong>i_id</strong> – <strong>[in]</strong> the device id (value between 0 and below <a class="reference internal" href="#group__cuvis__acq_1ga03a66ef6671c16be2cd8ebc7fbdad160"><span class="std std-ref">cuvis_acq_cont_get_component_count</span></a>) </p></li>
+<li><p><strong>i_pPixelFormat</strong> – <strong>[in]</strong> the components pixelformat </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>cuvis_ok if the pixelformat was set. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__acq_1gaf0a408d3715267c50fd9ee255ac4c052"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_pixel_format_get</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">*o_pPixelFormat)</span></span></dt>
 <dd><p>Get components actual pixelformat. </p>
 <p>Return actual components pixelformat</p>
 <dl class="field-list simple">
@@ -1475,7 +1565,7 @@ Example:</p>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga1ec4155f09d53aeb8d217d9f90852bcf"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_get_available_pixel_format_count</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">CUVIS_INT</span> <span class="pre">*o_pCount)</span></span></dt>
+<span class="target" id="group__cuvis__acq_1ga67e398da7e4107ecab34babc19e13399"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_available_pixel_format_count_get</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">CUVIS_INT</span> <span class="pre">*o_pCount)</span></span></dt>
 <dd><p>Get components actual pixelformat. </p>
 <p>Return the amount of components available pixelformats</p>
 <dl class="field-list simple">
@@ -1494,7 +1584,7 @@ Example:</p>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1gaba2ef57cf5bb0b874364b891e7cfa409"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_get_available_pixel_format</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_index,</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">*o_pPixelFormat)</span></span></dt>
+<span class="target" id="group__cuvis__acq_1gadf68c4ff4ea708b1da29c9c5dcdff48c"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_available_pixel_format_get</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_index,</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">*o_pPixelFormat)</span></span></dt>
 <dd><p>Get components actual pixelformat. </p>
 <p>Return indexed components available pixelformat</p>
 <dl class="field-list simple">
@@ -1751,7 +1841,7 @@ Example:</p>
 
 </section>
 <section id="components">
-<h2>Components<a class="headerlink" href="#components" title="Permalink to this heading"></a></h2>
+<h2>Components<a class="headerlink" href="#components" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__comp"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_comp</span></span></dt>
@@ -1879,7 +1969,7 @@ Example:</p>
 
 </section>
 <section id="export-api">
-<h2>Export API<a class="headerlink" href="#export-api" title="Permalink to this heading"></a></h2>
+<h2>Export API<a class="headerlink" href="#export-api" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__exporter"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_exporter</span></span></dt>
@@ -2013,19 +2103,19 @@ Example:</p>
 </div>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv417cuvis_save_args_t">
-<span id="_CPPv317cuvis_save_args_t"></span><span id="_CPPv217cuvis_save_args_t"></span><span id="cuvis_save_args_t"></span><span class="target" id="structcuvis__save__args__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_save_args_t</span></span></span><a class="headerlink" href="#_CPPv417cuvis_save_args_t" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv317cuvis_save_args_t"></span><span id="_CPPv217cuvis_save_args_t"></span><span id="cuvis_save_args_t"></span><span class="target" id="structcuvis__save__args__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_save_args_t</span></span></span><a class="headerlink" href="#_CPPv417cuvis_save_args_t" title="Link to this definition"></a><br /></dt>
 <dd><div class="docutils container">
 <em>#include &lt;cuvis.h&gt;</em></div>
 <p>options for saving as cu3/cu3s files </p>
 <p>The cube exporter works asynchronically. For</p>
 <section id="structcuvis__save__args__t_1autotoc_md5">
-<h3>offline saving to session file<a class="headerlink" href="#structcuvis__save__args__t_1autotoc_md5" title="Permalink to this heading"></a></h3>
+<h3>offline saving to session file<a class="headerlink" href="#structcuvis__save__args__t_1autotoc_md5" title="Link to this heading"></a></h3>
 <p id="structcuvis__save__args__t_1autotoc_md5">When processing sesion files (<a class="reference internal" href="#structcuvis__save__args__t_1a151b107cdada8e0cdc3b48d77afc8263"><span class="std std-ref">allow_session_file</span></a>=true) offline, the option <a class="reference internal" href="#structcuvis__save__args__t_1aa0776cc32849e03c9c74853065f5ab1e"><span class="std std-ref">allow_drop</span></a> should be set to false. In this case measurements are added to the internal buffer until the size given by <a class="reference internal" href="#structcuvis__save__args__t_1ae6faf43ac22bf2d91dd7e85106f78ca3"><span class="std std-ref">hard_limit</span></a><p>is reached.</p>
 <p>In this mode, the options</p>
 <a class="reference internal" href="#structcuvis__save__args__t_1aa4838cfd9b94d1cb372cc5eb1052a428"><span class="std std-ref">soft_limit</span></a> and <a class="reference internal" href="#structcuvis__save__args__t_1ae8e57e459c3bf32a4b11869d64e79e35"><span class="std std-ref">max_buftime</span></a> are ignroed.</p>
 </section>
 <section id="structcuvis__save__args__t_1autotoc_md6">
-<h3>online saving to session file<a class="headerlink" href="#structcuvis__save__args__t_1autotoc_md6" title="Permalink to this heading"></a></h3>
+<h3>online saving to session file<a class="headerlink" href="#structcuvis__save__args__t_1autotoc_md6" title="Link to this heading"></a></h3>
 <p id="structcuvis__save__args__t_1autotoc_md6">When recording sesion files (<a class="reference internal" href="#structcuvis__save__args__t_1a151b107cdada8e0cdc3b48d77afc8263"><span class="std std-ref">allow_session_file</span></a>=true) live, the options <a class="reference internal" href="#structcuvis__save__args__t_1aa0776cc32849e03c9c74853065f5ab1e"><span class="std std-ref">allow_drop</span></a> should be set to true.</p>
 <p>When a new measurement is added to the cube exporter, the following strategy is applied:</p>
 <p><ol class="loweralpha simple">
@@ -2039,7 +2129,7 @@ Example:</p>
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t19allow_fragmentationE">
-<span id="_CPPv3N17cuvis_save_args_t19allow_fragmentationE"></span><span id="_CPPv2N17cuvis_save_args_t19allow_fragmentationE"></span><span id="cuvis_save_args_t::allow_fragmentation__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1a5b51f415efc01e9bd4c10d35502f4e27"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">allow_fragmentation</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t19allow_fragmentationE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N17cuvis_save_args_t19allow_fragmentationE"></span><span id="_CPPv2N17cuvis_save_args_t19allow_fragmentationE"></span><span id="cuvis_save_args_t::allow_fragmentation__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1a5b51f415efc01e9bd4c10d35502f4e27"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">allow_fragmentation</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t19allow_fragmentationE" title="Link to this definition"></a><br /></dt>
 <dd><p>allow to split file to multiple files. </p>
 <p>When exporting to a cu3s file (<a class="reference internal" href="#structcuvis__save__args__t_1a151b107cdada8e0cdc3b48d77afc8263"><span class="std std-ref">allow_session_file</span></a>=true) the allow_fragmentation flag controlles if all measurements (of the same session name) are written to one file like a single file (set to false) or if each measurement is saved to a separate cu3s file (set to true). The latter option generates substantial overhead.</p>
 <p>When exporting to a (legacy) cu3 file (<a class="reference internal" href="#structcuvis__save__args__t_1a151b107cdada8e0cdc3b48d77afc8263"><span class="std std-ref">allow_session_file</span></a>=false), the fragmentation flag will lead to multiple files exported: a &lt;name&gt;.cu3 file, followed by &lt;name&gt;_&lt;postfix&gt;.tiff files. These come as a tuple and must be kept together, else the file will be corrupted. This export option is intended for legacy programs that were deisnged to read raw data with the previous software verison 2.x. </p>
@@ -2047,7 +2137,7 @@ Example:</p>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t15allow_overwriteE">
-<span id="_CPPv3N17cuvis_save_args_t15allow_overwriteE"></span><span id="_CPPv2N17cuvis_save_args_t15allow_overwriteE"></span><span id="cuvis_save_args_t::allow_overwrite__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1a9e5ae557edf90f2f63a48f47bbe7c15d"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">allow_overwrite</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t15allow_overwriteE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N17cuvis_save_args_t15allow_overwriteE"></span><span id="_CPPv2N17cuvis_save_args_t15allow_overwriteE"></span><span id="cuvis_save_args_t::allow_overwrite__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1a9e5ae557edf90f2f63a48f47bbe7c15d"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">allow_overwrite</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t15allow_overwriteE" title="Link to this definition"></a><br /></dt>
 <dd><p>allow to overwrite an existing file. </p>
 <p>This option anables to allow to ovewrite files on the disk, if they exist.</p>
 <div class="admonition note">
@@ -2058,7 +2148,7 @@ Example:</p>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t10allow_dropE">
-<span id="_CPPv3N17cuvis_save_args_t10allow_dropE"></span><span id="_CPPv2N17cuvis_save_args_t10allow_dropE"></span><span id="cuvis_save_args_t::allow_drop__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1aa0776cc32849e03c9c74853065f5ab1e"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">allow_drop</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t10allow_dropE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N17cuvis_save_args_t10allow_dropE"></span><span id="_CPPv2N17cuvis_save_args_t10allow_dropE"></span><span id="cuvis_save_args_t::allow_drop__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1aa0776cc32849e03c9c74853065f5ab1e"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">allow_drop</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t10allow_dropE" title="Link to this definition"></a><br /></dt>
 <dd><p>allow to drop files, if output buffers are full </p>
 <p>This options controlls the export behaviour. If internal write buffers are full, new measurements are either dropped or kept.</p>
 <p>The policy to drop measurements on full buffer (allow_drop=true) is recommended for online opration. The idea is to rather drop measurements and thus allow the acquisition to continue without slowing down. When this policy is set, the <a class="reference internal" href="#structcuvis__save__args__t_1aa4838cfd9b94d1cb372cc5eb1052a428"><span class="std std-ref">soft_limit</span></a> and the <a class="reference internal" href="#structcuvis__save__args__t_1ae8e57e459c3bf32a4b11869d64e79e35"><span class="std std-ref">max_buftime</span></a> options are also used (see there).</p>
@@ -2071,14 +2161,14 @@ Example:</p>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t18allow_session_fileE">
-<span id="_CPPv3N17cuvis_save_args_t18allow_session_fileE"></span><span id="_CPPv2N17cuvis_save_args_t18allow_session_fileE"></span><span id="cuvis_save_args_t::allow_session_file__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1a151b107cdada8e0cdc3b48d77afc8263"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">allow_session_file</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t18allow_session_fileE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N17cuvis_save_args_t18allow_session_fileE"></span><span id="_CPPv2N17cuvis_save_args_t18allow_session_fileE"></span><span id="cuvis_save_args_t::allow_session_file__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1a151b107cdada8e0cdc3b48d77afc8263"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">allow_session_file</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t18allow_session_fileE" title="Link to this definition"></a><br /></dt>
 <dd><p>save files of same session number to a single cu3s file. </p>
 <p>If <a class="reference internal" href="#structcuvis__save__args__t_1a5b51f415efc01e9bd4c10d35502f4e27"><span class="std std-ref">allow_fragmentation</span></a> is set, cu3s fill be split by measurement. Default in Wrappers: True </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t15allow_info_fileE">
-<span id="_CPPv3N17cuvis_save_args_t15allow_info_fileE"></span><span id="_CPPv2N17cuvis_save_args_t15allow_info_fileE"></span><span id="cuvis_save_args_t::allow_info_file__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1a701a983b2277993f92d0af8e54a399f2"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">allow_info_file</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t15allow_info_fileE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N17cuvis_save_args_t15allow_info_fileE"></span><span id="_CPPv2N17cuvis_save_args_t15allow_info_fileE"></span><span id="cuvis_save_args_t::allow_info_file__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1a701a983b2277993f92d0af8e54a399f2"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">allow_info_file</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t15allow_info_fileE" title="Link to this definition"></a><br /></dt>
 <dd><p>save additional info file. </p>
 <p>The info file is written to the same path as the export files. It is a plain text file and consits of the a header showing the recoridng FPS and mode and a body, where each frame number from 0 till the last frame written is shown by their name. Missing frames are noted as “dropped”.</p>
 <p>
@@ -2091,21 +2181,21 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t14operation_modeE">
-<span id="_CPPv3N17cuvis_save_args_t14operation_modeE"></span><span id="_CPPv2N17cuvis_save_args_t14operation_modeE"></span><span id="cuvis_save_args_t::operation_mode__CUVIS_OPERATION_MODE"></span><span class="target" id="structcuvis__save__args__t_1ae5bbf3a670062d87c01c43aef22ee593"></span><span class="n"><span class="pre">CUVIS_OPERATION_MODE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">operation_mode</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t14operation_modeE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N17cuvis_save_args_t14operation_modeE"></span><span id="_CPPv2N17cuvis_save_args_t14operation_modeE"></span><span id="cuvis_save_args_t::operation_mode__CUVIS_OPERATION_MODE"></span><span class="target" id="structcuvis__save__args__t_1ae5bbf3a670062d87c01c43aef22ee593"></span><span class="n"><span class="pre">CUVIS_OPERATION_MODE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">operation_mode</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t14operation_modeE" title="Link to this definition"></a><br /></dt>
 <dd><p>give the current operation mode. </p>
 <p>Save the operation mode used while recording. Only used if allow_session is set. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t3fpsE">
-<span id="_CPPv3N17cuvis_save_args_t3fpsE"></span><span id="_CPPv2N17cuvis_save_args_t3fpsE"></span><span id="cuvis_save_args_t::fps__double"></span><span class="target" id="structcuvis__save__args__t_1a0d3cba728e3a2d2ca77213d606796488"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fps</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t3fpsE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N17cuvis_save_args_t3fpsE"></span><span id="_CPPv2N17cuvis_save_args_t3fpsE"></span><span id="cuvis_save_args_t::fps__double"></span><span class="target" id="structcuvis__save__args__t_1a0d3cba728e3a2d2ca77213d606796488"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fps</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t3fpsE" title="Link to this definition"></a><br /></dt>
 <dd><p>the fps used in operation_mode video </p>
 <p>only used if allow_session=true and &#64;operation_mode=Internal. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t10soft_limitE">
-<span id="_CPPv3N17cuvis_save_args_t10soft_limitE"></span><span id="_CPPv2N17cuvis_save_args_t10soft_limitE"></span><span id="cuvis_save_args_t::soft_limit__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1aa4838cfd9b94d1cb372cc5eb1052a428"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">soft_limit</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t10soft_limitE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N17cuvis_save_args_t10soft_limitE"></span><span id="_CPPv2N17cuvis_save_args_t10soft_limitE"></span><span id="cuvis_save_args_t::soft_limit__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1aa4838cfd9b94d1cb372cc5eb1052a428"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">soft_limit</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t10soft_limitE" title="Link to this definition"></a><br /></dt>
 <dd><p>Out-of-order frames are sorted within the cache, as long as the cache useage is below this limit. </p>
 <p>The soft limit is only used if <a class="reference internal" href="#structcuvis__save__args__t_1aa0776cc32849e03c9c74853065f5ab1e"><span class="std std-ref">allow_drop</span></a>=true and <a class="reference internal" href="#structcuvis__save__args__t_1a151b107cdada8e0cdc3b48d77afc8263"><span class="std std-ref">allow_session_file</span></a>=true.</p>
 <p>The internal chache may hold up to <a class="reference internal" href="#structcuvis__save__args__t_1aa4838cfd9b94d1cb372cc5eb1052a428"><span class="std std-ref">soft_limit</span></a> number of frames that are out of sequence.</p>
@@ -2148,7 +2238,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t10hard_limitE">
-<span id="_CPPv3N17cuvis_save_args_t10hard_limitE"></span><span id="_CPPv2N17cuvis_save_args_t10hard_limitE"></span><span id="cuvis_save_args_t::hard_limit__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1ae6faf43ac22bf2d91dd7e85106f78ca3"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hard_limit</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t10hard_limitE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N17cuvis_save_args_t10hard_limitE"></span><span id="_CPPv2N17cuvis_save_args_t10hard_limitE"></span><span id="cuvis_save_args_t::hard_limit__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1ae6faf43ac22bf2d91dd7e85106f78ca3"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hard_limit</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t10hard_limitE" title="Link to this definition"></a><br /></dt>
 <dd><p>Maximum number of elements in output cache. </p>
 <p>The hard limit is only used if <a class="reference internal" href="#structcuvis__save__args__t_1a151b107cdada8e0cdc3b48d77afc8263"><span class="std std-ref">allow_session_file</span></a>=true.</p>
 <p>The output cache has a maximum size of <a class="reference internal" href="#structcuvis__save__args__t_1ae6faf43ac22bf2d91dd7e85106f78ca3"><span class="std std-ref">hard_limit</span></a>. If more measurements are added, adding another measurment is not possible. Adding a measurement will lock the calling function if <a class="reference internal" href="#structcuvis__save__args__t_1aa0776cc32849e03c9c74853065f5ab1e"><span class="std std-ref">allow_drop</span></a> is set to false. If <a class="reference internal" href="#structcuvis__save__args__t_1aa0776cc32849e03c9c74853065f5ab1e"><span class="std std-ref">allow_drop</span></a> is set to true, the added frame is directrly dropped and not stored.</p>
@@ -2160,7 +2250,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t11max_buftimeE">
-<span id="_CPPv3N17cuvis_save_args_t11max_buftimeE"></span><span id="_CPPv2N17cuvis_save_args_t11max_buftimeE"></span><span id="cuvis_save_args_t::max_buftime__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1ae8e57e459c3bf32a4b11869d64e79e35"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_buftime</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t11max_buftimeE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N17cuvis_save_args_t11max_buftimeE"></span><span id="_CPPv2N17cuvis_save_args_t11max_buftimeE"></span><span id="cuvis_save_args_t::max_buftime__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1ae8e57e459c3bf32a4b11869d64e79e35"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_buftime</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t11max_buftimeE" title="Link to this definition"></a><br /></dt>
 <dd><p>Any frame is forced to be written after this time (in ms), latest. </p>
 <p>The maximum buffer time option is only used if <a class="reference internal" href="#structcuvis__save__args__t_1aa0776cc32849e03c9c74853065f5ab1e"><span class="std std-ref">allow_drop</span></a>=true and <a class="reference internal" href="#structcuvis__save__args__t_1a151b107cdada8e0cdc3b48d77afc8263"><span class="std std-ref">allow_session_file</span></a>=true.</p>
 <p>The time a buffer is held in the exporter’s cache is tracked. If the time given by the max_buftime is exceeded, a measuremnt is written to disk.</p>
@@ -2170,7 +2260,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t11full_exportE">
-<span id="_CPPv3N17cuvis_save_args_t11full_exportE"></span><span id="_CPPv2N17cuvis_save_args_t11full_exportE"></span><span id="cuvis_save_args_t::full_export__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1a97ee433180ce6d1c0b03b2fa14a1394d"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">full_export</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t11full_exportE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N17cuvis_save_args_t11full_exportE"></span><span id="_CPPv2N17cuvis_save_args_t11full_exportE"></span><span id="cuvis_save_args_t::full_export__CUVIS_INT"></span><span class="target" id="structcuvis__save__args__t_1a97ee433180ce6d1c0b03b2fa14a1394d"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">full_export</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t11full_exportE" title="Link to this definition"></a><br /></dt>
 <dd><p>Whether processing results are also saved in the export. </p>
 <p>If enabled, all cube data and accompanying meta-data are stored in the exported file as well. This vastly increases file size and the time and processing resources needed for the export.</p>
 <p>If disabled, only the raw image from the camera and raw data from any additional devices are stored. This in turn requires the data to be reprocessed when loading it again. </p>
@@ -2181,7 +2271,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv431cuvis_export_general_settings_t">
-<span id="_CPPv331cuvis_export_general_settings_t"></span><span id="_CPPv231cuvis_export_general_settings_t"></span><span id="cuvis_export_general_settings_t"></span><span class="target" id="structcuvis__export__general__settings__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_export_general_settings_t</span></span></span><a class="headerlink" href="#_CPPv431cuvis_export_general_settings_t" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv331cuvis_export_general_settings_t"></span><span id="_CPPv231cuvis_export_general_settings_t"></span><span id="cuvis_export_general_settings_t"></span><span class="target" id="structcuvis__export__general__settings__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_export_general_settings_t</span></span></span><a class="headerlink" href="#_CPPv431cuvis_export_general_settings_t" title="Link to this definition"></a><br /></dt>
 <dd><div class="docutils container">
 <em>#include &lt;cuvis.h&gt;</em></div>
 <p>general export settings </p>
@@ -2189,13 +2279,13 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N31cuvis_export_general_settings_t10export_dirE">
-<span id="_CPPv3N31cuvis_export_general_settings_t10export_dirE"></span><span id="_CPPv2N31cuvis_export_general_settings_t10export_dirE"></span><span id="cuvis_export_general_settings_t::export_dir__CUVIS_CHARA"></span><span class="target" id="structcuvis__export__general__settings__t_1acee1c74fbc8c4296c229847dca4dac85"></span><span class="n"><span class="pre">CUVIS_CHAR</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">export_dir</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">CUVIS_MAXBUF</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t10export_dirE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N31cuvis_export_general_settings_t10export_dirE"></span><span id="_CPPv2N31cuvis_export_general_settings_t10export_dirE"></span><span id="cuvis_export_general_settings_t::export_dir__CUVIS_CHARA"></span><span class="target" id="structcuvis__export__general__settings__t_1acee1c74fbc8c4296c229847dca4dac85"></span><span class="n"><span class="pre">CUVIS_CHAR</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">export_dir</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">CUVIS_MAXBUF</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t10export_dirE" title="Link to this definition"></a><br /></dt>
 <dd><p>The export directory. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N31cuvis_export_general_settings_t17channel_selectionE">
-<span id="_CPPv3N31cuvis_export_general_settings_t17channel_selectionE"></span><span id="_CPPv2N31cuvis_export_general_settings_t17channel_selectionE"></span><span id="cuvis_export_general_settings_t::channel_selection__CUVIS_CHARA"></span><span class="target" id="structcuvis__export__general__settings__t_1a91902d05ce4b5bb04c193c17640a4c8f"></span><span class="n"><span class="pre">CUVIS_CHAR</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">channel_selection</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">CUVIS_MAXBUF</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t17channel_selectionE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N31cuvis_export_general_settings_t17channel_selectionE"></span><span id="_CPPv2N31cuvis_export_general_settings_t17channel_selectionE"></span><span id="cuvis_export_general_settings_t::channel_selection__CUVIS_CHARA"></span><span class="target" id="structcuvis__export__general__settings__t_1a91902d05ce4b5bb04c193c17640a4c8f"></span><span class="n"><span class="pre">CUVIS_CHAR</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">channel_selection</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">CUVIS_MAXBUF</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t17channel_selectionE" title="Link to this definition"></a><br /></dt>
 <dd><p>The export channel selection </p>
 <p>Use “all” or “full” for all available channels</p>
 <p>Use ranges for wavelength range start-end or start:end or start:step:end ; All values in Nanometers. Examples: 450:10:550 or 450-550 </p>
@@ -2203,54 +2293,61 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N31cuvis_export_general_settings_t18spectra_multiplierE">
-<span id="_CPPv3N31cuvis_export_general_settings_t18spectra_multiplierE"></span><span id="_CPPv2N31cuvis_export_general_settings_t18spectra_multiplierE"></span><span id="cuvis_export_general_settings_t::spectra_multiplier__uint8_t"></span><span class="target" id="structcuvis__export__general__settings__t_1a0ba6ccfbc5c427f8df57a5e98b537f2b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">spectra_multiplier</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t18spectra_multiplierE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N31cuvis_export_general_settings_t18spectra_multiplierE"></span><span id="_CPPv2N31cuvis_export_general_settings_t18spectra_multiplierE"></span><span id="cuvis_export_general_settings_t::spectra_multiplier__uint8_t"></span><span class="target" id="structcuvis__export__general__settings__t_1a0ba6ccfbc5c427f8df57a5e98b537f2b"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">spectra_multiplier</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t18spectra_multiplierE" title="Link to this definition"></a><br /></dt>
 <dd><p>multiply spectrum by fixed factor before exporting </p>
 <p>This is most usefull for bitshifting the data - especially when the pan image is also added to the export. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N31cuvis_export_general_settings_t9pan_scaleE">
-<span id="_CPPv3N31cuvis_export_general_settings_t9pan_scaleE"></span><span id="_CPPv2N31cuvis_export_general_settings_t9pan_scaleE"></span><span id="cuvis_export_general_settings_t::pan_scale__double"></span><span class="target" id="structcuvis__export__general__settings__t_1a02a3210fa76ddf6eb6012edbfd82509a"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pan_scale</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t9pan_scaleE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N31cuvis_export_general_settings_t9pan_scaleE"></span><span id="_CPPv2N31cuvis_export_general_settings_t9pan_scaleE"></span><span id="cuvis_export_general_settings_t::pan_scale__double"></span><span class="target" id="structcuvis__export__general__settings__t_1a02a3210fa76ddf6eb6012edbfd82509a"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pan_scale</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t9pan_scaleE" title="Link to this definition"></a><br /></dt>
 <dd><p>amount of pan-sharpening </p>
 <p>The value is relative to the pan image size, give a value between 0 and 1 </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N31cuvis_export_general_settings_t22pan_interpolation_typeE">
-<span id="_CPPv3N31cuvis_export_general_settings_t22pan_interpolation_typeE"></span><span id="_CPPv2N31cuvis_export_general_settings_t22pan_interpolation_typeE"></span><span id="cuvis_export_general_settings_t::pan_interpolation_type__CUVIS_PAN_SHAPRENING_INTERPOLATION_TYPE"></span><span class="target" id="structcuvis__export__general__settings__t_1a7bd363e1fae8f2162eb01f022ac5195c"></span><span class="n"><span class="pre">CUVIS_PAN_SHAPRENING_INTERPOLATION_TYPE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pan_interpolation_type</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t22pan_interpolation_typeE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N31cuvis_export_general_settings_t22pan_interpolation_typeE"></span><span id="_CPPv2N31cuvis_export_general_settings_t22pan_interpolation_typeE"></span><span id="cuvis_export_general_settings_t::pan_interpolation_type__CUVIS_PAN_SHAPRENING_INTERPOLATION_TYPE"></span><span class="target" id="structcuvis__export__general__settings__t_1a7bd363e1fae8f2162eb01f022ac5195c"></span><span class="n"><span class="pre">CUVIS_PAN_SHAPRENING_INTERPOLATION_TYPE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pan_interpolation_type</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t22pan_interpolation_typeE" title="Link to this definition"></a><br /></dt>
 <dd><p>for pansharpening use this interpolation type to scale up the cube before adjusting the weights </p>
-<p>As a first step to pan-sharpening the spectral data needs to be re-sanpled to the target resolution This parameter determines the method for this resanpling. </p>
+<p>As a first step to pan-sharpening the spectral data needs to be re-sampled to the target resolution This parameter determines the method for this resampling. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N31cuvis_export_general_settings_t13pan_algorithmE">
-<span id="_CPPv3N31cuvis_export_general_settings_t13pan_algorithmE"></span><span id="_CPPv2N31cuvis_export_general_settings_t13pan_algorithmE"></span><span id="cuvis_export_general_settings_t::pan_algorithm__CUVIS_PAN_SHAPRENING_ALGORITHM_TYPE"></span><span class="target" id="structcuvis__export__general__settings__t_1a858947132e4ca034022687c9c6734634"></span><span class="n"><span class="pre">CUVIS_PAN_SHAPRENING_ALGORITHM_TYPE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pan_algorithm</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t13pan_algorithmE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N31cuvis_export_general_settings_t13pan_algorithmE"></span><span id="_CPPv2N31cuvis_export_general_settings_t13pan_algorithmE"></span><span id="cuvis_export_general_settings_t::pan_algorithm__CUVIS_PAN_SHAPRENING_ALGORITHM_TYPE"></span><span class="target" id="structcuvis__export__general__settings__t_1a858947132e4ca034022687c9c6734634"></span><span class="n"><span class="pre">CUVIS_PAN_SHAPRENING_ALGORITHM_TYPE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pan_algorithm</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t13pan_algorithmE" title="Link to this definition"></a><br /></dt>
 <dd><p>method for calculating the weights </p>
 </dd></dl>
 
 <dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N31cuvis_export_general_settings_t20pre_pan_sharpen_cubeE">
+<span id="_CPPv3N31cuvis_export_general_settings_t20pre_pan_sharpen_cubeE"></span><span id="_CPPv2N31cuvis_export_general_settings_t20pre_pan_sharpen_cubeE"></span><span id="cuvis_export_general_settings_t::pre_pan_sharpen_cube__CUVIS_INT"></span><span class="target" id="structcuvis__export__general__settings__t_1a9b248225a3251893fd116930a7f2e86e"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pre_pan_sharpen_cube</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t20pre_pan_sharpen_cubeE" title="Link to this definition"></a><br /></dt>
+<dd><p>pansharpen cube before calculating user plugin </p>
+<p>Normally pan sharpening is applied after calculating the user plugin. Prepansharpening can be used to get a pansharpened cube when no real userplugin shall be applied. Prepansharpening is calculated on the whole spectral cube which is heavy on performance. </p>
+</dd></dl>
+
+<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N31cuvis_export_general_settings_t13blend_opacityE">
-<span id="_CPPv3N31cuvis_export_general_settings_t13blend_opacityE"></span><span id="_CPPv2N31cuvis_export_general_settings_t13blend_opacityE"></span><span id="cuvis_export_general_settings_t::blend_opacity__double"></span><span class="target" id="structcuvis__export__general__settings__t_1ae23235aa51a1752885f82f832c7a11ed"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">blend_opacity</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t13blend_opacityE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N31cuvis_export_general_settings_t13blend_opacityE"></span><span id="_CPPv2N31cuvis_export_general_settings_t13blend_opacityE"></span><span id="cuvis_export_general_settings_t::blend_opacity__double"></span><span class="target" id="structcuvis__export__general__settings__t_1ae23235aa51a1752885f82f832c7a11ed"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">blend_opacity</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t13blend_opacityE" title="Link to this definition"></a><br /></dt>
 <dd><p>opacity for pan_sharpening_algorithm_AlphablendPanOverlay, give a value between 0 and 1 a value of 1.0 represents usage of 100% pan image, 0 will be 100% view image </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N31cuvis_export_general_settings_t7add_panE">
-<span id="_CPPv3N31cuvis_export_general_settings_t7add_panE"></span><span id="_CPPv2N31cuvis_export_general_settings_t7add_panE"></span><span id="cuvis_export_general_settings_t::add_pan__CUVIS_INT"></span><span class="target" id="structcuvis__export__general__settings__t_1a407e4019479dec21959c580334d18de7"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">add_pan</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t7add_panE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N31cuvis_export_general_settings_t7add_panE"></span><span id="_CPPv2N31cuvis_export_general_settings_t7add_panE"></span><span id="cuvis_export_general_settings_t::add_pan__CUVIS_INT"></span><span class="target" id="structcuvis__export__general__settings__t_1a407e4019479dec21959c580334d18de7"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">add_pan</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t7add_panE" title="Link to this definition"></a><br /></dt>
 <dd><p>add pan to exported image. </p>
 <p>If applicable, the pan image is scaled to target pan-sharpening resolution. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N31cuvis_export_general_settings_t17add_fullscale_panE">
-<span id="_CPPv3N31cuvis_export_general_settings_t17add_fullscale_panE"></span><span id="_CPPv2N31cuvis_export_general_settings_t17add_fullscale_panE"></span><span id="cuvis_export_general_settings_t::add_fullscale_pan__CUVIS_INT"></span><span class="target" id="structcuvis__export__general__settings__t_1a2717f5964d7261c8d35b268d4590ee76"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">add_fullscale_pan</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t17add_fullscale_panE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N31cuvis_export_general_settings_t17add_fullscale_panE"></span><span id="_CPPv2N31cuvis_export_general_settings_t17add_fullscale_panE"></span><span id="cuvis_export_general_settings_t::add_fullscale_pan__CUVIS_INT"></span><span class="target" id="structcuvis__export__general__settings__t_1a2717f5964d7261c8d35b268d4590ee76"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">add_fullscale_pan</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t17add_fullscale_panE" title="Link to this definition"></a><br /></dt>
 <dd><p>add full-resolution pan to exported image. </p>
 <p>If applicable, the image is added directly to the output. else, the image is stored separately. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N31cuvis_export_general_settings_t10permissiveE">
-<span id="_CPPv3N31cuvis_export_general_settings_t10permissiveE"></span><span id="_CPPv2N31cuvis_export_general_settings_t10permissiveE"></span><span id="cuvis_export_general_settings_t::permissive__CUVIS_INT"></span><span class="target" id="structcuvis__export__general__settings__t_1a64da83fbbe34b7658e04dc9a7f9be6ac"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">permissive</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t10permissiveE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N31cuvis_export_general_settings_t10permissiveE"></span><span id="_CPPv2N31cuvis_export_general_settings_t10permissiveE"></span><span id="cuvis_export_general_settings_t::permissive__CUVIS_INT"></span><span class="target" id="structcuvis__export__general__settings__t_1a64da83fbbe34b7658e04dc9a7f9be6ac"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">permissive</span></span></span><a class="headerlink" href="#_CPPv4N31cuvis_export_general_settings_t10permissiveE" title="Link to this definition"></a><br /></dt>
 <dd><p>Set exporter to “permisive mode”. </p>
 <p>If set, errors will be skipped and alternative values assumed, wherever possible.</p>
 <p>E.g., if <a class="reference internal" href="#structcuvis__export__general__settings__t_1a407e4019479dec21959c580334d18de7"><span class="std std-ref">add_pan</span></a> is selected but there is no panchromatic image avaialbe, the export is not possible. In permissive mode, however, the add_pan option is de-activated and an exprot without pan image is conducted instead.</p>
@@ -2265,7 +2362,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv428cuvis_export_view_settings_t">
-<span id="_CPPv328cuvis_export_view_settings_t"></span><span id="_CPPv228cuvis_export_view_settings_t"></span><span id="cuvis_export_view_settings_t"></span><span class="target" id="structcuvis__export__view__settings__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_export_view_settings_t</span></span></span><a class="headerlink" href="#_CPPv428cuvis_export_view_settings_t" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv328cuvis_export_view_settings_t"></span><span id="_CPPv228cuvis_export_view_settings_t"></span><span id="cuvis_export_view_settings_t"></span><span class="target" id="structcuvis__export__view__settings__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_export_view_settings_t</span></span></span><a class="headerlink" href="#_CPPv428cuvis_export_view_settings_t" title="Link to this definition"></a><br /></dt>
 <dd><div class="docutils container">
 <em>#include &lt;cuvis.h&gt;</em></div>
 <p>Additional settings for exporting to a userplugin view. </p>
@@ -2274,7 +2371,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N28cuvis_export_view_settings_t10userpluginE">
-<span id="_CPPv3N28cuvis_export_view_settings_t10userpluginE"></span><span id="_CPPv2N28cuvis_export_view_settings_t10userpluginE"></span><span id="cuvis_export_view_settings_t::userplugin__CUVIS_CHARCP"></span><span class="target" id="structcuvis__export__view__settings__t_1a41d6c137e2eeae5c462c30d83e09705f"></span><span class="n"><span class="pre">CUVIS_CHAR</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">userplugin</span></span></span><a class="headerlink" href="#_CPPv4N28cuvis_export_view_settings_t10userpluginE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N28cuvis_export_view_settings_t10userpluginE"></span><span id="_CPPv2N28cuvis_export_view_settings_t10userpluginE"></span><span id="cuvis_export_view_settings_t::userplugin__CUVIS_CHARCP"></span><span class="target" id="structcuvis__export__view__settings__t_1a41d6c137e2eeae5c462c30d83e09705f"></span><span class="n"><span class="pre">CUVIS_CHAR</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">userplugin</span></span></span><a class="headerlink" href="#_CPPv4N28cuvis_export_view_settings_t10userpluginE" title="Link to this definition"></a><br /></dt>
 <dd><p>The userplugin xml string. </p>
 <p>See userplugin manual. </p>
 </dd></dl>
@@ -2284,7 +2381,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv428cuvis_export_tiff_settings_t">
-<span id="_CPPv328cuvis_export_tiff_settings_t"></span><span id="_CPPv228cuvis_export_tiff_settings_t"></span><span id="cuvis_export_tiff_settings_t"></span><span class="target" id="structcuvis__export__tiff__settings__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_export_tiff_settings_t</span></span></span><a class="headerlink" href="#_CPPv428cuvis_export_tiff_settings_t" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv328cuvis_export_tiff_settings_t"></span><span id="_CPPv228cuvis_export_tiff_settings_t"></span><span id="cuvis_export_tiff_settings_t"></span><span class="target" id="structcuvis__export__tiff__settings__t"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_export_tiff_settings_t</span></span></span><a class="headerlink" href="#_CPPv428cuvis_export_tiff_settings_t" title="Link to this definition"></a><br /></dt>
 <dd><div class="docutils container">
 <em>#include &lt;cuvis.h&gt;</em></div>
 <p>Additional settings for exporting tiff. </p>
@@ -2293,13 +2390,13 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N28cuvis_export_tiff_settings_t16compression_modeE">
-<span id="_CPPv3N28cuvis_export_tiff_settings_t16compression_modeE"></span><span id="_CPPv2N28cuvis_export_tiff_settings_t16compression_modeE"></span><span id="cuvis_export_tiff_settings_t::compression_mode__CUVIS_TIFF_COMPRESSION_MODE"></span><span class="target" id="structcuvis__export__tiff__settings__t_1a373df82c1d96cf000e27d465996e1c49"></span><span class="n"><span class="pre">CUVIS_TIFF_COMPRESSION_MODE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compression_mode</span></span></span><a class="headerlink" href="#_CPPv4N28cuvis_export_tiff_settings_t16compression_modeE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N28cuvis_export_tiff_settings_t16compression_modeE"></span><span id="_CPPv2N28cuvis_export_tiff_settings_t16compression_modeE"></span><span id="cuvis_export_tiff_settings_t::compression_mode__CUVIS_TIFF_COMPRESSION_MODE"></span><span class="target" id="structcuvis__export__tiff__settings__t_1a373df82c1d96cf000e27d465996e1c49"></span><span class="n"><span class="pre">CUVIS_TIFF_COMPRESSION_MODE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compression_mode</span></span></span><a class="headerlink" href="#_CPPv4N28cuvis_export_tiff_settings_t16compression_modeE" title="Link to this definition"></a><br /></dt>
 <dd><p>the compression mode for tiff export </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N28cuvis_export_tiff_settings_t6formatE">
-<span id="_CPPv3N28cuvis_export_tiff_settings_t6formatE"></span><span id="_CPPv2N28cuvis_export_tiff_settings_t6formatE"></span><span id="cuvis_export_tiff_settings_t::format__CUVIS_TIFF_FORMAT"></span><span class="target" id="structcuvis__export__tiff__settings__t_1a6ec8d12309d0cd15f130d8d0a8d5b9de"></span><span class="n"><span class="pre">CUVIS_TIFF_FORMAT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">format</span></span></span><a class="headerlink" href="#_CPPv4N28cuvis_export_tiff_settings_t6formatE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N28cuvis_export_tiff_settings_t6formatE"></span><span id="_CPPv2N28cuvis_export_tiff_settings_t6formatE"></span><span id="cuvis_export_tiff_settings_t::format__CUVIS_TIFF_FORMAT"></span><span class="target" id="structcuvis__export__tiff__settings__t_1a6ec8d12309d0cd15f130d8d0a8d5b9de"></span><span class="n"><span class="pre">CUVIS_TIFF_FORMAT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">format</span></span></span><a class="headerlink" href="#_CPPv4N28cuvis_export_tiff_settings_t6formatE" title="Link to this definition"></a><br /></dt>
 <dd><p>the tiff export mode / format </p>
 </dd></dl>
 
@@ -2310,7 +2407,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 </section>
 <section id="async-programming">
-<h2>Async Programming<a class="headerlink" href="#async-programming" title="Permalink to this heading"></a></h2>
+<h2>Async Programming<a class="headerlink" href="#async-programming" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__async"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_async</span></span></dt>
@@ -2369,7 +2466,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 </section>
 <section id="processing-context">
-<h2>Processing Context<a class="headerlink" href="#processing-context" title="Permalink to this heading"></a></h2>
+<h2>Processing Context<a class="headerlink" href="#processing-context" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__proc"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_proc</span></span></dt>
@@ -2630,7 +2727,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 </section>
 <section id="viewer">
-<h2>Viewer<a class="headerlink" href="#viewer" title="Permalink to this heading"></a></h2>
+<h2>Viewer<a class="headerlink" href="#viewer" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__viewer"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_viewer</span></span></dt>
@@ -2740,7 +2837,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 </section>
 <section id="worker">
-<h2>Worker<a class="headerlink" href="#worker" title="Permalink to this heading"></a></h2>
+<h2>Worker<a class="headerlink" href="#worker" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__worker"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_worker</span></span></dt>
@@ -3047,18 +3144,18 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__c__examples"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">c_examples</span></span></dt>
 <dd><p>There are serveral examples delivered with the SDK</p>
 <section id="group__c__examples_1autotoc_md3">
-<h3>Overview<a class="headerlink" href="#group__c__examples_1autotoc_md3" title="Permalink to this heading"></a></h3>
+<h3>Overview<a class="headerlink" href="#group__c__examples_1autotoc_md3" title="Link to this heading"></a></h3>
 <p id="group__c__examples_1autotoc_md3">Under Windows you can find the examples in your installation directory (Default: “C:\Program Files\Cuvis\sdk\cuvis_c\examples” or “C:\Program Files\Cuvis\sdk\cuvis_cpp\examples”), under Linux they can be found in “/lib/cuvis/cuvis_c/examples” or “/lib/cuvis/cuvis_cpp/examples” . Each Example comes with the precompiled binary, a short .sh-script to run the application and the source code file. The .sh-script requires the bash console. Under windows we recommend to use Git Bash.</p>
 <p>Examples 01-04 and 07 require the “sample_data” folder to be present in the installation directory ( Windows: “C:\Program Files\Cuvis\sdk\sample_data” , Linux: “/lib/cuvis/sample_data”). Examples 05-06 require a camera to be installed and connected.</p>
 </section>
 <section id="group__c__examples_1autotoc_md4">
-<h3>Compiling examples<a class="headerlink" href="#group__c__examples_1autotoc_md4" title="Permalink to this heading"></a></h3>
+<h3>Compiling examples<a class="headerlink" href="#group__c__examples_1autotoc_md4" title="Link to this heading"></a></h3>
 <p id="group__c__examples_1autotoc_md4">Instead of using the precompiled examples, you can use the provided source code to compile it yourself. Under Linux this is quite simple.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">gcc</span>
 <span class="n">sudo</span> <span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="mh">0X_e</span><span class="n">xample</span> <span class="n">main</span><span class="o">.</span><span class="n">c</span>  <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">cuvis</span> <span class="o">-</span><span class="n">lcuvis</span>
