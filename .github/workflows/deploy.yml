@@ -36,7 +36,7 @@ jobs:
           python --version
           python3.9 -m pip install numpy==1.22.0
           mkdir _build
-          cmake -B ./_pyil -DPython_ROOT_DIR=./venv .
+          cmake -B ./_pyil -DPython_ROOT_DIR=./venv cuvis.pyil
           cmake --build "_pyil" --config Release
           cp ./_pyil/_cuvis_pyil.so ./cuvis.pyil/cuvis_il
           cp ./_pyil/_cuvis_il.py ./cuvis.pyil/cuvis_il
@@ -44,7 +44,7 @@ jobs:
           python3.9 -m pip install cuvis.python          
       - name: Build Documentation
         run: |
-          cmake --build "_build"
+          cmake --build "_build" .
           touch ./_build/doc/sphinx/.nojekyll  
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
