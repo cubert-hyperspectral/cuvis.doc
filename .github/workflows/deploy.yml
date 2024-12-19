@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - feature/fix_gh_pages_workflow
 
 jobs:
   build-and-deploy:
@@ -10,44 +11,41 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
-
       - name: Install Dependencies
         run: |
           sudo apt install doxygen swig -y
-          sudo apt install python3.9 python3-pip python3.9-dev python3.9-venv -y
+          sudo apt install python3.9 python3.9-dev python3.9-venv -y
+          curl -sS https://bootstrap.pypa.io/get-pip.py | python3.9
           wget https://cloud.cubert-gmbh.de/index.php/s/qpxkyWkycrmBK9m/download
           unzip download
           cd Cuvis\ 3.3
           cd Cuvis\ 3.3.0
-          cd Ubuntu\ 20.04-amd64-cuda12.3/
+          cd Ubuntu\ 20.04-amd64-nocuda/
           sudo apt install ./cuviscommon_3.3.0-1.deb -y
           sudo dpkg -i --force-overwrite ./libcuvis_3.3.0-1.deb
           cd ../../..
           python3.9 -m venv venv
           source venv/bin/activate
           python3.9 -m pip install -r docs/requirements.txt
-
       - name: Build Pyil Wrapper
         run: |
           source venv/bin/activate
           python --version
+          python3.9 -m pip install numpy==1.22.0
           mkdir _build
           cmake -B ./_build -DPython_ROOT_DIR=./venv .
           cmake --build "_pyil" --config Release
           cp ./_pyil/_cuvis_pyil.so ./cuvis.pyil/cuvis_il
           cp ./_pyil/_cuvis_il.py ./cuvis.pyil/cuvis_il
           python3.9 -m pip install cuvis.pyil
-          python3.9 -m pip install cuvis.python
-          
+          python3.9 -m pip install cuvis.python          
       - name: Build Documentation
         run: |
           cmake --build "_build"
           touch ./_build/doc/sphinx/.nojekyll  
-          
-
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
