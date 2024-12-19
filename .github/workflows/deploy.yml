@@ -42,15 +42,15 @@ jobs:
           cp _pyil/cuvis_il.py ./cuvis.pyil/cuvis_il
           cd cuvis.pyil
           python3.9 -m pip install .
-          cd ..
-          cd cuvis.python
+          cd ../cuvis.python
           python3.9 -m pip install .
           cd ..
       - name: Build Documentation
         run: |
           source venv/bin/activate
           mkdir _build
-          cmake --build "_build" .
+          cmake -B _build .
+          cmake --build "_build"
           touch ./_build/doc/sphinx/.nojekyll  
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
