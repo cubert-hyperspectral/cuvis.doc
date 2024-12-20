@@ -9,7 +9,7 @@
 import sys
 import os
 
-sys.path.insert(0, os.path.abspath('../cuvis.python'))
+sys.path.insert(0, os.path.abspath('../cuvis.python/cuvis'))
 sys.path.insert(0, os.path.abspath('../cuvis.pyil'))
 
 project = 'Cuvis SDK'
