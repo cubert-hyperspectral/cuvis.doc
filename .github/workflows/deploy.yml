@@ -52,6 +52,7 @@ jobs:
       - name: Build Documentation
         run: |
           source venv/bin/activate
+          export CUVIS=/lib/cuvis
           mkdir _build
           cmake -B _build .
           cmake --build "_build"
