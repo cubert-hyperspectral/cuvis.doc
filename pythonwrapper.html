@@ -47,6 +47,47 @@
 <li class="toctree-l1"><a class="reference internal" href="cwrapper.html">Cuvis C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cppwrapper.html">Cuvis C++ API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cuvis Python API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.auto_exp"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.auto_exp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.auto_exp_comp"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.auto_exp_comp</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.average"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.average</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.bandwidth"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.bandwidth</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.binning"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.binning</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.capture"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.capture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.capture_at"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.capture_at()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.component_count"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.component_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.components"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.components()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.fps"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.fps</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.get_next_measurement"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.get_next_measurement()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.has_next_measurement"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.has_next_measurement()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.integration_time"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.integration_time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.operation_mode"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.operation_mode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.queue_size"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.queue_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.queue_used"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.queue_used</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.register_state_change_callback"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.register_state_change_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.reset_state_change_callback"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.reset_state_change_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.session_info"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.session_info</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.set_auto_exp_async"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.set_auto_exp_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.set_auto_exp_comp_async"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.set_auto_exp_comp_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.set_average_async"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.set_average_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.set_binning_async"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.set_binning_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.set_continuous"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.set_continuous()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.set_continuous_async"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.set_continuous_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.set_fps_async"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.set_fps_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.set_integration_time_async"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.set_integration_time_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.set_operation_mode_async"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.set_operation_mode_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.state"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.state</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cuvis.AcquisitionContext.Component"><code class="docutils literal notranslate"><span class="pre">Component</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.Component.available_pixel_formats"><code class="docutils literal notranslate"><span class="pre">Component.available_pixel_formats</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.Component.gain"><code class="docutils literal notranslate"><span class="pre">Component.gain</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.Component.integration_time_factor"><code class="docutils literal notranslate"><span class="pre">Component.integration_time_factor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.Component.online"><code class="docutils literal notranslate"><span class="pre">Component.online</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.Component.pixel_format"><code class="docutils literal notranslate"><span class="pre">Component.pixel_format</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.Component.temperature"><code class="docutils literal notranslate"><span class="pre">Component.temperature</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#cuvis.Async.Async"><code class="docutils literal notranslate"><span class="pre">Async</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.Async.Async.get"><code class="docutils literal notranslate"><span class="pre">Async.get()</span></code></a></li>
 </ul>
@@ -195,6 +236,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.cuvis_types.TiffFormat.Single"><code class="docutils literal notranslate"><span class="pre">TiffFormat.Single</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#cuvis.Export.CubeExporter"><code class="docutils literal notranslate"><span class="pre">CubeExporter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cuvis.Export.EnviExporter"><code class="docutils literal notranslate"><span class="pre">EnviExporter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cuvis.Export.Exporter"><code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Export.Exporter.apply"><code class="docutils literal notranslate"><span class="pre">Exporter.apply()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Export.Exporter.flush"><code class="docutils literal notranslate"><span class="pre">Exporter.flush()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Export.Exporter.queue_used"><code class="docutils literal notranslate"><span class="pre">Exporter.queue_used</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cuvis.Export.TiffExporter"><code class="docutils literal notranslate"><span class="pre">TiffExporter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cuvis.Export.ViewExporter"><code class="docutils literal notranslate"><span class="pre">ViewExporter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cuvis.FileWriteSettings.EnviExportSettings"><code class="docutils literal notranslate"><span class="pre">EnviExportSettings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cuvis.FileWriteSettings.GeneralExportSettings"><code class="docutils literal notranslate"><span class="pre">GeneralExportSettings</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.FileWriteSettings.GeneralExportSettings.add_fullscale_pan"><code class="docutils literal notranslate"><span class="pre">GeneralExportSettings.add_fullscale_pan</span></code></a></li>
@@ -301,6 +352,20 @@
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.Measurement.Measurement.thumbnail"><code class="docutils literal notranslate"><span class="pre">Measurement.thumbnail</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext"><code class="docutils literal notranslate"><span class="pre">ProcessingContext</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext.apply"><code class="docutils literal notranslate"><span class="pre">ProcessingContext.apply()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext.calc_distance"><code class="docutils literal notranslate"><span class="pre">ProcessingContext.calc_distance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext.calibration_id"><code class="docutils literal notranslate"><span class="pre">ProcessingContext.calibration_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext.clear_reference"><code class="docutils literal notranslate"><span class="pre">ProcessingContext.clear_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext.get_processing_args"><code class="docutils literal notranslate"><span class="pre">ProcessingContext.get_processing_args()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext.get_reference"><code class="docutils literal notranslate"><span class="pre">ProcessingContext.get_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext.has_reference"><code class="docutils literal notranslate"><span class="pre">ProcessingContext.has_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext.is_capable"><code class="docutils literal notranslate"><span class="pre">ProcessingContext.is_capable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext.processing_mode"><code class="docutils literal notranslate"><span class="pre">ProcessingContext.processing_mode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext.set_processing_args"><code class="docutils literal notranslate"><span class="pre">ProcessingContext.set_processing_args()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext.set_reference"><code class="docutils literal notranslate"><span class="pre">ProcessingContext.set_reference()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#cuvis.SessionFile.SessionFile"><code class="docutils literal notranslate"><span class="pre">SessionFile</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.SessionFile.SessionFile.fps"><code class="docutils literal notranslate"><span class="pre">SessionFile.fps</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.SessionFile.SessionFile.get_measurement"><code class="docutils literal notranslate"><span class="pre">SessionFile.get_measurement()</span></code></a></li>
@@ -313,6 +378,41 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#cuvis.Viewer.Viewer"><code class="docutils literal notranslate"><span class="pre">Viewer</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.Viewer.Viewer.apply"><code class="docutils literal notranslate"><span class="pre">Viewer.apply()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cuvis.Worker.Worker"><code class="docutils literal notranslate"><span class="pre">Worker</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.can_drop_results"><code class="docutils literal notranslate"><span class="pre">Worker.can_drop_results</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.can_skip_measurements"><code class="docutils literal notranslate"><span class="pre">Worker.can_skip_measurements</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.can_skip_supplementary"><code class="docutils literal notranslate"><span class="pre">Worker.can_skip_supplementary</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.drop_all_queued"><code class="docutils literal notranslate"><span class="pre">Worker.drop_all_queued()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.get_next_result"><code class="docutils literal notranslate"><span class="pre">Worker.get_next_result()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.get_next_result_async"><code class="docutils literal notranslate"><span class="pre">Worker.get_next_result_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.has_next_result"><code class="docutils literal notranslate"><span class="pre">Worker.has_next_result()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.ingest_mesu"><code class="docutils literal notranslate"><span class="pre">Worker.ingest_mesu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.ingest_session_file"><code class="docutils literal notranslate"><span class="pre">Worker.ingest_session_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.input_queue_limit"><code class="docutils literal notranslate"><span class="pre">Worker.input_queue_limit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.is_processing"><code class="docutils literal notranslate"><span class="pre">Worker.is_processing</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.is_processing_mandatory"><code class="docutils literal notranslate"><span class="pre">Worker.is_processing_mandatory</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.mandatory_queue_limit"><code class="docutils literal notranslate"><span class="pre">Worker.mandatory_queue_limit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.output_queue_limit"><code class="docutils literal notranslate"><span class="pre">Worker.output_queue_limit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.query_session_progress"><code class="docutils literal notranslate"><span class="pre">Worker.query_session_progress</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.queue_used"><code class="docutils literal notranslate"><span class="pre">Worker.queue_used</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.register_worker_callback"><code class="docutils literal notranslate"><span class="pre">Worker.register_worker_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.reset_worker_callback"><code class="docutils literal notranslate"><span class="pre">Worker.reset_worker_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.set_acquisition_context"><code class="docutils literal notranslate"><span class="pre">Worker.set_acquisition_context()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.set_exporter"><code class="docutils literal notranslate"><span class="pre">Worker.set_exporter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.set_processing_context"><code class="docutils literal notranslate"><span class="pre">Worker.set_processing_context()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.set_viewer"><code class="docutils literal notranslate"><span class="pre">Worker.set_viewer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.start_processing"><code class="docutils literal notranslate"><span class="pre">Worker.start_processing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.state"><code class="docutils literal notranslate"><span class="pre">Worker.state</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.stop_processing"><code class="docutils literal notranslate"><span class="pre">Worker.stop_processing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.supplementary_queue_limit"><code class="docutils literal notranslate"><span class="pre">Worker.supplementary_queue_limit</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.Worker.threads_busy"><code class="docutils literal notranslate"><span class="pre">Worker.threads_busy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cuvis.Worker.WorkerResult"><code class="docutils literal notranslate"><span class="pre">WorkerResult</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.WorkerResult.mesu"><code class="docutils literal notranslate"><span class="pre">WorkerResult.mesu</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.Worker.WorkerResult.view"><code class="docutils literal notranslate"><span class="pre">WorkerResult.view</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -343,9 +443,195 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-cuvis.Async">
-<span id="cuvis-python-api"></span><h1>Cuvis Python API<a class="headerlink" href="#module-cuvis.Async" title="Link to this heading"></a></h1>
+  <section id="module-cuvis.AcquisitionContext">
+<span id="cuvis-python-api"></span><h1>Cuvis Python API<a class="headerlink" href="#module-cuvis.AcquisitionContext" title="Link to this heading"></a></h1>
 <dl class="py class">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.AcquisitionContext.</span></span><span class="sig-name descname"><span class="pre">AcquisitionContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.Calibration.Calibration" title="cuvis.Calibration.Calibration"><span class="pre">Calibration</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#cuvis.SessionFile.SessionFile" title="cuvis.SessionFile.SessionFile"><span class="pre">SessionFile</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext" title="Link to this definition"></a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.auto_exp">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_exp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.auto_exp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.auto_exp_comp">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">auto_exp_comp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.auto_exp_comp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.average">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">average</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.average" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.bandwidth">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bandwidth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.bandwidth" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.binning">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">binning</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.binning" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.capture">
+<span class="sig-name descname"><span class="pre">capture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to_interal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Async.AsyncMesu" title="cuvis.Async.AsyncMesu"><span class="pre">AsyncMesu</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.capture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.capture" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.capture_at">
+<span class="sig-name descname"><span class="pre">capture_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.capture_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.capture_at" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.component_count">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">component_count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.component_count" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.components">
+<span class="sig-name descname"><span class="pre">components</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.components" title="Link to this definition"></a></dt>
+<dd><p>Returns an iterator over all components</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.fps">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.fps" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.get_next_measurement">
+<span class="sig-name descname"><span class="pre">get_next_measurement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.get_next_measurement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.get_next_measurement" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.has_next_measurement">
+<span class="sig-name descname"><span class="pre">has_next_measurement</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.has_next_measurement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.has_next_measurement" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.integration_time">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">integration_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.integration_time" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.operation_mode">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">operation_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cuvis.cuvis_types.OperationMode" title="cuvis.cuvis_types.OperationMode"><span class="pre">OperationMode</span></a></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.operation_mode" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.queue_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">queue_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.queue_size" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.queue_used">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">queue_used</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.queue_used" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.register_state_change_callback">
+<span class="sig-name descname"><span class="pre">register_state_change_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cuvis.cuvis_types.HardwareState" title="cuvis.cuvis_types.HardwareState"><span class="pre">HardwareState</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.register_state_change_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.register_state_change_callback" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.reset_state_change_callback">
+<span class="sig-name descname"><span class="pre">reset_state_change_callback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.reset_state_change_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.reset_state_change_callback" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.session_info">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">session_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cuvis.cuvis_aux.SessionData" title="cuvis.cuvis_aux.SessionData"><span class="pre">SessionData</span></a></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.session_info" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.set_auto_exp_async">
+<span class="sig-name descname"><span class="pre">set_auto_exp_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Async.Async" title="cuvis.Async.Async"><span class="pre">Async</span></a></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.set_auto_exp_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.set_auto_exp_async" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.set_auto_exp_comp_async">
+<span class="sig-name descname"><span class="pre">set_auto_exp_comp_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Async.Async" title="cuvis.Async.Async"><span class="pre">Async</span></a></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.set_auto_exp_comp_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.set_auto_exp_comp_async" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.set_average_async">
+<span class="sig-name descname"><span class="pre">set_average_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Async.Async" title="cuvis.Async.Async"><span class="pre">Async</span></a></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.set_average_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.set_average_async" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.set_binning_async">
+<span class="sig-name descname"><span class="pre">set_binning_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Async.Async" title="cuvis.Async.Async"><span class="pre">Async</span></a></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.set_binning_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.set_binning_async" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.set_continuous">
+<span class="sig-name descname"><span class="pre">set_continuous</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.set_continuous"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.set_continuous" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.set_continuous_async">
+<span class="sig-name descname"><span class="pre">set_continuous_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Async.Async" title="cuvis.Async.Async"><span class="pre">Async</span></a></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.set_continuous_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.set_continuous_async" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.set_fps_async">
+<span class="sig-name descname"><span class="pre">set_fps_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Async.Async" title="cuvis.Async.Async"><span class="pre">Async</span></a></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.set_fps_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.set_fps_async" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.set_integration_time_async">
+<span class="sig-name descname"><span class="pre">set_integration_time_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Async.Async" title="cuvis.Async.Async"><span class="pre">Async</span></a></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.set_integration_time_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.set_integration_time_async" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.set_operation_mode_async">
+<span class="sig-name descname"><span class="pre">set_operation_mode_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.cuvis_types.OperationMode" title="cuvis.cuvis_types.OperationMode"><span class="pre">OperationMode</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Async.Async" title="cuvis.Async.Async"><span class="pre">Async</span></a></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.set_operation_mode_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.set_operation_mode_async" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.state">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cuvis.cuvis_types.HardwareState" title="cuvis.cuvis_types.HardwareState"><span class="pre">HardwareState</span></a></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.state" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.Component">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.AcquisitionContext.</span></span><span class="sig-name descname"><span class="pre">Component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">acq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext" title="cuvis.AcquisitionContext.AcquisitionContext"><span class="pre">AcquisitionContext</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#Component"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.Component" title="Link to this definition"></a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.Component.available_pixel_formats">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">available_pixel_formats</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#cuvis.AcquisitionContext.Component.available_pixel_formats" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.Component.gain">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gain</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.Component.gain" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.Component.integration_time_factor">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">integration_time_factor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.Component.integration_time_factor" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.Component.online">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">online</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.Component.online" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.Component.pixel_format">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pixel_format</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.Component.pixel_format" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.Component.temperature">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">temperature</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.Component.temperature" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-cuvis.Async">
 <dt class="sig sig-object py" id="cuvis.Async.Async">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.Async.</span></span><span class="sig-name descname"><span class="pre">Async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/Async.html#Async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Async.Async" title="Link to this definition"></a></dt>
 <dd><dl class="py method">
@@ -891,6 +1177,46 @@
 
 </dd></dl>
 
+<dl class="py class" id="module-cuvis.Export">
+<dt class="sig sig-object py" id="cuvis.Export.CubeExporter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.Export.</span></span><span class="sig-name descname"><span class="pre">CubeExporter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.FileWriteSettings.SaveArgs" title="cuvis.FileWriteSettings.SaveArgs"><span class="pre">SaveArgs</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/Export.html#CubeExporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Export.CubeExporter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cuvis.Export.EnviExporter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.Export.</span></span><span class="sig-name descname"><span class="pre">EnviExporter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ge</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.FileWriteSettings.EnviExportSettings" title="cuvis.FileWriteSettings.EnviExportSettings"><span class="pre">EnviExportSettings</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/Export.html#EnviExporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Export.EnviExporter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cuvis.Export.Exporter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.Export.</span></span><span class="sig-name descname"><span class="pre">Exporter</span></span><a class="reference internal" href="_modules/cuvis/Export.html#Exporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Export.Exporter" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Export.Exporter.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></span></span><a class="reference internal" href="_modules/cuvis/Export.html#Exporter.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Export.Exporter.apply" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Export.Exporter.flush">
+<span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/Export.html#Exporter.flush"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Export.Exporter.flush" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Export.Exporter.queue_used">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">queue_used</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.Export.Exporter.queue_used" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cuvis.Export.TiffExporter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.Export.</span></span><span class="sig-name descname"><span class="pre">TiffExporter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.FileWriteSettings.TiffExportSettings" title="cuvis.FileWriteSettings.TiffExportSettings"><span class="pre">TiffExportSettings</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/Export.html#TiffExporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Export.TiffExporter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cuvis.Export.ViewExporter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.Export.</span></span><span class="sig-name descname"><span class="pre">ViewExporter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.FileWriteSettings.ViewExportSettings" title="cuvis.FileWriteSettings.ViewExportSettings"><span class="pre">ViewExportSettings</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/Export.html#ViewExporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Export.ViewExporter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py class" id="module-cuvis.FileWriteSettings">
 <dt class="sig sig-object py" id="cuvis.FileWriteSettings.EnviExportSettings">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.FileWriteSettings.</span></span><span class="sig-name descname"><span class="pre">EnviExportSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">export_dir:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_selection:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectra_multiplier:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_scale:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_interpolation_type:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningInterpolationType</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningInterpolationType.Linear:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_algorithm:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningAlgorithm</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningAlgorithm.CubertMacroPixel:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_pan_sharpen_cube:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_pan:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_fullscale_pan:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permissive:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/FileWriteSettings.html#EnviExportSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.FileWriteSettings.EnviExportSettings" title="Link to this definition"></a></dt>
@@ -1043,7 +1369,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cuvis.FileWriteSettings.ViewExportSettings">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.FileWriteSettings.</span></span><span class="sig-name descname"><span class="pre">ViewExportSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">export_dir:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_selection:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectra_multiplier:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_scale:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_interpolation_type:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningInterpolationType</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningInterpolationType.Linear:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_algorithm:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningAlgorithm</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningAlgorithm.CubertMacroPixel:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_pan_sharpen_cube:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_pan:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_fullscale_pan:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permissive:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userplugin:</span> <span class="pre">dataclasses.InitVar[str]</span> <span class="pre">=</span> <span class="pre">&lt;property</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fe30275a180&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/FileWriteSettings.html#ViewExportSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.FileWriteSettings.ViewExportSettings" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.FileWriteSettings.</span></span><span class="sig-name descname"><span class="pre">ViewExportSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">export_dir:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_selection:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectra_multiplier:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_scale:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_interpolation_type:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningInterpolationType</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningInterpolationType.Linear:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_algorithm:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningAlgorithm</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningAlgorithm.CubertMacroPixel:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_pan_sharpen_cube:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_pan:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_fullscale_pan:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permissive:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userplugin:</span> <span class="pre">dataclasses.InitVar[str]</span> <span class="pre">=</span> <span class="pre">&lt;property</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f84e4f16d10&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/FileWriteSettings.html#ViewExportSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.FileWriteSettings.ViewExportSettings" title="Link to this definition"></a></dt>
 <dd><dl class="py property">
 <dt class="sig sig-object py" id="cuvis.FileWriteSettings.ViewExportSettings.userplugin">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">userplugin</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cuvis.FileWriteSettings.ViewExportSettings.userplugin" title="Link to this definition"></a></dt>
@@ -1053,7 +1379,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cuvis.FileWriteSettings.ViewerSettings">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.FileWriteSettings.</span></span><span class="sig-name descname"><span class="pre">ViewerSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userplugin:</span> <span class="pre">dataclasses.InitVar[str]</span> <span class="pre">=</span> <span class="pre">&lt;property</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fe3027c51d0&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_scale:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_interpolation_type:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningInterpolationType</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningInterpolationType.Linear:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_algorithm:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningAlgorithm</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningAlgorithm.CubertMacroPixel:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_pan_sharpen_cube:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complete:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blend_opacity:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/FileWriteSettings.html#ViewerSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.FileWriteSettings.ViewerSettings" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.FileWriteSettings.</span></span><span class="sig-name descname"><span class="pre">ViewerSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userplugin:</span> <span class="pre">dataclasses.InitVar[str]</span> <span class="pre">=</span> <span class="pre">&lt;property</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f84e4e813b0&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_scale:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_interpolation_type:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningInterpolationType</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningInterpolationType.Linear:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_algorithm:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningAlgorithm</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningAlgorithm.CubertMacroPixel:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_pan_sharpen_cube:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complete:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blend_opacity:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/FileWriteSettings.html#ViewerSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.FileWriteSettings.ViewerSettings" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="cuvis.FileWriteSettings.ViewerSettings.blend_opacity">
 <span class="sig-name descname"><span class="pre">blend_opacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#cuvis.FileWriteSettings.ViewerSettings.blend_opacity" title="Link to this definition"></a></dt>
@@ -1350,6 +1676,66 @@ trade-offs are acceptable.</p>
 
 </dd></dl>
 
+<dl class="py class" id="module-cuvis.ProcessingContext">
+<dt class="sig sig-object py" id="cuvis.ProcessingContext.ProcessingContext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.ProcessingContext.</span></span><span class="sig-name descname"><span class="pre">ProcessingContext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.Calibration.Calibration" title="cuvis.Calibration.Calibration"><span class="pre">Calibration</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#cuvis.SessionFile.SessionFile" title="cuvis.SessionFile.SessionFile"><span class="pre">SessionFile</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/ProcessingContext.html#ProcessingContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.ProcessingContext.ProcessingContext" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="cuvis.ProcessingContext.ProcessingContext.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></span></span><a class="reference internal" href="_modules/cuvis/ProcessingContext.html#ProcessingContext.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.ProcessingContext.ProcessingContext.apply" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.ProcessingContext.ProcessingContext.calc_distance">
+<span class="sig-name descname"><span class="pre">calc_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distMM</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/cuvis/ProcessingContext.html#ProcessingContext.calc_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.ProcessingContext.ProcessingContext.calc_distance" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.ProcessingContext.ProcessingContext.calibration_id">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">calibration_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cuvis.ProcessingContext.ProcessingContext.calibration_id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.ProcessingContext.ProcessingContext.clear_reference">
+<span class="sig-name descname"><span class="pre">clear_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">refType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.cuvis_types.ReferenceType" title="cuvis.cuvis_types.ReferenceType"><span class="pre">ReferenceType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/ProcessingContext.html#ProcessingContext.clear_reference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.ProcessingContext.ProcessingContext.clear_reference" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.ProcessingContext.ProcessingContext.get_processing_args">
+<span class="sig-name descname"><span class="pre">get_processing_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.FileWriteSettings.ProcessingArgs" title="cuvis.FileWriteSettings.ProcessingArgs"><span class="pre">ProcessingArgs</span></a></span></span><a class="reference internal" href="_modules/cuvis/ProcessingContext.html#ProcessingContext.get_processing_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.ProcessingContext.ProcessingContext.get_processing_args" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.ProcessingContext.ProcessingContext.get_reference">
+<span class="sig-name descname"><span class="pre">get_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">refType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.cuvis_types.ReferenceType" title="cuvis.cuvis_types.ReferenceType"><span class="pre">ReferenceType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></span></span><a class="reference internal" href="_modules/cuvis/ProcessingContext.html#ProcessingContext.get_reference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.ProcessingContext.ProcessingContext.get_reference" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.ProcessingContext.ProcessingContext.has_reference">
+<span class="sig-name descname"><span class="pre">has_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">refType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.cuvis_types.ReferenceType" title="cuvis.cuvis_types.ReferenceType"><span class="pre">ReferenceType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/cuvis/ProcessingContext.html#ProcessingContext.has_reference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.ProcessingContext.ProcessingContext.has_reference" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.ProcessingContext.ProcessingContext.is_capable">
+<span class="sig-name descname"><span class="pre">is_capable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.FileWriteSettings.ProcessingArgs" title="cuvis.FileWriteSettings.ProcessingArgs"><span class="pre">ProcessingArgs</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/cuvis/ProcessingContext.html#ProcessingContext.is_capable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.ProcessingContext.ProcessingContext.is_capable" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.ProcessingContext.ProcessingContext.processing_mode">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">processing_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cuvis.cuvis_types.ProcessingMode" title="cuvis.cuvis_types.ProcessingMode"><span class="pre">ProcessingMode</span></a></em><a class="headerlink" href="#cuvis.ProcessingContext.ProcessingContext.processing_mode" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.ProcessingContext.ProcessingContext.set_processing_args">
+<span class="sig-name descname"><span class="pre">set_processing_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.FileWriteSettings.ProcessingArgs" title="cuvis.FileWriteSettings.ProcessingArgs"><span class="pre">ProcessingArgs</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/ProcessingContext.html#ProcessingContext.set_processing_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.ProcessingContext.ProcessingContext.set_processing_args" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.ProcessingContext.ProcessingContext.set_reference">
+<span class="sig-name descname"><span class="pre">set_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">refType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.cuvis_types.ReferenceType" title="cuvis.cuvis_types.ReferenceType"><span class="pre">ReferenceType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/ProcessingContext.html#ProcessingContext.set_reference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.ProcessingContext.ProcessingContext.set_reference" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class" id="module-cuvis.SessionFile">
 <dt class="sig sig-object py" id="cuvis.SessionFile.SessionFile">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.SessionFile.</span></span><span class="sig-name descname"><span class="pre">SessionFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/SessionFile.html#SessionFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.SessionFile.SessionFile" title="Link to this definition"></a></dt>
@@ -1396,6 +1782,161 @@ trade-offs are acceptable.</p>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="cuvis.Viewer.Viewer.apply">
 <span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ImageData</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/cuvis/Viewer.html#Viewer.apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Viewer.Viewer.apply" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-cuvis.Worker">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.Worker.</span></span><span class="sig-name descname"><span class="pre">Worker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.FileWriteSettings.WorkerSettings" title="cuvis.FileWriteSettings.WorkerSettings"><span class="pre">WorkerSettings</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker" title="Link to this definition"></a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.can_drop_results">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">can_drop_results</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#cuvis.Worker.Worker.can_drop_results" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.can_skip_measurements">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">can_skip_measurements</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#cuvis.Worker.Worker.can_skip_measurements" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.can_skip_supplementary">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">can_skip_supplementary</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#cuvis.Worker.Worker.can_skip_supplementary" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.drop_all_queued">
+<span class="sig-name descname"><span class="pre">drop_all_queued</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.drop_all_queued"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.drop_all_queued" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.get_next_result">
+<span class="sig-name descname"><span class="pre">get_next_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Worker.WorkerResult" title="cuvis.Worker.WorkerResult"><span class="pre">WorkerResult</span></a></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.get_next_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.get_next_result" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.get_next_result_async">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_next_result_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#cuvis.Worker.WorkerResult" title="cuvis.Worker.WorkerResult"><span class="pre">WorkerResult</span></a></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.get_next_result_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.get_next_result_async" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.has_next_result">
+<span class="sig-name descname"><span class="pre">has_next_result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.has_next_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.has_next_result" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.ingest_mesu">
+<span class="sig-name descname"><span class="pre">ingest_mesu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.ingest_mesu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.ingest_mesu" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.ingest_session_file">
+<span class="sig-name descname"><span class="pre">ingest_session_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.SessionFile.SessionFile" title="cuvis.SessionFile.SessionFile"><span class="pre">SessionFile</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_selection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.ingest_session_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.ingest_session_file" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.input_queue_limit">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">input_queue_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.Worker.Worker.input_queue_limit" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.is_processing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_processing</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#cuvis.Worker.Worker.is_processing" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.is_processing_mandatory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_processing_mandatory</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#cuvis.Worker.Worker.is_processing_mandatory" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.mandatory_queue_limit">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mandatory_queue_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.Worker.Worker.mandatory_queue_limit" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.output_queue_limit">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_queue_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.Worker.Worker.output_queue_limit" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.query_session_progress">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_session_progress</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#cuvis.Worker.Worker.query_session_progress" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.queue_used">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">queue_used</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.Worker.Worker.queue_used" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.register_worker_callback">
+<span class="sig-name descname"><span class="pre">register_worker_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cuvis.Worker.WorkerResult" title="cuvis.Worker.WorkerResult"><span class="pre">WorkerResult</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.register_worker_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.register_worker_callback" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.reset_worker_callback">
+<span class="sig-name descname"><span class="pre">reset_worker_callback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.reset_worker_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.reset_worker_callback" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.set_acquisition_context">
+<span class="sig-name descname"><span class="pre">set_acquisition_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext" title="cuvis.AcquisitionContext.AcquisitionContext"><span class="pre">AcquisitionContext</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.set_acquisition_context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.set_acquisition_context" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.set_exporter">
+<span class="sig-name descname"><span class="pre">set_exporter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.Export.Exporter" title="cuvis.Export.Exporter"><span class="pre">Exporter</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.set_exporter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.set_exporter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.set_processing_context">
+<span class="sig-name descname"><span class="pre">set_processing_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.ProcessingContext.ProcessingContext" title="cuvis.ProcessingContext.ProcessingContext"><span class="pre">ProcessingContext</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.set_processing_context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.set_processing_context" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.set_viewer">
+<span class="sig-name descname"><span class="pre">set_viewer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.Viewer.Viewer" title="cuvis.Viewer.Viewer"><span class="pre">Viewer</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.set_viewer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.set_viewer" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.start_processing">
+<span class="sig-name descname"><span class="pre">start_processing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.start_processing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.start_processing" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.state">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">state</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cuvis.cuvis_aux.WorkerState" title="cuvis.cuvis_aux.WorkerState"><span class="pre">WorkerState</span></a></em><a class="headerlink" href="#cuvis.Worker.Worker.state" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.stop_processing">
+<span class="sig-name descname"><span class="pre">stop_processing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/Worker.html#Worker.stop_processing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.Worker.stop_processing" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.supplementary_queue_limit">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">supplementary_queue_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.Worker.Worker.supplementary_queue_limit" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.Worker.Worker.threads_busy">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">threads_busy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.Worker.Worker.threads_busy" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cuvis.Worker.WorkerResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.Worker.</span></span><span class="sig-name descname"><span class="pre">WorkerResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">cuvis.Measurement.Measurement</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">cuvis.cube_utils.ImageData</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/Worker.html#WorkerResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Worker.WorkerResult" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="cuvis.Worker.WorkerResult.mesu">
+<span class="sig-name descname"><span class="pre">mesu</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cuvis.Measurement.Measurement" title="cuvis.Measurement.Measurement"><span class="pre">Measurement</span></a></em><a class="headerlink" href="#cuvis.Worker.WorkerResult.mesu" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cuvis.Worker.WorkerResult.view">
+<span class="sig-name descname"><span class="pre">view</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ImageData</span></em><a class="headerlink" href="#cuvis.Worker.WorkerResult.view" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

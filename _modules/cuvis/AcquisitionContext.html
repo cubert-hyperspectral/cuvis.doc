@@ -1,0 +1,751 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cuvis.AcquisitionContext &mdash; Cuvis SDK 3.2.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=eb155f5e"></script>
+      <script src="../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Cuvis SDK
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdkuserguide.html">SDK User’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cwrapper.html">Cuvis C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cppwrapper.html">Cuvis C++ API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pythonwrapper.html">Cuvis Python API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Cuvis SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">cuvis.AcquisitionContext</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for cuvis.AcquisitionContext</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">._cuvis_il</span> <span class="kn">import</span> <span class="n">cuvis_il</span>
+<span class="kn">from</span> <span class="nn">.Async</span> <span class="kn">import</span> <span class="n">Async</span><span class="p">,</span> <span class="n">AsyncMesu</span>
+<span class="kn">from</span> <span class="nn">.Calibration</span> <span class="kn">import</span> <span class="n">Calibration</span>
+<span class="kn">from</span> <span class="nn">.General</span> <span class="kn">import</span> <span class="n">ComponentInfo</span>
+<span class="kn">from</span> <span class="nn">.Measurement</span> <span class="kn">import</span> <span class="n">Measurement</span>
+<span class="kn">from</span> <span class="nn">.SessionFile</span> <span class="kn">import</span> <span class="n">SessionFile</span>
+<span class="kn">from</span> <span class="nn">.cuvis_aux</span> <span class="kn">import</span> <span class="n">SDKException</span><span class="p">,</span> <span class="n">SessionData</span>
+<span class="kn">from</span> <span class="nn">.cuvis_types</span> <span class="kn">import</span> <span class="n">HardwareState</span><span class="p">,</span> <span class="n">OperationMode</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Coroutine</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Awaitable</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">.doc</span> <span class="kn">import</span> <span class="n">copydoc</span>
+
+<span class="kn">import</span> <span class="nn">cuvis.cuvis_types</span> <span class="k">as</span> <span class="nn">internal</span>
+
+<span class="kn">import</span> <span class="nn">asyncio</span> <span class="k">as</span> <span class="nn">a</span>
+
+
+<div class="viewcode-block" id="AcquisitionContext">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext">[docs]</a>
+<span class="k">class</span> <span class="nc">AcquisitionContext</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Calibration</span><span class="p">,</span> <span class="n">SessionFile</span><span class="p">],</span> <span class="o">*</span><span class="p">,</span> <span class="n">simulate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_simulate</span> <span class="o">=</span> <span class="n">simulate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_state_poll_task</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">Calibration</span><span class="p">):</span>
+            <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_create_from_calib</span><span class="p">(</span>
+                    <span class="n">base</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_ptr</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">SessionFile</span><span class="p">):</span>
+            <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> \
+                    <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_create_from_session_file</span><span class="p">(</span>
+                        <span class="n">base</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_simulate</span><span class="p">),</span> <span class="n">_ptr</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">(</span>
+                <span class="s2">&quot;Could not interpret input of type </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">base</span><span class="p">)))</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_get_state</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HardwareState</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_cuvis_hardware_state_t</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_get_state</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">internal</span><span class="o">.</span><span class="n">__HardwareState__</span><span class="p">[</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_cuvis_hardware_state_t_value</span><span class="p">(</span><span class="n">val</span><span class="p">)]</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_get_component_count</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">component_count</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_get_component_count</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_online_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_get_component_online</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_online_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">idref</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_get_component_info</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_get_component_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ComponentInfo</span><span class="p">:</span>
+        <span class="n">ci</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_component_info_t</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_get_component_info</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">idref</span><span class="p">,</span> <span class="n">ci</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ComponentInfo</span><span class="o">.</span><span class="n">_from_internal</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_queue_size_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">queue_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_queue_size_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@queue_size</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_queue_size_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">queue_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_queue_size_set</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_gain_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_get_gain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_double</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_gain_get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span>
+                                                              <span class="n">idref</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_double_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_gain_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_set_gain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_gain_set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span>
+                                                              <span class="n">idref</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_gain_set_async</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_set_gain_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Async</span><span class="p">:</span>
+        <span class="n">_pAsync</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_gain_set_async</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">idref</span><span class="p">,</span> <span class="n">_pAsync</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Async</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_pAsync</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_operation_mode_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">operation_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OperationMode</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_cuvis_operation_mode_t</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_operation_mode_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">internal</span><span class="o">.</span><span class="n">__OperationMode__</span><span class="p">[</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_cuvis_operation_mode_t_value</span><span class="p">(</span><span class="n">val</span><span class="p">)]</span>
+
+    <span class="nd">@operation_mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_operation_mode_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">operation_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="n">OperationMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_operation_mode_set</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">internal</span><span class="o">.</span><span class="n">__CuvisOperationMode__</span><span class="p">[</span><span class="n">val</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="AcquisitionContext.set_operation_mode_async">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_operation_mode_async">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_operation_mode_set_async</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_operation_mode_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="n">OperationMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Async</span><span class="p">:</span>
+        <span class="n">_pAsync</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> \
+                <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_operation_mode_set_async</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_pAsync</span><span class="p">,</span>
+                    <span class="n">internal</span><span class="o">.</span><span class="n">__CuvisOperationMode__</span><span class="p">[</span><span class="n">val</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Async</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_pAsync</span><span class="p">))</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_integration_time_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">integration_time</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_double</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_integration_time_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_double_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@integration_time</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_integration_time_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">integration_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_integration_time_set</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="AcquisitionContext.set_integration_time_async">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_integration_time_async">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_integration_time_set_async</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_integration_time_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Async</span><span class="p">:</span>
+        <span class="n">_pAsync</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> \
+                <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_integration_time_set_async</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_pAsync</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Async</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_pAsync</span><span class="p">))</span></div>
+
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_integration_time_factor_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_get_integration_time_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_double</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> \
+                <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_integration_time_factor_get</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">idref</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_double_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_integration_time_factor_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_set_integration_time_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> \
+                <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_integration_time_factor_set</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">idref</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_integration_time_factor_set_async</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_set_integration_time_factor_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Async</span><span class="p">:</span>
+        <span class="n">_pasync</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> \
+                <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_integration_time_factor_set_async</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">idref</span><span class="p">,</span> <span class="n">_pasync</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Async</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_pasync</span><span class="p">))</span>
+
+<div class="viewcode-block" id="AcquisitionContext.capture">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.capture">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_capture_async</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">capture</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_interal</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">AsyncMesu</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">to_interal</span><span class="p">:</span>
+            <span class="n">_pasync</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_capture_async</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_pasync</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">AsyncMesu</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_pasync</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_capture_async</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="AcquisitionContext.capture_at">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.capture_at">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_capture</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">capture_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Measurement</span><span class="p">:</span>
+        <span class="n">this_mesu</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_capture</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">this_mesu</span><span class="p">,</span> <span class="n">timeout_ms</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Measurement</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">this_mesu</span><span class="p">))</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_fps_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">fps</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_double</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_fps_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_double_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@fps</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_fps_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">fps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_fps_set</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="AcquisitionContext.set_fps_async">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_fps_async">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_fps_set_async</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_fps_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Async</span><span class="p">:</span>
+        <span class="n">_pasync</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_fps_set_async</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_pasync</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Async</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_pasync</span><span class="p">))</span></div>
+
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_pixel_format_get_swig</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_get_comp_pixel_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_pixel_format_get_swig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="nb">id</span><span class="p">)</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_pixel_format_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_set_comp_pixel_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_pixel_format_set</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_available_pixel_format_get_swig</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_comp_available_pixel_formats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">pCount</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_available_pixel_format_count_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">pCount</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">pCount</span><span class="p">)</span>
+        <span class="n">formats</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+            <span class="n">formats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_available_pixel_format_get_swig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">i</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">formats</span>
+
+<div class="viewcode-block" id="AcquisitionContext.has_next_measurement">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.has_next_measurement">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_has_next_measurement</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">has_next_measurement</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_has_next_measurement</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="AcquisitionContext.get_next_measurement">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.get_next_measurement">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_get_next_measurement</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_next_measurement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Measurement</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_get_next_measurement</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">timeout_ms</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Measurement</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">))</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_get_session_info</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">session_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SessionData</span><span class="p">:</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_session_info_t</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_get_session_info</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">SessionData</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                           <span class="n">session</span><span class="o">.</span><span class="n">session_no</span><span class="p">,</span>
+                           <span class="n">session</span><span class="o">.</span><span class="n">sequence_no</span><span class="p">)</span>
+
+    <span class="nd">@session_info</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_set_session_info</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">session_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="n">SessionData</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_session_info_t</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">session</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">name</span>
+            <span class="n">session</span><span class="o">.</span><span class="n">sequence_no</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">sequence_number</span>
+            <span class="n">session</span><span class="o">.</span><span class="n">session_no</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">session_number</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Missing </span><span class="si">{}</span><span class="s2"> in SessionFile Info dictionary.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_set_session_info</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">session</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_queue_used_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">queue_used</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_queue_used_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_driver_queue_used_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_get_driver_queue_used</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_driver_queue_used_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">idref</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_hardware_queue_used_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_get_hardware_queue_used</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_hardware_queue_used_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">idref</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_driver_queue_size_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_get_driver_queue_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_driver_queue_size_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">idref</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_hardware_queue_size_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_get_hardware_queue_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_hardware_queue_size_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">idref</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_temperature_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_get_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idref</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_double</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_temperature_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">idref</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_double_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_average_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_average_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@average</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_average_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">avg</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_average_set</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">avg</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="AcquisitionContext.set_average_async">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_average_async">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_average_set_async</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_average_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">avg</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Async</span><span class="p">:</span>
+        <span class="n">_pasync</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_average_set_async</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_pasync</span><span class="p">,</span> <span class="n">avg</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Async</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_pasync</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="AcquisitionContext.set_continuous">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_continuous">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_continuous_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_continuous</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_continuous_set</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="AcquisitionContext.set_continuous_async">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_continuous_async">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_continuous_set_async</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_continuous_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Async</span><span class="p">:</span>
+        <span class="n">_pasync</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_continuous_set_async</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_pasync</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Async</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_pasync</span><span class="p">))</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_bandwidth_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">bandwidth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_bandwidth_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_ptr</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_auto_exp_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">auto_exp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_auto_exp_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_ptr</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">))</span>
+
+    <span class="nd">@auto_exp</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_auto_exp_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">auto_exp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_auto_exp_set</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="AcquisitionContext.set_auto_exp_async">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_auto_exp_async">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_auto_exp_set_async</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_auto_exp_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Async</span><span class="p">:</span>
+        <span class="n">_pasync</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_auto_exp_set_async</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_pasync</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Async</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_pasync</span><span class="p">))</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_auto_exp_comp_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">auto_exp_comp</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_double</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_auto_exp_comp_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_ptr</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_double_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">))</span>
+
+    <span class="nd">@auto_exp_comp</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_auto_exp_comp_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">auto_exp_comp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_auto_exp_comp_set</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="AcquisitionContext.set_auto_exp_comp_async">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_auto_exp_comp_async">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_auto_exp_comp_set_async</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_auto_exp_comp_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Async</span><span class="p">:</span>
+        <span class="n">_pasync</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_auto_exp_comp_set_async</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_pasync</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Async</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_pasync</span><span class="p">))</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_binning_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">binning</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_binning_get</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_ptr</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">))</span>
+
+    <span class="nd">@binning</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_binning_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">binning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_binning_set</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span>
+
+<div class="viewcode-block" id="AcquisitionContext.set_binning_async">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_binning_async">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_binning_set_async</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_binning_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Async</span><span class="p">:</span>
+        <span class="n">_pasync</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_binning_set_async</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_pasync</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Async</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_pasync</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="AcquisitionContext.register_state_change_callback">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.register_state_change_callback">[docs]</a>
+    <span class="k">def</span> <span class="nf">register_state_change_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">HardwareState</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]],</span> <span class="n">Awaitable</span><span class="p">[</span><span class="kc">None</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_state_change_callback</span><span class="p">()</span>
+
+        <span class="k">async</span> <span class="k">def</span> <span class="nf">_internal_state_loop</span><span class="p">():</span>
+            <span class="n">poll_time</span> <span class="o">=</span> <span class="mf">0.5</span>
+            <span class="n">last_state</span> <span class="o">=</span> <span class="n">HardwareState</span><span class="o">.</span><span class="n">Offline</span>
+            <span class="n">last_component_states</span> <span class="o">=</span> <span class="p">[(</span><span class="n">cmp</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+                                     <span class="k">for</span> <span class="n">cmp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">()]</span>
+            <span class="n">first_pending</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">state_changed</span> <span class="o">=</span> <span class="n">first_pending</span>
+                <span class="n">first_pending</span> <span class="o">=</span> <span class="kc">False</span>
+
+                <span class="n">current_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
+                <span class="k">if</span> <span class="n">last_state</span> <span class="o">!=</span> <span class="n">current_state</span><span class="p">:</span>
+                    <span class="n">state_changed</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">last_state</span> <span class="o">=</span> <span class="n">current_state</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cmp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">()):</span>
+                    <span class="n">comp_state</span> <span class="o">=</span> <span class="n">cmp</span><span class="o">.</span><span class="n">online</span><span class="p">()</span>
+                    <span class="n">last_comp_state</span> <span class="o">=</span> <span class="n">last_component_states</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+                    <span class="k">if</span> <span class="n">comp_state</span> <span class="o">!=</span> <span class="n">last_comp_state</span><span class="p">:</span>
+                        <span class="n">state_changed</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="n">last_component_states</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">last_component_states</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">comp_state</span>
+
+                <span class="k">if</span> <span class="n">state_changed</span><span class="p">:</span>
+                    <span class="k">await</span> <span class="n">callback</span><span class="p">(</span><span class="n">last_state</span><span class="p">,</span> <span class="n">last_component_states</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">poll_time</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_state_poll_task</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">_internal_state_loop</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="AcquisitionContext.reset_state_change_callback">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.reset_state_change_callback">[docs]</a>
+    <span class="k">def</span> <span class="nf">reset_state_change_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state_poll_task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_state_poll_task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_state_poll_task</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="AcquisitionContext.components">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.components">[docs]</a>
+    <span class="k">def</span> <span class="nf">components</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns an iterator over all components</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">component_count</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">Component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">pass</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_assign</span><span class="p">(</span><span class="n">_ptr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">)</span>
+        <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_acq_cont_free</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Component">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.AcquisitionContext.Component">[docs]</a>
+<span class="k">class</span> <span class="nc">Component</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">acq</span><span class="p">:</span> <span class="n">AcquisitionContext</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_acq</span> <span class="o">=</span> <span class="n">acq</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_idx</span> <span class="o">=</span> <span class="n">idx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">acq</span><span class="o">.</span><span class="n">_get_component_info</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_online_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">online</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acq</span><span class="o">.</span><span class="n">_get_component_online</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_temperature_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acq</span><span class="o">.</span><span class="n">_get_temperature</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_gain_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">gain</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acq</span><span class="o">.</span><span class="n">_get_gain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx</span><span class="p">)</span>
+
+    <span class="nd">@gain</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_gain_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">gain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acq</span><span class="o">.</span><span class="n">_set_gain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_integration_time_factor_get</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">integration_time_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acq</span><span class="o">.</span><span class="n">_get_integration_time_factor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx</span><span class="p">)</span>
+
+    <span class="nd">@integration_time_factor</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_integration_time_factor_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">integration_time_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acq</span><span class="o">.</span><span class="n">_set_integration_time_factor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_pixel_format_get_swig</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">pixel_format</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acq</span><span class="o">.</span><span class="n">_get_comp_pixel_format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx</span><span class="p">)</span>
+
+    <span class="nd">@pixel_format</span><span class="o">.</span><span class="n">setter</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_pixel_format_set</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">pixel_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_acq</span><span class="o">.</span><span class="n">_set_comp_pixel_format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_comp_available_pixel_format_get_swig</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">available_pixel_formats</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_acq</span><span class="o">.</span><span class="n">_comp_available_pixel_formats</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Cubert GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
