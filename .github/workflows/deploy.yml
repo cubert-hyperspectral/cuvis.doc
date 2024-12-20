@@ -56,7 +56,8 @@ jobs:
           cmake -B _build .
           cmake --build "_build"
           python3.9 -m sphinx -b html -Dbreathe_projects.cuvis=_build/doc/xml ./docs ./_build
-          touch ./_build/doc/sphinx/.nojekyll  
+          touch ./_build/doc/sphinx/.nojekyll
+          tree ./_build -d 3
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
