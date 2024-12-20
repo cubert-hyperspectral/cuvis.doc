@@ -55,8 +55,7 @@ jobs:
           mkdir _build
           cmake -B _build .
           cmake --build "_build"
-          cd docs
-          python3.9 -m sphinx build . ../_build
+          python3.9 -m sphinx build ./docs ./_build
           touch ./_build/doc/sphinx/.nojekyll  
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
