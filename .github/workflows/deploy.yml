@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - feature/extend_documentation
       
 permissions:
   contents: write
@@ -43,6 +44,7 @@ jobs:
           cmake --build "_pyil" --target cuvis_pyil --config Release
           cp _pyil/_cuvis_pyil.so ./cuvis.pyil/cuvis_il
           cp _pyil/cuvis_il.py ./cuvis.pyil/cuvis_il
+          cat _pyil/cuvis_il.py
           cd cuvis.pyil
           python3.9 -m pip install .
           cd ../cuvis.python
@@ -51,10 +53,13 @@ jobs:
       - name: Build Documentation
         run: |
           source venv/bin/activate
+          export CUVIS=/lib/cuvis
           mkdir _build
           cmake -B _build .
           cmake --build "_build"
-          touch ./_build/doc/sphinx/.nojekyll  
+          python3.9 -m sphinx -b html -Dbreathe_projects.cuvis=_build/doc/xml ./docs ./_build
+          touch ./_build/doc/sphinx/.nojekyll
+          tree ./_build -d 3
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
