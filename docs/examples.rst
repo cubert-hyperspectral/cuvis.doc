@@ -70,7 +70,7 @@ This example demonstrates how to load and process hyperspectral measurement data
       .. include:: ../cuvis.c.examples/04_changeDistance/main.c
 
    .. group-tab:: C++
-	  .. language:: c
+	  .. language:: cpp
       .. include:: ../cuvis.cpp.examples/04_changeDistance_cpp/main.cpp
 
    .. group-tab:: Python
@@ -89,7 +89,7 @@ This example demonstrates how to load and process hyperspectral measurement data
       .. include:: ../cuvis.c.examples/05_recordSingleImages/main.c
 
    .. group-tab:: C++
-	  .. language:: c
+	  .. language:: cpp
       .. include:: ../cuvis.cpp.examples/05_recordSingleImages_cpp/main.cpp
 
    .. group-tab:: Python
