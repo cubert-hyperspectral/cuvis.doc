@@ -1,6 +1,6 @@
 sphinx
 breathe
 sphinx-rtd-theme
-sphinx_code_tabs
+sphinx-tabs
 myst-parser
 typing-extensions

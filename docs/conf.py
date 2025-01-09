@@ -25,7 +25,7 @@ extensions = [
 	'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
-    'sphinx_code_tabs'
+    'sphinx_tabs.tabs'
 ]
 
 breathe_default_project = "cuvis"
