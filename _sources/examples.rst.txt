@@ -23,7 +23,7 @@ This example demonstrates how to load and process hyperspectral measurement data
 Reprocessing a Measurement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This example demonstrates how to load and process hyperspectral measurement data using the cuvis SDK. 
+This example demonstrates the process of reprocessing hyperspectral measurement data using the cuvis SDK.
 	  
 .. tabs::
 
@@ -42,7 +42,7 @@ This example demonstrates how to load and process hyperspectral measurement data
 Exporting a Measurement
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-This example demonstrates how to load and process hyperspectral measurement data using the cuvis SDK. 
+This example demonstrates exporting hyperspectral measurement data into various formats using the cuvis SDK.
   
 .. tabs::
 
@@ -61,7 +61,7 @@ This example demonstrates how to load and process hyperspectral measurement data
 Changing the Distance of a Measurement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This example demonstrates how to load and process hyperspectral measurement data using the cuvis SDK. 
+This example demonstrates how to update the distance parameter in hyperspectral measurement data using the cuvis SDK.
 
 .. tabs::
 
@@ -80,7 +80,7 @@ This example demonstrates how to load and process hyperspectral measurement data
 Recording single Measurements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This example demonstrates how to load and process hyperspectral measurement data using the cuvis SDK. 
+This example demonstrates how to capture single hyperspectral images using the cuvis SDK, with user-defined settings and parameters.
 
 .. tabs::
 
@@ -99,7 +99,7 @@ This example demonstrates how to load and process hyperspectral measurement data
 Recording a video
 ~~~~~~~~~~~~~~~~~
 
-This example demonstrates how to load and process hyperspectral measurement data using the cuvis SDK. 
+This example demonstrates how to record a video sequence of hyperspectral data using the cuvis SDK.
 
 .. tabs::
 
@@ -118,7 +118,7 @@ This example demonstrates how to load and process hyperspectral measurement data
 Rerecording a video from already recorded data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This example demonstrates how to load and process hyperspectral measurement data using the cuvis SDK. 
+This example demonstrates how to simulate recording a hyperspectral video sequence using data from a pre-existing session file. It replicates the process of live video recording without requiring an actual camera.
 	  
 .. tabs::
 
