@@ -9,7 +9,7 @@
   <title>Examples &mdash; Cuvis SDK 3.2.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-      <link rel="stylesheet" type="text/css" href="_static/code-tabs.css?v=1bc26e2f" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -17,7 +17,7 @@
       <script src="_static/documentation_options.js?v=eb155f5e"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/code-tabs.js?v=c983d12e"></script>
+      <script src="_static/tabs.js?v=3030b3cb"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -47,7 +47,10 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdkuserguide.html">SDK User’s Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#loading-a-measurment">Loading a Measurment</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="cwrapper.html">Cuvis C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cppwrapper.html">Cuvis C++ API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonwrapper.html">Cuvis Python API</a></li>
@@ -79,31 +82,46 @@
              
   <section id="examples">
 <h1>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
-<p>Below are examples of the same functionality in different programming languages.</p>
-<div class="tabs docutils container" data-tabgroup="">
-<ul class="tabbar">
-<li class="tabbutton selected" data-id="0" onclick="sphinx_code_tabs_onclick(this)">
-c</li><li class="tabbutton" data-id="1" onclick="sphinx_code_tabs_onclick(this)">
-cpp</li><li class="tabbutton" data-id="2" onclick="sphinx_code_tabs_onclick(this)">
-python</li></ul><div class="tab codetab selected" data-id="0">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">..</span><span class="w"> </span><span class="n">literalinclude</span><span class="o">::</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">cuvis</span><span class="p">.</span><span class="n">c</span><span class="p">.</span><span class="n">examples</span><span class="o">/</span><span class="mo">01</span><span class="n">_loadMeasurement</span><span class="o">/</span><span class="n">main</span><span class="p">.</span><span class="n">c</span>
-<span class="w">   </span><span class="o">:</span><span class="n">language</span><span class="o">:</span><span class="w"> </span><span class="n">c</span>
-<span class="w">   </span><span class="o">:</span><span class="n">linenos</span><span class="o">:</span>
+<section id="loading-a-measurment">
+<h2>Loading a Measurment<a class="headerlink" href="#loading-a-measurment" title="Link to this heading"></a></h2>
+<p>This example demonstrates how to load and process hyperspectral measurement data using the cuvis SDK.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0"><p>Problems with “include” directive path:
+InputError: [Errno 2] No such file or directory: ‘../docs/cuvis.c.examples/01_loadMeasurement/main.c’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">include</span><span class="p">::</span> <span class="o">./</span><span class="n">cuvis</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">examples</span><span class="o">/</span><span class="mi">01</span><span class="n">_loadMeasurement</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">c</span>
 </pre></div>
 </div>
-</div><div class="tab codetab" data-id="1">
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">..</span><span class="w"> </span><span class="n">literalinclude</span><span class="o">::</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">cuvis</span><span class="p">.</span><span class="n">c</span><span class="p">.</span><span class="n">examples</span><span class="o">/</span><span class="mo">01</span><span class="n">_loadMeasurement_cpp</span><span class="o">/</span><span class="n">main</span><span class="p">.</span><span class="n">cpp</span>
-<span class="w">   </span><span class="o">:</span><span class="n">language</span><span class="o">:</span><span class="w"> </span><span class="n">cpp</span>
-<span class="w">   </span><span class="o">:</span><span class="n">linenos</span><span class="o">:</span>
+</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1"><p>Problems with “include” directive path:
+InputError: [Errno 2] No such file or directory: ‘../docs/cuvis.c.examples/01_loadMeasurement_cpp/main.cpp’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">include</span><span class="p">::</span> <span class="o">./</span><span class="n">cuvis</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">examples</span><span class="o">/</span><span class="mi">01</span><span class="n">_loadMeasurement_cpp</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">cpp</span>
 </pre></div>
 </div>
-</div><div class="tab codetab" data-id="2">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">literalinclude</span><span class="p">::</span> <span class="o">./</span><span class="n">cuvis</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">examples</span><span class="o">/</span><span class="n">EX01_loadMeasurement</span><span class="o">.</span><span class="n">py</span>
-   <span class="p">:</span><span class="n">language</span><span class="p">:</span> <span class="n">python</span>
-   <span class="p">:</span><span class="n">linenos</span><span class="p">:</span>
+</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1"><p>Problems with “include” directive path:
+InputError: [Errno 2] No such file or directory: ‘../docs/cuvis.python.examples/EX01_loadMeasurement.py’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">include</span><span class="p">::</span> <span class="o">./</span><span class="n">cuvis</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">examples</span><span class="o">/</span><span class="n">EX01_loadMeasurement</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-</div></div></section>
+</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">linenos<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</div></blockquote>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">linenos<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</div></blockquote>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">linenos<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</div></blockquote>
+</div></div>
+</section>
+</section>
 
 
            </div>

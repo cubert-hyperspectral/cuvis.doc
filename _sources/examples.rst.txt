@@ -1,24 +1,24 @@
 Examples
 ========
 
-Below are examples of the same functionality in different programming languages.
+Loading a Measurment
+~~~~~~~~~~~~~~~~~~~~
 
-.. code-tabs::
+This example demonstrates how to load and process hyperspectral measurement data using the cuvis SDK. 
 
-   .. code-tab:: c
+.. tabs::
 
-      .. literalinclude:: ./cuvis.c.examples/01_loadMeasurement/main.c
-         :language: c
+   .. tab::
+
+      .. include:: ./cuvis.c.examples/01_loadMeasurement/main.c
          :linenos:
 
-   .. code-tab:: cpp
+   .. tab::
 
-      .. literalinclude:: ./cuvis.c.examples/01_loadMeasurement_cpp/main.cpp
-         :language: cpp
+      .. include:: ./cuvis.c.examples/01_loadMeasurement_cpp/main.cpp
          :linenos:
 
-   .. code-tab:: python
+   .. tab::
 
-      .. literalinclude:: ./cuvis.python.examples/EX01_loadMeasurement.py
-         :language: python
+      .. include:: ./cuvis.python.examples/EX01_loadMeasurement.py
          :linenos:
