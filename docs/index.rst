@@ -11,6 +11,7 @@ Welcome to Cuvis SDK's documentation!
    
 	gettingstarted
 	sdkuserguide
+	examples
 	cwrapper
 	cppwrapper
 	pythonwrapper

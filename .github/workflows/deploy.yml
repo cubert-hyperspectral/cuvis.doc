@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - feature/extend_documentation
       
 permissions:
   contents: write

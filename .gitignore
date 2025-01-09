@@ -1,3 +1,4 @@
 /doc/html
 /.venv
 /docs/_build
+/docs/_buildhtml
