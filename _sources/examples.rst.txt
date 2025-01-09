@@ -9,11 +9,11 @@ This example demonstrates how to load and process hyperspectral measurement data
 .. tabs::
 
    .. group-tab:: C
-	  .. highlight:: c
+	  .. language:: c
       .. include:: ../cuvis.c.examples/01_loadMeasurement/main.c
 
    .. group-tab:: C++
-
+	  .. language:: c
       .. include:: ../cuvis.cpp.examples/01_loadMeasurement_cpp/main.cpp
 
    .. group-tab:: Python
@@ -28,11 +28,11 @@ This example demonstrates how to load and process hyperspectral measurement data
 .. tabs::
 
    .. group-tab:: C
-	  .. highlight:: c
+	  .. language:: c
       .. include:: ../cuvis.c.examples/02_reprocessMeasurement/main.c
 
    .. group-tab:: C++
-	  .. highlight:: c
+	  .. language:: c
       .. include:: ../cuvis.cpp.examples/02_reprocessMeasurement_cpp/main.cpp
 
    .. group-tab:: Python
@@ -47,11 +47,11 @@ This example demonstrates how to load and process hyperspectral measurement data
 .. tabs::
 
    .. group-tab:: C
-	  .. highlight:: c
+	  .. language:: c
       .. include:: ../cuvis.c.examples/03_exportMeasurement/main.c
 
    .. group-tab:: C++
-	  .. highlight:: c
+	  .. language:: c
       .. include:: ../cuvis.cpp.examples/03_exportMeasurement_cpp/main.cpp
 
    .. group-tab:: Python
@@ -66,11 +66,11 @@ This example demonstrates how to load and process hyperspectral measurement data
 .. tabs::
 
    .. group-tab:: C
-	  .. highlight:: c
+	  .. language:: c
       .. include:: ../cuvis.c.examples/04_changeDistance/main.c
 
    .. group-tab:: C++
-	  .. highlight:: c
+	  .. language:: cpp
       .. include:: ../cuvis.cpp.examples/04_changeDistance_cpp/main.cpp
 
    .. group-tab:: Python
@@ -85,11 +85,11 @@ This example demonstrates how to load and process hyperspectral measurement data
 .. tabs::
 
    .. group-tab:: C
-	  .. highlight:: c
+	  .. language:: c
       .. include:: ../cuvis.c.examples/05_recordSingleImages/main.c
 
    .. group-tab:: C++
-	  .. highlight:: c
+	  .. language:: cpp
       .. include:: ../cuvis.cpp.examples/05_recordSingleImages_cpp/main.cpp
 
    .. group-tab:: Python
@@ -104,11 +104,11 @@ This example demonstrates how to load and process hyperspectral measurement data
 .. tabs::
 
    .. group-tab:: C
-	  .. highlight:: c
+	  .. language:: c
       .. include:: ../cuvis.c.examples/06_recordVideo/main.c
 
    .. group-tab:: C++
-	  .. highlight:: c
+	  .. language:: c
       .. include:: ../cuvis.cpp.examples/06_recordVideo_cpp/main.cpp
 
    .. group-tab:: Python
@@ -123,11 +123,11 @@ This example demonstrates how to load and process hyperspectral measurement data
 .. tabs::
 
    .. group-tab:: C
-	  .. highlight:: c
+	  .. language:: c
       .. include:: ../cuvis.c.examples/07_recordVideoFromSessionFile/main.c
 
    .. group-tab:: C++
-	  .. highlight:: c
+	  .. language:: c
       .. include:: ../cuvis.cpp.examples/07_recordVideoFromSessionFile_cpp/main.cpp
 
    .. group-tab:: Python
