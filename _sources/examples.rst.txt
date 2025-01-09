@@ -8,17 +8,14 @@ This example demonstrates how to load and process hyperspectral measurement data
 
 .. tabs::
 
-   .. tab::
+   .. tab:: C
 
       .. include:: ../cuvis.c.examples/01_loadMeasurement/main.c
-         :linenos:
 
-   .. tab::
+   .. tab:: C++
 
-      .. include:: ../cuvis.c.examples/01_loadMeasurement_cpp/main.cpp
-         :linenos:
+      .. include:: ../cuvis.cpp.examples/01_loadMeasurement_cpp/main.cpp
 
-   .. tab::
+   .. tab:: Python
 
       .. include:: ../cuvis.python.examples/EX01_loadMeasurement.py
-         :linenos:
