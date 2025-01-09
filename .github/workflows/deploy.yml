@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - feature/extend_documentation
+      - feature/add_examples_description
       
 permissions:
   contents: write

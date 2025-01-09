@@ -10,3 +10,12 @@
 [submodule "cuvis.pyil"]
 	path = cuvis.pyil
 	url = https://github.com/cubert-hyperspectral/cuvis.pyil.git
+[submodule "cuvis.python.examples"]
+	path = cuvis.python.examples
+	url = https://github.com/cubert-hyperspectral/cuvis.python.examples
+[submodule "cuvis.cpp.examples"]
+	path = cuvis.cpp.examples
+	url = https://github.com/cubert-hyperspectral/cuvis.cpp.examples.git
+[submodule "cuvis.c.examples"]
+	path = cuvis.c.examples
+	url = https://github.com/cubert-hyperspectral/cuvis.c.examples.git
