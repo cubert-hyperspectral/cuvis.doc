@@ -6,8 +6,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>cuvis.Async &mdash; Cuvis SDK 3.2.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/code-tabs.css?v=1bc26e2f" />
 
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
@@ -15,6 +16,7 @@
       <script src="../../_static/documentation_options.js?v=eb155f5e"></script>
       <script src="../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/code-tabs.js?v=c983d12e"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -42,6 +44,7 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sdkuserguide.html">SDK User’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cwrapper.html">Cuvis C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cppwrapper.html">Cuvis C++ API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pythonwrapper.html">Cuvis Python API</a></li>
@@ -72,18 +75,18 @@
            <div itemprop="articleBody">
              
   <h1>Source code for cuvis.Async</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">._cuvis_il</span> <span class="kn">import</span> <span class="n">cuvis_il</span>
-<span class="kn">from</span> <span class="nn">.Measurement</span> <span class="kn">import</span> <span class="n">Measurement</span>
-<span class="kn">from</span> <span class="nn">.cuvis_aux</span> <span class="kn">import</span> <span class="n">SDKException</span>
-<span class="kn">from</span> <span class="nn">.cuvis_types</span> <span class="kn">import</span> <span class="n">AsyncResult</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">._cuvis_il</span><span class="w"> </span><span class="kn">import</span> <span class="n">cuvis_il</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Measurement</span><span class="w"> </span><span class="kn">import</span> <span class="n">Measurement</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.cuvis_aux</span><span class="w"> </span><span class="kn">import</span> <span class="n">SDKException</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.cuvis_types</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncResult</span>
 
-<span class="kn">import</span> <span class="nn">asyncio</span> <span class="k">as</span> <span class="nn">a</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">a</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span>
 
 
-<span class="k">def</span> <span class="nf">_to_ms</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_to_ms</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span> <span class="o">/</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">milliseconds</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
@@ -94,15 +97,15 @@
 
 <div class="viewcode-block" id="AsyncMesu">
 <a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Async.AsyncMesu">[docs]</a>
-<span class="k">class</span> <span class="nc">AsyncMesu</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handle</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AsyncMesu</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handle</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
 
     <span class="k">pass</span>
 
 <div class="viewcode-block" id="AsyncMesu.get">
 <a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Async.AsyncMesu.get">[docs]</a>
-    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_ms</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Measurement</span><span class="p">],</span> <span class="n">AsyncResult</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_ms</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Measurement</span><span class="p">],</span> <span class="n">AsyncResult</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -126,8 +129,8 @@
 
     <span class="c1"># Python Magic Methods</span>
 
-    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Measurement</span><span class="p">]:</span>
-        <span class="k">async</span> <span class="k">def</span> <span class="nf">_wait_for_return</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Measurement</span><span class="p">]:</span>
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_wait_for_return</span><span class="p">():</span>
             <span class="n">_status_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_cuvis_status_t</span><span class="p">()</span>
             <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_async_capture_status</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_status_ptr</span><span class="p">):</span>
@@ -139,7 +142,7 @@
                     <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">10.0</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">_wait_for_return</span><span class="p">()</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
         <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_assign</span><span class="p">(</span><span class="n">_ptr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">)</span>
         <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_async_capture_free</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
@@ -149,13 +152,13 @@
 
 <div class="viewcode-block" id="Async">
 <a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Async.Async">[docs]</a>
-<span class="k">class</span> <span class="nc">Async</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handle</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Async</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handle</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">handle</span>
 
 <div class="viewcode-block" id="Async.get">
 <a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Async.Async.get">[docs]</a>
-    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_ms</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">AsyncResult</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout_ms</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">AsyncResult</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -178,8 +181,8 @@
 
     <span class="c1"># Python Magic Methods</span>
 
-    <span class="k">def</span> <span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncResult</span><span class="p">:</span>
-        <span class="k">async</span> <span class="k">def</span> <span class="nf">_wait_for_return</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__await__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncResult</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_wait_for_return</span><span class="p">():</span>
             <span class="n">_status_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_cuvis_status_t</span><span class="p">()</span>
             <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_async_call_status</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_status_ptr</span><span class="p">):</span>
@@ -191,7 +194,7 @@
                     <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">10.0</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">_wait_for_return</span><span class="p">()</span><span class="o">.</span><span class="fm">__await__</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
         <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_assign</span><span class="p">(</span><span class="n">_ptr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">)</span>
         <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_async_call_free</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
