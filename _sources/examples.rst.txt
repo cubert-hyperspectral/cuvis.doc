@@ -105,15 +105,15 @@ This example demonstrates how to record a video sequence of hyperspectral data u
 
    .. group-tab:: C
 	  .. language:: c
-      .. include:: ../cuvis.c.examples/06_recordVideo/main.c
+      .. literalinclude:: ../cuvis.c.examples/06_recordVideo/main.c
 
    .. group-tab:: C++
 	  .. language:: cpp
-      .. include:: ../cuvis.cpp.examples/06_recordVideo_cpp/main.cpp
+      .. literalinclude:: ../cuvis.cpp.examples/06_recordVideo_cpp/main.cpp
 
    .. group-tab:: Python
 	  .. language:: python
-      .. literalinclude::../cuvis.python.examples/EX06_recordVideo.py
+      .. literalinclude:: ../cuvis.python.examples/EX06_recordVideo.py
 	  
 Rerecording a video from already recorded data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -2246,556 +2246,697 @@ int main(int argc, char* argv[])
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-Qw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-Qw==" name="Qw==" role="tab" tabindex="0">C</button><button aria-controls="panel-5-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-5-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-5-Qw==" class="sphinx-tabs-panel group-tab" id="panel-5-Qw==" name="Qw==" role="tabpanel" tabindex="0"><blockquote>
 <div></div></blockquote>
-<p>#include “cuvis.h”</p>
-<p>#include &lt;signal.h&gt;
-#include &lt;stdbool.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;</p>
-<dl class="simple">
-<dt>#ifdef WIN32</dt><dd><p>#include &lt;Windows.h&gt;</p>
-</dd>
-<dt>#else</dt><dd><p>#include &lt;unistd.h&gt;</p>
-</dd>
-</dl>
-<p>#endif</p>
-<p>int keepRunning = 1;</p>
-<p>void signal_handler(int sig)
-{</p>
-<blockquote>
-<div><p>printf(”nsignal received. Stopping acquisiton…n”);
-fflush(stdout);
-(void)sig;
-keepRunning = 0;</p>
-</div></blockquote>
-<p>}</p>
-<p>int main(int argc, char* argv[])
-{</p>
-<blockquote>
-<div><p>if (argc != 7)
-{</p>
-<blockquote>
-<div><p>printf(“To few Arguments! Please provide:n”);
-printf(“user settings directoryn”);
-printf(“factory directoryn”);
-printf(“name of recording directoryn”);
-printf(“exposure time in msn”);
-printf(“auto exposure [1/0]n”);
-printf(“target fpsn”);
-fflush(stdout);</p>
-<p>return -1;</p>
-</div></blockquote>
-<p>}</p>
-<p>char* const userSettingsDir = argv[1];
-char* const factoryDir = argv[2];
-char* const recDir = argv[3];
-char* const exposureString = argv[4];
-char* const autoExpString = argv[5];
-char* const fpsString = argv[6];</p>
-<p>int exposure_ms = atoi(exposureString); //in ms
-bool autoExp = false;
-if (atoi(autoExpString) == 1)
-{</p>
-<blockquote>
-<div><p>autoExp = true;</p>
-</div></blockquote>
-<p>}
-double fps = atof(fpsString);</p>
-<p>printf(“Example 06 video”);
-printf(”nUser Settings Dir: “);
-printf(userSettingsDir);
-printf(”nFactory Dir: “);
-printf(factoryDir);
-printf(”nRecording Dir: “);
-printf(recDir);
-printf(”nExposure in ms: %dn”, exposure_ms);
-printf(“Auto Exposure: %dn”, autoExp);
-printf(“Target FPS: %4.2fn”, fps);
-fflush(stdout);</p>
-<p>CUVIS_CALIB calib;
-CUVIS_ACQ_CONT acqCont;
-CUVIS_PROC_CONT procCont;</p>
-<p>printf(“loading user settings…n”);
-fflush(stdout);
-CUVIS_CHECK(cuvis_init(userSettingsDir, loglevel_debug));</p>
-<p>printf(“loading calibration…n”);
-fflush(stdout);
-CUVIS_CHECK(cuvis_calib_create_from_path(factoryDir, &amp;calib));</p>
-<p>printf(“loading acquisition context… n”);
-fflush(stdout);
-CUVIS_CHECK(cuvis_acq_cont_create_from_calib(calib, &amp;acqCont));</p>
-<p>printf(“load processing context n”);
-fflush(stdout);
-CUVIS_CHECK(cuvis_proc_cont_create_from_calib(calib, &amp;procCont));</p>
-<p>printf(“prepare saving of measurements… n”);
-fflush(stdout);
-CUVIS_EXPORTER cube_exporter;</p>
-<dl class="simple">
-<dt>CUVIS_EXPORT_GENERAL_SETTINGS general_settings = {</dt><dd><p>“”, //initializer list only takes const char*, leave empty and modify afterwards.
-“all”,
-1,
-0.0,
-pan_sharpening_interpolation_type_NearestNeighbor,
-pan_sharpening_algorithm_Noop,
-0,
-0};</p>
-</dd>
-</dl>
-<p>strcpy(general_settings.export_dir, recDir);</p>
-<p>CUVIS_EXPORT_CUBE_SETTINGS cube_settings;
-cube_settings.allow_fragmentation = 0;
-cube_settings.allow_overwrite = 1;
-cube_settings.allow_session_file = 1;
-cube_settings.fps = fps;
-cube_settings.operation_mode = OperationMode_Internal;
-cube_settings.allow_info_file = 1;
-cube_settings.hard_limit = 4;
-cube_settings.soft_limit = 2;</p>
-<dl class="simple">
-<dt>CUVIS_CHECK(cuvis_exporter_create_cube(</dt><dd><p>&amp;cube_exporter, general_settings, cube_settings));</p>
-</dd>
-</dl>
-<p>CUVIS_PROC_ARGS procArgs;
-procArgs.allow_recalib = 0;
-procArgs.processing_mode = Cube_Raw;</p>
-<p>CUVIS_SESSION_INFO sess = {“video”, 0, 0};
-CUVIS_CHECK(cuvis_acq_cont_set_session_info(acqCont, &amp;sess));</p>
-<p>printf(“waiting for camera to become online…n”);
-fflush(stdout);</p>
-<p>for (;;)
-{</p>
-<blockquote>
-<div><p>CUVIS_HARDWARE_STATE state;
-CUVIS_CHECK(cuvis_acq_cont_get_state(acqCont, &amp;state));</p>
-<p>if (state == hardware_state_online)
-{</p>
-<blockquote>
-<div><p>printf(”ncamera onlinen”);
-fflush(stdout);</p>
-<p>break;</p>
-</div></blockquote>
-<p>}
-if (state == hardware_state_partially_online)
-{</p>
-<blockquote>
-<div><p>printf(”ncamera partially onlinen”);
-fflush(stdout);</p>
-<p>break;</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-</div></blockquote>
-<dl class="simple">
-<dt>#ifdef WIN32</dt><dd><p>Sleep(1000);</p>
-</dd>
-<dt>#else</dt><dd><p>usleep(1000000);</p>
-</dd>
-</dl>
-<p>#endif</p>
-<blockquote>
-<div><blockquote>
-<div><p>printf(“.”);</p>
-</div></blockquote>
-<p>}</p>
-<p>printf(“component details:n”);
-fflush(stdout);</p>
-<p>CUVIS_INT compCount;
-CUVIS_CHECK(cuvis_acq_cont_get_component_count(acqCont, &amp;compCount));
-for (int compIdx = 0; compIdx &lt; compCount; compIdx++)
-{</p>
-<blockquote>
-<div><p>CUVIS_INT online;
-CUVIS_COMPONENT_INFO cinfo;</p>
-<p>CUVIS_CHECK(cuvis_acq_cont_get_component_info(acqCont, compIdx, &amp;cinfo));
-CUVIS_CHECK(cuvis_comp_online_get(acqCont, compIdx, &amp;online));
-printf(” - component ‘%s’ is “, cinfo.displayname);
-fflush(stdout);</p>
-<p>if (online != 0)
-{</p>
-<blockquote>
-<div><p>printf(“onlinen”);
-fflush(stdout);</p>
-</div></blockquote>
-<p>}
-else
-{</p>
-<blockquote>
-<div><p>printf(“offlinen”);
-fflush(stdout);</p>
-</div></blockquote>
-<p>}
-printf(” – info:        %sn”, cinfo.sensorinfo);
-printf(” – use:         %sn”, cinfo.userfield);
-printf(” – pixelformat: %sn”, cinfo.pixelformat);
-fflush(stdout);</p>
-</div></blockquote>
-<p>}</p>
-<p>printf(“initializing hardware…n”);
-fflush(stdout);</p>
-<p>CUVIS_CHECK(cuvis_acq_cont_integration_time_set(acqCont, exposure_ms));
-CUVIS_CHECK(</p>
-<blockquote>
-<div><p>cuvis_acq_cont_operation_mode_set(acqCont, OperationMode_Internal));</p>
-</div></blockquote>
-<p>CUVIS_CHECK(cuvis_acq_cont_fps_set(acqCont, fps));
-CUVIS_CHECK(cuvis_acq_cont_queue_size_set(acqCont, 10));
-CUVIS_CHECK(cuvis_acq_cont_continuous_set(acqCont, 0));
-CUVIS_CHECK(cuvis_proc_cont_set_args(procCont, procArgs));</p>
-<p>cuvis_acq_cont_binning_set(acqCont, 1);
-CUVIS_WORKER worker;
-CUVIS_WORKER_SETTINGS worker_settings;
-worker_settings.can_skip_measurements = 0;       // Worker cannot skip exporting measurements
-worker_settings.can_skip_supplementary_steps = 1; // Worker can skip view generation
-worker_settings.can_drop_results = 1;             // Worker can drop results from the output queue, if it is full
-worker_settings.input_queue_size = 10;
-worker_settings.output_queue_size = 5;
-worker_settings.mandatory_queue_size = 2;
-worker_settings.supplementary_queue_size = 2;
-cuvis_worker_create(&amp;worker, worker_settings);</p>
-<p>cuvis_worker_set_acq_cont(worker, acqCont);
-cuvis_worker_set_proc_cont(worker, procCont);
-cuvis_worker_set_exporter(worker, cube_exporter);</p>
-<p>printf(“registering signal for CTRL+c (cancel recording) n”);
-fflush(stdout);
-signal(SIGINT, signal_handler);</p>
-<p>printf(“recording…n”);
-fflush(stdout);
-CUVIS_CHECK(cuvis_acq_cont_continuous_set(acqCont, 1));
-CUVIS_CHECK(cuvis_worker_start(worker));</p>
-<p>CUVIS_INT used_queue;
-CUVIS_INT queue_limit;</p>
-<p>while (0 != keepRunning)
-{</p>
-<blockquote>
-<div><p>CUVIS_MESU mesu = 0;</p>
-<p>queue_limit = 4;
-cuvis_worker_get_threads_busy(worker, &amp;used_queue);
-if (used_queue == queue_limit)
-{</p>
-<blockquote>
-<div><p>printf(“Worker queue is full! Main() loop can not keep up!”);
-fflush(stdout);</p>
-</div></blockquote>
-<p>}</p>
-<p>cuvis_acq_cont_queue_size_get(acqCont, &amp;used_queue);
-cuvis_acq_cont_queue_used_get(acqCont, &amp;used_queue);
-if (used_queue == queue_limit)
-{</p>
-<blockquote>
-<div><p>printf(“Acquisition queue is full! Worker can not keep up!”);
-fflush(stdout);</p>
-</div></blockquote>
-<p>}</p>
-<p>CUVIS_STATUS ret;
-ret = cuvis_worker_get_next_result(worker, &amp;mesu, NULL, exposure_ms + 200);
-if (ret == status_not_available) {</p>
-<blockquote>
-<div><p>printf(“Worker has no measurement ready yet…”);</p>
-</div></blockquote>
-<p>}
-else if (ret != status_ok)
-{</p>
-<blockquote>
-<div><p>printf(“Worker error, details: %sn”, cuvis_get_last_error_msg());
-fflush(stdout);</p>
-</div></blockquote>
-<p>}</p>
-<p>if (mesu)
-{</p>
-<blockquote>
-<div><p>CUVIS_MESU_METADATA mesu_data;
-CUVIS_CHECK(cuvis_measurement_get_metadata(mesu, &amp;mesu_data));
-printf(</p>
-<blockquote>
-<div><p>“rcurrent handle index: %04d”, mesu_data.session_info_sequence_no);</p>
-</div></blockquote>
-<p>fflush(stdout);</p>
-<p>cuvis_measurement_free(&amp;mesu);</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}
-signal(SIGINT, SIG_DFL);</p>
-<p>printf(“cleaning upn”);
-fflush(stdout);
-CUVIS_CHECK(cuvis_acq_cont_continuous_set(acqCont, 0));
-CUVIS_CHECK(cuvis_worker_stop(worker));
-CUVIS_CHECK(cuvis_worker_drop_all_queued(worker));
-cuvis_worker_free(&amp;worker);
-cuvis_exporter_free(&amp;cube_exporter);
-cuvis_acq_cont_free(&amp;acqCont);
-cuvis_proc_cont_free(&amp;procCont);
-cuvis_calib_free(&amp;calib);</p>
-<p>cuvis_shutdown();
-printf(“finished n”);
-fflush(stdout);</p>
-</div></blockquote>
-<p>}</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &quot;cuvis.h&quot;</span>
+
+<span class="c1">#include &lt;signal.h&gt;</span>
+<span class="c1">#include &lt;stdbool.h&gt;</span>
+<span class="c1">#include &lt;stdio.h&gt;</span>
+<span class="c1">#include &lt;stdlib.h&gt;</span>
+
+<span class="c1">#ifdef WIN32</span>
+  <span class="c1">#include &lt;Windows.h&gt;</span>
+<span class="c1">#else</span>
+  <span class="c1">#include &lt;unistd.h&gt;</span>
+<span class="c1">#endif</span>
+
+<span class="nb">int</span> <span class="n">keepRunning</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">signal_handler</span><span class="p">(</span><span class="nb">int</span> <span class="n">sig</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">signal received. Stopping acquisiton...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="n">sig</span><span class="p">;</span>
+  <span class="n">keepRunning</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">7</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;To few Arguments! Please provide:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;user settings directory</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;factory directory</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;name of recording directory</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;exposure time in ms</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;auto exposure [1/0]</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;target fps</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">userSettingsDir</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">factoryDir</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+  <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">recDir</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+  <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">exposureString</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+  <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">autoExpString</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+  <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">fpsString</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+
+  <span class="nb">int</span> <span class="n">exposure_ms</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">exposureString</span><span class="p">);</span> <span class="o">//</span><span class="ow">in</span> <span class="n">ms</span>
+  <span class="nb">bool</span> <span class="n">autoExp</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">atoi</span><span class="p">(</span><span class="n">autoExpString</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">autoExp</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">double</span> <span class="n">fps</span> <span class="o">=</span> <span class="n">atof</span><span class="p">(</span><span class="n">fpsString</span><span class="p">);</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Example 06 video&quot;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">User Settings Dir: &quot;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Factory Dir: &quot;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Recording Dir: &quot;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="n">recDir</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Exposure in ms: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">exposure_ms</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Auto Exposure: </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">autoExp</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Target FPS: </span><span class="si">%4.2f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fps</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+
+  <span class="n">CUVIS_CALIB</span> <span class="n">calib</span><span class="p">;</span>
+  <span class="n">CUVIS_ACQ_CONT</span> <span class="n">acqCont</span><span class="p">;</span>
+  <span class="n">CUVIS_PROC_CONT</span> <span class="n">procCont</span><span class="p">;</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;loading user settings...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">));</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;loading calibration...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_calib_create_from_path</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">calib</span><span class="p">));</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;loading acquisition context... </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_create_from_calib</span><span class="p">(</span><span class="n">calib</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">acqCont</span><span class="p">));</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;load processing context </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_proc_cont_create_from_calib</span><span class="p">(</span><span class="n">calib</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">procCont</span><span class="p">));</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;prepare saving of measurements... </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">CUVIS_EXPORTER</span> <span class="n">cube_exporter</span><span class="p">;</span>
+
+  <span class="n">CUVIS_EXPORT_GENERAL_SETTINGS</span> <span class="n">general_settings</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">initializer</span> <span class="nb">list</span> <span class="n">only</span> <span class="n">takes</span> <span class="n">const</span> <span class="n">char</span><span class="o">*</span><span class="p">,</span> <span class="n">leave</span> <span class="n">empty</span> <span class="ow">and</span> <span class="n">modify</span> <span class="n">afterwards</span><span class="o">.</span>
+      <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+      <span class="mi">1</span><span class="p">,</span>
+      <span class="mf">0.0</span><span class="p">,</span>
+      <span class="n">pan_sharpening_interpolation_type_NearestNeighbor</span><span class="p">,</span>
+      <span class="n">pan_sharpening_algorithm_Noop</span><span class="p">,</span>
+      <span class="mi">0</span><span class="p">,</span>
+      <span class="mi">0</span><span class="p">};</span>
+  <span class="n">strcpy</span><span class="p">(</span><span class="n">general_settings</span><span class="o">.</span><span class="n">export_dir</span><span class="p">,</span> <span class="n">recDir</span><span class="p">);</span>
+
+  <span class="n">CUVIS_EXPORT_CUBE_SETTINGS</span> <span class="n">cube_settings</span><span class="p">;</span>
+  <span class="n">cube_settings</span><span class="o">.</span><span class="n">allow_fragmentation</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">cube_settings</span><span class="o">.</span><span class="n">allow_overwrite</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">cube_settings</span><span class="o">.</span><span class="n">allow_session_file</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">cube_settings</span><span class="o">.</span><span class="n">fps</span> <span class="o">=</span> <span class="n">fps</span><span class="p">;</span>
+  <span class="n">cube_settings</span><span class="o">.</span><span class="n">operation_mode</span> <span class="o">=</span> <span class="n">OperationMode_Internal</span><span class="p">;</span>
+  <span class="n">cube_settings</span><span class="o">.</span><span class="n">allow_info_file</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">cube_settings</span><span class="o">.</span><span class="n">hard_limit</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+  <span class="n">cube_settings</span><span class="o">.</span><span class="n">soft_limit</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_exporter_create_cube</span><span class="p">(</span>
+      <span class="o">&amp;</span><span class="n">cube_exporter</span><span class="p">,</span> <span class="n">general_settings</span><span class="p">,</span> <span class="n">cube_settings</span><span class="p">));</span>
+
+  <span class="n">CUVIS_PROC_ARGS</span> <span class="n">procArgs</span><span class="p">;</span>
+  <span class="n">procArgs</span><span class="o">.</span><span class="n">allow_recalib</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">procArgs</span><span class="o">.</span><span class="n">processing_mode</span> <span class="o">=</span> <span class="n">Cube_Raw</span><span class="p">;</span>
+
+  <span class="n">CUVIS_SESSION_INFO</span> <span class="n">sess</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;video&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_set_session_info</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sess</span><span class="p">));</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;waiting for camera to become online...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(;;)</span>
+  <span class="p">{</span>
+    <span class="n">CUVIS_HARDWARE_STATE</span> <span class="n">state</span><span class="p">;</span>
+    <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_get_state</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">state</span><span class="p">));</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">state</span> <span class="o">==</span> <span class="n">hardware_state_online</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">camera online</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+      <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">state</span> <span class="o">==</span> <span class="n">hardware_state_partially_online</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">camera partially online</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+      <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="c1">#ifdef WIN32</span>
+    <span class="n">Sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="c1">#else</span>
+    <span class="n">usleep</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>
+<span class="c1">#endif</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;component details:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+
+  <span class="n">CUVIS_INT</span> <span class="n">compCount</span><span class="p">;</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_get_component_count</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">compCount</span><span class="p">));</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">compIdx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">compIdx</span> <span class="o">&lt;</span> <span class="n">compCount</span><span class="p">;</span> <span class="n">compIdx</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">CUVIS_INT</span> <span class="n">online</span><span class="p">;</span>
+    <span class="n">CUVIS_COMPONENT_INFO</span> <span class="n">cinfo</span><span class="p">;</span>
+
+    <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_get_component_info</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="n">compIdx</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cinfo</span><span class="p">));</span>
+    <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_comp_online_get</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="n">compIdx</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">online</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot; - component &#39;</span><span class="si">%s</span><span class="s2">&#39; is &quot;</span><span class="p">,</span> <span class="n">cinfo</span><span class="o">.</span><span class="n">displayname</span><span class="p">);</span>
+    <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">online</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;online</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+      <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;offline</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+      <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot; -- info:        </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cinfo</span><span class="o">.</span><span class="n">sensorinfo</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot; -- use:         </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cinfo</span><span class="o">.</span><span class="n">userfield</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot; -- pixelformat: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cinfo</span><span class="o">.</span><span class="n">pixelformat</span><span class="p">);</span>
+    <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;initializing hardware...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_integration_time_set</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="n">exposure_ms</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span>
+      <span class="n">cuvis_acq_cont_operation_mode_set</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="n">OperationMode_Internal</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_fps_set</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="n">fps</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_queue_size_set</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_continuous_set</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_proc_cont_set_args</span><span class="p">(</span><span class="n">procCont</span><span class="p">,</span> <span class="n">procArgs</span><span class="p">));</span>
+
+  <span class="n">cuvis_acq_cont_binning_set</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">CUVIS_WORKER</span> <span class="n">worker</span><span class="p">;</span>
+  <span class="n">CUVIS_WORKER_SETTINGS</span> <span class="n">worker_settings</span><span class="p">;</span>
+  <span class="n">worker_settings</span><span class="o">.</span><span class="n">can_skip_measurements</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>       <span class="o">//</span> <span class="n">Worker</span> <span class="n">cannot</span> <span class="n">skip</span> <span class="n">exporting</span> <span class="n">measurements</span>
+  <span class="n">worker_settings</span><span class="o">.</span><span class="n">can_skip_supplementary_steps</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">//</span> <span class="n">Worker</span> <span class="n">can</span> <span class="n">skip</span> <span class="n">view</span> <span class="n">generation</span>
+  <span class="n">worker_settings</span><span class="o">.</span><span class="n">can_drop_results</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>             <span class="o">//</span> <span class="n">Worker</span> <span class="n">can</span> <span class="n">drop</span> <span class="n">results</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">output</span> <span class="n">queue</span><span class="p">,</span> <span class="k">if</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">full</span>
+  <span class="n">worker_settings</span><span class="o">.</span><span class="n">input_queue_size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="n">worker_settings</span><span class="o">.</span><span class="n">output_queue_size</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="n">worker_settings</span><span class="o">.</span><span class="n">mandatory_queue_size</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">worker_settings</span><span class="o">.</span><span class="n">supplementary_queue_size</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">cuvis_worker_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">worker</span><span class="p">,</span> <span class="n">worker_settings</span><span class="p">);</span>
+
+  <span class="n">cuvis_worker_set_acq_cont</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="n">acqCont</span><span class="p">);</span>
+  <span class="n">cuvis_worker_set_proc_cont</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="n">procCont</span><span class="p">);</span>
+  <span class="n">cuvis_worker_set_exporter</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="n">cube_exporter</span><span class="p">);</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;registering signal for CTRL+c (cancel recording) </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">signal</span><span class="p">(</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">signal_handler</span><span class="p">);</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;recording...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_continuous_set</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_worker_start</span><span class="p">(</span><span class="n">worker</span><span class="p">));</span>
+
+  <span class="n">CUVIS_INT</span> <span class="n">used_queue</span><span class="p">;</span>
+  <span class="n">CUVIS_INT</span> <span class="n">queue_limit</span><span class="p">;</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="mi">0</span> <span class="o">!=</span> <span class="n">keepRunning</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">CUVIS_MESU</span> <span class="n">mesu</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+
+    <span class="n">queue_limit</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="n">cuvis_worker_get_threads_busy</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">used_queue</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">used_queue</span> <span class="o">==</span> <span class="n">queue_limit</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Worker queue is full! Main() loop can not keep up!&quot;</span><span class="p">);</span>
+      <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">cuvis_acq_cont_queue_size_get</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">used_queue</span><span class="p">);</span>
+    <span class="n">cuvis_acq_cont_queue_used_get</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">used_queue</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">used_queue</span> <span class="o">==</span> <span class="n">queue_limit</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Acquisition queue is full! Worker can not keep up!&quot;</span><span class="p">);</span>
+      <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">CUVIS_STATUS</span> <span class="n">ret</span><span class="p">;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">cuvis_worker_get_next_result</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">mesu</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">exposure_ms</span> <span class="o">+</span> <span class="mi">200</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="n">status_not_available</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Worker has no measurement ready yet...&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">!=</span> <span class="n">status_ok</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Worker error, details: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cuvis_get_last_error_msg</span><span class="p">());</span>
+      <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">mesu</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">CUVIS_MESU_METADATA</span> <span class="n">mesu_data</span><span class="p">;</span>
+      <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_measurement_get_metadata</span><span class="p">(</span><span class="n">mesu</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">mesu_data</span><span class="p">));</span>
+      <span class="n">printf</span><span class="p">(</span>
+          <span class="s2">&quot;</span><span class="se">\r</span><span class="s2">current handle index: </span><span class="si">%04d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">mesu_data</span><span class="o">.</span><span class="n">session_info_sequence_no</span><span class="p">);</span>
+      <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+
+      <span class="n">cuvis_measurement_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mesu</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">signal</span><span class="p">(</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">SIG_DFL</span><span class="p">);</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;cleaning up</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_continuous_set</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_worker_stop</span><span class="p">(</span><span class="n">worker</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_worker_drop_all_queued</span><span class="p">(</span><span class="n">worker</span><span class="p">));</span>
+  <span class="n">cuvis_worker_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">worker</span><span class="p">);</span>
+  <span class="n">cuvis_exporter_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cube_exporter</span><span class="p">);</span>
+  <span class="n">cuvis_acq_cont_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">acqCont</span><span class="p">);</span>
+  <span class="n">cuvis_proc_cont_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">procCont</span><span class="p">);</span>
+  <span class="n">cuvis_calib_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">calib</span><span class="p">);</span>
+
+  <span class="n">cuvis_shutdown</span><span class="p">();</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;finished </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div><div aria-labelledby="tab-5-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-Qysr" name="Qysr" role="tabpanel" tabindex="0"><blockquote>
 <div></div></blockquote>
-<p>#include “cuvis.hpp”</p>
-<p>#include &lt;cassert&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include &quot;cuvis.hpp&quot;
+
+#include &lt;cassert&gt;
 #include &lt;chrono&gt;
 #include &lt;cmath&gt;
 #include &lt;csignal&gt;
 #include &lt;ctime&gt;
-#include &lt;iostream&gt;</p>
-<p>using namespace std::literals::chrono_literals;</p>
-<p>int keepRunning = 1;</p>
-<p>void signal_handler(int sig)
-{</p>
-<blockquote>
-<div><p>(void)sig;
-std::cout &lt;&lt; std::endl</p>
-<blockquote>
-<div><p>&lt;&lt; “CTRL+C received. Stopping acquisiton…” &lt;&lt; std::endl;</p>
-</div></blockquote>
-<p>keepRunning = 0;</p>
-</div></blockquote>
-<p>}</p>
-<p>int main(int argc, char* argv[])
-{</p>
-<blockquote>
-<div><p>if (argc != 7)
-{</p>
-<blockquote>
-<div><p>std::cout &lt;&lt; std::endl &lt;&lt; “Too few Arguments! Please provide:” &lt;&lt; std::endl;
-std::cout &lt;&lt; “user settings directory” &lt;&lt; std::endl;
-std::cout &lt;&lt; “factory directory” &lt;&lt; std::endl;
-std::cout &lt;&lt; “name of recording directory” &lt;&lt; std::endl;
-std::cout &lt;&lt; “exposure time in ms” &lt;&lt; std::endl;
-std::cout &lt;&lt; “auto exposure [1/0]” &lt;&lt; std::endl;
-std::cout &lt;&lt; “target fps” &lt;&lt; std::endl;</p>
-<p>return -1;</p>
-</div></blockquote>
-<p>}</p>
-<p>char* userSettingsDir = argv[1];
-char* factoryDir = argv[2];
-char* recDir = argv[3];
-char* exposureString = argv[4];
-char* autoExpString = argv[5];
-char* fpsString = argv[6];</p>
-<p>int exposure_ms = std::stoi(exposureString);
-bool autoExp = std::stoi(autoExpString);
-double fps = std::stod(fpsString);</p>
-<p>std::cout &lt;&lt; “Example 06 video cpp “ &lt;&lt; std::endl;
-std::cout &lt;&lt; “User Settings Dir: “ &lt;&lt; userSettingsDir &lt;&lt; std::endl;
-std::cout &lt;&lt; “Factory Dir: “ &lt;&lt; factoryDir &lt;&lt; std::endl;
-std::cout &lt;&lt; “Recording Dir: “ &lt;&lt; recDir &lt;&lt; std::endl;
-std::cout &lt;&lt; “Exposure in ms: “ &lt;&lt; exposure_ms &lt;&lt; std::endl;
-std::cout &lt;&lt; “Auto Exposure: “ &lt;&lt; autoExp &lt;&lt; std::endl;
-std::cout &lt;&lt; “Target FPS: “ &lt;&lt; fps &lt;&lt; std::endl;</p>
-<p>std::cout &lt;&lt; “loading user settings…” &lt;&lt; std::endl;</p>
-<p>cuvis::General::init(userSettingsDir);</p>
-<p>//register log message output
-cuvis::General::register_log_callback(</p>
-<blockquote>
-<div><dl>
-<dt>[](char const* msg, cuvis::loglevel_t lvl) -&gt; void {</dt><dd><dl class="simple">
-<dt>static std::map&lt;cuvis::loglevel_t, std::string&gt; log_prefix = {</dt><dd><p>{loglevel_info, “info: “},
-{loglevel_warning, “warning: “},
-{loglevel_error, “error: “},
-{loglevel_fatal, “fatal: “}};</p>
-</dd>
-</dl>
-<p>std::cout &lt;&lt; “ - “ &lt;&lt; log_prefix.at(lvl) &lt;&lt; msg &lt;&lt; std::endl;</p>
-</dd>
-</dl>
-<p>},
-loglevel_info);</p>
-</div></blockquote>
-<p>std::cout &lt;&lt; “loading calibration…” &lt;&lt; std::endl;
-cuvis::Calibration calib(factoryDir);</p>
-<p>std::cout &lt;&lt; “loading acquisition context…” &lt;&lt; std::endl;
-cuvis::AcquisitionContext acq(calib);
-CUVIS_SESSION_INFO sess = {“video”, 0, 0};
-acq.set_session_info(sess);</p>
-<p>std::cout &lt;&lt; “prepare saving of measurements…” &lt;&lt; std::endl;
-cuvis::SaveArgs sargs;
-sargs.fps = fps;
-sargs.operation_mode = OperationMode_Internal;
-sargs.allow_overwrite = true;
-sargs.allow_session_file = true;
-sargs.export_dir = std::filesystem::path(recDir);</p>
-<p>std::cout &lt;&lt; “Writing Files to: “ &lt;&lt; sargs.export_dir &lt;&lt; std::endl;
-cuvis::CubeExporter exporter(sargs);</p>
-<p>std::cout &lt;&lt; “prepare processing of measurements…” &lt;&lt; std::endl;
-cuvis::ProcessingContext proc(calib);
-cuvis::ProcessingArgs args;
-args.processing_mode = Cube_Raw;
-proc.set_processingArgs(args);</p>
-<p>std::cout &lt;&lt; “waiting for camera to become online …”;
-acq.register_state_change_callback(</p>
-<blockquote>
-<div><dl>
-<dt>[](cuvis::hardware_state_t state,</dt><dd><blockquote>
-<div><dl class="simple">
-<dt>std::map&lt;int, cuvis::AcquisitionContext::component_state_info_t&gt;</dt><dd><p>comp_states) -&gt; void {</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>std::cout &lt;&lt; std::endl;
-switch (state)
-{</p>
-<blockquote>
-<div><dl class="simple">
-<dt>case hardware_state_online:</dt><dd><p>std::cout &lt;&lt; “camera online” &lt;&lt; std::endl;
-break;</p>
-</dd>
-<dt>case hardware_state_partially_online:</dt><dd><p>std::cout &lt;&lt; “camera partially online” &lt;&lt; std::endl;
-break;</p>
-</dd>
-<dt>case hardware_state_offline:</dt><dd><p>std::cout &lt;&lt; “camera offline” &lt;&lt; std::endl;
-break;</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>}</p>
-<p>std::cout &lt;&lt; “ components: “ &lt;&lt; std::endl;
-for (auto const&amp; comp : comp_states)
-{</p>
-<blockquote>
-<div><dl class="simple">
-<dt>std::cout &lt;&lt; “ #” &lt;&lt; comp.first &lt;&lt; “ “ &lt;&lt; comp.second.display_name</dt><dd><p>&lt;&lt; “ is “ &lt;&lt; (comp.second.is_online ? “online” : “offline”)
-&lt;&lt; std::endl;</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>}</p>
-</dd>
-</dl>
-<p>});</p>
-</div></blockquote>
-<p>while (acq.get_state() == hardware_state_offline)
-{</p>
-<blockquote>
-<div><p>std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-std::cout &lt;&lt; “.”;</p>
-</div></blockquote>
-<p>}
-std::cout &lt;&lt; std::endl;</p>
-<p>std::cout &lt;&lt; “initializing hardware…” &lt;&lt; std::endl;
-acq.set_integration_time(exposure_ms).get();
-acq.set_operation_mode(OperationMode_Internal).get();
-acq.set_fps(fps).get();
-acq.set_auto_exp(autoExp);
-acq.set_continuous(true);</p>
-<dl class="simple">
-<dt>std::cout &lt;&lt; “registering signal for CTRL+c (cancel recording)…”</dt><dd><p>&lt;&lt; std::endl;</p>
-</dd>
-</dl>
-<p>std::signal(SIGINT, signal_handler);</p>
-<p>std::cout &lt;&lt; “configuring worker…” &lt;&lt; std::endl;
-cuvis::WorkerArgs worker_settings;
-worker_settings.can_skip_measurements = false; // Worker cannot skip exporting measurements
-worker_settings.can_skip_supplementary_steps = true; // Worker can skip view generation
-worker_settings.can_drop_results = true; // Worker can drop results from the output queue, if it is full
-worker_settings.input_queue_size = 10;
-worker_settings.output_queue_size = 5;
-worker_settings.mandatory_queue_size = 2;
-worker_settings.supplementary_queue_size = 2;</p>
-<p>cuvis::Worker worker(worker_settings);
-worker.set_acq_cont(&amp;acq);</p>
-<p>//comment out the following line to prevent processing
-worker.set_proc_cont(&amp;proc);</p>
-<p>//comment out the following line to prevent saving to disk
-worker.set_exporter(&amp;exporter);</p>
-<p>std::cout &lt;&lt; “configuring FPS Analysis Stuff” &lt;&lt; std::endl;
-using std::chrono::duration;
-using std::chrono::duration_cast;
-using std::chrono::high_resolution_clock;
-using std::chrono::milliseconds;
-auto t1 = high_resolution_clock::now();
-std::vector&lt;long long&gt; frametimes;
-int fpsAveraging = 200;</p>
-<p>std::cout &lt;&lt; “recording…! “ &lt;&lt; std::endl;
-worker.start_processing();</p>
-<p>while (0 != keepRunning)
-{</p>
-<blockquote>
-<div><p>auto workerContainer = worker.get_next_result(100ms);
-// maybe we’re already cancelling
-if (keepRunning == 0)</p>
-<blockquote>
-<div><p>continue;</p>
-</div></blockquote>
-<p>if (workerContainer.mesu.has_value())
-{</p>
-<blockquote>
-<div><p>auto t2 = t1;
-t1 = high_resolution_clock::now();</p>
-<dl class="simple">
-<dt>std::cout</dt><dd><p>&lt;&lt; “current handle index: ”
-&lt;&lt; workerContainer.mesu.value().get_meta()-&gt;session_info.sequence_no
-&lt;&lt; std::endl;</p>
-</dd>
-</dl>
-<p>auto ms_int = duration_cast&lt;milliseconds&gt;(t1 - t2);</p>
-<p>if (frametimes.size() &gt;= fpsAveraging)
-{</p>
-<blockquote>
-<div><p>frametimes.erase(frametimes.begin());</p>
-</div></blockquote>
-<p>}
-frametimes.push_back(ms_int.count());
-long long totalFrametime = 0;
-for (int i = 0; i &lt; frametimes.size(); i++)
-{</p>
-<blockquote>
-<div><p>totalFrametime += frametimes[i];</p>
-</div></blockquote>
-<p>}
-double actualFps =</p>
-<blockquote>
-<div><p>1 / (((double)totalFrametime / (double)frametimes.size()) / 1000);</p>
-</div></blockquote>
-<dl class="simple">
-<dt>if (abs(actualFps - fps) &gt; 0.5 &amp;&amp;</dt><dd><dl class="simple">
-<dt>frametimes.size() ==</dt><dd><p>fpsAveraging) //fps is significantly different from user setting and averaging vector is full</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<dl class="simple">
-<dt>{</dt><dd><dl class="simple">
-<dt>std::cout &lt;&lt; “WARNING: FPS was set to “ &lt;&lt; fps</dt><dd><p>&lt;&lt; “ but on average we only get “ &lt;&lt; actualFps &lt;&lt; std::endl;</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>}
-if (worker.get_threads_busy() == 4)
-{</p>
-<blockquote>
-<div><dl class="simple">
-<dt>std::cout &lt;&lt; “worker queue is full! Main() loop can not keep up!”</dt><dd><p>&lt;&lt; std::endl;</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>}
-if (acq.get_queue_size() == acq.get_queue_used())
-{</p>
-<blockquote>
-<div><dl class="simple">
-<dt>std::cout &lt;&lt; “Acquisition queue is full! Worker can not keep up!”</dt><dd><p>&lt;&lt; std::endl;</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}</p>
-<p>signal(SIGINT, SIG_DFL);
-std::cout &lt;&lt; “acquisition stopped.” &lt;&lt; std::endl;
-acq.set_continuous(false);
-acq.reset_state_change_callback();
-cuvis::General::shutdown();
-cuvis::General::reset_log_callback();
-std::cout &lt;&lt; std::endl &lt;&lt; “finished.” &lt;&lt; std::endl;</p>
-</div></blockquote>
-<p>}</p>
+#include &lt;iostream&gt;
+
+using namespace std::literals::chrono_literals;
+
+int keepRunning = 1;
+
+void signal_handler(int sig)
+{
+  (void)sig;
+  std::cout &lt;&lt; std::endl
+            &lt;&lt; &quot;CTRL+C received. Stopping acquisiton...&quot; &lt;&lt; std::endl;
+  keepRunning = 0;
+}
+
+
+int main(int argc, char* argv[])
+{
+  if (argc != 7)
+  {
+    std::cout &lt;&lt; std::endl &lt;&lt; &quot;Too few Arguments! Please provide:&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;user settings directory&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;factory directory&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;name of recording directory&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;exposure time in ms&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;auto exposure [1/0]&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;target fps&quot; &lt;&lt; std::endl;
+
+    return -1;
+  }
+
+  char* userSettingsDir = argv[1];
+  char* factoryDir = argv[2];
+  char* recDir = argv[3];
+  char* exposureString = argv[4];
+  char* autoExpString = argv[5];
+  char* fpsString = argv[6];
+
+  int exposure_ms = std::stoi(exposureString);
+  bool autoExp = std::stoi(autoExpString);
+  double fps = std::stod(fpsString);
+
+  std::cout &lt;&lt; &quot;Example 06 video cpp &quot; &lt;&lt; std::endl;
+  std::cout &lt;&lt; &quot;User Settings Dir: &quot; &lt;&lt; userSettingsDir &lt;&lt; std::endl;
+  std::cout &lt;&lt; &quot;Factory Dir: &quot; &lt;&lt; factoryDir &lt;&lt; std::endl;
+  std::cout &lt;&lt; &quot;Recording Dir: &quot; &lt;&lt; recDir &lt;&lt; std::endl;
+  std::cout &lt;&lt; &quot;Exposure in ms: &quot; &lt;&lt; exposure_ms &lt;&lt; std::endl;
+  std::cout &lt;&lt; &quot;Auto Exposure: &quot; &lt;&lt; autoExp &lt;&lt; std::endl;
+  std::cout &lt;&lt; &quot;Target FPS: &quot; &lt;&lt; fps &lt;&lt; std::endl;
+
+  std::cout &lt;&lt; &quot;loading user settings...&quot; &lt;&lt; std::endl;
+
+  cuvis::General::init(userSettingsDir);
+
+  //register log message output
+  cuvis::General::register_log_callback(
+      [](char const* msg, cuvis::loglevel_t lvl) -&gt; void {
+        static std::map&lt;cuvis::loglevel_t, std::string&gt; log_prefix = {
+            {loglevel_info, &quot;info: &quot;},
+            {loglevel_warning, &quot;warning: &quot;},
+            {loglevel_error, &quot;error: &quot;},
+            {loglevel_fatal, &quot;fatal: &quot;}};
+
+        std::cout &lt;&lt; &quot; - &quot; &lt;&lt; log_prefix.at(lvl) &lt;&lt; msg &lt;&lt; std::endl;
+      },
+      loglevel_info);
+
+  std::cout &lt;&lt; &quot;loading calibration...&quot; &lt;&lt; std::endl;
+  cuvis::Calibration calib(factoryDir);
+
+  std::cout &lt;&lt; &quot;loading acquisition context...&quot; &lt;&lt; std::endl;
+  cuvis::AcquisitionContext acq(calib);
+  CUVIS_SESSION_INFO sess = {&quot;video&quot;, 0, 0};
+  acq.set_session_info(sess);
+
+  std::cout &lt;&lt; &quot;prepare saving of measurements...&quot; &lt;&lt; std::endl;
+  cuvis::SaveArgs sargs;
+  sargs.fps = fps;
+  sargs.operation_mode = OperationMode_Internal;
+  sargs.allow_overwrite = true;
+  sargs.allow_session_file = true;
+  sargs.export_dir = std::filesystem::path(recDir);
+
+  std::cout &lt;&lt; &quot;Writing Files to: &quot; &lt;&lt; sargs.export_dir &lt;&lt; std::endl;
+  cuvis::CubeExporter exporter(sargs);
+
+  std::cout &lt;&lt; &quot;prepare processing of measurements...&quot; &lt;&lt; std::endl;
+  cuvis::ProcessingContext proc(calib);
+  cuvis::ProcessingArgs args;
+  args.processing_mode = Cube_Raw;
+  proc.set_processingArgs(args);
+
+  std::cout &lt;&lt; &quot;waiting for camera to become online ...&quot;;
+  acq.register_state_change_callback(
+      [](cuvis::hardware_state_t state,
+         std::map&lt;int, cuvis::AcquisitionContext::component_state_info_t&gt;
+             comp_states) -&gt; void {
+        std::cout &lt;&lt; std::endl;
+        switch (state)
+        {
+          case hardware_state_online:
+            std::cout &lt;&lt; &quot;camera online&quot; &lt;&lt; std::endl;
+            break;
+
+          case hardware_state_partially_online:
+            std::cout &lt;&lt; &quot;camera partially online&quot; &lt;&lt; std::endl;
+            break;
+
+          case hardware_state_offline:
+            std::cout &lt;&lt; &quot;camera offline&quot; &lt;&lt; std::endl;
+            break;
+        }
+
+        std::cout &lt;&lt; &quot; components: &quot; &lt;&lt; std::endl;
+        for (auto const&amp; comp : comp_states)
+        {
+          std::cout &lt;&lt; &quot; #&quot; &lt;&lt; comp.first &lt;&lt; &quot; &quot; &lt;&lt; comp.second.display_name
+                    &lt;&lt; &quot; is &quot; &lt;&lt; (comp.second.is_online ? &quot;online&quot; : &quot;offline&quot;)
+                    &lt;&lt; std::endl;
+        }
+      });
+
+  while (acq.get_state() == hardware_state_offline)
+  {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::cout &lt;&lt; &quot;.&quot;;
+  }
+  std::cout &lt;&lt; std::endl;
+
+  std::cout &lt;&lt; &quot;initializing hardware...&quot; &lt;&lt; std::endl;
+  acq.set_integration_time(exposure_ms).get();
+  acq.set_operation_mode(OperationMode_Internal).get();
+  acq.set_fps(fps).get();
+  acq.set_auto_exp(autoExp);
+  acq.set_continuous(true);
+
+  std::cout &lt;&lt; &quot;registering signal for CTRL+c (cancel recording)...&quot;
+            &lt;&lt; std::endl;
+  std::signal(SIGINT, signal_handler);
+
+  std::cout &lt;&lt; &quot;configuring worker...&quot; &lt;&lt; std::endl;
+  cuvis::WorkerArgs worker_settings;
+  worker_settings.can_skip_measurements = false; // Worker cannot skip exporting measurements
+  worker_settings.can_skip_supplementary_steps = true; // Worker can skip view generation
+  worker_settings.can_drop_results = true; // Worker can drop results from the output queue, if it is full
+  worker_settings.input_queue_size = 10;
+  worker_settings.output_queue_size = 5;
+  worker_settings.mandatory_queue_size = 2;
+  worker_settings.supplementary_queue_size = 2;
+
+  cuvis::Worker worker(worker_settings);
+  worker.set_acq_cont(&amp;acq);
+
+  //comment out the following line to prevent processing
+  worker.set_proc_cont(&amp;proc);
+
+  //comment out the following line to prevent saving to disk
+  worker.set_exporter(&amp;exporter);
+
+  std::cout &lt;&lt; &quot;configuring FPS Analysis Stuff&quot; &lt;&lt; std::endl;
+  using std::chrono::duration;
+  using std::chrono::duration_cast;
+  using std::chrono::high_resolution_clock;
+  using std::chrono::milliseconds;
+  auto t1 = high_resolution_clock::now();
+  std::vector&lt;long long&gt; frametimes;
+  int fpsAveraging = 200;
+
+  std::cout &lt;&lt; &quot;recording...! &quot; &lt;&lt; std::endl;
+  worker.start_processing();
+
+  while (0 != keepRunning)
+  {
+    auto workerContainer = worker.get_next_result(100ms);
+    // maybe we&#39;re already cancelling
+    if (keepRunning == 0)
+        continue;
+    if (workerContainer.mesu.has_value())
+    {
+      auto t2 = t1;
+      t1 = high_resolution_clock::now();
+
+      std::cout
+          &lt;&lt; &quot;current handle index: &quot;
+          &lt;&lt; workerContainer.mesu.value().get_meta()-&gt;session_info.sequence_no
+          &lt;&lt; std::endl;
+
+      auto ms_int = duration_cast&lt;milliseconds&gt;(t1 - t2);
+
+      if (frametimes.size() &gt;= fpsAveraging)
+      {
+        frametimes.erase(frametimes.begin());
+      }
+      frametimes.push_back(ms_int.count());
+      long long totalFrametime = 0;
+      for (int i = 0; i &lt; frametimes.size(); i++)
+      {
+        totalFrametime += frametimes[i];
+      }
+      double actualFps =
+          1 / (((double)totalFrametime / (double)frametimes.size()) / 1000);
+      if (abs(actualFps - fps) &gt; 0.5 &amp;&amp;
+          frametimes.size() ==
+              fpsAveraging) //fps is significantly different from user setting and averaging vector is full
+      {
+        std::cout &lt;&lt; &quot;WARNING: FPS was set to &quot; &lt;&lt; fps
+                  &lt;&lt; &quot; but on average we only get &quot; &lt;&lt; actualFps &lt;&lt; std::endl;
+      }
+      if (worker.get_threads_busy() == 4)
+      {
+        std::cout &lt;&lt; &quot;worker queue is full! Main() loop can not keep up!&quot;
+                  &lt;&lt; std::endl;
+      }
+      if (acq.get_queue_size() == acq.get_queue_used())
+      {
+        std::cout &lt;&lt; &quot;Acquisition queue is full! Worker can not keep up!&quot;
+                  &lt;&lt; std::endl;
+      }
+    }
+  }
+
+  signal(SIGINT, SIG_DFL);
+  std::cout &lt;&lt; &quot;acquisition stopped.&quot; &lt;&lt; std::endl;
+  acq.set_continuous(false);
+  acq.reset_state_change_callback();
+  cuvis::General::shutdown();
+  cuvis::General::reset_log_callback();
+  std::cout &lt;&lt; std::endl &lt;&lt; &quot;finished.&quot; &lt;&lt; std::endl;
+}
+</pre></div>
+</div>
 </div><div aria-labelledby="tab-5-UHl0aG9u" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><blockquote>
 <div></div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">cuvis</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_example_recordVideo</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span>
+                            <span class="n">factoryDir</span><span class="p">,</span>
+                            <span class="n">recDir</span><span class="p">,</span>
+                            <span class="n">exposure</span><span class="p">,</span>
+                            <span class="n">autoExp</span><span class="p">,</span>
+                            <span class="n">fps</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loading user settings...&quot;</span><span class="p">)</span>
+    <span class="n">cuvis</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">)</span>
+    <span class="n">cuvis</span><span class="o">.</span><span class="n">set_log_level</span><span class="p">(</span><span class="s2">&quot;info&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loading calibration (factory)...&quot;</span><span class="p">)</span>
+    <span class="n">calibration</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">Calibration</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loading acquisition context...&quot;</span><span class="p">)</span>
+    <span class="n">acquisitionContext</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">AcquisitionContext</span><span class="p">(</span><span class="n">calibration</span><span class="p">)</span>
+    <span class="n">session_info</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">SessionData</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">acquisitionContext</span><span class="o">.</span><span class="n">session_info</span> <span class="o">=</span> <span class="n">session_info</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;prepare saving of measurements...&quot;</span><span class="p">)</span>
+    <span class="n">saveArgs</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">SaveArgs</span><span class="p">(</span><span class="n">export_dir</span><span class="o">=</span><span class="n">recDir</span><span class="p">,</span>
+                              <span class="n">allow_overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                              <span class="n">allow_session_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                              <span class="n">fps</span><span class="o">=</span><span class="n">fps</span><span class="p">,</span>
+                              <span class="n">operation_mode</span><span class="o">=</span><span class="n">cuvis</span><span class="o">.</span><span class="n">OperationMode</span><span class="o">.</span><span class="n">Software</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;writing files to: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">recDir</span><span class="p">))</span>
+    <span class="n">cubeExporter</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">CubeExporter</span><span class="p">(</span><span class="n">saveArgs</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;prepare processing of measurements...&quot;</span><span class="p">)</span>
+    <span class="n">processingContext</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">ProcessingContext</span><span class="p">(</span><span class="n">calibration</span><span class="p">)</span>
+    <span class="n">processingContext</span><span class="o">.</span><span class="n">processing_mode</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">ProcessingMode</span><span class="o">.</span><span class="n">Raw</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Waiting for camera to come online...&quot;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">acquisitionContext</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">HardwareState</span><span class="o">.</span><span class="n">Offline</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Component details:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">comp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">acquisitionContext</span><span class="o">.</span><span class="n">components</span><span class="p">()):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Component #</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2"> is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">comp</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span>
+                                              <span class="s2">&quot;online&quot;</span> <span class="k">if</span> <span class="n">comp</span><span class="o">.</span><span class="n">online</span> <span class="k">else</span> <span class="s2">&quot;offline&quot;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -- info:        </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">comp</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">sensor_info</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -- use:         </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">comp</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">user_field</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; -- pixelformat: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">comp</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">pixel_format</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;initializing hardware...&quot;</span><span class="p">)</span>
+    <span class="n">acquisitionContext</span><span class="o">.</span><span class="n">integration_time</span> <span class="o">=</span> <span class="n">exposure</span>
+    <span class="n">acquisitionContext</span><span class="o">.</span><span class="n">operation_mode</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">OperationMode</span><span class="o">.</span><span class="n">Internal</span>
+    <span class="n">acquisitionContext</span><span class="o">.</span><span class="n">fps</span> <span class="o">=</span> <span class="n">fps</span>
+    <span class="n">acquisitionContext</span><span class="o">.</span><span class="n">auto_exp</span> <span class="o">=</span> <span class="n">autoExp</span>
+    <span class="n">acquisitionContext</span><span class="o">.</span><span class="n">set_continuous</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;configuring worker...&quot;</span><span class="p">)</span>
+    <span class="n">workerSettings</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">WorkerSettings</span><span class="p">()</span>
+    <span class="n">worker</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">Worker</span><span class="p">(</span><span class="n">workerSettings</span><span class="p">)</span>
+    <span class="n">worker</span><span class="o">.</span><span class="n">set_acquisition_context</span><span class="p">(</span><span class="n">acquisitionContext</span><span class="p">)</span>
+    <span class="n">worker</span><span class="o">.</span><span class="n">set_processing_context</span><span class="p">(</span><span class="n">processingContext</span><span class="p">)</span>
+    <span class="n">worker</span><span class="o">.</span><span class="n">set_exporter</span><span class="p">(</span><span class="n">cubeExporter</span><span class="p">)</span>
+    <span class="n">worker</span><span class="o">.</span><span class="n">start_processing</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;recording...! (will stop after 2 minutes)&quot;</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+
+        <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">worker</span><span class="o">.</span><span class="n">has_next_result</span><span class="p">():</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+
+        <span class="n">workerContainer</span> <span class="o">=</span> <span class="n">worker</span><span class="o">.</span><span class="n">get_next_result</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># in ms</span>
+        <span class="k">if</span> <span class="n">workerContainer</span><span class="o">.</span><span class="n">mesu</span><span class="o">.</span><span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;current handle index: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">workerContainer</span><span class="o">.</span><span class="n">mesu</span><span class="o">.</span><span class="n">session_info</span><span class="o">.</span><span class="n">sequence_number</span><span class="p">))</span>
+
+            <span class="n">workerState</span> <span class="o">=</span> <span class="n">worker</span><span class="o">.</span><span class="n">state</span>
+            <span class="k">if</span> <span class="n">workerState</span><span class="o">.</span><span class="n">resultsInQueue</span> <span class="o">==</span> <span class="n">worker</span><span class="o">.</span><span class="n">output_queue_limit</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;worker output queue is full! Main() loop can not keep up!&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+            <span class="k">if</span> <span class="n">workerState</span><span class="o">.</span><span class="n">measurementsInQueue</span> <span class="o">==</span> <span class="n">worker</span><span class="o">.</span><span class="n">mandatory_queue_limit</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;acquisition queue is full! Worker can not keep up!&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;acquisition stopped...&quot;</span><span class="p">)</span>
+    <span class="n">acquisitionContext</span><span class="o">.</span><span class="n">set_continuous</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">worker</span><span class="o">.</span><span class="n">stop_processing</span><span class="p">()</span>
+    <span class="n">cuvis</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;finished.&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
+        <span class="n">lib_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CUVIS&quot;</span><span class="p">))</span>
+        <span class="n">data_dir</span> <span class="o">=</span> <span class="n">lib_dir</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;sdk&quot;</span> <span class="o">/</span> \
+            <span class="s2">&quot;sample_data&quot;</span> <span class="o">/</span> <span class="s2">&quot;set_examples&quot;</span>
+    <span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Linux&quot;</span><span class="p">:</span>
+        <span class="n">lib_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CUVIS_DATA&quot;</span><span class="p">)</span>
+        <span class="n">data_dir</span> <span class="o">=</span> <span class="n">lib_dir</span> <span class="o">/</span> \
+            <span class="s2">&quot;sample_data&quot;</span> <span class="o">/</span> <span class="s2">&quot;set_examples&quot;</span>
+
+    <span class="c1"># default factory</span>
+    <span class="n">loc_factory</span> <span class="o">=</span> <span class="n">lib_dir</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;factory&quot;</span>
+    <span class="c1"># default settings</span>
+    <span class="n">loc_settings</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s2">&quot;settings&quot;</span>
+
+    <span class="c1"># default output</span>
+    <span class="n">loc_output</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span> <span class="o">/</span> <span class="s2">&quot;EX06_video&quot;</span>
+
+    <span class="c1"># parameters</span>
+    <span class="n">loc_exptime</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># in ms</span>
+    <span class="n">loc_autoexp</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">loc_fps</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Example 06: Record video file. Please provide:&quot;</span><span class="p">)</span>
+
+    <span class="n">userSettingsDir</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s2">&quot;User settings directory (default: </span><span class="si">{}</span><span class="s2">): &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_settings</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">userSettingsDir</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">]:</span>
+        <span class="n">userSettingsDir</span> <span class="o">=</span> <span class="n">loc_settings</span>
+
+    <span class="n">factoryDir</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Factory directory (default: </span><span class="si">{}</span><span class="s2">): &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_factory</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">factoryDir</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">]:</span>
+        <span class="n">factoryDir</span> <span class="o">=</span> <span class="n">loc_factory</span>
+
+    <span class="n">recDir</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s2">&quot;Name of recording directory (default: </span><span class="si">{}</span><span class="s2">): &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_output</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">recDir</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">]:</span>
+        <span class="n">recDir</span> <span class="o">=</span> <span class="n">loc_output</span>
+
+    <span class="n">exposure</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s2">&quot;Exposure/Integration time in ms (default: </span><span class="si">{}</span><span class="s2">): &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_exptime</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">exposure</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">]:</span>
+        <span class="n">exposure</span> <span class="o">=</span> <span class="n">loc_exptime</span>
+    <span class="n">exposure</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">exposure</span><span class="p">)</span>
+
+    <span class="n">autoExp</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s2">&quot;Auto-exposure time [True/False] (default: </span><span class="si">{}</span><span class="s2">): &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_autoexp</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">autoExp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">]:</span>
+        <span class="n">autoExp</span> <span class="o">=</span> <span class="n">loc_autoexp</span>
+    <span class="n">autoExp</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">autoExp</span><span class="p">)</span>
+
+    <span class="n">fps</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s2">&quot;Target frames per second (fps) (default: </span><span class="si">{}</span><span class="s2">): &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_fps</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">fps</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">]:</span>
+        <span class="n">fps</span> <span class="o">=</span> <span class="n">loc_fps</span>
+    <span class="n">fps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fps</span><span class="p">)</span>
+
+    <span class="n">run_example_recordVideo</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">recDir</span><span class="p">),</span> <span class="n">exposure</span><span class="p">,</span>
+                            <span class="n">autoExp</span><span class="p">,</span> <span class="n">fps</span><span class="p">)</span>
+</pre></div>
+</div>
 </div></div>
 </section>
 <section id="rerecording-a-video-from-already-recorded-data">
