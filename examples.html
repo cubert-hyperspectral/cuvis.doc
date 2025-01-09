@@ -86,22 +86,395 @@
 <h2>Loading a Measurment<a class="headerlink" href="#loading-a-measurment" title="Link to this heading"></a></h2>
 <p>This example demonstrates how to load and process hyperspectral measurement data using the cuvis SDK.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0"><p>Problems with “include” directive path:
-InputError: [Errno 2] No such file or directory: ‘../docs/cuvis.c.examples/01_loadMeasurement/main.c’.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">include</span><span class="p">::</span> <span class="o">./</span><span class="n">cuvis</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">examples</span><span class="o">/</span><span class="mi">01</span><span class="n">_loadMeasurement</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">c</span>
-</pre></div>
-</div>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">#include “cuvis.h”<p>#include &lt;assert.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;stdio.h&gt;</p>
+<p>int main(int argc, char* argv[])
+{</p>
+<blockquote>
+<div><p>if (argc != 3)
+{</p>
+<blockquote>
+<div><p>printf(“To few Arguments! Please provide:n”);
+printf(“user settings directoryn”);
+printf(“sessionfile (.cu3s)n”);</p>
+<p>return -1;</p>
+</div></blockquote>
+<p>}</p>
+<p>char* const userSettingsDir = argv[1];
+char* const sessionLoc = argv[2];</p>
+<p>CUVIS_SESSION_FILE sess;
+CUVIS_MESU mesu1;
+unsigned chn;</p>
+<p>unsigned x;
+unsigned y;</p>
+<p>const uint16_t* cube16bit;
+//const uint16_t* info_ptr;</p>
+<p>printf(“Example 01 load measurementn”);
+printf(”nUser Settings Dir: “);
+printf(userSettingsDir);
+printf(”nsessionfile (.cu3s): “);
+printf(sessionLoc);</p>
+<p>printf(”nloading user settings…n”);
+CUVIS_CHECK(cuvis_init(userSettingsDir, loglevel_debug));
+CUVIS_CHECK(cuvis_set_log_level(loglevel_info));</p>
+<p>printf(“loading session…n”);
+CUVIS_CHECK(cuvis_session_file_load(sessionLoc, &amp;sess));</p>
+<p>printf(“loading measurement…n”);
+CUVIS_CHECK(cuvis_session_file_get_mesu(</p>
+<blockquote>
+<div><p>sess, 0, session_item_type_frames_no_gaps, &amp;mesu1));</p>
+</div></blockquote>
+<p>CUVIS_MESU_METADATA mesu_data;
+CUVIS_CHECK(cuvis_measurement_get_metadata(mesu1, &amp;mesu_data));
+printf(</p>
+<blockquote>
+<div><p>”data 1 %s %.2f ms mode=%d flags=%dn”,
+mesu_data.name,
+mesu_data.integration_time,
+mesu_data.processing_mode,
+mesu_data.measurement_flags);</p>
+</div></blockquote>
+<dl class="simple">
+<dt>assert(</dt><dd><p>mesu_data.processing_mode == Cube_Raw &amp;&amp;
+“This example requires raw mode”);</p>
+</dd>
+</dl>
+<p>CUVIS_IMBUFFER cube;
+CUVIS_CHECK(</p>
+<blockquote>
+<div><p>cuvis_measurement_get_data_image(mesu1, CUVIS_MESU_CUBE_KEY, &amp;cube));</p>
+</div></blockquote>
+<p>CUVIS_IMBUFFER iminfo;
+cuvis_measurement_get_data_image(mesu1, CUVIS_MESU_CUBE_INFO_KEY, &amp;iminfo);</p>
+<p>CUVIS_CHECK(cuvis_measurement_get_metadata(mesu1, &amp;mesu_data));
+if (mesu_data.measurement_flags &amp; CUVIS_MESU_FLAG_OVERILLUMINATED)
+{</p>
+<blockquote>
+<div><p>printf(”– is overilluminated –n”);</p>
+</div></blockquote>
+<p>}
+else
+{</p>
+<blockquote>
+<div><p>printf(”– is NOT overilluminated –n”);</p>
+</div></blockquote>
+<p>}</p>
+<p>if (mesu_data.measurement_flags &amp; CUVIS_MESU_FLAG_POOR_REFERENCE)
+{</p>
+<blockquote>
+<div><p>printf(”– has poor reference –n”);</p>
+</div></blockquote>
+<p>}
+else
+{</p>
+<blockquote>
+<div><p>printf(”– has GOOD reference –n”);</p>
+</div></blockquote>
+<p>}</p>
+<p>printf(“INFO cube No of channels: %dn”, iminfo.channels);
+printf(“INFO cube width: %dn”, iminfo.width);
+printf(“INFO cube height: %dn”, iminfo.height);
+printf(“DATA cube width: %dn”, cube.width);
+printf(“DATA cube height: %dn”, cube.height);
+printf(“INFO cube type: %dn”, iminfo.format);
+printf(“INFO cube bytes: %dn”, iminfo.bytes);
+printf(“DATA cube type: %dn”, cube.format);
+printf(“DATA cube bytes: %dn”, cube.bytes);</p>
+<dl class="simple">
+<dt>assert(</dt><dd><p>cube.format == imbuffer_format_uint16 &amp;&amp;
+“16 bit cube required for this example”);</p>
+</dd>
+</dl>
+<p>//reinterpret as uint16
+cube16bit = (const uint16_t*)(cube.raw);
+//info_ptr = (const uint16_t*)(iminfo.raw);</p>
+<p>x = 120;
+y = 200;</p>
+<p>assert(x &lt; cube.width &amp;&amp; “x index exceeds cube width”);
+assert(y &lt; cube.height &amp;&amp; “x index exceeds cube width”);</p>
+<p>printf(“lambda [nm]; raw counts [au]; pixel info n”);
+for (chn = 0; chn &lt; cube.channels; chn++)
+{</p>
+<blockquote>
+<div><p>// memory layout:
+//unsigned index = (y * cube.width + x) * cube.channels + chn;
+//uint16_t value = cube16bit[index];</p>
+<p>uint16_t value = IMBUFFER_GET(cube16bit, x, y, chn, cube);
+//only works with v3.X CUVIS data
+//auto pixel_info = IMBUFFER_GET(info_ptr, x, y, 0, iminfo);
+unsigned lambda = cube.wavelength[chn];</p>
+<dl class="simple">
+<dt>printf(</dt><dd><p>“%d; %d n”,
+//”%d; %d; %d n”,
+lambda,
+value
+//pixel_info);</p>
+</dd>
+</dl>
+<p>);</p>
+</div></blockquote>
+<p>}
+printf(” n”);</p>
+<p>//for (x = 0; x &lt; cube.width; x++)
+//{
+//  for (y = 0; y &lt; cube.height; y++)
+//  {
+// memory layout:
+//unsigned index = (y * cube.width + x) * cube.channels + chn;
+//uint16_t value = cube16bit[index];</p>
+<p>//auto pixel_info = IMBUFFER_GET(info_ptr, x, y, 0, iminfo);</p>
+<p>//printf(“%d; “, pixel_info);
+//  }
+//  printf(” n”);
+//}</p>
+<p>cuvis_measurement_free(&amp;mesu1);
+cuvis_session_file_free(&amp;sess);
+cuvis_shutdown();
+printf(“finished.n”);</p>
+</div></blockquote>
+<p>}</p>
 </button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1"><p>Problems with “include” directive path:
-InputError: [Errno 2] No such file or directory: ‘../docs/cuvis.c.examples/01_loadMeasurement_cpp/main.cpp’.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">include</span><span class="p">::</span> <span class="o">./</span><span class="n">cuvis</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">examples</span><span class="o">/</span><span class="mi">01</span><span class="n">_loadMeasurement_cpp</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">cpp</span>
+InputError: [Errno 2] No such file or directory: ‘../cuvis.c.examples/01_loadMeasurement_cpp/main.cpp’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">include</span><span class="p">::</span> <span class="o">../</span><span class="n">cuvis</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">examples</span><span class="o">/</span><span class="mi">01</span><span class="n">_loadMeasurement_cpp</span><span class="o">/</span><span class="n">main</span><span class="o">.</span><span class="n">cpp</span>
 </pre></div>
 </div>
-</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1"><p>Problems with “include” directive path:
-InputError: [Errno 2] No such file or directory: ‘../docs/cuvis.python.examples/EX01_loadMeasurement.py’.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">include</span><span class="p">::</span> <span class="o">./</span><span class="n">cuvis</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">examples</span><span class="o">/</span><span class="n">EX01_loadMeasurement</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><blockquote>
+</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">import os
+import platform
+from pathlib import Path<p>import matplotlib.pyplot as plt
+import numpy as np</p>
+<p>import cuvis</p>
+<dl>
+<dt>def run_example_loadMeasurement(</dt><dd><blockquote>
+<div><p>userSettingsDir,
+measurementLoc):</p>
+</div></blockquote>
+<p>print(“loading user settings…”)
+cuvis.init(userSettingsDir)
+cuvis.set_log_level(“info”)</p>
+<p>print(“loading session…”)
+session = cuvis.SessionFile(measurementLoc)</p>
+<p>print(“loading measurement file…”)
+mesu = session[0]
+assert mesu._handle</p>
+<dl>
+<dt>print(“Data 1 {} t={}ms mode={}”.format(mesu.name,</dt><dd><p>mesu.integration_time,
+mesu.processing_mode.name,
+))</p>
+</dd>
+<dt>if isinstance(mesu.measurement_flags, cuvis.MeasurementFlags):</dt><dd><p>print(f”Flags: {mesu.measurement_flags}”)
+for v in cuvis.MeasurementFlags.supremum():</p>
+<blockquote>
+<div><p>print(f’{v}: {v in mesu.measurement_flags}’)</p>
+</div></blockquote>
+</dd>
+</dl>
+<p>cube = mesu.cube
+if cube is None:</p>
+<blockquote>
+<div><p>raise Exception(“Cube not found”)</p>
+</div></blockquote>
+<p>x = 120
+y = 200</p>
+<p>assert x &lt; cube.width, “x index exceeds cube width!”
+assert y &lt; cube.height, “y index exceeds cube height!”</p>
+<p>lambda_wl = []
+raw_counts = []
+for chn in np.arange(cube.channels):</p>
+<blockquote>
+<div><p>lambda_wl.append(cube.wavelength[chn])
+raw_counts.append(cube.array[x, y, chn])</p>
+</div></blockquote>
+<p>plt.plot(lambda_wl, raw_counts)
+plt.xlabel(“lambda [nm]”)
+plt.ylabel(“raw counts [au]”)
+plt.title(“Spectrum of {} for x={}, y={}”.format(mesu.name, x, y))
+plt.show()</p>
+<p>cuvis.shutdown()
+print(“finished.”)</p>
+</dd>
+</dl>
+<p>if __name__ == “__main__”:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>if platform.system() == “Windows”:</dt><dd><dl class="simple">
+<dt>data_dir = Path(os.getenv(“CUVIS”)).parent / “sdk” / </dt><dd><p>”sample_data” / “set_examples”</p>
+</dd>
+</dl>
+</dd>
+<dt>elif platform.system() == “Linux”:</dt><dd><dl class="simple">
+<dt>data_dir = Path(os.getenv(“CUVIS_DATA”)) / </dt><dd><p>”sample_data” / “set_examples”</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p># default image
+loc_file = data_dir / “set0_single” / “single.cu3s”</p>
+<p># default settings
+loc_settings = data_dir / “settings”</p>
+<p>print(“Example 01: Load Measurement. Please provide:”)</p>
+<dl class="simple">
+<dt>userSettingsDir = input(</dt><dd><p>“User settings directory (default: {}): “.format(loc_settings))</p>
+</dd>
+<dt>if userSettingsDir.strip().lower() in [“”, “default”]:</dt><dd><p>userSettingsDir = loc_settings</p>
+</dd>
+<dt>measurementLoc = input(</dt><dd><p>“Measurement file (.cu3s) (default: {}): “.format(loc_file))</p>
+</dd>
+<dt>if measurementLoc.strip().lower() in [“”, “default”]:</dt><dd><p>measurementLoc = loc_file</p>
+</dd>
+</dl>
+<p>run_example_loadMeasurement(str(userSettingsDir), str(measurementLoc))</p>
+</div></blockquote>
+</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>#include “cuvis.h”</p>
+<p>#include &lt;assert.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;stdio.h&gt;</p>
+<p>int main(int argc, char* argv[])
+{</p>
+<blockquote>
+<div><p>if (argc != 3)
+{</p>
+<blockquote>
+<div><p>printf(“To few Arguments! Please provide:n”);
+printf(“user settings directoryn”);
+printf(“sessionfile (.cu3s)n”);</p>
+<p>return -1;</p>
+</div></blockquote>
+<p>}</p>
+<p>char* const userSettingsDir = argv[1];
+char* const sessionLoc = argv[2];</p>
+<p>CUVIS_SESSION_FILE sess;
+CUVIS_MESU mesu1;
+unsigned chn;</p>
+<p>unsigned x;
+unsigned y;</p>
+<p>const uint16_t* cube16bit;
+//const uint16_t* info_ptr;</p>
+<p>printf(“Example 01 load measurementn”);
+printf(”nUser Settings Dir: “);
+printf(userSettingsDir);
+printf(”nsessionfile (.cu3s): “);
+printf(sessionLoc);</p>
+<p>printf(”nloading user settings…n”);
+CUVIS_CHECK(cuvis_init(userSettingsDir, loglevel_debug));
+CUVIS_CHECK(cuvis_set_log_level(loglevel_info));</p>
+<p>printf(“loading session…n”);
+CUVIS_CHECK(cuvis_session_file_load(sessionLoc, &amp;sess));</p>
+<p>printf(“loading measurement…n”);
+CUVIS_CHECK(cuvis_session_file_get_mesu(</p>
+<blockquote>
+<div><p>sess, 0, session_item_type_frames_no_gaps, &amp;mesu1));</p>
+</div></blockquote>
+<p>CUVIS_MESU_METADATA mesu_data;
+CUVIS_CHECK(cuvis_measurement_get_metadata(mesu1, &amp;mesu_data));
+printf(</p>
+<blockquote>
+<div><p>“data 1 %s %.2f ms mode=%d flags=%dn”,
+mesu_data.name,
+mesu_data.integration_time,
+mesu_data.processing_mode,
+mesu_data.measurement_flags);</p>
+</div></blockquote>
+<dl class="simple">
+<dt>assert(</dt><dd><p>mesu_data.processing_mode == Cube_Raw &amp;&amp;
+“This example requires raw mode”);</p>
+</dd>
+</dl>
+<p>CUVIS_IMBUFFER cube;
+CUVIS_CHECK(</p>
+<blockquote>
+<div><p>cuvis_measurement_get_data_image(mesu1, CUVIS_MESU_CUBE_KEY, &amp;cube));</p>
+</div></blockquote>
+<p>CUVIS_IMBUFFER iminfo;
+cuvis_measurement_get_data_image(mesu1, CUVIS_MESU_CUBE_INFO_KEY, &amp;iminfo);</p>
+<p>CUVIS_CHECK(cuvis_measurement_get_metadata(mesu1, &amp;mesu_data));
+if (mesu_data.measurement_flags &amp; CUVIS_MESU_FLAG_OVERILLUMINATED)
+{</p>
+<blockquote>
+<div><p>printf(”– is overilluminated –n”);</p>
+</div></blockquote>
+<p>}
+else
+{</p>
+<blockquote>
+<div><p>printf(”– is NOT overilluminated –n”);</p>
+</div></blockquote>
+<p>}</p>
+<p>if (mesu_data.measurement_flags &amp; CUVIS_MESU_FLAG_POOR_REFERENCE)
+{</p>
+<blockquote>
+<div><p>printf(”– has poor reference –n”);</p>
+</div></blockquote>
+<p>}
+else
+{</p>
+<blockquote>
+<div><p>printf(”– has GOOD reference –n”);</p>
+</div></blockquote>
+<p>}</p>
+<p>printf(“INFO cube No of channels: %dn”, iminfo.channels);
+printf(“INFO cube width: %dn”, iminfo.width);
+printf(“INFO cube height: %dn”, iminfo.height);
+printf(“DATA cube width: %dn”, cube.width);
+printf(“DATA cube height: %dn”, cube.height);
+printf(“INFO cube type: %dn”, iminfo.format);
+printf(“INFO cube bytes: %dn”, iminfo.bytes);
+printf(“DATA cube type: %dn”, cube.format);
+printf(“DATA cube bytes: %dn”, cube.bytes);</p>
+<dl class="simple">
+<dt>assert(</dt><dd><p>cube.format == imbuffer_format_uint16 &amp;&amp;
+“16 bit cube required for this example”);</p>
+</dd>
+</dl>
+<p>//reinterpret as uint16
+cube16bit = (const uint16_t*)(cube.raw);
+//info_ptr = (const uint16_t*)(iminfo.raw);</p>
+<p>x = 120;
+y = 200;</p>
+<p>assert(x &lt; cube.width &amp;&amp; “x index exceeds cube width”);
+assert(y &lt; cube.height &amp;&amp; “x index exceeds cube width”);</p>
+<p>printf(“lambda [nm]; raw counts [au]; pixel info n”);
+for (chn = 0; chn &lt; cube.channels; chn++)
+{</p>
+<blockquote>
+<div><p>// memory layout:
+//unsigned index = (y * cube.width + x) * cube.channels + chn;
+//uint16_t value = cube16bit[index];</p>
+<p>uint16_t value = IMBUFFER_GET(cube16bit, x, y, chn, cube);
+//only works with v3.X CUVIS data
+//auto pixel_info = IMBUFFER_GET(info_ptr, x, y, 0, iminfo);
+unsigned lambda = cube.wavelength[chn];</p>
+<dl class="simple">
+<dt>printf(</dt><dd><p>“%d; %d n”,
+//”%d; %d; %d n”,
+lambda,
+value
+//pixel_info);</p>
+</dd>
+</dl>
+<p>);</p>
+</div></blockquote>
+<p>}
+printf(” n”);</p>
+<p>//for (x = 0; x &lt; cube.width; x++)
+//{
+//  for (y = 0; y &lt; cube.height; y++)
+//  {
+// memory layout:
+//unsigned index = (y * cube.width + x) * cube.channels + chn;
+//uint16_t value = cube16bit[index];</p>
+<p>//auto pixel_info = IMBUFFER_GET(info_ptr, x, y, 0, iminfo);</p>
+<p>//printf(“%d; “, pixel_info);
+//  }
+//  printf(” n”);
+//}</p>
+<p>cuvis_measurement_free(&amp;mesu1);
+cuvis_session_file_free(&amp;sess);
+cuvis_shutdown();
+printf(“finished.n”);</p>
+</div></blockquote>
+<p>}</p>
+<blockquote>
 <div><dl class="field-list simple">
 <dt class="field-odd">linenos<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
@@ -113,7 +486,94 @@ InputError: [Errno 2] No such file or directory: ‘../docs/cuvis.python.example
 <dd class="field-odd"><p></p></dd>
 </dl>
 </div></blockquote>
-</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><blockquote>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>import os
+import platform
+from pathlib import Path</p>
+<p>import matplotlib.pyplot as plt
+import numpy as np</p>
+<p>import cuvis</p>
+<dl>
+<dt>def run_example_loadMeasurement(</dt><dd><blockquote>
+<div><p>userSettingsDir,
+measurementLoc):</p>
+</div></blockquote>
+<p>print(“loading user settings…”)
+cuvis.init(userSettingsDir)
+cuvis.set_log_level(“info”)</p>
+<p>print(“loading session…”)
+session = cuvis.SessionFile(measurementLoc)</p>
+<p>print(“loading measurement file…”)
+mesu = session[0]
+assert mesu._handle</p>
+<dl>
+<dt>print(“Data 1 {} t={}ms mode={}”.format(mesu.name,</dt><dd><p>mesu.integration_time,
+mesu.processing_mode.name,
+))</p>
+</dd>
+<dt>if isinstance(mesu.measurement_flags, cuvis.MeasurementFlags):</dt><dd><p>print(f”Flags: {mesu.measurement_flags}”)
+for v in cuvis.MeasurementFlags.supremum():</p>
+<blockquote>
+<div><p>print(f’{v}: {v in mesu.measurement_flags}’)</p>
+</div></blockquote>
+</dd>
+</dl>
+<p>cube = mesu.cube
+if cube is None:</p>
+<blockquote>
+<div><p>raise Exception(“Cube not found”)</p>
+</div></blockquote>
+<p>x = 120
+y = 200</p>
+<p>assert x &lt; cube.width, “x index exceeds cube width!”
+assert y &lt; cube.height, “y index exceeds cube height!”</p>
+<p>lambda_wl = []
+raw_counts = []
+for chn in np.arange(cube.channels):</p>
+<blockquote>
+<div><p>lambda_wl.append(cube.wavelength[chn])
+raw_counts.append(cube.array[x, y, chn])</p>
+</div></blockquote>
+<p>plt.plot(lambda_wl, raw_counts)
+plt.xlabel(“lambda [nm]”)
+plt.ylabel(“raw counts [au]”)
+plt.title(“Spectrum of {} for x={}, y={}”.format(mesu.name, x, y))
+plt.show()</p>
+<p>cuvis.shutdown()
+print(“finished.”)</p>
+</dd>
+</dl>
+<p>if __name__ == “__main__”:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>if platform.system() == “Windows”:</dt><dd><dl class="simple">
+<dt>data_dir = Path(os.getenv(“CUVIS”)).parent / “sdk” / </dt><dd><p>“sample_data” / “set_examples”</p>
+</dd>
+</dl>
+</dd>
+<dt>elif platform.system() == “Linux”:</dt><dd><dl class="simple">
+<dt>data_dir = Path(os.getenv(“CUVIS_DATA”)) / </dt><dd><p>“sample_data” / “set_examples”</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p># default image
+loc_file = data_dir / “set0_single” / “single.cu3s”</p>
+<p># default settings
+loc_settings = data_dir / “settings”</p>
+<p>print(“Example 01: Load Measurement. Please provide:”)</p>
+<dl class="simple">
+<dt>userSettingsDir = input(</dt><dd><p>“User settings directory (default: {}): “.format(loc_settings))</p>
+</dd>
+<dt>if userSettingsDir.strip().lower() in [“”, “default”]:</dt><dd><p>userSettingsDir = loc_settings</p>
+</dd>
+<dt>measurementLoc = input(</dt><dd><p>“Measurement file (.cu3s) (default: {}): “.format(loc_file))</p>
+</dd>
+<dt>if measurementLoc.strip().lower() in [“”, “default”]:</dt><dd><p>measurementLoc = loc_file</p>
+</dd>
+</dl>
+<p>run_example_loadMeasurement(str(userSettingsDir), str(measurementLoc))</p>
+</div></blockquote>
+<blockquote>
 <div><dl class="field-list simple">
 <dt class="field-odd">linenos<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
