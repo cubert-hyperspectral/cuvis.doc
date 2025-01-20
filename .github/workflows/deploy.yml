@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - feature/add_release/history
+      - feature/add_release_history
       
 permissions:
   contents: write
