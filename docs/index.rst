@@ -11,6 +11,7 @@ Welcome to Cuvis SDK's documentation!
    
 	gettingstarted
 	sdkuserguide
+	releasehistory
 	examples
 	cwrapper
 	cppwrapper
