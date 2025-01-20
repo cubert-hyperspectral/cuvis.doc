@@ -1,5 +1,5 @@
 Release History
 ===============
 
- .. include:: ../cuvis.c/HISTORY.md
+ .. include:: ../cuvis.c/HISTORY.rst
    :parser: myst
