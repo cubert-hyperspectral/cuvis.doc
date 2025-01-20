@@ -29,6 +29,11 @@ extensions = [
     'sphinx_tabs.tabs'
 ]
 
+myst_enable_extensions = [
+    "linkify",  # Converts URLs and email addresses into clickable links
+    "colon_fence",  # Allows colon-fenced code blocks
+]
+
 breathe_default_project = "cuvis"
 
 templates_path = ['_templates']
