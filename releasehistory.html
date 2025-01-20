@@ -79,18 +79,21 @@
   <section id="release-history">
 <h1>Release History<a class="headerlink" href="#release-history" title="Link to this heading"></a></h1>
 <blockquote>
-<div><section id="v3-3-0">
-<h2>v3.3.0<a class="headerlink" href="#v3-3-0" title="Link to this heading"></a></h2>
+<div><section id="release-history">
+<h2>Release History<a class="headerlink" href="#release-history" title="Link to this heading"></a></h2>
+<section id="v3-3-0">
+<h3>v3.3.0<a class="headerlink" href="#v3-3-0" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Removed <code class="docutils literal notranslate"><span class="pre">keep_out_of_sequence</span></code> from ``:c:struct:<code class="docutils literal notranslate"><span class="pre">cuvis_worker_settings_t</span></code></p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">keep_out_of_sequence</span></code> from :c:struct:<code class="docutils literal notranslate"><span class="pre">cuvis_worker_settings_t</span></code></p></li>
 <li><p>Changed <code class="docutils literal notranslate"><span class="pre">cuvis_comp_temperature</span></code> from <code class="docutils literal notranslate"><span class="pre">int</span></code> to <code class="docutils literal notranslate"><span class="pre">double</span></code></p></li>
 <li><p>Changed <code class="docutils literal notranslate"><span class="pre">spectra_multiplier</span></code> of <code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t</span></code> from <code class="docutils literal notranslate"><span class="pre">double</span></code> to <code class="docutils literal notranslate"><span class="pre">uint8_t</span></code></p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> to <code class="docutils literal notranslate"><span class="pre">sensor_info_t</span></code></p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">global_loglevel</span></code> to <code class="docutils literal notranslate"><span class="pre">cuvis_init</span></code></p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">frame_id</span></code> to <code class="docutils literal notranslate"><span class="pre">mesu_metadata_t</span></code></p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">raw_frame_id</span></code> to <code class="docutils literal notranslate"><span class="pre">sensor_info_t</span></code></p></li>
-<li><p>Added ``:c:function:<code class="docutils literal notranslate"><span class="pre">cuvis_shutdown</span></code></p></li>
-<li><p>Added <code class="docutils literal notranslate"><span class="pre">length</span></code> to <code class="docutils literal notranslate"><span class="pre">cuvis_measurement_get_data_string_length</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> to :c:struct:<code class="docutils literal notranslate"><span class="pre">sensor_info_t</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">global_loglevel</span></code> to :c:struct:<code class="docutils literal notranslate"><span class="pre">cuvis_init</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">frame_id</span></code> to :c:struct:<code class="docutils literal notranslate"><span class="pre">mesu_metadata_t</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">raw_frame_id</span></code> to :c:struct:<code class="docutils literal notranslate"><span class="pre">sensor_info_t</span></code></p></li>
+<li><p>Added :c:function:<code class="docutils literal notranslate"><span class="pre">cuvis_shutdown</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">length</span></code> to :c:function:<code class="docutils literal notranslate"><span class="pre">cuvis_measurement_get_data_string</span></code></p></li>
+<li><p>Added :c:function:<code class="docutils literal notranslate"><span class="pre">cuvis_measurement_get_data_string_length</span></code></p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">full_export</span></code> to <code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t</span></code></p></li>
 <li><p>Removed <code class="docutils literal notranslate"><span class="pre">worker_count</span></code>, <code class="docutils literal notranslate"><span class="pre">poll_interval</span></code>, <code class="docutils literal notranslate"><span class="pre">worker_queue_hard_limit</span></code>, <code class="docutils literal notranslate"><span class="pre">worker_queue_soft_limit</span></code>, <code class="docutils literal notranslate"><span class="pre">can_drop</span></code>  from <code class="docutils literal notranslate"><span class="pre">cuvis_worker_settings_t</span></code></p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">input_queue_size</span></code>, <code class="docutils literal notranslate"><span class="pre">mandatory_queue_size</span></code>, <code class="docutils literal notranslate"><span class="pre">supplementary_queue_size</span></code>, <code class="docutils literal notranslate"><span class="pre">output_queue_size</span></code>, <code class="docutils literal notranslate"><span class="pre">can_skip_measurements</span></code>, <code class="docutils literal notranslate"><span class="pre">can_skip_supplementary_steps</span></code>, <code class="docutils literal notranslate"><span class="pre">can_drop_results</span></code> to <code class="docutils literal notranslate"><span class="pre">cuvis_worker_settings_t</span></code></p></li>
@@ -103,6 +106,7 @@
 <li><p>Removed <code class="docutils literal notranslate"><span class="pre">pre_pan_sharpen_cube</span></code> from <code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t</span></code> (Still exists in <code class="docutils literal notranslate"><span class="pre">cuvis_viewer_settings_t</span></code>)</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">pixel_format</span></code> and <code class="docutils literal notranslate"><span class="pre">binning</span></code> to <code class="docutils literal notranslate"><span class="pre">cuvis_sensor_info_t</span></code></p></li>
 </ul>
+</section>
 </section>
 </div></blockquote>
 </section>
