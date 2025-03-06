@@ -5,14 +5,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>cuvis.SessionFile &mdash; Cuvis SDK 3.3.0 documentation</title>
+  <title>cuvis.SessionFile &mdash; Cuvis SDK 3.2.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=3eb8911e"></script>
+      <script src="../../_static/documentation_options.js?v=eb155f5e"></script>
       <script src="../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -42,7 +42,6 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../sdkuserguide.html">SDK User’s Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../releasehistory.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cwrapper.html">Cuvis C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cppwrapper.html">Cuvis C++ API</a></li>
@@ -74,7 +73,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for cuvis.SessionFile</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span></span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">._cuvis_il</span><span class="w"> </span><span class="kn">import</span> <span class="n">cuvis_il</span>
@@ -91,16 +90,17 @@
 <a class="viewcode-back" href="../../pythonwrapper.html#cuvis.SessionFile.SessionFile">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SessionFile</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">str</span><span class="p">]):</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pc</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">base</span><span class="p">),</span> <span class="n">Path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">base</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">base</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
             <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_session_file_load</span><span class="p">(</span><span class="n">base</span><span class="p">,</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_session_file_load</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">base</span><span class="p">),</span>
                                                                       <span class="n">_ptr</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">(</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
                 <span class="s2">&quot;Could not open SessionFile File! File not found!&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="SessionFile.get_measurement">
@@ -190,7 +190,15 @@
         <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
         <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_assign</span><span class="p">(</span><span class="n">_ptr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">)</span>
         <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_session_file_free</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;This functions is not permitted due to the class only keeping a handle, that is managed by the cuvis sdk.&#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Deep copying is not supported for SessionFile&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;This functions is not permitted due to the class only keeping a handle, that is managed by the cuvis sdk.&#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Shallow copying is not supported for SessionFile&#39;</span><span class="p">)</span></div>
 
 </pre></div>
 

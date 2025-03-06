@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cuvis C++ API &mdash; Cuvis SDK 3.3.0 documentation</title>
+  <title>Cuvis C++ API &mdash; Cuvis SDK 3.2.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=3eb8911e"></script>
+      <script src="_static/documentation_options.js?v=eb155f5e"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -45,202 +45,202 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdkuserguide.html">SDK User’s Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="releasehistory.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cwrapper.html">Cuvis C API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cuvis C++ API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis7GeneralE"><code class="docutils literal notranslate"><span class="pre">General</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General13set_log_levelE5int_t"><code class="docutils literal notranslate"><span class="pre">General::set_log_level()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General20set_exception_localeERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">General::set_exception_locale()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General21register_log_callbackENSt8functionIFvPKc10loglevel_tEEE5int_t"><code class="docutils literal notranslate"><span class="pre">General::register_log_callback()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General18reset_log_callbackEv"><code class="docutils literal notranslate"><span class="pre">General::reset_log_callback()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General31register_log_callback_localizedENSt8functionIFvPKw10loglevel_tEEE5int_tRKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">General::register_log_callback_localized()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General28reset_log_callback_localizedEv"><code class="docutils literal notranslate"><span class="pre">General::reset_log_callback_localized()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General7versionEv"><code class="docutils literal notranslate"><span class="pre">General::version()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General4initERKNSt6stringEi"><code class="docutils literal notranslate"><span class="pre">General::init()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General8shutdownEv"><code class="docutils literal notranslate"><span class="pre">General::shutdown()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General23register_event_callbackE20cpp_event_callback_t5int_t"><code class="docutils literal notranslate"><span class="pre">General::register_event_callback()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General25unregister_event_callbackE5int_t"><code class="docutils literal notranslate"><span class="pre">General::unregister_event_callback()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis7GeneralE"><code class="docutils literal notranslate"><span class="pre">cuvis::General</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General13set_log_levelE5int_t"><code class="docutils literal notranslate"><span class="pre">set_log_level()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General20set_exception_localeERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">set_exception_locale()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General21register_log_callbackENSt8functionIFvPKc10loglevel_tEEE5int_t"><code class="docutils literal notranslate"><span class="pre">register_log_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General18reset_log_callbackEv"><code class="docutils literal notranslate"><span class="pre">reset_log_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General31register_log_callback_localizedENSt8functionIFvPKw10loglevel_tEEE5int_tRKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">register_log_callback_localized()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General28reset_log_callback_localizedEv"><code class="docutils literal notranslate"><span class="pre">reset_log_callback_localized()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General7versionEv"><code class="docutils literal notranslate"><span class="pre">version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General4initERKNSt6stringEi"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General8shutdownEv"><code class="docutils literal notranslate"><span class="pre">shutdown()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General23register_event_callbackE20cpp_event_callback_t5int_t"><code class="docutils literal notranslate"><span class="pre">register_event_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General25unregister_event_callbackE5int_t"><code class="docutils literal notranslate"><span class="pre">unregister_event_callback()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis11CalibrationE"><code class="docutils literal notranslate"><span class="pre">Calibration</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Calibration11CalibrationERKNSt10filesystem4pathE"><code class="docutils literal notranslate"><span class="pre">Calibration::Calibration()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Calibration11CalibrationERK11SessionFile"><code class="docutils literal notranslate"><span class="pre">Calibration::Calibration()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration16get_capabilitiesE20CUVIS_OPERATION_MODE"><code class="docutils literal notranslate"><span class="pre">Calibration::get_capabilities()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration8get_infoEv"><code class="docutils literal notranslate"><span class="pre">Calibration::get_info()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration6get_idEv"><code class="docutils literal notranslate"><span class="pre">Calibration::get_id()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis11CalibrationE"><code class="docutils literal notranslate"><span class="pre">cuvis::Calibration</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Calibration11CalibrationERKNSt10filesystem4pathE"><code class="docutils literal notranslate"><span class="pre">Calibration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Calibration11CalibrationERK11SessionFile"><code class="docutils literal notranslate"><span class="pre">Calibration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration16get_capabilitiesE20CUVIS_OPERATION_MODE"><code class="docutils literal notranslate"><span class="pre">get_capabilities()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration8get_infoEv"><code class="docutils literal notranslate"><span class="pre">get_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration6get_idEv"><code class="docutils literal notranslate"><span class="pre">get_id()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis11MeasurementE"><code class="docutils literal notranslate"><span class="pre">Measurement</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement15image_variant_tE"><code class="docutils literal notranslate"><span class="pre">Measurement::image_variant_t</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement10gps_data_tE"><code class="docutils literal notranslate"><span class="pre">Measurement::gps_data_t</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement13string_data_tE"><code class="docutils literal notranslate"><span class="pre">Measurement::string_data_t</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement12image_data_tE"><code class="docutils literal notranslate"><span class="pre">Measurement::image_data_t</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement18sensor_info_data_tE"><code class="docutils literal notranslate"><span class="pre">Measurement::sensor_info_data_t</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11MeasurementaSERK11Measurement"><code class="docutils literal notranslate"><span class="pre">Measurement::operator=()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement11MeasurementERR11Measurement"><code class="docutils literal notranslate"><span class="pre">Measurement::Measurement()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement11MeasurementERK11Measurement"><code class="docutils literal notranslate"><span class="pre">Measurement::Measurement()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement11MeasurementERKNSt10filesystem4pathE"><code class="docutils literal notranslate"><span class="pre">Measurement::Measurement()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement16get_capabilitiesEv"><code class="docutils literal notranslate"><span class="pre">Measurement::get_capabilities()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement8get_metaEv"><code class="docutils literal notranslate"><span class="pre">Measurement::get_meta()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement15get_sensor_infoEv"><code class="docutils literal notranslate"><span class="pre">Measurement::get_sensor_info()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement7get_gpsEv"><code class="docutils literal notranslate"><span class="pre">Measurement::get_gps()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement10get_imdataEv"><code class="docutils literal notranslate"><span class="pre">Measurement::get_imdata()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement11get_strdataEv"><code class="docutils literal notranslate"><span class="pre">Measurement::get_strdata()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement13get_thumbnailEv"><code class="docutils literal notranslate"><span class="pre">Measurement::get_thumbnail()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement12get_calib_idEv"><code class="docutils literal notranslate"><span class="pre">Measurement::get_calib_id()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement4saveERK8SaveArgs"><code class="docutils literal notranslate"><span class="pre">Measurement::save()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement8set_nameERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">Measurement::set_name()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement11set_commentERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">Measurement::set_comment()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement10clear_cubeEv"><code class="docutils literal notranslate"><span class="pre">Measurement::clear_cube()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement24clear_implicit_referenceE16reference_type_t"><code class="docutils literal notranslate"><span class="pre">Measurement::clear_implicit_reference()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement7refreshEv"><code class="docutils literal notranslate"><span class="pre">Measurement::refresh()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis11MeasurementE"><code class="docutils literal notranslate"><span class="pre">cuvis::Measurement</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement15image_variant_tE"><code class="docutils literal notranslate"><span class="pre">image_variant_t</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement10gps_data_tE"><code class="docutils literal notranslate"><span class="pre">gps_data_t</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement13string_data_tE"><code class="docutils literal notranslate"><span class="pre">string_data_t</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement12image_data_tE"><code class="docutils literal notranslate"><span class="pre">image_data_t</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement18sensor_info_data_tE"><code class="docutils literal notranslate"><span class="pre">sensor_info_data_t</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11MeasurementaSERK11Measurement"><code class="docutils literal notranslate"><span class="pre">operator=()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement11MeasurementERR11Measurement"><code class="docutils literal notranslate"><span class="pre">Measurement()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement11MeasurementERK11Measurement"><code class="docutils literal notranslate"><span class="pre">Measurement()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement11MeasurementERKNSt10filesystem4pathE"><code class="docutils literal notranslate"><span class="pre">Measurement()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement16get_capabilitiesEv"><code class="docutils literal notranslate"><span class="pre">get_capabilities()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement8get_metaEv"><code class="docutils literal notranslate"><span class="pre">get_meta()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement15get_sensor_infoEv"><code class="docutils literal notranslate"><span class="pre">get_sensor_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement7get_gpsEv"><code class="docutils literal notranslate"><span class="pre">get_gps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement10get_imdataEv"><code class="docutils literal notranslate"><span class="pre">get_imdata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement11get_strdataEv"><code class="docutils literal notranslate"><span class="pre">get_strdata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement13get_thumbnailEv"><code class="docutils literal notranslate"><span class="pre">get_thumbnail()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement12get_calib_idEv"><code class="docutils literal notranslate"><span class="pre">get_calib_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement4saveERK8SaveArgs"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement8set_nameERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">set_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement11set_commentERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">set_comment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement10clear_cubeEv"><code class="docutils literal notranslate"><span class="pre">clear_cube()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement24clear_implicit_referenceE16reference_type_t"><code class="docutils literal notranslate"><span class="pre">clear_implicit_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement7refreshEv"><code class="docutils literal notranslate"><span class="pre">refresh()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis11SessionFileE"><code class="docutils literal notranslate"><span class="pre">SessionFile</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11SessionFile11SessionFileERKNSt10filesystem4pathE"><code class="docutils literal notranslate"><span class="pre">SessionFile::SessionFile()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile8get_mesuE5int_t25cuvis_session_item_type_t"><code class="docutils literal notranslate"><span class="pre">SessionFile::get_mesu()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile7get_refE5int_t22cuvis_reference_type_t"><code class="docutils literal notranslate"><span class="pre">SessionFile::get_ref()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile13get_thumbnailEv"><code class="docutils literal notranslate"><span class="pre">SessionFile::get_thumbnail()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile8get_sizeE25cuvis_session_item_type_t"><code class="docutils literal notranslate"><span class="pre">SessionFile::get_size()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile7get_fpsEv"><code class="docutils literal notranslate"><span class="pre">SessionFile::get_fps()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile8get_hashEv"><code class="docutils literal notranslate"><span class="pre">SessionFile::get_hash()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile18get_operation_modeEv"><code class="docutils literal notranslate"><span class="pre">SessionFile::get_operation_mode()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis11SessionFileE"><code class="docutils literal notranslate"><span class="pre">cuvis::SessionFile</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11SessionFile11SessionFileERKNSt10filesystem4pathE"><code class="docutils literal notranslate"><span class="pre">SessionFile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile8get_mesuE5int_t25cuvis_session_item_type_t"><code class="docutils literal notranslate"><span class="pre">get_mesu()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile7get_refE5int_t22cuvis_reference_type_t"><code class="docutils literal notranslate"><span class="pre">get_ref()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile13get_thumbnailEv"><code class="docutils literal notranslate"><span class="pre">get_thumbnail()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile8get_sizeE25cuvis_session_item_type_t"><code class="docutils literal notranslate"><span class="pre">get_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile7get_fpsEv"><code class="docutils literal notranslate"><span class="pre">get_fps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile8get_hashEv"><code class="docutils literal notranslate"><span class="pre">get_hash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile18get_operation_modeEv"><code class="docutils literal notranslate"><span class="pre">get_operation_mode()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContextE"><code class="docutils literal notranslate"><span class="pre">ProcessingContext</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext17ProcessingContextERK11Calibration"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::ProcessingContext()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext17ProcessingContextERK11Measurement"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::ProcessingContext()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext17ProcessingContextERK11SessionFile"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::ProcessingContext()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext5applyER11Measurement"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::apply()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext13calc_distanceEd"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::calc_distance()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext13set_referenceERK11Measurement16reference_type_t"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::set_reference()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext15clear_referenceE16reference_type_t"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::clear_reference()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext18set_processingArgsERK14ProcessingArgs"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::set_processingArgs()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext13get_referenceE16reference_type_t"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::get_reference()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext18get_processingArgsEv"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::get_processingArgs()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext10is_capableERK11MeasurementRK14ProcessingArgs"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::is_capable()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext13has_referenceE16reference_type_t"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::has_reference()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext12get_calib_idEv"><code class="docutils literal notranslate"><span class="pre">ProcessingContext::get_calib_id()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContextE"><code class="docutils literal notranslate"><span class="pre">cuvis::ProcessingContext</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext17ProcessingContextERK11Calibration"><code class="docutils literal notranslate"><span class="pre">ProcessingContext()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext17ProcessingContextERK11Measurement"><code class="docutils literal notranslate"><span class="pre">ProcessingContext()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext17ProcessingContextERK11SessionFile"><code class="docutils literal notranslate"><span class="pre">ProcessingContext()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext5applyER11Measurement"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext13calc_distanceEd"><code class="docutils literal notranslate"><span class="pre">calc_distance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext13set_referenceERK11Measurement16reference_type_t"><code class="docutils literal notranslate"><span class="pre">set_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext15clear_referenceE16reference_type_t"><code class="docutils literal notranslate"><span class="pre">clear_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext18set_processingArgsERK14ProcessingArgs"><code class="docutils literal notranslate"><span class="pre">set_processingArgs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext13get_referenceE16reference_type_t"><code class="docutils literal notranslate"><span class="pre">get_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext18get_processingArgsEv"><code class="docutils literal notranslate"><span class="pre">get_processingArgs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext10is_capableERK11MeasurementRK14ProcessingArgs"><code class="docutils literal notranslate"><span class="pre">is_capable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext13has_referenceE16reference_type_t"><code class="docutils literal notranslate"><span class="pre">has_reference()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext12get_calib_idEv"><code class="docutils literal notranslate"><span class="pre">get_calib_id()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContextE"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext15mesu_callback_tE"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::mesu_callback_t</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext17component_state_tE"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::component_state_t</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext16state_callback_tE"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::state_callback_t</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext18AcquisitionContextERK11Calibration"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::AcquisitionContext()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext18AcquisitionContextERK11SessionFileb"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::AcquisitionContext()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContextD0Ev"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::~AcquisitionContext()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext7captureEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::capture()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext13capture_queueEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::capture_queue()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext9get_stateEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_state()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext26get_component_pixel_formatEi"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_component_pixel_format()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext26set_component_pixel_formatEiNSt6stringE"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_component_pixel_format()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext37get_component_available_pixel_formatsE5int_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_component_available_pixel_formats()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext20get_next_measurementENSt6chrono12millisecondsE"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_next_measurement()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext16get_session_infoEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_session_info()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext19get_component_countEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_component_count()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18get_component_infoE5int_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_component_info()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext16set_session_infoE11SessionInfo"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_session_info()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext14set_queue_sizeE5int_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_queue_size()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext20has_next_measurementEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::has_next_measurement()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext30register_state_change_callbackE16state_callback_tb"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::register_state_change_callback()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext27reset_state_change_callbackEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::reset_state_change_callback()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext7get_fpsEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_fps()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext20get_integration_timeEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_integration_time()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext12get_auto_expEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_auto_exp()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext17get_auto_exp_compEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_auto_exp_comp()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext11get_binningEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_binning()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18get_operation_modeEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_operation_mode()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext11get_averageEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_average()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext13get_bandwidthEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_bandwidth()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext14get_queue_sizeEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_queue_size()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext14get_queue_usedEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_queue_used()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext7set_fpsEd"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_fps()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext20set_integration_timeEd"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_integration_time()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext12set_auto_expEb"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_auto_exp()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext17set_auto_exp_compEd"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_auto_exp_comp()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext11set_binningEb"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_binning()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18set_operation_modeE16operation_mode_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_operation_mode()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext11set_averageEi"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_average()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext14set_continuousEi"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_continuous()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext20get_component_onlineE6size_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_component_online()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18get_component_gainE6size_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_component_gain()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext37get_component_integration_time_factorE6size_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_component_integration_time_factor()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext13get_bandwidthE6size_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_bandwidth()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext21get_driver_queue_sizeE6size_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_driver_queue_size()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext21get_driver_queue_usedE6size_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_driver_queue_used()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext23get_hardware_queue_sizeE6size_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_hardware_queue_size()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext23get_hardware_queue_usedE6size_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_hardware_queue_used()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext15get_temperatureE6size_t"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_temperature()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18set_component_gainE6size_td"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_component_gain()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext37set_component_integration_time_factorE6size_td"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::set_component_integration_time_factor()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext10get_handleEv"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::get_handle()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext22component_state_info_tE"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::component_state_info_t</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext22component_state_info_t12display_nameE"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::component_state_info_t::display_name</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext22component_state_info_t9is_onlineE"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext::component_state_info_t::is_online</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContextE"><code class="docutils literal notranslate"><span class="pre">cuvis::AcquisitionContext</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext15mesu_callback_tE"><code class="docutils literal notranslate"><span class="pre">mesu_callback_t</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext17component_state_tE"><code class="docutils literal notranslate"><span class="pre">component_state_t</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext16state_callback_tE"><code class="docutils literal notranslate"><span class="pre">state_callback_t</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext18AcquisitionContextERK11Calibration"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext18AcquisitionContextERK11SessionFileb"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContextD0Ev"><code class="docutils literal notranslate"><span class="pre">~AcquisitionContext()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext7captureEv"><code class="docutils literal notranslate"><span class="pre">capture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext13capture_queueEv"><code class="docutils literal notranslate"><span class="pre">capture_queue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext9get_stateEv"><code class="docutils literal notranslate"><span class="pre">get_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext26get_component_pixel_formatEi"><code class="docutils literal notranslate"><span class="pre">get_component_pixel_format()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext26set_component_pixel_formatEiNSt6stringE"><code class="docutils literal notranslate"><span class="pre">set_component_pixel_format()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext37get_component_available_pixel_formatsE5int_t"><code class="docutils literal notranslate"><span class="pre">get_component_available_pixel_formats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext20get_next_measurementENSt6chrono12millisecondsE"><code class="docutils literal notranslate"><span class="pre">get_next_measurement()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext16get_session_infoEv"><code class="docutils literal notranslate"><span class="pre">get_session_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext19get_component_countEv"><code class="docutils literal notranslate"><span class="pre">get_component_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18get_component_infoE5int_t"><code class="docutils literal notranslate"><span class="pre">get_component_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext16set_session_infoE11SessionInfo"><code class="docutils literal notranslate"><span class="pre">set_session_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext14set_queue_sizeE5int_t"><code class="docutils literal notranslate"><span class="pre">set_queue_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext20has_next_measurementEv"><code class="docutils literal notranslate"><span class="pre">has_next_measurement()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext8is_readyEv"><code class="docutils literal notranslate"><span class="pre">is_ready()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext30register_state_change_callbackE16state_callback_tb"><code class="docutils literal notranslate"><span class="pre">register_state_change_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext27reset_state_change_callbackEv"><code class="docutils literal notranslate"><span class="pre">reset_state_change_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext7get_fpsEv"><code class="docutils literal notranslate"><span class="pre">get_fps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext20get_integration_timeEv"><code class="docutils literal notranslate"><span class="pre">get_integration_time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext12get_auto_expEv"><code class="docutils literal notranslate"><span class="pre">get_auto_exp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext17get_auto_exp_compEv"><code class="docutils literal notranslate"><span class="pre">get_auto_exp_comp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext11get_binningEv"><code class="docutils literal notranslate"><span class="pre">get_binning()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18get_operation_modeEv"><code class="docutils literal notranslate"><span class="pre">get_operation_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext11get_averageEv"><code class="docutils literal notranslate"><span class="pre">get_average()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext13get_bandwidthEv"><code class="docutils literal notranslate"><span class="pre">get_bandwidth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext14get_queue_sizeEv"><code class="docutils literal notranslate"><span class="pre">get_queue_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext14get_queue_usedEv"><code class="docutils literal notranslate"><span class="pre">get_queue_used()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext7set_fpsEd"><code class="docutils literal notranslate"><span class="pre">set_fps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext20set_integration_timeEd"><code class="docutils literal notranslate"><span class="pre">set_integration_time()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext12set_auto_expEb"><code class="docutils literal notranslate"><span class="pre">set_auto_exp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext17set_auto_exp_compEd"><code class="docutils literal notranslate"><span class="pre">set_auto_exp_comp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext11set_binningEb"><code class="docutils literal notranslate"><span class="pre">set_binning()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18set_operation_modeE16operation_mode_t"><code class="docutils literal notranslate"><span class="pre">set_operation_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext11set_averageEi"><code class="docutils literal notranslate"><span class="pre">set_average()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext14set_continuousEi"><code class="docutils literal notranslate"><span class="pre">set_continuous()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext20get_component_onlineE6size_t"><code class="docutils literal notranslate"><span class="pre">get_component_online()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18get_component_gainE6size_t"><code class="docutils literal notranslate"><span class="pre">get_component_gain()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext37get_component_integration_time_factorE6size_t"><code class="docutils literal notranslate"><span class="pre">get_component_integration_time_factor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext13get_bandwidthE6size_t"><code class="docutils literal notranslate"><span class="pre">get_bandwidth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext21get_driver_queue_sizeE6size_t"><code class="docutils literal notranslate"><span class="pre">get_driver_queue_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext21get_driver_queue_usedE6size_t"><code class="docutils literal notranslate"><span class="pre">get_driver_queue_used()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext23get_hardware_queue_sizeE6size_t"><code class="docutils literal notranslate"><span class="pre">get_hardware_queue_size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext23get_hardware_queue_usedE6size_t"><code class="docutils literal notranslate"><span class="pre">get_hardware_queue_used()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext15get_temperatureE6size_t"><code class="docutils literal notranslate"><span class="pre">get_temperature()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18set_component_gainE6size_td"><code class="docutils literal notranslate"><span class="pre">set_component_gain()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext37set_component_integration_time_factorE6size_td"><code class="docutils literal notranslate"><span class="pre">set_component_integration_time_factor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext10get_handleEv"><code class="docutils literal notranslate"><span class="pre">get_handle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext22component_state_info_tE"><code class="docutils literal notranslate"><span class="pre">cuvis::AcquisitionContext::component_state_info_t</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext22component_state_info_t12display_nameE"><code class="docutils literal notranslate"><span class="pre">display_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext22component_state_info_t9is_onlineE"><code class="docutils literal notranslate"><span class="pre">is_online</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis8ExporterE"><code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis8Exporter25general_export_settings_tE"><code class="docutils literal notranslate"><span class="pre">Exporter::general_export_settings_t</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis8Exporter5applyERK11Measurement"><code class="docutils literal notranslate"><span class="pre">Exporter::apply()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis8Exporter14get_queue_usedEv"><code class="docutils literal notranslate"><span class="pre">Exporter::get_queue_used()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis8Exporter5flushEv"><code class="docutils literal notranslate"><span class="pre">Exporter::flush()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis8ExporterE"><code class="docutils literal notranslate"><span class="pre">cuvis::Exporter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis8Exporter25general_export_settings_tE"><code class="docutils literal notranslate"><span class="pre">general_export_settings_t</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis8Exporter5applyERK11Measurement"><code class="docutils literal notranslate"><span class="pre">apply()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis8Exporter14get_queue_usedEv"><code class="docutils literal notranslate"><span class="pre">get_queue_used()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis8Exporter5flushEv"><code class="docutils literal notranslate"><span class="pre">flush()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis5AsyncE"><code class="docutils literal notranslate"><span class="pre">Async</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis5Async3getENSt6chrono12millisecondsE"><code class="docutils literal notranslate"><span class="pre">Async::get()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis5AsyncE"><code class="docutils literal notranslate"><span class="pre">cuvis::Async</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis5Async3getENSt6chrono12millisecondsE"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis9AsyncMesuE"><code class="docutils literal notranslate"><span class="pre">AsyncMesu</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis9AsyncMesu3getENSt6chrono12millisecondsE"><code class="docutils literal notranslate"><span class="pre">AsyncMesu::get()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis9AsyncMesuE"><code class="docutils literal notranslate"><span class="pre">cuvis::AsyncMesu</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis9AsyncMesu3getENSt6chrono12millisecondsE"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis6WorkerE"><code class="docutils literal notranslate"><span class="pre">Worker</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker17worker_callback_tE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_callback_t</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker6WorkerERK10WorkerArgs"><code class="docutils literal notranslate"><span class="pre">Worker::Worker()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker12set_acq_contEPK18AcquisitionContext"><code class="docutils literal notranslate"><span class="pre">Worker::set_acq_cont()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker13set_proc_contEPK17ProcessingContext"><code class="docutils literal notranslate"><span class="pre">Worker::set_proc_cont()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker12set_exporterEPK8Exporter"><code class="docutils literal notranslate"><span class="pre">Worker::set_exporter()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker10set_viewerEPK6Viewer"><code class="docutils literal notranslate"><span class="pre">Worker::set_viewer()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker18ingest_measurementEPK11Measurement"><code class="docutils literal notranslate"><span class="pre">Worker::ingest_measurement()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker19ingest_session_fileEPK11SessionFileNSt6stringE"><code class="docutils literal notranslate"><span class="pre">Worker::ingest_session_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker22query_session_progressEv"><code class="docutils literal notranslate"><span class="pre">Worker::query_session_progress()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker20get_can_drop_resultsEv"><code class="docutils literal notranslate"><span class="pre">Worker::get_can_drop_results()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker25get_can_skip_measurementsEv"><code class="docutils literal notranslate"><span class="pre">Worker::get_can_skip_measurements()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker26get_can_skip_supplementaryEv"><code class="docutils literal notranslate"><span class="pre">Worker::get_can_skip_supplementary()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker15has_next_resultEv"><code class="docutils literal notranslate"><span class="pre">Worker::has_next_result()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker15get_next_resultENSt6chrono12millisecondsE"><code class="docutils literal notranslate"><span class="pre">Worker::get_next_result()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker14get_queue_usedEv"><code class="docutils literal notranslate"><span class="pre">Worker::get_queue_used()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker21get_input_queue_limitEv"><code class="docutils literal notranslate"><span class="pre">Worker::get_input_queue_limit()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker25get_mandatory_queue_limitEv"><code class="docutils literal notranslate"><span class="pre">Worker::get_mandatory_queue_limit()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker29get_supplementary_queue_limitEv"><code class="docutils literal notranslate"><span class="pre">Worker::get_supplementary_queue_limit()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker22get_output_queue_limitEv"><code class="docutils literal notranslate"><span class="pre">Worker::get_output_queue_limit()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker16start_processingEv"><code class="docutils literal notranslate"><span class="pre">Worker::start_processing()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15stop_processingEv"><code class="docutils literal notranslate"><span class="pre">Worker::stop_processing()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15drop_all_queuedEv"><code class="docutils literal notranslate"><span class="pre">Worker::drop_all_queued()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker23is_processing_mandatoryEv"><code class="docutils literal notranslate"><span class="pre">Worker::is_processing_mandatory()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker13is_processingEv"><code class="docutils literal notranslate"><span class="pre">Worker::is_processing()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker16get_threads_busyEv"><code class="docutils literal notranslate"><span class="pre">Worker::get_threads_busy()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker9get_stateEv"><code class="docutils literal notranslate"><span class="pre">Worker::get_state()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker24register_worker_callbackE17worker_callback_tj"><code class="docutils literal notranslate"><span class="pre">Worker::register_worker_callback()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker21reset_worker_callbackEv"><code class="docutils literal notranslate"><span class="pre">Worker::reset_worker_callback()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15worker_return_tE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_return_t</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15worker_return_t4mesuE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_return_t::mesu</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15worker_return_t4viewE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_return_t::view</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15worker_return_t9exceptionE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_return_t::exception</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis6WorkerE"><code class="docutils literal notranslate"><span class="pre">cuvis::Worker</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker17worker_callback_tE"><code class="docutils literal notranslate"><span class="pre">worker_callback_t</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker6WorkerERK10WorkerArgs"><code class="docutils literal notranslate"><span class="pre">Worker()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker12set_acq_contEPK18AcquisitionContext"><code class="docutils literal notranslate"><span class="pre">set_acq_cont()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker13set_proc_contEPK17ProcessingContext"><code class="docutils literal notranslate"><span class="pre">set_proc_cont()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker12set_exporterEPK8Exporter"><code class="docutils literal notranslate"><span class="pre">set_exporter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker10set_viewerEPK6Viewer"><code class="docutils literal notranslate"><span class="pre">set_viewer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker18ingest_measurementEPK11Measurement"><code class="docutils literal notranslate"><span class="pre">ingest_measurement()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker19ingest_session_fileEPK11SessionFileNSt6stringE"><code class="docutils literal notranslate"><span class="pre">ingest_session_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker22query_session_progressEv"><code class="docutils literal notranslate"><span class="pre">query_session_progress()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker20get_can_drop_resultsEv"><code class="docutils literal notranslate"><span class="pre">get_can_drop_results()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker25get_can_skip_measurementsEv"><code class="docutils literal notranslate"><span class="pre">get_can_skip_measurements()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker26get_can_skip_supplementaryEv"><code class="docutils literal notranslate"><span class="pre">get_can_skip_supplementary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker15has_next_resultEv"><code class="docutils literal notranslate"><span class="pre">has_next_result()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker15get_next_resultENSt6chrono12millisecondsE"><code class="docutils literal notranslate"><span class="pre">get_next_result()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker14get_queue_usedEv"><code class="docutils literal notranslate"><span class="pre">get_queue_used()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker21get_input_queue_limitEv"><code class="docutils literal notranslate"><span class="pre">get_input_queue_limit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker25get_mandatory_queue_limitEv"><code class="docutils literal notranslate"><span class="pre">get_mandatory_queue_limit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker29get_supplementary_queue_limitEv"><code class="docutils literal notranslate"><span class="pre">get_supplementary_queue_limit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker22get_output_queue_limitEv"><code class="docutils literal notranslate"><span class="pre">get_output_queue_limit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker16start_processingEv"><code class="docutils literal notranslate"><span class="pre">start_processing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15stop_processingEv"><code class="docutils literal notranslate"><span class="pre">stop_processing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15drop_all_queuedEv"><code class="docutils literal notranslate"><span class="pre">drop_all_queued()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker23is_processing_mandatoryEv"><code class="docutils literal notranslate"><span class="pre">is_processing_mandatory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker13is_processingEv"><code class="docutils literal notranslate"><span class="pre">is_processing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker16get_threads_busyEv"><code class="docutils literal notranslate"><span class="pre">get_threads_busy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker9get_stateEv"><code class="docutils literal notranslate"><span class="pre">get_state()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker24register_worker_callbackE17worker_callback_tj"><code class="docutils literal notranslate"><span class="pre">register_worker_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker21reset_worker_callbackEv"><code class="docutils literal notranslate"><span class="pre">reset_worker_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15worker_return_tE"><code class="docutils literal notranslate"><span class="pre">cuvis::Worker::worker_return_t</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15worker_return_t4mesuE"><code class="docutils literal notranslate"><span class="pre">mesu</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15worker_return_t4viewE"><code class="docutils literal notranslate"><span class="pre">view</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15worker_return_t9exceptionE"><code class="docutils literal notranslate"><span class="pre">exception</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_tE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_state_t</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t19measurementsInQueueE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_state_t::measurementsInQueue</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t19sessionFilesInQueueE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_state_t::sessionFilesInQueue</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t13framesInQueueE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_state_t::framesInQueue</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t26measurementsBeingProcessedE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_state_t::measurementsBeingProcessed</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t14resultsInQueueE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_state_t::resultsInQueue</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t21hasAcquisitionContextE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_state_t::hasAcquisitionContext</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t12isProcessingE"><code class="docutils literal notranslate"><span class="pre">Worker::worker_state_t::isProcessing</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_tE"><code class="docutils literal notranslate"><span class="pre">cuvis::Worker::worker_state_t</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t19measurementsInQueueE"><code class="docutils literal notranslate"><span class="pre">measurementsInQueue</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t19sessionFilesInQueueE"><code class="docutils literal notranslate"><span class="pre">sessionFilesInQueue</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t13framesInQueueE"><code class="docutils literal notranslate"><span class="pre">framesInQueue</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t26measurementsBeingProcessedE"><code class="docutils literal notranslate"><span class="pre">measurementsBeingProcessed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t14resultsInQueueE"><code class="docutils literal notranslate"><span class="pre">resultsInQueue</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t21hasAcquisitionContextE"><code class="docutils literal notranslate"><span class="pre">hasAcquisitionContext</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker14worker_state_t12isProcessingE"><code class="docutils literal notranslate"><span class="pre">isProcessing</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -341,7 +341,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>i_callback</strong> – <strong>[in]</strong> the function callback </p></li>
+<li><p><strong>i_callback_localized</strong> – <strong>[in]</strong> the function callback </p></li>
 <li><p><strong>i_min_level</strong> – <strong>[in]</strong> the minimum level of the callback </p></li>
 <li><p><strong>i_locale_id</strong> – <strong>[in]</strong> set the locale id, e.g. “de-DE.UTF8” for german. See the “locale” directory for available translations. </p></li>
 </ul>
@@ -373,7 +373,10 @@
 <dd><p>The init function set the settings path. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>i_settings_path</strong> – <strong>[in]</strong> The path to the settings directory. </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_settings_path</strong> – <strong>[in]</strong> The path to the settings directory. </p></li>
+<li><p><strong>i_global_loglevel</strong> – <strong>[in]</strong> The log level that will be used for the backend logging system </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -956,6 +959,11 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext20has_next_measurementEv">
 <span id="_CPPv3NK5cuvis18AcquisitionContext20has_next_measurementEv"></span><span id="_CPPv2NK5cuvis18AcquisitionContext20has_next_measurementEv"></span><span id="cuvis::AcquisitionContext::has_next_measurementC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1a1636fdabba4aae1283c298fb09ffb305"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">has_next_measurement</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext20has_next_measurementEv" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext8is_readyEv">
+<span id="_CPPv3NK5cuvis18AcquisitionContext8is_readyEv"></span><span id="_CPPv2NK5cuvis18AcquisitionContext8is_readyEv"></span><span id="cuvis::AcquisitionContext::is_readyC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1abd3355b45d76bf01d1389467938e6e2e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">is_ready</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext8is_readyEv" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">

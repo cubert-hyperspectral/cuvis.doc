@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cuvis C API &mdash; Cuvis SDK 3.3.0 documentation</title>
+  <title>Cuvis C API &mdash; Cuvis SDK 3.2.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=3eb8911e"></script>
+      <script src="_static/documentation_options.js?v=eb155f5e"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -45,48 +45,77 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdkuserguide.html">SDK User’s Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="releasehistory.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cuvis C API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#handles">Handles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reserved-keys">Reserved Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reserved-keys">Reserved Keys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_CUBE_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_CUBE_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_PAN_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_PAN_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_GPS_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_GPS_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_PREVIEW_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_PREVIEW_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_DARKREF_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_DARKREF_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_WHITEREF_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_WHITEREF_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_WHITEDARKREF_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_WHITEDARKREF_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_FLAG_OVERILLUMINATED_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_FLAG_OVERILLUMINATED_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_FLAG_POOR_REFERENCE_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_FLAG_POOR_REFERENCE_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_FLAG_POOR_WHITE_BALANCING_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_FLAG_POOR_WHITE_BALANCING_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_FLAG_DARK_INTTIME_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_FLAG_DARK_INTTIME_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_FLAG_DARK_TEMP_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_FLAG_DARK_TEMP_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_FLAG_WHITE_INTTIME_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_FLAG_WHITE_INTTIME_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_FLAG_WHITE_TEMP_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_FLAG_WHITE_TEMP_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_FLAG_WHITEDARK_INTTIME_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_FLAG_WHITEDARK_INTTIME_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_FLAG_WHITEDARK_TEMP_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_FLAG_WHITEDARK_TEMP_KEY</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#calibration">Calibration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#measurement">Measurement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#session-file">Session File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-info-layer">The Info Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-info-layer">The Info Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_CUBE_INFO_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_CUBE_INFO_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_PAN_INFO_KEY"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_PAN_INFO_KEY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_INFO_OK"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_INFO_OK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_INFO_OVERILLUMINATED"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_INFO_OVERILLUMINATED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_INFO_BAD_PIXEL"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_INFO_BAD_PIXEL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_INFO_OVERILLUMINATED_REFERENCE"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_INFO_OVERILLUMINATED_REFERENCE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_INFO_UNDERFLOW_MEASUREMENT_MIN_DARK"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_INFO_UNDERFLOW_MEASUREMENT_MIN_DARK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_INFO_UNDERFLOW_WHITE_MIN_DARK"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_INFO_UNDERFLOW_WHITE_MIN_DARK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_INFO_REFERENCE_CALC_OVERFLOW"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_INFO_REFERENCE_CALC_OVERFLOW</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c.CUVIS_MESU_INFO_INCOMPLETE"><code class="docutils literal notranslate"><span class="pre">CUVIS_MESU_INFO_INCOMPLETE</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#return-values-of-sdk-functions">Return Values of SDK Functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv414cuvis_status_t"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t9status_okE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_ok</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t12status_errorE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_error</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t15status_deferredE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_deferred</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t18status_overwrittenE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_overwritten</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t14status_timeoutE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_timeout</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t21status_no_measurementE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_no_measurement</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t20status_not_availableE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_not_available</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t20status_not_processedE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_not_processed</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t17status_not_storedE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_not_stored</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t14status_no_viewE"><code class="docutils literal notranslate"><span class="pre">cuvis_status_t::status_no_view</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t9status_okE"><code class="docutils literal notranslate"><span class="pre">status_ok</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t12status_errorE"><code class="docutils literal notranslate"><span class="pre">status_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t15status_deferredE"><code class="docutils literal notranslate"><span class="pre">status_deferred</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t18status_overwrittenE"><code class="docutils literal notranslate"><span class="pre">status_overwritten</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t14status_timeoutE"><code class="docutils literal notranslate"><span class="pre">status_timeout</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t21status_no_measurementE"><code class="docutils literal notranslate"><span class="pre">status_no_measurement</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t20status_not_availableE"><code class="docutils literal notranslate"><span class="pre">status_not_available</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t20status_not_processedE"><code class="docutils literal notranslate"><span class="pre">status_not_processed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t17status_not_storedE"><code class="docutils literal notranslate"><span class="pre">status_not_stored</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14cuvis_status_t14status_no_viewE"><code class="docutils literal notranslate"><span class="pre">status_no_view</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#logging">Logging</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv416cuvis_loglevel_t"><code class="docutils literal notranslate"><span class="pre">cuvis_loglevel_t</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t14loglevel_fatalE"><code class="docutils literal notranslate"><span class="pre">cuvis_loglevel_t::loglevel_fatal</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t14loglevel_errorE"><code class="docutils literal notranslate"><span class="pre">cuvis_loglevel_t::loglevel_error</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t16loglevel_warningE"><code class="docutils literal notranslate"><span class="pre">cuvis_loglevel_t::loglevel_warning</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t13loglevel_infoE"><code class="docutils literal notranslate"><span class="pre">cuvis_loglevel_t::loglevel_info</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t14loglevel_debugE"><code class="docutils literal notranslate"><span class="pre">cuvis_loglevel_t::loglevel_debug</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t14loglevel_fatalE"><code class="docutils literal notranslate"><span class="pre">loglevel_fatal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t14loglevel_errorE"><code class="docutils literal notranslate"><span class="pre">loglevel_error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t16loglevel_warningE"><code class="docutils literal notranslate"><span class="pre">loglevel_warning</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t13loglevel_infoE"><code class="docutils literal notranslate"><span class="pre">loglevel_info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N16cuvis_loglevel_t14loglevel_debugE"><code class="docutils literal notranslate"><span class="pre">loglevel_debug</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#acquisition-context">Acquisition Context</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv422cuvis_operation_mode_t"><code class="docutils literal notranslate"><span class="pre">cuvis_operation_mode_t</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_SoftwareE"><code class="docutils literal notranslate"><span class="pre">cuvis_operation_mode_t::OperationMode_Software</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_InternalE"><code class="docutils literal notranslate"><span class="pre">cuvis_operation_mode_t::OperationMode_Internal</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_ExternalE"><code class="docutils literal notranslate"><span class="pre">cuvis_operation_mode_t::OperationMode_External</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t23OperationMode_UndefinedE"><code class="docutils literal notranslate"><span class="pre">cuvis_operation_mode_t::OperationMode_Undefined</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_SoftwareE"><code class="docutils literal notranslate"><span class="pre">OperationMode_Software</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_InternalE"><code class="docutils literal notranslate"><span class="pre">OperationMode_Internal</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t22OperationMode_ExternalE"><code class="docutils literal notranslate"><span class="pre">OperationMode_External</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t23OperationMode_UndefinedE"><code class="docutils literal notranslate"><span class="pre">OperationMode_Undefined</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -94,40 +123,40 @@
 <li class="toctree-l2"><a class="reference internal" href="#components">Components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#export-api">Export API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv417cuvis_save_args_t"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t19allow_fragmentationE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::allow_fragmentation</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t15allow_overwriteE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::allow_overwrite</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t10allow_dropE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::allow_drop</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t18allow_session_fileE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::allow_session_file</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t15allow_info_fileE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::allow_info_file</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t14operation_modeE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::operation_mode</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t3fpsE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::fps</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t10soft_limitE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::soft_limit</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t10hard_limitE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::hard_limit</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t11max_buftimeE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::max_buftime</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t11full_exportE"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t::full_export</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t19allow_fragmentationE"><code class="docutils literal notranslate"><span class="pre">allow_fragmentation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t15allow_overwriteE"><code class="docutils literal notranslate"><span class="pre">allow_overwrite</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t10allow_dropE"><code class="docutils literal notranslate"><span class="pre">allow_drop</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t18allow_session_fileE"><code class="docutils literal notranslate"><span class="pre">allow_session_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t15allow_info_fileE"><code class="docutils literal notranslate"><span class="pre">allow_info_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t14operation_modeE"><code class="docutils literal notranslate"><span class="pre">operation_mode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t3fpsE"><code class="docutils literal notranslate"><span class="pre">fps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t10soft_limitE"><code class="docutils literal notranslate"><span class="pre">soft_limit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t10hard_limitE"><code class="docutils literal notranslate"><span class="pre">hard_limit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t11max_buftimeE"><code class="docutils literal notranslate"><span class="pre">max_buftime</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t11full_exportE"><code class="docutils literal notranslate"><span class="pre">full_export</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv431cuvis_export_general_settings_t"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t10export_dirE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::export_dir</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t17channel_selectionE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::channel_selection</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t18spectra_multiplierE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::spectra_multiplier</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t9pan_scaleE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::pan_scale</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t22pan_interpolation_typeE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::pan_interpolation_type</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t13pan_algorithmE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::pan_algorithm</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t20pre_pan_sharpen_cubeE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::pre_pan_sharpen_cube</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t13blend_opacityE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::blend_opacity</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t7add_panE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::add_pan</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t17add_fullscale_panE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::add_fullscale_pan</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t10permissiveE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_general_settings_t::permissive</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t10export_dirE"><code class="docutils literal notranslate"><span class="pre">export_dir</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t17channel_selectionE"><code class="docutils literal notranslate"><span class="pre">channel_selection</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t18spectra_multiplierE"><code class="docutils literal notranslate"><span class="pre">spectra_multiplier</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t9pan_scaleE"><code class="docutils literal notranslate"><span class="pre">pan_scale</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t22pan_interpolation_typeE"><code class="docutils literal notranslate"><span class="pre">pan_interpolation_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t13pan_algorithmE"><code class="docutils literal notranslate"><span class="pre">pan_algorithm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t20pre_pan_sharpen_cubeE"><code class="docutils literal notranslate"><span class="pre">pre_pan_sharpen_cube</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t13blend_opacityE"><code class="docutils literal notranslate"><span class="pre">blend_opacity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t7add_panE"><code class="docutils literal notranslate"><span class="pre">add_pan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t17add_fullscale_panE"><code class="docutils literal notranslate"><span class="pre">add_fullscale_pan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N31cuvis_export_general_settings_t10permissiveE"><code class="docutils literal notranslate"><span class="pre">permissive</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv428cuvis_export_view_settings_t"><code class="docutils literal notranslate"><span class="pre">cuvis_export_view_settings_t</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N28cuvis_export_view_settings_t10userpluginE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_view_settings_t::userplugin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N28cuvis_export_view_settings_t10userpluginE"><code class="docutils literal notranslate"><span class="pre">userplugin</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv428cuvis_export_tiff_settings_t"><code class="docutils literal notranslate"><span class="pre">cuvis_export_tiff_settings_t</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N28cuvis_export_tiff_settings_t16compression_modeE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_tiff_settings_t::compression_mode</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N28cuvis_export_tiff_settings_t6formatE"><code class="docutils literal notranslate"><span class="pre">cuvis_export_tiff_settings_t::format</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N28cuvis_export_tiff_settings_t16compression_modeE"><code class="docutils literal notranslate"><span class="pre">compression_mode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N28cuvis_export_tiff_settings_t6formatE"><code class="docutils literal notranslate"><span class="pre">format</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -173,7 +202,7 @@
 <h2>Handles<a class="headerlink" href="#handles" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__handle"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_handle</span></span></dt>
+<span class="target" id="group__cuvis__handle"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Handles</span></span></dt>
 <dd><p>The SDK is handle-based, i.e to access an internal data object you will require a handle. </p>
 <p>The main concepts of the SDK which use handles are the <a class="reference internal" href="#group__cuvis__mesu"><span class="std std-ref">Measurement</span></a>, the <a class="reference internal" href="#group__cuvis__calib"><span class="std std-ref">Calibration</span></a>, the <a class="reference internal" href="#group__cuvis__session"><span class="std std-ref">Session File</span></a>, the <a class="reference internal" href="#group__cuvis__acq"><span class="std std-ref">Acquisition Context</span></a>, the <a class="reference internal" href="#group__cuvis__proc"><span class="std std-ref">Processing Context</span></a>, the <a class="reference internal" href="#group__cuvis__viewer"><span class="std std-ref">Viewer</span></a>, the <a class="reference internal" href="#group__cuvis__exporter"><span class="std std-ref">Export API</span></a> and the <a class="reference internal" href="#group__cuvis__worker"><span class="std std-ref">Worker</span></a>. On how to obtain a handle of the individual components of the SDK, see the respective Pages for the individual components.</p>
 <p>For example, a handle wich represents a <a class="reference internal" href="#group__cuvis__mesu"><span class="std std-ref">Measurement</span></a> can be obtained by either loading (<a class="reference internal" href="#group__cuvis__mesu_1ga1750ee4b61354f7d28d57b612ed24327"><span class="std std-ref">cuvis_measurement_load</span></a>) or by recording (<a class="reference internal" href="#group__cuvis__acq_1ga1ca8cccaedc19f542c67805124fa271d"><span class="std std-ref">cuvis_acq_cont_capture</span></a> or <a class="reference internal" href="#group__cuvis__acq_1gac3e12f1c8d3b7063678b40a1ede5c9ef"><span class="std std-ref">cuvis_acq_cont_get_next_measurement</span></a><p>) a measurement.</p>
@@ -187,7 +216,7 @@
 <h2>Reserved Keys<a class="headerlink" href="#reserved-keys" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__reserved__keys"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_reserved_keys</span></span></dt>
+<span class="target" id="group__cuvis__reserved__keys"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Reserved</span> <span class="pre">Keys</span></span></dt>
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
@@ -298,7 +327,7 @@
 <h2>Calibration<a class="headerlink" href="#calibration" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__calib"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_calib</span></span></dt>
+<span class="target" id="group__cuvis__calib"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Calibration</span></span></dt>
 <dd><p>Functions to interact with a calibration object of the SDK.</p>
 <p>There are two ways to create a calibration object. One way is by loading it specifically from a factory directory (see <a class="reference internal" href="#group__cuvis__calib_1ga5dab63eb810fa988d1fbe68ce982d9f0"><span class="std std-ref">cuvis_calib_create_from_path</span></a>). The other one is by loading it from a session file. The Calibration object is needed to load other parts of the SDK like the <a class="reference internal" href="#group__cuvis__acq"><span class="std std-ref">Acquisition Context</span></a> and the <a class="reference internal" href="#group__cuvis__proc"><span class="std std-ref">Processing Context</span></a>. </p>
 <div class="breathe-sectiondef docutils container">
@@ -401,7 +430,7 @@
 <h2>Measurement<a class="headerlink" href="#measurement" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__mesu"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_mesu</span></span></dt>
+<span class="target" id="group__cuvis__mesu"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Measurement</span></span></dt>
 <dd><p>How to interact with the Measurements taken by the SDK. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
@@ -491,7 +520,10 @@
 <p>By default, a newly aquired measurement has the name &lt;SESSIONNAME&gt;_&lt;session_no&gt;_&lt;sequence_no&gt; (see CUVIS_SESSION_INFO). This will also be the name of the file while saving it. This can be changed by this function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>i_name</strong> – <strong>[in]</strong> The new measurement’s name </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_mesu</strong> – <strong>[in]</strong> The measurements to be changed </p></li>
+<li><p><strong>i_name</strong> – <strong>[in]</strong> The new measurement’s name </p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a>, if the measurement’s name was set successfully. </p>
@@ -505,7 +537,10 @@
 <dd><p>Set the comment of the measurement in memory. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>i_name</strong> – <strong>[in]</strong> The new measurement’s comment </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_mesu</strong> – <strong>[in]</strong> The measurements to be changed </p></li>
+<li><p><strong>i_comment</strong> – <strong>[in]</strong> The new measurement’s comment </p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a>, if the measurement’s name was set successfully. </p>
@@ -562,7 +597,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> if the buffer could be filled with the image element. status_unavailable if the requested data was empty, or the key could not be found </p>
+<dd class="field-even"><p><a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> if the buffer could be filled with the image element. <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da7fdd3396ac111ad131ec95e3411928a7"><span class="std std-ref">status_not_available</span></a> if the requested data was empty, or the key could not be found </p>
 </dd>
 </dl>
 </dd></dl>
@@ -580,7 +615,7 @@
 <li><p><strong>i_mesu</strong> – <strong>[in]</strong> The measurement handle </p></li>
 <li><p><strong>i_key</strong> – <strong>[in]</strong> the data frame identification key (see <a class="reference internal" href="#group__cuvis__mesu_1gae3dd6455020bbe6f3fd23a0d4f765797"><span class="std std-ref">cuvis_measurement_get_data_info</span></a> or <a class="reference internal" href="#group__cuvis__reserved__keys"><span class="std std-ref">Reserved Keys</span></a>) </p></li>
 <li><p><strong>i_outBufferlength</strong> – <strong>[in]</strong> the maximal possible length of the string that is going to be copied (see <a class="reference internal" href="#group__cuvis__mesu_1gae3dd6455020bbe6f3fd23a0d4f765797"><span class="std std-ref">cuvis_measurement_get_data_info</span></a> or <a class="reference internal" href="#group__cuvis__reserved__keys"><span class="std std-ref">Reserved Keys</span></a>) </p></li>
-<li><p><strong>o_pValue</strong> – <strong>[out]</strong> The string buffer to be filled. The provided array must have the length of i_length </p></li>
+<li><p><strong>o_pValue</strong> – <strong>[out]</strong> The string buffer to be filled. The provided array must have the length of <code class="docutils literal notranslate"><span class="pre">i_length</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -656,9 +691,9 @@
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__mesu_1gae3dd6455020bbe6f3fd23a0d4f765797"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_measurement_get_data_info</span> <span class="pre">(CUVIS_MESU</span> <span class="pre">i_mesu,</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">*o_pKey,</span> <span class="pre">CUVIS_DATA_TYPE</span> <span class="pre">*o_pType,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id)</span></span></dt>
 <dd><p>get meta-information of a data element </p>
-<p>Retrieve the meta-informations of a data element identified by it’s positional number. A measurement has N data elements (obtain N with the functions <a class="reference internal" href="#group__cuvis__mesu_1ga649438e6e0c1eefb3765cac12bd36ce8"><span class="std std-ref">cuvis_measurement_get_data_count</span></a>) Thus, the meta-data of element 0 to N-1 can be obtained. The o_pType defined the data type: If it is data_type_image, retrieve it with <a class="reference internal" href="#group__cuvis__mesu_1ga49ad169236b3ec059bdf9f3b1c7edf48"><span class="std std-ref">cuvis_measurement_get_data_image</span></a>.</p>
+<p>Retrieve the meta-informations of a data element identified by it’s positional number. A measurement has N data elements (obtain N with the functions <a class="reference internal" href="#group__cuvis__mesu_1ga649438e6e0c1eefb3765cac12bd36ce8"><span class="std std-ref">cuvis_measurement_get_data_count</span></a>) Thus, the meta-data of element 0 to N-1 can be obtained. The <code class="docutils literal notranslate"><span class="pre">o_pType</span></code> defined the data type: If it is data_type_image, retrieve it with <a class="reference internal" href="#group__cuvis__mesu_1ga49ad169236b3ec059bdf9f3b1c7edf48"><span class="std std-ref">cuvis_measurement_get_data_image</span></a>.</p>
 <p>If it is data type is data_type_gps, retrieve it with <a class="reference internal" href="#group__cuvis__mesu_1ga7f6dd9ceec343281e151282e537f1790"><span class="std std-ref">cuvis_measurement_get_data_gps</span></a>. If it is data_type_string, retrieve with <a class="reference internal" href="#group__cuvis__mesu_1ga69c95ccd6171283e1c907d256c82ac2b"><span class="std std-ref">cuvis_measurement_get_data_string</span></a> If it is data_type_unsupported, the data cannot be retrieved.</p>
-<p>To retrieve the data, you will require the o_pKey wich you can obtain by using this function. The key is the name of the data channel.</p>
+<p>To retrieve the data, you will require the <code class="docutils literal notranslate"><span class="pre">o_pKey</span></code> wich you can obtain by using this function. The key is the name of the data channel.</p>
 <p>Some keys are reserved, see <a class="reference internal" href="#group__cuvis__reserved__keys"><span class="std std-ref">Reserved Keys</span></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -700,7 +735,7 @@
 <h2>Session File<a class="headerlink" href="#session-file" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__session"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_session</span></span></dt>
+<span class="target" id="group__cuvis__session"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Session</span> <span class="pre">File</span></span></dt>
 <dd><p>The main file format of the SDK </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
@@ -708,7 +743,7 @@
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__session_1ga9d470ba12611e6b5112a5d7d991c8228"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_session_file_load</span> <span class="pre">(const</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">*i_path,</span> <span class="pre">CUVIS_SESSION_FILE</span> <span class="pre">*o_pSess)</span></span></dt>
 <dd><p>Load a session_info file from disk. </p>
-<p>The session_info file is a cu3s file and consists of binary cu3 measurement data. Call cuvis_session_get_mesu to obtain a single measurement frame. SessionFile files can be create with the Cube Exporter (see <a class="reference internal" href="#group__cuvis__exporter_1gac8dbccda0642d3ed2cbcf432ab699712"><span class="std std-ref">cuvis_exporter_create_cube</span></a>) </p>
+<p>The session_info file is a cu3s file and consists of binary cu3 measurement data. Call <a class="reference internal" href="#group__cuvis__session_1ga4ef5a62c11e92504516693c7643be105"><span class="std std-ref">cuvis_session_file_get_mesu</span></a> to obtain a single measurement frame. SessionFile files can be create with the Cube Exporter (see <a class="reference internal" href="#group__cuvis__exporter_1gac8dbccda0642d3ed2cbcf432ab699712"><span class="std std-ref">cuvis_exporter_create_cube</span></a>) </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Do not read a file currently opened for writing.</p>
@@ -749,7 +784,7 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>i_sess</strong> – <strong>[in]</strong> the session_info file handle </p></li>
-<li><p><strong>i_frameNo</strong> – <strong>[in]</strong> the frame no. Counting from 0, must be below value of cuvis_session_get_size of it’s respective i_type </p></li>
+<li><p><strong>i_frameNo</strong> – <strong>[in]</strong> the frame no. Counting from 0, must be below value of <a class="reference internal" href="#group__cuvis__session_1ga55ea068e315f18237e6a9e55cf71727e"><span class="std std-ref">cuvis_session_file_get_size</span></a> of it’s respective <code class="docutils literal notranslate"><span class="pre">i_type</span></code></p></li>
 <li><p><strong>i_type</strong> – <strong>[in]</strong> the type of listing (size depends on type) </p></li>
 <li><p><strong>o_pMesu</strong> – <strong>[out]</strong> the handle of the measurement. </p></li>
 </ul>
@@ -768,7 +803,7 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>i_sess</strong> – <strong>[in]</strong> the session_info file handle </p></li>
-<li><p><strong>i_frameNo</strong> – <strong>[in]</strong> the reference number. Counting from 0. If i_type is not set, refers to the index of all references and must be below the value of cuvis_session_get_size using type session_item_type_references. If i_type is set, must be 0. </p></li>
+<li><p><strong>i_frameNo</strong> – <strong>[in]</strong> the reference number. Counting from 0. If <code class="docutils literal notranslate"><span class="pre">i_type</span></code> is not set, refers to the index of all references and must be below the value of <a class="reference internal" href="#group__cuvis__session_1ga55ea068e315f18237e6a9e55cf71727e"><span class="std std-ref">cuvis_session_file_get_size</span></a> using type session_item_type_references. If <code class="docutils literal notranslate"><span class="pre">i_type</span></code> is set, must be 0. </p></li>
 <li><p><strong>i_type</strong> – <strong>[in]</strong> the type of reference measurement requested </p></li>
 <li><p><strong>o_pMesu</strong> – <strong>[out]</strong> the handle of the measurement. </p></li>
 </ul>
@@ -811,7 +846,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> if the buffer could be filled with the image element. status_unavailable if the requested data was empty, or the key could not be found </p>
+<dd class="field-even"><p><a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> if the buffer could be filled with the image element. <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da7fdd3396ac111ad131ec95e3411928a7"><span class="std std-ref">status_not_available</span></a> if the requested data was empty, or the key could not be found </p>
 </dd>
 </dl>
 </dd></dl>
@@ -820,7 +855,7 @@
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__session_1ga369da49a5fcdd8fb654c6ad6dbd2ce9c"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_session_file_get_fps</span> <span class="pre">(CUVIS_SESSION_FILE</span> <span class="pre">i_sess,</span> <span class="pre">double</span> <span class="pre">*o_pFps)</span></span></dt>
 <dd><p>get a session_info file’s FPS </p>
-<p>The session_info file meta-Information will be available only if the mode &#64;cuvis_session_get_operation_mode returns “Internal”</p>
+<p>The session_info file meta-Information will be available only if the mode <a class="reference internal" href="#group__cuvis__session_1gae652b04fd2cee307d30c4f491105fe5d"><span class="std std-ref">cuvis_session_file_get_operation_mode</span></a> returns “Internal”</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -877,7 +912,7 @@
 <h2>The Info Layer<a class="headerlink" href="#the-info-layer" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__info__layer"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_info_layer</span></span></dt>
+<span class="target" id="group__cuvis__info__layer"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">The</span> <span class="pre">info</span> <span class="pre">layer</span></span></dt>
 <dd><p>The info layer can be retrieved with the function <a class="reference internal" href="#group__cuvis__mesu_1ga49ad169236b3ec059bdf9f3b1c7edf48"><span class="std std-ref">cuvis_measurement_get_data_image</span></a> Though is appears to be an image and will also be exported and fragmented as an image it is actually a set of flags. Each position of the a info-layer pixel represents a data flag for a respective cube (or pan image).</p>
 <p>E.g. if a cube (<a class="reference internal" href="#group__cuvis__reserved__keys_1gafe40dc8e2753339f739bfd6a23972630"><span class="std std-ref">CUVIS_MESU_CUBE_KEY</span></a>) has the size of 410x410x164 (W x H x Chn), the respective info layer (<a class="reference internal" href="#group__cuvis__info__layer_1ga0d4fba4dc4dd287e7c84005da4fc8578"><span class="std std-ref">CUVIS_MESU_CUBE_INFO_KEY</span></a>) will have a size of 410x410. The info_layer value at position x,y contains the flags for the whole spectrum at position x,y in the cube.</p>
 <p>The same is true for the pan-chromatic image ((<a class="reference internal" href="#group__cuvis__info__layer_1ga0d4fba4dc4dd287e7c84005da4fc8578"><span class="std std-ref">CUVIS_MESU_CUBE_INFO_KEY</span></a>) and <a class="reference internal" href="#group__cuvis__info__layer_1ga0d4fba4dc4dd287e7c84005da4fc8578"><span class="std std-ref">CUVIS_MESU_CUBE_INFO_KEY</span></a>, respectively)</p>
@@ -983,7 +1018,7 @@ Example:</p>
 <h2>Return Values of SDK Functions<a class="headerlink" href="#return-values-of-sdk-functions" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__returns"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_returns</span></span></dt>
+<span class="target" id="group__cuvis__returns"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Return</span> <span class="pre">Values</span> <span class="pre">of</span> <span class="pre">SDK</span> <span class="pre">Functions</span></span></dt>
 <dd><p>More Information on the Return Values of the SDK Functions.</p>
 <p>Most of the SDK functions return a <a class="reference internal" href="#group__cuvis__returns_1gaa06c62ba25240f4763da0e590ebf3b9d"><span class="std std-ref">cuvis_status_t</span></a>. This value indicates if the function call was executed sucessfully or if a error occurred. If the value is <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da405da0d107497b3596a3818a48478c9f"><span class="std std-ref">status_error</span></a> for example, this indicates that an error occurred. The specific error message can then be retrieved via <a class="reference internal" href="#group__cuvis__returns_1gadcf43d47d223a79e52e79f0e42de9f94"><span class="std std-ref">cuvis_get_last_error_msg</span></a> to get more details. </p>
 <div class="breathe-sectiondef docutils container">
@@ -1068,7 +1103,7 @@ Example:</p>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__returns_1gaa7c83379580ded0dac4ae167ecafc20c"></span><span class="sig-name descname"><span class="pre">const</span> <span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_set_last_error_locale</span> <span class="pre">(CUVIS_CHAR</span> <span class="pre">const</span> <span class="pre">*id)</span></span></dt>
+<span class="target" id="group__cuvis__returns_1ga01a32ac06e122fe7d0da440e86082a77"></span><span class="sig-name descname"><span class="pre">const</span> <span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_set_last_error_locale</span> <span class="pre">(CUVIS_CHAR</span> <span class="pre">const</span> <span class="pre">*i_locale_id)</span></span></dt>
 <dd><p>Set the locale for localized error messages. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1081,7 +1116,7 @@ Example:</p>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__returns_1gad27d8ed099c16ffcde8d1a06d1df4d0d"></span><span class="sig-name descname"><span class="pre">const</span> <span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_WCHAR</span> <span class="pre">*SDK_CCALL</span> <span class="pre">cuvis_get_last_error_msg_localized</span> <span class="pre">(void)</span></span></dt>
 <dd><p>Call this function for obtaining the last localized error message. </p>
-<p>remember to set locale with <a class="reference internal" href="#group__cuvis__returns_1gaa7c83379580ded0dac4ae167ecafc20c"><span class="std std-ref">cuvis_set_last_error_locale</span></a> first. </p>
+<p>remember to set locale with <a class="reference internal" href="#group__cuvis__returns_1ga01a32ac06e122fe7d0da440e86082a77"><span class="std std-ref">cuvis_set_last_error_locale</span></a> first. </p>
 </dd></dl>
 
 </div>
@@ -1092,13 +1127,13 @@ Example:</p>
 <h2>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__log"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_log</span></span></dt>
+<span class="target" id="group__cuvis__log"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Logging</span></span></dt>
 <dd><p>There are several ways to configure the logging behaviour in the Cuvis SDK.</p>
 <section id="group__cuvis__log_1autotoc_md7">
 <h3>Logfile Configuration Behaviour<a class="headerlink" href="#group__cuvis__log_1autotoc_md7" title="Link to this heading"></a></h3>
 <p id="group__cuvis__log_1autotoc_md7">The SDK provides the possibility to write the log to a logfile. For this a “log.cfg” file has to be created at a certain position.</p>
 <p>When a local “.cuvis” directory exists with an empty “log.cfg” file, the cuvis sdk will create a debug log in that directory. The log file name is the process name followed by log, e.g. “example.exe.log”, if the process is named “example.log”</p>
-<p>If a local “.cuvis” directory is not found, the system-wide configuration of the logging is used (activated by default from the installation of cuvis): The configuration can be found under PROGRAMDATA%/cuvis/log.cfg (usually “C:/Program Data/cuvis/log.cfg”) for windwos or /etc/cuvis/log.cfg for linux. The log output can be found under PROGRAMDATA%/cuvis for windows and /var/log for linux.</p>
+<p>If a local “.cuvis” directory is not found, the system-wide configuration of the logging is used (activated by default from the installation of cuvis): The configuration can be found under PROGRAMDATA%/cuvis/log.cfg (usually “C:/Program Data/cuvis/log.cfg”) for Windows or /etc/cuvis/log.cfg for linux. The log output can be found under PROGRAMDATA%/cuvis for Windows and /var/log/cuvis for linux.</p>
 </section>
 <section id="group__cuvis__log_1autotoc_md8">
 <h3>Loglevel at Runtime<a class="headerlink" href="#group__cuvis__log_1autotoc_md8" title="Link to this heading"></a></h3>
@@ -1218,7 +1253,7 @@ Example:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>i_callback</strong> – <strong>[in]</strong> the function callback </p></li>
+<li><p><strong>i_callback_localized</strong> – <strong>[in]</strong> the function callback </p></li>
 <li><p><strong>i_min_level</strong> – <strong>[in]</strong> the minimum level of the callback </p></li>
 <li><p><strong>i_locale_id</strong> – <strong>[in]</strong> set the locale id, e.g. “de-DE.UTF8” for german. See the “locale” directory for available translations. </p></li>
 </ul>
@@ -1241,7 +1276,7 @@ Example:</p>
 <h2>Acquisition Context<a class="headerlink" href="#acquisition-context" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_acq</span></span></dt>
+<span class="target" id="group__cuvis__acq"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Acquisition</span> <span class="pre">Context</span></span></dt>
 <dd><p>Capturing Images with the SDK. </p>
 <p>An handle for an acquisition context can be obtained by either loading it with a calibration handle (<a class="reference internal" href="#group__cuvis__calib"><span class="std std-ref">Calibration</span></a>) or by loading it with a <a class="reference internal" href="#group__cuvis__session"><span class="std std-ref">Session File</span></a> handle.</p>
 <p>The acquisition context handles the communication with the camera, including setting state variables and capturing images. </p>
@@ -1292,8 +1327,11 @@ Example:</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>i_acqCont</strong> – <strong>[in]</strong> the acquisition context </p></li>
 <li><p><strong>o_pMesu</strong> – <strong>[out]</strong> the handle of the recorded image will be written to this variable </p></li>
-<li><p><strong>timeout_ms</strong> – <strong>[in]</strong> the timeout in ms. Give 0 to wait for ever. &#64;retuns status_ok if the measurement was recorded. <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da19319d05fb8a35cc93f77e40e06b9617"><span class="std std-ref">status_timeout</span></a> or <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da6acc681a06a7b43d360c92098a2a8653"><span class="std std-ref">status_deferred</span></a> is returned, if the capture was not completed (yet) </p></li>
+<li><p><strong>timeout_ms</strong> – <strong>[in]</strong> the timeout in ms. Give 0 to wait for ever. </p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>status_ok if the measurement was recorded. <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da19319d05fb8a35cc93f77e40e06b9617"><span class="std std-ref">status_timeout</span></a> or <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da6acc681a06a7b43d360c92098a2a8653"><span class="std std-ref">status_deferred</span></a> is returned, if the capture was not completed (yet) </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1308,8 +1346,11 @@ Example:</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>i_acqCont</strong> – <strong>[in]</strong> the acquisition context </p></li>
-<li><p><strong>o_pAsyncResult</strong> – <strong>[out]</strong> the async capture handle will be written to this variable or NULL &#64;retuns status_ok if the async call could be executed. </p></li>
+<li><p><strong>o_pAsyncResult</strong> – <strong>[out]</strong> the async capture handle will be written to this variable or NULL </p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>status_ok if the async call could be executed. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1342,8 +1383,11 @@ Example:</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>i_acqCont</strong> – <strong>[in]</strong> the acquisition context </p></li>
-<li><p><strong>o_pHasNext</strong> – <strong>[in]</strong> value of 0 is written, if no measurements are available. value &gt; 0, if a measurement is available. &#64;retuns status_ok if no error occurred. If any error occurred status_error is returned. </p></li>
+<li><p><strong>o_pHasNext</strong> – <strong>[in]</strong> value of 0 is written, if no measurements are available. value &gt; 0, if a measurement is available. </p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>status_ok if no error occurred. If any error occurred status_error is returned. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1375,6 +1419,7 @@ Example:</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>i_sess</strong> – <strong>[in]</strong> The session_file the processing context will be loaded from </p></li>
+<li><p><strong>i_simulate</strong> – <strong>[in]</strong> If True, uses the provided session file for simulated data capturing </p></li>
 <li><p><strong>o_pAcqCont</strong> – <strong>[out]</strong> The handle of the acquisition context. </p></li>
 </ul>
 </dd>
@@ -1397,7 +1442,24 @@ Example:</p>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the state of the camera </p>
+<dd class="field-even"><p>status_ok, if no internal error occurred. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__acq_1ga43306784fab51064f06b5650d30b2107"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_ready_get</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">*o_pIsReady)</span></span></dt>
+<dd><p>get initialization state of the acquisition context </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_acqCont</strong> – <strong>[in]</strong> the acquisition context </p></li>
+<li><p><strong>o_pIsReady</strong> – <strong>[out]</strong> whether the acquisition context has completed all initialization tasks </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>status_ok, if no internal error occurred. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1479,7 +1541,7 @@ Example:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>i_acq_Cont</strong> – <strong>[in]</strong> the acquisition context </p></li>
+<li><p><strong>i_acqCont</strong> – <strong>[in]</strong> the acquisition context </p></li>
 <li><p><strong>i_id</strong> – <strong>[in]</strong> the device id (value between 0 and below <a class="reference internal" href="#group__cuvis__acq_1ga03a66ef6671c16be2cd8ebc7fbdad160"><span class="std std-ref">cuvis_acq_cont_get_component_count</span></a>) </p></li>
 <li><p><strong>o_pCompInfo</strong> – <strong>[out]</strong> the component info to be filled </p></li>
 </ul>
@@ -1498,7 +1560,7 @@ Example:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>i_acq_Cont</strong> – <strong>[in]</strong> the acquisition context </p></li>
+<li><p><strong>i_acqCont</strong> – <strong>[in]</strong> the acquisition context </p></li>
 <li><p><strong>o_pCount</strong> – <strong>[out]</strong> the number of components is written here </p></li>
 </ul>
 </dd>
@@ -1516,7 +1578,7 @@ Example:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>i_acq_Cont</strong> – <strong>[in]</strong> the acquisition context </p></li>
+<li><p><strong>i_acqCont</strong> – <strong>[in]</strong> the acquisition context </p></li>
 <li><p><strong>i_id</strong> – <strong>[in]</strong> the device id (value between 0 and below <a class="reference internal" href="#group__cuvis__acq_1ga03a66ef6671c16be2cd8ebc7fbdad160"><span class="std std-ref">cuvis_acq_cont_get_component_count</span></a>) </p></li>
 <li><p><strong>i_pPixelFormat</strong> – <strong>[in]</strong> the components pixelformat </p></li>
 </ul>
@@ -1535,7 +1597,8 @@ Example:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>i_acq_Cont</strong> – <strong>[in]</strong> the acquisition context </p></li>
+<li><p><strong>i_acqCont</strong> – <strong>[in]</strong> the acquisition context </p></li>
+<li><p><strong>o_pAsyncResult</strong> – <strong>[out]</strong> The Async object that will contain the result of the operation </p></li>
 <li><p><strong>i_id</strong> – <strong>[in]</strong> the device id (value between 0 and below <a class="reference internal" href="#group__cuvis__acq_1ga03a66ef6671c16be2cd8ebc7fbdad160"><span class="std std-ref">cuvis_acq_cont_get_component_count</span></a>) </p></li>
 <li><p><strong>i_pPixelFormat</strong> – <strong>[in]</strong> the components pixelformat </p></li>
 </ul>
@@ -1554,7 +1617,7 @@ Example:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>i_acq_Cont</strong> – <strong>[in]</strong> the acquisition context </p></li>
+<li><p><strong>i_acqCont</strong> – <strong>[in]</strong> the acquisition context </p></li>
 <li><p><strong>i_id</strong> – <strong>[in]</strong> the device id (value between 0 and below <a class="reference internal" href="#group__cuvis__acq_1ga03a66ef6671c16be2cd8ebc7fbdad160"><span class="std std-ref">cuvis_acq_cont_get_component_count</span></a>) </p></li>
 <li><p><strong>o_pPixelFormat</strong> – <strong>[out]</strong> the components pixelformat </p></li>
 </ul>
@@ -1573,7 +1636,7 @@ Example:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>i_acq_Cont</strong> – <strong>[in]</strong> the acquisition context </p></li>
+<li><p><strong>i_acqCont</strong> – <strong>[in]</strong> the acquisition context </p></li>
 <li><p><strong>i_id</strong> – <strong>[in]</strong> the device id (value between 0 and below <a class="reference internal" href="#group__cuvis__acq_1ga03a66ef6671c16be2cd8ebc7fbdad160"><span class="std std-ref">cuvis_acq_cont_get_component_count</span></a>) </p></li>
 <li><p><strong>o_pCount</strong> – <strong>[out]</strong> amount of available pixel formats </p></li>
 </ul>
@@ -1592,7 +1655,7 @@ Example:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>i_acq_Cont</strong> – <strong>[in]</strong> the acquisition context </p></li>
+<li><p><strong>i_acqCont</strong> – <strong>[in]</strong> the acquisition context </p></li>
 <li><p><strong>i_id</strong> – <strong>[in]</strong> the device id (value between 0 and below <a class="reference internal" href="#group__cuvis__acq_1ga03a66ef6671c16be2cd8ebc7fbdad160"><span class="std std-ref">cuvis_acq_cont_get_component_count</span></a>) </p></li>
 <li><p><strong>i_index</strong> – <strong>[in]</strong> index of the requested available pixelformat </p></li>
 <li><p><strong>o_pPixelFormat</strong> – <strong>[out]</strong> the components available pixelformat </p></li>
@@ -1846,7 +1909,7 @@ Example:</p>
 <h2>Components<a class="headerlink" href="#components" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_comp</span></span></dt>
+<span class="target" id="group__cuvis__comp"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Components</span></span></dt>
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
@@ -1974,7 +2037,7 @@ Example:</p>
 <h2>Export API<a class="headerlink" href="#export-api" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__exporter"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_exporter</span></span></dt>
+<span class="target" id="group__cuvis__exporter"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Export</span> <span class="pre">API</span></span></dt>
 <dd><p>How to export Measurement captured with the SDK.</p>
 <p>A handle for each of the exporter can be obtainend by calling either <a class="reference internal" href="#group__cuvis__exporter_1gac8dbccda0642d3ed2cbcf432ab699712"><span class="std std-ref">cuvis_exporter_create_cube</span></a>, <a class="reference internal" href="#group__cuvis__exporter_1ga059d334204d89ce35d46d8f3a58f8ea1"><span class="std std-ref">cuvis_exporter_create_envi</span></a>, <a class="reference internal" href="#group__cuvis__exporter_1ga11c92466098f336746a7c12f1b47e73d"><span class="std std-ref">cuvis_exporter_create_tiff</span></a> or <a class="reference internal" href="#group__cuvis__exporter_1ga0563d72ab50f589a7737b8213e915952"><span class="std std-ref">cuvis_exporter_create_view</span></a>. Each of the so created exporter can then export a <a class="reference internal" href="#group__cuvis__mesu"><span class="std std-ref">Measurement</span></a> to the respective format by calling <a class="reference internal" href="#group__cuvis__exporter_1ga6f0c3dbfef8cfb65159d9ee47786aa6b"><span class="std std-ref">cuvis_exporter_apply</span></a>. Each exporter takes options in form of <a class="reference internal" href="#structcuvis__export__general__settings__t"><span class="std std-ref">cuvis_export_general_settings_t</span></a> and one of the following format specific structs <a class="reference internal" href="#structcuvis__save__args__t"><span class="std std-ref">cuvis_save_args_t</span></a>, <a class="reference internal" href="#structcuvis__export__view__settings__t"><span class="std std-ref">cuvis_export_view_settings_t</span></a>, <a class="reference internal" href="#structcuvis__export__tiff__settings__t"><span class="std std-ref">cuvis_export_tiff_settings_t</span></a></p>
 <p>See the respective struct documentations for more information on the individual options </p>
@@ -2185,14 +2248,14 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t14operation_modeE">
 <span id="_CPPv3N17cuvis_save_args_t14operation_modeE"></span><span id="_CPPv2N17cuvis_save_args_t14operation_modeE"></span><span id="cuvis_save_args_t::operation_mode__CUVIS_OPERATION_MODE"></span><span class="target" id="structcuvis__save__args__t_1ae5bbf3a670062d87c01c43aef22ee593"></span><span class="n"><span class="pre">CUVIS_OPERATION_MODE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">operation_mode</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t14operation_modeE" title="Link to this definition"></a><br /></dt>
 <dd><p>give the current operation mode. </p>
-<p>Save the operation mode used while recording. Only used if allow_session is set. </p>
+<p>Save the operation mode used while recording. Only used if <a class="reference internal" href="#structcuvis__save__args__t_1a151b107cdada8e0cdc3b48d77afc8263"><span class="std std-ref">allow_session_file</span></a> is set. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N17cuvis_save_args_t3fpsE">
 <span id="_CPPv3N17cuvis_save_args_t3fpsE"></span><span id="_CPPv2N17cuvis_save_args_t3fpsE"></span><span id="cuvis_save_args_t::fps__double"></span><span class="target" id="structcuvis__save__args__t_1a0d3cba728e3a2d2ca77213d606796488"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fps</span></span></span><a class="headerlink" href="#_CPPv4N17cuvis_save_args_t3fpsE" title="Link to this definition"></a><br /></dt>
 <dd><p>the fps used in operation_mode video </p>
-<p>only used if allow_session=true and &#64;operation_mode=Internal. </p>
+<p>only used if <a class="reference internal" href="#structcuvis__save__args__t_1a151b107cdada8e0cdc3b48d77afc8263"><span class="std std-ref">allow_session_file</span></a>=true and <a class="reference internal" href="#structcuvis__save__args__t_1ae5bbf3a670062d87c01c43aef22ee593"><span class="std std-ref">operation_mode</span></a>=Internal. </p>
 </dd></dl>
 
 <dl class="cpp var">
@@ -2412,7 +2475,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <h2>Async Programming<a class="headerlink" href="#async-programming" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__async"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_async</span></span></dt>
+<span class="target" id="group__cuvis__async"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Async</span> <span class="pre">Programming</span></span></dt>
 <dd><p>The Async Capabilites of the SDK. </p>
 <p>The functions of the sdk with depend on either setting a state of the camera, or awaiting image data from the camera have async variations of themself. This includes most of the setter of the acqusition context as well as <a class="reference internal" href="#group__cuvis__acq_1ga1ca8cccaedc19f542c67805124fa271d"><span class="std std-ref">cuvis_acq_cont_capture</span></a>.</p>
 <p>The non async version of these functions execute the respective task and block as long as it takes. The async counterpart function call completes immediately and returns the handle to an aync result or async <a class="reference internal" href="#group__cuvis__mesu"><span class="std std-ref">Measurement</span></a>.</p>
@@ -2471,7 +2534,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <h2>Processing Context<a class="headerlink" href="#processing-context" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__proc"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_proc</span></span></dt>
+<span class="target" id="group__cuvis__proc"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Processing</span> <span class="pre">Context</span></span></dt>
 <dd><p>Processing Images with the SDK. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
@@ -2536,7 +2599,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <p>The processing context can hold explicit references (e.g. a dark), see <a class="reference internal" href="#group__cuvis__proc_1ga970393728bb751fb2a8c179aeed69796"><span class="std std-ref">cuvis_proc_cont_set_reference</span></a>. These reference can be obtained by this functions</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Implicit references given by a measurement are not returned. If they are available can only be checked indirectly by the <a class="reference internal" href="#group__cuvis__proc_1ga60bf560721d1f9fdedee7380928d8c0f"><span class="std std-ref">cuvis_proc_cont_is_capable</span></a> or by checking for the measurement’s data keys <a class="reference internal" href="#group__cuvis__reserved__keys_1ga480fceda6d8ddaf26dc845baa4500840"><span class="std std-ref">CUVIS_MESU_DARKREF_KEY</span></a>, <a class="reference internal" href="#group__cuvis__reserved__keys_1gad59d63faeaf80719a01053e3643a5b27"><span class="std std-ref">CUVIS_MESU_WHITEREF_KEY</span></a> and <a class="reference internal" href="#group__cuvis__reserved__keys_1ga8a6644917100914942ad24fecd406901"><span class="std std-ref">CUVIS_MESU_WHITEDARKREF_KEY</span></a></p>
+<p>Implicit references given by a measurement are not returned. If they are available can only be checked indirectly by the <a class="reference internal" href="#group__cuvis__proc_1ga0b11e01ef2b5936406483a94513754ae"><span class="std std-ref">cuvis_proc_cont_is_capable</span></a> or by checking for the measurement’s data keys <a class="reference internal" href="#group__cuvis__reserved__keys_1ga480fceda6d8ddaf26dc845baa4500840"><span class="std std-ref">CUVIS_MESU_DARKREF_KEY</span></a>, <a class="reference internal" href="#group__cuvis__reserved__keys_1gad59d63faeaf80719a01053e3643a5b27"><span class="std std-ref">CUVIS_MESU_WHITEREF_KEY</span></a> and <a class="reference internal" href="#group__cuvis__reserved__keys_1ga8a6644917100914942ad24fecd406901"><span class="std std-ref">CUVIS_MESU_WHITEDARKREF_KEY</span></a></p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2650,7 +2713,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__proc_1ga60bf560721d1f9fdedee7380928d8c0f"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_proc_cont_is_capable</span> <span class="pre">(CUVIS_PROC_CONT</span> <span class="pre">i_procCont,</span> <span class="pre">CUVIS_MESU</span> <span class="pre">i_mesu,</span> <span class="pre">CUVIS_PROC_ARGS</span> <span class="pre">args,</span> <span class="pre">CUVIS_INT</span> <span class="pre">*o_pIsCapable)</span></span></dt>
+<span class="target" id="group__cuvis__proc_1ga0b11e01ef2b5936406483a94513754ae"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_proc_cont_is_capable</span> <span class="pre">(CUVIS_PROC_CONT</span> <span class="pre">i_procCont,</span> <span class="pre">CUVIS_MESU</span> <span class="pre">i_mesu,</span> <span class="pre">CUVIS_PROC_ARGS</span> <span class="pre">i_args,</span> <span class="pre">CUVIS_INT</span> <span class="pre">*o_pIsCapable)</span></span></dt>
 <dd><p>Check if a processing mode is possible for a measurement. </p>
 <p>Depending on the measurement, it’s intrinsic references, the processing context’s explicit references and the internal camera calibration itself the availability of a mode varies.</p>
 <p>Use this function, to check whether a specific mode is explicitly possible for a measurement.</p>
@@ -2673,7 +2736,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__proc_1ga84e58bab683a12bb9362b807f1a93217"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_proc_cont_apply</span> <span class="pre">(CUVIS_PROC_CONT</span> <span class="pre">i_procCont,</span> <span class="pre">CUVIS_MESU</span> <span class="pre">i_mesu)</span></span></dt>
 <dd><p>(Re-)Process a measurement </p>
-<p>Process a measurement according to the current settings of the processing context. Those get set via cuvis_proc_set_proc_args The availability of the modes depends, use <a class="reference internal" href="#group__cuvis__proc_1ga60bf560721d1f9fdedee7380928d8c0f"><span class="std std-ref">cuvis_proc_cont_is_capable</span></a> to check if the processing is possible.</p>
+<p>Process a measurement according to the current settings of the processing context. Those get set via <a class="reference internal" href="#group__cuvis__proc_1ga0d5d0b36b4a2efd24e9835cc55625821"><span class="std std-ref">cuvis_proc_cont_set_args</span></a> The availability of the modes depends, use <a class="reference internal" href="#group__cuvis__proc_1ga0b11e01ef2b5936406483a94513754ae"><span class="std std-ref">cuvis_proc_cont_is_capable</span></a> to check if the processing is possible.</p>
 <p>In short: Cube_Raw does not require references (Reference_Distance is optional)</p>
 <p>Cube_DarkSubtract requires Reference_Dark (and Reference_Distance is optional)</p>
 <p>Cube_Reflectance requires Reference_Dark and Reference_White reference (and Reference_Distance is optional), the Reference_WhiteDark is strongly recommended if using different integration times.</p>
@@ -2700,7 +2763,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>i_procCont</strong> – <strong>[in]</strong> The handle of the processing context </p></li>
-<li><p><strong>i_processingMode</strong> – <strong>[in]</strong> The processing mode to be checked </p></li>
+<li><p><strong>i_args</strong> – <strong>[in]</strong> The processing arguments that will be set </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2732,7 +2795,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <h2>Viewer<a class="headerlink" href="#viewer" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__viewer"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_viewer</span></span></dt>
+<span class="target" id="group__cuvis__viewer"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Viewer</span></span></dt>
 <dd><p>Something about the viewer </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
@@ -2794,7 +2857,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>the</strong> – <strong>[in]</strong> view handle </p></li>
+<li><p><strong>i_view</strong> – <strong>[in]</strong> the view handle </p></li>
 <li><p><strong>o_pCount</strong> – <strong>[out]</strong> The number of elements </p></li>
 </ul>
 </dd>
@@ -2842,7 +2905,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <h2>Worker<a class="headerlink" href="#worker" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__worker"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">cuvis_worker</span></span></dt>
+<span class="target" id="group__cuvis__worker"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Worker</span></span></dt>
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
@@ -3046,7 +3109,6 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>i_worker</strong> – <strong>[in]</strong> The worker handle </p></li>
 <li><p><strong>o_pCanSkip</strong> – <strong>[out]</strong> If 1, the worker is allowed to entirely skip processing measurements, if the mandatory queue is full </p></li>
-<li><p><strong>o_pCanSkipSupplementary</strong> – <strong>[out]</strong> If 1, the worker is allowed to skip supplementary processing of measurements, if the supplementary queue is full </p></li>
 </ul>
 </dd>
 </dl>
@@ -3149,8 +3211,8 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
 <dl>
 <dt class="sig sig-object cpp">
-<span class="target" id="group__c__examples"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">c_examples</span></span></dt>
-<dd><p>There are serveral examples delivered with the SDK</p>
+<span class="target" id="group__c__examples"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Examples</span></span></dt>
+<dd><p>There are several examples delivered with the SDK</p>
 <section id="group__c__examples_1autotoc_md3">
 <h3>Overview<a class="headerlink" href="#group__c__examples_1autotoc_md3" title="Link to this heading"></a></h3>
 <p id="group__c__examples_1autotoc_md3">Under Windows you can find the examples in your installation directory (Default: “C:\Program Files\Cuvis\sdk\cuvis_c\examples” or “C:\Program Files\Cuvis\sdk\cuvis_cpp\examples”), under Linux they can be found in “/lib/cuvis/cuvis_c/examples” or “/lib/cuvis/cuvis_cpp/examples” . Each Example comes with the precompiled binary, a short .sh-script to run the application and the source code file. The .sh-script requires the bash console. Under windows we recommend to use Git Bash.</p>

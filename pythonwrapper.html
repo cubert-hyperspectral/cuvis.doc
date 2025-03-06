@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cuvis Python API &mdash; Cuvis SDK 3.3.0 documentation</title>
+  <title>Cuvis Python API &mdash; Cuvis SDK 3.2.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=3eb8911e"></script>
+      <script src="_static/documentation_options.js?v=eb155f5e"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -44,7 +44,6 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdkuserguide.html">SDK User’s Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="releasehistory.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cwrapper.html">Cuvis C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cppwrapper.html">Cuvis C++ API</a></li>
@@ -66,7 +65,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.operation_mode"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.operation_mode</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.queue_size"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.queue_size</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.queue_used"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.queue_used</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.ready"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.ready</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.register_ready_callback"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.register_ready_callback()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.register_state_change_callback"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.register_state_change_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.reset_ready_callback"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.reset_ready_callback()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.reset_state_change_callback"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.reset_state_change_callback()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.session_info"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.session_info</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cuvis.AcquisitionContext.AcquisitionContext.set_auto_exp_async"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext.set_auto_exp_async()</span></code></a></li>
@@ -487,7 +489,8 @@ The recorded measurement can be obtained by the function ‘cuvis_async_capture_
 Retrieve it with ‘cuvis_acq_cont_get_next_measurement’ or via the worker (if used) ‘cuvis_worker_get_next_result’</p>
 <p>i_acqCont the acquisition context
 o_pAsyncResult the async capture handle will be written to this variable or NULL
-status_ok if the async call could be executed.</p>
+:rtype: int
+:return: status_ok if the async call could be executed.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -498,7 +501,8 @@ status_ok if the async call could be executed.</p>
 <p>i_acqCont the acquisition context
 o_pMesu the handle of the recorded image will be written to this variable
 timeout_ms the timeout in ms. Give 0 to wait for ever.
-status_ok if the measurement was recorded. ‘status_timeout’ or ‘status_deferred’ is returned, if the capture was not completed (yet)</p>
+:rtype: int
+:return: status_ok if the measurement was recorded. ‘status_timeout’ or ‘status_deferred’ is returned, if the capture was not completed (yet)</p>
 </dd></dl>
 
 <dl class="py property">
@@ -506,7 +510,7 @@ status_ok if the measurement was recorded. ‘status_timeout’ or ‘status_def
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">component_count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.component_count" title="Link to this definition"></a></dt>
 <dd><p>Get the number of components</p>
 <p>The acquisition hardware is build from one or more components. Get the component count.
-i_acq_Cont the acquisition context
+i_acqCont the acquisition context
 o_pCount the number of components is written here
 :rtype: int
 :return: cuvis_ok if the number of components could be set</p>
@@ -545,7 +549,8 @@ timeout_ms the timeout in ms. Give 0 to wait for ever.
 <p>This function is only available in operation mode “Internal” or “External”.</p>
 <p>i_acqCont the acquisition context
 o_pHasNext value of 0 is written, if no measurements are available. value &gt; 0, if a measurement is available.
-status_ok if no error occurred. If any error occurred status_error is returned.</p>
+:rtype: int
+:return: status_ok if no error occurred. If any error occurred status_error is returned.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -568,9 +573,29 @@ status_ok if no error occurred. If any error occurred status_error is returned.<
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">queue_used</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.queue_used" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.ready">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ready</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.ready" title="Link to this definition"></a></dt>
+<dd><p>get initialization state of the acquisition context</p>
+<p>i_acqCont the acquisition context
+o_pIsReady whether the acquisition context has completed all initialization tasks
+:rtype: int
+:return: status_ok, if no internal error occurred.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.register_ready_callback">
+<span class="sig-name descname"><span class="pre">register_ready_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.register_ready_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.register_ready_callback" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.register_state_change_callback">
 <span class="sig-name descname"><span class="pre">register_state_change_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cuvis.cuvis_types.HardwareState" title="cuvis.cuvis_types.HardwareState"><span class="pre">HardwareState</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.register_state_change_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.register_state_change_callback" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cuvis.AcquisitionContext.AcquisitionContext.reset_ready_callback">
+<span class="sig-name descname"><span class="pre">reset_ready_callback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cuvis/AcquisitionContext.html#AcquisitionContext.reset_ready_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.AcquisitionContext.AcquisitionContext.reset_ready_callback" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -642,7 +667,7 @@ o_pSessionInfo the state will be written here
 i_acqCont the acquisition context
 o_pState the state will be written here
 :rtype: int
-:return: the state of the camera</p>
+:return: status_ok, if no internal error occurred.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1420,7 +1445,7 @@ o_pState the state will be written here
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cuvis.FileWriteSettings.ViewExportSettings">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.FileWriteSettings.</span></span><span class="sig-name descname"><span class="pre">ViewExportSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">export_dir:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_selection:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectra_multiplier:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_scale:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_interpolation_type:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningInterpolationType</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningInterpolationType.Linear:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_algorithm:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningAlgorithm</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningAlgorithm.CubertMacroPixel:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_pan_sharpen_cube:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_pan:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_fullscale_pan:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permissive:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userplugin:</span> <span class="pre">dataclasses.InitVar[str]</span> <span class="pre">=</span> <span class="pre">&lt;property</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f66cd7c8c70&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/FileWriteSettings.html#ViewExportSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.FileWriteSettings.ViewExportSettings" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.FileWriteSettings.</span></span><span class="sig-name descname"><span class="pre">ViewExportSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">export_dir:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_selection:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectra_multiplier:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_scale:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_interpolation_type:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningInterpolationType</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningInterpolationType.Linear:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_algorithm:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningAlgorithm</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningAlgorithm.CubertMacroPixel:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_pan_sharpen_cube:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_pan:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_fullscale_pan:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">permissive:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userplugin:</span> <span class="pre">dataclasses.InitVar[str]</span> <span class="pre">=</span> <span class="pre">&lt;property</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fca0c460360&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/FileWriteSettings.html#ViewExportSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.FileWriteSettings.ViewExportSettings" title="Link to this definition"></a></dt>
 <dd><dl class="py property">
 <dt class="sig sig-object py" id="cuvis.FileWriteSettings.ViewExportSettings.userplugin">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">userplugin</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cuvis.FileWriteSettings.ViewExportSettings.userplugin" title="Link to this definition"></a></dt>
@@ -1430,7 +1455,7 @@ o_pState the state will be written here
 
 <dl class="py class">
 <dt class="sig sig-object py" id="cuvis.FileWriteSettings.ViewerSettings">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.FileWriteSettings.</span></span><span class="sig-name descname"><span class="pre">ViewerSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userplugin:</span> <span class="pre">dataclasses.InitVar[str]</span> <span class="pre">=</span> <span class="pre">&lt;property</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f66cd8c1400&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_scale:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_interpolation_type:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningInterpolationType</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningInterpolationType.Linear:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_algorithm:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningAlgorithm</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningAlgorithm.CubertMacroPixel:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_pan_sharpen_cube:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complete:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blend_opacity:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/FileWriteSettings.html#ViewerSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.FileWriteSettings.ViewerSettings" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.FileWriteSettings.</span></span><span class="sig-name descname"><span class="pre">ViewerSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userplugin:</span> <span class="pre">dataclasses.InitVar[str]</span> <span class="pre">=</span> <span class="pre">&lt;property</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7fca0c40a4a0&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_scale:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_interpolation_type:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningInterpolationType</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningInterpolationType.Linear:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pan_sharpening_algorithm:</span> <span class="pre">cuvis.cuvis_types.PanSharpeningAlgorithm</span> <span class="pre">=</span> <span class="pre">&lt;PanSharpeningAlgorithm.CubertMacroPixel:</span> <span class="pre">2&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_pan_sharpen_cube:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complete:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blend_opacity:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/FileWriteSettings.html#ViewerSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.FileWriteSettings.ViewerSettings" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="cuvis.FileWriteSettings.ViewerSettings.blend_opacity">
 <span class="sig-name descname"><span class="pre">blend_opacity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#cuvis.FileWriteSettings.ViewerSettings.blend_opacity" title="Link to this definition"></a></dt>
@@ -1570,7 +1595,7 @@ o_pState the state will be written here
 
 <dl class="py class" id="module-cuvis.Measurement">
 <dt class="sig sig-object py" id="cuvis.Measurement.Measurement">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.Measurement.</span></span><span class="sig-name descname"><span class="pre">Measurement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/Measurement.html#Measurement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Measurement.Measurement" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cuvis.Measurement.</span></span><span class="sig-name descname"><span class="pre">Measurement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cuvis/Measurement.html#Measurement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cuvis.Measurement.Measurement" title="Link to this definition"></a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="cuvis.Measurement.Measurement.assembly">
 <span class="sig-name descname"><span class="pre">assembly</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cuvis.Measurement.Measurement.assembly" title="Link to this definition"></a></dt>
@@ -1853,8 +1878,7 @@ o_pCanDrop If 1, the worker is allowed to drop results when the output queue is 
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">can_skip_measurements</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#cuvis.Worker.Worker.can_skip_measurements" title="Link to this definition"></a></dt>
 <dd><p>Query current skip behavior
 i_worker The worker handle
-o_pCanSkip If 1, the worker is allowed to entirely skip processing measurements, if the mandatory queue is full
-o_pCanSkipSupplementary If 1, the worker is allowed to skip supplementary processing of measurements, if the supplementary queue is full</p>
+o_pCanSkip If 1, the worker is allowed to entirely skip processing measurements, if the mandatory queue is full</p>
 </dd></dl>
 
 <dl class="py property">

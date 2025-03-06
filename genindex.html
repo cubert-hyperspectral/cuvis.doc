@@ -5,14 +5,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; Cuvis SDK 3.3.0 documentation</title>
+  <title>Index &mdash; Cuvis SDK 3.2.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=3eb8911e"></script>
+      <script src="_static/documentation_options.js?v=eb155f5e"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -42,7 +42,6 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sdkuserguide.html">SDK User’s Guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="releasehistory.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cwrapper.html">Cuvis C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cppwrapper.html">Cuvis C++ API</a></li>
@@ -423,6 +422,8 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext20has_next_measurementEv">cuvis::AcquisitionContext::has_next_measurement (C++ function)</a>
 </li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext8is_readyEv">cuvis::AcquisitionContext::is_ready (C++ function)</a>
+</li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis18AcquisitionContext15mesu_callback_tE">cuvis::AcquisitionContext::mesu_callback_t (C++ type)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis18AcquisitionContext30register_state_change_callbackE16state_callback_tb">cuvis::AcquisitionContext::register_state_change_callback (C++ function)</a>
@@ -531,10 +532,10 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Measurement11get_strdataEv">cuvis::Measurement::get_strdata (C++ function)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Measurement13get_thumbnailEv">cuvis::Measurement::get_thumbnail (C++ function)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Measurement13get_thumbnailEv">cuvis::Measurement::get_thumbnail (C++ function)</a>
+</li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis11Measurement10gps_data_tE">cuvis::Measurement::gps_data_t (C++ type)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis11Measurement12image_data_tE">cuvis::Measurement::image_data_t (C++ type)</a>
@@ -1270,6 +1271,8 @@
 </li>
       <li><a href="pythonwrapper.html#cuvis.cuvis_aux.SensorInfo.readout_time">readout_time (cuvis.cuvis_aux.SensorInfo attribute)</a>
 </li>
+      <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.ready">ready (cuvis.AcquisitionContext.AcquisitionContext property)</a>
+</li>
       <li><a href="pythonwrapper.html#cuvis.cuvis_types.SessionItemType.references">references (cuvis.cuvis_types.SessionItemType attribute)</a>
 </li>
       <li><a href="pythonwrapper.html#cuvis.cuvis_types.ReferenceType">ReferenceType (class in cuvis.cuvis_types)</a>
@@ -1280,9 +1283,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pythonwrapper.html#cuvis.Measurement.Measurement.refresh">refresh() (cuvis.Measurement.Measurement method)</a>
 </li>
+      <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.register_ready_callback">register_ready_callback() (cuvis.AcquisitionContext.AcquisitionContext method)</a>
+</li>
       <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.register_state_change_callback">register_state_change_callback() (cuvis.AcquisitionContext.AcquisitionContext method)</a>
 </li>
       <li><a href="pythonwrapper.html#cuvis.Worker.Worker.register_worker_callback">register_worker_callback() (cuvis.Worker.Worker method)</a>
+</li>
+      <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.reset_ready_callback">reset_ready_callback() (cuvis.AcquisitionContext.AcquisitionContext method)</a>
 </li>
       <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.reset_state_change_callback">reset_state_change_callback() (cuvis.AcquisitionContext.AcquisitionContext method)</a>
 </li>
