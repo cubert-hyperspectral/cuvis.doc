@@ -14,7 +14,7 @@
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=eb155f5e"></script>
-      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -118,9 +118,50 @@
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N22cuvis_operation_mode_t23OperationMode_UndefinedE"><code class="docutils literal notranslate"><span class="pre">OperationMode_Undefined</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv422cuvis_acq_cont_fps_get7int32_tPd"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_fps_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv422cuvis_acq_cont_fps_set7int32_td"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_fps_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv428cuvis_acq_cont_fps_set_async7int32_tP7int32_td"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_fps_set_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv426cuvis_acq_cont_average_get7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_average_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv426cuvis_acq_cont_average_set7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_average_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv432cuvis_acq_cont_average_set_async7int32_tP7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_average_set_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv435cuvis_acq_cont_integration_time_get7int32_tPd"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_integration_time_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv435cuvis_acq_cont_integration_time_set7int32_td"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_integration_time_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv441cuvis_acq_cont_integration_time_set_async7int32_tP7int32_td"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_integration_time_set_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv427cuvis_acq_cont_auto_exp_get7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_auto_exp_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv427cuvis_acq_cont_auto_exp_set7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_auto_exp_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv433cuvis_acq_cont_auto_exp_set_async7int32_tP7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_auto_exp_set_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv432cuvis_acq_cont_auto_exp_comp_get7int32_tPd"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_auto_exp_comp_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv432cuvis_acq_cont_auto_exp_comp_set7int32_td"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_auto_exp_comp_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv438cuvis_acq_cont_auto_exp_comp_set_async7int32_tP7int32_td"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_auto_exp_comp_set_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv426cuvis_acq_cont_binning_get7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_binning_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv426cuvis_acq_cont_binning_set7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_binning_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv432cuvis_acq_cont_binning_set_async7int32_tP7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_binning_set_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv433cuvis_acq_cont_operation_mode_get7int32_tP22cuvis_operation_mode_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_operation_mode_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv433cuvis_acq_cont_operation_mode_set7int32_t22cuvis_operation_mode_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_operation_mode_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv439cuvis_acq_cont_operation_mode_set_async7int32_tP7int32_t22cuvis_operation_mode_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_operation_mode_set_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv429cuvis_acq_cont_continuous_set7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_continuous_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv435cuvis_acq_cont_continuous_set_async7int32_tP7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_continuous_set_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv428cuvis_acq_cont_bandwidth_get7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_bandwidth_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv429cuvis_acq_cont_queue_size_get7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_queue_size_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv429cuvis_acq_cont_queue_used_get7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_queue_used_get()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#components">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#components">Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv421cuvis_comp_online_get7int32_t7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_online_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv426cuvis_comp_temperature_get7int32_t7int32_tPd"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_temperature_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv424cuvis_comp_bandwidth_get7int32_t7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_bandwidth_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv432cuvis_comp_driver_queue_size_get7int32_t7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_driver_queue_size_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv432cuvis_comp_driver_queue_used_get7int32_t7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_driver_queue_used_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv434cuvis_comp_hardware_queue_size_get7int32_t7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_hardware_queue_size_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv434cuvis_comp_hardware_queue_used_get7int32_t7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_hardware_queue_used_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv419cuvis_comp_gain_get7int32_t7int32_tPd"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_gain_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv419cuvis_comp_gain_set7int32_t7int32_td"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_gain_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv425cuvis_comp_gain_set_async7int32_t7int32_tP7int32_td"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_gain_set_async()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv438cuvis_comp_integration_time_factor_get7int32_t7int32_tPd"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_integration_time_factor_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv438cuvis_comp_integration_time_factor_set7int32_t7int32_td"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_integration_time_factor_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv444cuvis_comp_integration_time_factor_set_async7int32_t7int32_tP7int32_td"><code class="docutils literal notranslate"><span class="pre">cuvis_comp_integration_time_factor_set_async()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#export-api">Export API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv417cuvis_save_args_t"><code class="docutils literal notranslate"><span class="pre">cuvis_save_args_t</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17cuvis_save_args_t19allow_fragmentationE"><code class="docutils literal notranslate"><span class="pre">allow_fragmentation</span></code></a></li>
@@ -328,7 +369,7 @@
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__calib"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Calibration</span></span></dt>
-<dd><p>Functions to interact with a calibration object of the SDK.</p>
+<dd><p>Functions to interact with a calibration object of the SDK. </p>
 <p>There are two ways to create a calibration object. One way is by loading it specifically from a factory directory (see <a class="reference internal" href="#group__cuvis__calib_1ga5dab63eb810fa988d1fbe68ce982d9f0"><span class="std std-ref">cuvis_calib_create_from_path</span></a>). The other one is by loading it from a session file. The Calibration object is needed to load other parts of the SDK like the <a class="reference internal" href="#group__cuvis__acq"><span class="std std-ref">Acquisition Context</span></a> and the <a class="reference internal" href="#group__cuvis__proc"><span class="std std-ref">Processing Context</span></a>. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
@@ -736,7 +777,7 @@
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__session"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Session</span> <span class="pre">File</span></span></dt>
-<dd><p>The main file format of the SDK </p>
+<dd><p>The main file format of the SDK. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
@@ -913,7 +954,8 @@
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__info__layer"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">The</span> <span class="pre">info</span> <span class="pre">layer</span></span></dt>
-<dd><p>The info layer can be retrieved with the function <a class="reference internal" href="#group__cuvis__mesu_1ga49ad169236b3ec059bdf9f3b1c7edf48"><span class="std std-ref">cuvis_measurement_get_data_image</span></a> Though is appears to be an image and will also be exported and fragmented as an image it is actually a set of flags. Each position of the a info-layer pixel represents a data flag for a respective cube (or pan image).</p>
+<dd><p>The info layer can be retrieved with the function <a class="reference internal" href="#group__cuvis__mesu_1ga49ad169236b3ec059bdf9f3b1c7edf48"><span class="std std-ref">cuvis_measurement_get_data_image</span></a> Though is appears to be an image and will also be exported and fragmented as an image it is actually a set of flags. </p>
+<p>Each position of the a info-layer pixel represents a data flag for a respective cube (or pan image).</p>
 <p>E.g. if a cube (<a class="reference internal" href="#group__cuvis__reserved__keys_1gafe40dc8e2753339f739bfd6a23972630"><span class="std std-ref">CUVIS_MESU_CUBE_KEY</span></a>) has the size of 410x410x164 (W x H x Chn), the respective info layer (<a class="reference internal" href="#group__cuvis__info__layer_1ga0d4fba4dc4dd287e7c84005da4fc8578"><span class="std std-ref">CUVIS_MESU_CUBE_INFO_KEY</span></a>) will have a size of 410x410. The info_layer value at position x,y contains the flags for the whole spectrum at position x,y in the cube.</p>
 <p>The same is true for the pan-chromatic image ((<a class="reference internal" href="#group__cuvis__info__layer_1ga0d4fba4dc4dd287e7c84005da4fc8578"><span class="std std-ref">CUVIS_MESU_CUBE_INFO_KEY</span></a>) and <a class="reference internal" href="#group__cuvis__info__layer_1ga0d4fba4dc4dd287e7c84005da4fc8578"><span class="std std-ref">CUVIS_MESU_CUBE_INFO_KEY</span></a>, respectively)</p>
 <p>The info layer pixel value is retrieved by binary operation.</p>
@@ -1019,8 +1061,8 @@ Example:</p>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__returns"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Return</span> <span class="pre">Values</span> <span class="pre">of</span> <span class="pre">SDK</span> <span class="pre">Functions</span></span></dt>
-<dd><p>More Information on the Return Values of the SDK Functions.</p>
-<p>Most of the SDK functions return a <a class="reference internal" href="#group__cuvis__returns_1gaa06c62ba25240f4763da0e590ebf3b9d"><span class="std std-ref">cuvis_status_t</span></a>. This value indicates if the function call was executed sucessfully or if a error occurred. If the value is <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da405da0d107497b3596a3818a48478c9f"><span class="std std-ref">status_error</span></a> for example, this indicates that an error occurred. The specific error message can then be retrieved via <a class="reference internal" href="#group__cuvis__returns_1gadcf43d47d223a79e52e79f0e42de9f94"><span class="std std-ref">cuvis_get_last_error_msg</span></a> to get more details. </p>
+<dd><p>More Information on the Return Values of the SDK Functions. </p>
+<p>Most of the SDK functions return a <a class="reference internal" href="#group__cuvis__returns_1gaa06c62ba25240f4763da0e590ebf3b9d"><span class="std std-ref">cuvis_status_t</span></a>. This value indicates if the function call was executed sucessfully or if a error occurred. If the value is <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da405da0d107497b3596a3818a48478c9f"><span class="std std-ref">status_error</span></a> for example, this indicates that an error occurred. The specific error message can then be retrieved via <a class="reference internal" href="#group__cuvis__returns_1ga4544e7f751ab4ee5258d485d82782be1"><span class="std std-ref">cuvis_get_last_error_msg</span></a> to get more details. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="cpp enum">
@@ -1097,13 +1139,13 @@ Example:</p>
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__returns_1gadcf43d47d223a79e52e79f0e42de9f94"></span><span class="sig-name descname"><span class="pre">const</span> <span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">*SDK_CCALL</span> <span class="pre">cuvis_get_last_error_msg</span> <span class="pre">(void)</span></span></dt>
+<span class="target" id="group__cuvis__returns_1ga4544e7f751ab4ee5258d485d82782be1"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">const</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">*SDK_CCALL</span> <span class="pre">cuvis_get_last_error_msg</span> <span class="pre">(void)</span></span></dt>
 <dd><p>Call this function for obtaining the last error message. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__returns_1ga01a32ac06e122fe7d0da440e86082a77"></span><span class="sig-name descname"><span class="pre">const</span> <span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_set_last_error_locale</span> <span class="pre">(CUVIS_CHAR</span> <span class="pre">const</span> <span class="pre">*i_locale_id)</span></span></dt>
+<span class="target" id="group__cuvis__returns_1ga1598b6d2bcb09f527a0e64e14417c1b4"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">const</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_set_last_error_locale</span> <span class="pre">(CUVIS_CHAR</span> <span class="pre">const</span> <span class="pre">*i_locale_id)</span></span></dt>
 <dd><p>Set the locale for localized error messages. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1114,9 +1156,9 @@ Example:</p>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__returns_1gad27d8ed099c16ffcde8d1a06d1df4d0d"></span><span class="sig-name descname"><span class="pre">const</span> <span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_WCHAR</span> <span class="pre">*SDK_CCALL</span> <span class="pre">cuvis_get_last_error_msg_localized</span> <span class="pre">(void)</span></span></dt>
+<span class="target" id="group__cuvis__returns_1ga5d1bfc67b7c94b7de08d0f2c5b059020"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">const</span> <span class="pre">CUVIS_WCHAR</span> <span class="pre">*SDK_CCALL</span> <span class="pre">cuvis_get_last_error_msg_localized</span> <span class="pre">(void)</span></span></dt>
 <dd><p>Call this function for obtaining the last localized error message. </p>
-<p>remember to set locale with <a class="reference internal" href="#group__cuvis__returns_1ga01a32ac06e122fe7d0da440e86082a77"><span class="std std-ref">cuvis_set_last_error_locale</span></a> first. </p>
+<p>remember to set locale with <a class="reference internal" href="#group__cuvis__returns_1ga1598b6d2bcb09f527a0e64e14417c1b4"><span class="std std-ref">cuvis_set_last_error_locale</span></a> first. </p>
 </dd></dl>
 
 </div>
@@ -1128,7 +1170,7 @@ Example:</p>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__log"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Logging</span></span></dt>
-<dd><p>There are several ways to configure the logging behaviour in the Cuvis SDK.</p>
+<dd><p>There are several ways to configure the logging behaviour in the Cuvis SDK. </p>
 <section id="group__cuvis__log_1autotoc_md7">
 <h3>Logfile Configuration Behaviour<a class="headerlink" href="#group__cuvis__log_1autotoc_md7" title="Link to this heading"></a></h3>
 <p id="group__cuvis__log_1autotoc_md7">The SDK provides the possibility to write the log to a logfile. For this a “log.cfg” file has to be created at a certain position.</p>
@@ -1668,8 +1710,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1gaa58f633d05c0549ca06ba0ef516dface"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_fps_get</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">double</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv422cuvis_acq_cont_fps_get7int32_tPd">
+<span id="_CPPv322cuvis_acq_cont_fps_get7int32_tPd"></span><span id="_CPPv222cuvis_acq_cont_fps_get7int32_tPd"></span><span id="cuvis_acq_cont_fps_get__int32_t.doubleP"></span><span class="target" id="group__cuvis__acq_1ga2819c532310f7e615e59167a4406a2ac"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_fps_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422cuvis_acq_cont_fps_get7int32_tPd" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_acq_cont_fps function. </p>
 <p><p>Details: “Frames per second”</p>
 <p>Result is written to o_pvalue</p>
@@ -1677,8 +1719,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga3feb4561f9afc39728c970bcca74c252"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_fps_set</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">double</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv422cuvis_acq_cont_fps_set7int32_td">
+<span id="_CPPv322cuvis_acq_cont_fps_set7int32_td"></span><span id="_CPPv222cuvis_acq_cont_fps_set7int32_td"></span><span id="cuvis_acq_cont_fps_set__int32_t.double"></span><span class="target" id="group__cuvis__acq_1gadf0fb0256b110e0dc51a9d733b20b850"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_fps_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422cuvis_acq_cont_fps_set7int32_td" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_fps . </p>
 <p><p>Unit: “Frames per second”</p>
 <p>Block until done or failed</p>
@@ -1686,8 +1728,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga9f551cbb9b8017f78bba3fe7a7b76ad4"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_fps_set_async</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_ASYNC_CALL_RESULT</span> <span class="pre">*o_pAsyncResult,</span> <span class="pre">double</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv428cuvis_acq_cont_fps_set_async7int32_tP7int32_td">
+<span id="_CPPv328cuvis_acq_cont_fps_set_async7int32_tP7int32_td"></span><span id="_CPPv228cuvis_acq_cont_fps_set_async7int32_tP7int32_td"></span><span id="cuvis_acq_cont_fps_set_async__int32_t.int32_tP.double"></span><span class="target" id="group__cuvis__acq_1gae3e4e4b191b5806817b963527c7d1aed"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_fps_set_async</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pAsyncResult</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428cuvis_acq_cont_fps_set_async7int32_tP7int32_td" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_fps asynchronously. </p>
 <p><p>Unit: “Frames per second”</p>
 <p>Use</p>
@@ -1695,8 +1737,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1gabc3ba73db84a7034954f3ca1133206b3"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_average_get</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">int32_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv426cuvis_acq_cont_average_get7int32_tP7int32_t">
+<span id="_CPPv326cuvis_acq_cont_average_get7int32_tP7int32_t"></span><span id="_CPPv226cuvis_acq_cont_average_get7int32_tP7int32_t"></span><span id="cuvis_acq_cont_average_get__int32_t.int32_tP"></span><span class="target" id="group__cuvis__acq_1gaa9f6e0f21bb5d83ac22d3bb0742bba23"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_average_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426cuvis_acq_cont_average_get7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_acq_cont_average function. </p>
 <p><p>Details: “Number of averages”</p>
 <p>Result is written to o_pvalue</p>
@@ -1704,8 +1746,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1gad47bcf8ba7833172d023510e873fb553"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_average_set</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">int32_t</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv426cuvis_acq_cont_average_set7int32_t7int32_t">
+<span id="_CPPv326cuvis_acq_cont_average_set7int32_t7int32_t"></span><span id="_CPPv226cuvis_acq_cont_average_set7int32_t7int32_t"></span><span id="cuvis_acq_cont_average_set__int32_t.int32_t"></span><span class="target" id="group__cuvis__acq_1gaa2e5682e1c0da7defd2e4b086efac3f0"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_average_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426cuvis_acq_cont_average_set7int32_t7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_average . </p>
 <p><p>Unit: “Number of averages”</p>
 <p>Block until done or failed</p>
@@ -1713,8 +1755,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga951b54b884268d712dc5bf7095df9979"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_average_set_async</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_ASYNC_CALL_RESULT</span> <span class="pre">*o_pAsyncResult,</span> <span class="pre">CUVIS_INT</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv432cuvis_acq_cont_average_set_async7int32_tP7int32_t7int32_t">
+<span id="_CPPv332cuvis_acq_cont_average_set_async7int32_tP7int32_t7int32_t"></span><span id="_CPPv232cuvis_acq_cont_average_set_async7int32_tP7int32_t7int32_t"></span><span id="cuvis_acq_cont_average_set_async__int32_t.int32_tP.int32_t"></span><span class="target" id="group__cuvis__acq_1gadbdd2abbedb0e26b9d5cb000590f64bd"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_average_set_async</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pAsyncResult</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432cuvis_acq_cont_average_set_async7int32_tP7int32_t7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_average asynchronously. </p>
 <p><p>Unit: “Number of averages”</p>
 <p>Use</p>
@@ -1722,8 +1764,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga86ce8c6d8377820565012e238b4dfc9f"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_integration_time_get</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">double</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv435cuvis_acq_cont_integration_time_get7int32_tPd">
+<span id="_CPPv335cuvis_acq_cont_integration_time_get7int32_tPd"></span><span id="_CPPv235cuvis_acq_cont_integration_time_get7int32_tPd"></span><span id="cuvis_acq_cont_integration_time_get__int32_t.doubleP"></span><span class="target" id="group__cuvis__acq_1ga848920b9c905d9fc59507381ed692b72"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_integration_time_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv435cuvis_acq_cont_integration_time_get7int32_tPd" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_acq_cont_integration_time function. </p>
 <p><p>Details: “Integration time in milliseconds”</p>
 <p>Result is written to o_pvalue</p>
@@ -1731,8 +1773,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga2b54e8180284b3c628630defc525866d"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_integration_time_set</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">double</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv435cuvis_acq_cont_integration_time_set7int32_td">
+<span id="_CPPv335cuvis_acq_cont_integration_time_set7int32_td"></span><span id="_CPPv235cuvis_acq_cont_integration_time_set7int32_td"></span><span id="cuvis_acq_cont_integration_time_set__int32_t.double"></span><span class="target" id="group__cuvis__acq_1ga7dd36e9bf16ff9555dfd588115906e05"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_integration_time_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv435cuvis_acq_cont_integration_time_set7int32_td" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_integration_time . </p>
 <p><p>Unit: “Integration time in milliseconds”</p>
 <p>Block until done or failed</p>
@@ -1740,8 +1782,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1gac9db0974ba46124e87d426ef3199e3ed"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_integration_time_set_async</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_ASYNC_CALL_RESULT</span> <span class="pre">*o_pAsyncResult,</span> <span class="pre">double</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv441cuvis_acq_cont_integration_time_set_async7int32_tP7int32_td">
+<span id="_CPPv341cuvis_acq_cont_integration_time_set_async7int32_tP7int32_td"></span><span id="_CPPv241cuvis_acq_cont_integration_time_set_async7int32_tP7int32_td"></span><span id="cuvis_acq_cont_integration_time_set_async__int32_t.int32_tP.double"></span><span class="target" id="group__cuvis__acq_1gab191a783e4e76cfc77b79b6c04cdfbe5"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_integration_time_set_async</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pAsyncResult</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv441cuvis_acq_cont_integration_time_set_async7int32_tP7int32_td" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_integration_time asynchronously. </p>
 <p><p>Unit: “Integration time in milliseconds”</p>
 <p>Use</p>
@@ -1749,8 +1791,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga85aa062f5e8970f37a2ca61ce76afcd1"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_auto_exp_get</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">int32_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv427cuvis_acq_cont_auto_exp_get7int32_tP7int32_t">
+<span id="_CPPv327cuvis_acq_cont_auto_exp_get7int32_tP7int32_t"></span><span id="_CPPv227cuvis_acq_cont_auto_exp_get7int32_tP7int32_t"></span><span id="cuvis_acq_cont_auto_exp_get__int32_t.int32_tP"></span><span class="target" id="group__cuvis__acq_1ga1f831bae0b2e7646544aeb179025cf3b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_auto_exp_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427cuvis_acq_cont_auto_exp_get7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_acq_cont_auto_exp function. </p>
 <p><p>Details: “get_auto_exp”</p>
 <p>Result is written to o_pvalue</p>
@@ -1758,8 +1800,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1gaf42468456179026122ce821c921f7e3a"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_auto_exp_set</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">int32_t</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv427cuvis_acq_cont_auto_exp_set7int32_t7int32_t">
+<span id="_CPPv327cuvis_acq_cont_auto_exp_set7int32_t7int32_t"></span><span id="_CPPv227cuvis_acq_cont_auto_exp_set7int32_t7int32_t"></span><span id="cuvis_acq_cont_auto_exp_set__int32_t.int32_t"></span><span class="target" id="group__cuvis__acq_1gae116040142b8fc818d262bde10cdf0d2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_auto_exp_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427cuvis_acq_cont_auto_exp_set7int32_t7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_auto_exp . </p>
 <p><p>Unit: “set_auto_exp”</p>
 <p>Block until done or failed</p>
@@ -1767,8 +1809,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1gaa76014e52a8195517cfd78a2638d4f18"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_auto_exp_set_async</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_ASYNC_CALL_RESULT</span> <span class="pre">*o_pAsyncResult,</span> <span class="pre">CUVIS_INT</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv433cuvis_acq_cont_auto_exp_set_async7int32_tP7int32_t7int32_t">
+<span id="_CPPv333cuvis_acq_cont_auto_exp_set_async7int32_tP7int32_t7int32_t"></span><span id="_CPPv233cuvis_acq_cont_auto_exp_set_async7int32_tP7int32_t7int32_t"></span><span id="cuvis_acq_cont_auto_exp_set_async__int32_t.int32_tP.int32_t"></span><span class="target" id="group__cuvis__acq_1gaecaa463bbbe2a02d599f3d22ee935471"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_auto_exp_set_async</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pAsyncResult</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433cuvis_acq_cont_auto_exp_set_async7int32_tP7int32_t7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_auto_exp asynchronously. </p>
 <p><p>Unit: “set_auto_exp”</p>
 <p>Use</p>
@@ -1776,8 +1818,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga6999113db79c10564e6c7faa37fa31c7"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_auto_exp_comp_get</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">double</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv432cuvis_acq_cont_auto_exp_comp_get7int32_tPd">
+<span id="_CPPv332cuvis_acq_cont_auto_exp_comp_get7int32_tPd"></span><span id="_CPPv232cuvis_acq_cont_auto_exp_comp_get7int32_tPd"></span><span id="cuvis_acq_cont_auto_exp_comp_get__int32_t.doubleP"></span><span class="target" id="group__cuvis__acq_1ga465394506344dca3230c9dc414990a02"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_auto_exp_comp_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432cuvis_acq_cont_auto_exp_comp_get7int32_tPd" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_acq_cont_auto_exp_comp function. </p>
 <p><p>Details: “get auto exposure compensation”</p>
 <p>Result is written to o_pvalue</p>
@@ -1785,8 +1827,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga53f47e0b33a0b337e5a13b2a31321723"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_auto_exp_comp_set</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">double</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv432cuvis_acq_cont_auto_exp_comp_set7int32_td">
+<span id="_CPPv332cuvis_acq_cont_auto_exp_comp_set7int32_td"></span><span id="_CPPv232cuvis_acq_cont_auto_exp_comp_set7int32_td"></span><span id="cuvis_acq_cont_auto_exp_comp_set__int32_t.double"></span><span class="target" id="group__cuvis__acq_1ga93092338ece84339c3c588dba8084eed"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_auto_exp_comp_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432cuvis_acq_cont_auto_exp_comp_set7int32_td" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_auto_exp_comp . </p>
 <p><p>Unit: “set auto exposure compensation”</p>
 <p>Block until done or failed</p>
@@ -1794,8 +1836,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga4471437cb0e9bd2b1232d69d3f5e1ccc"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_auto_exp_comp_set_async</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_ASYNC_CALL_RESULT</span> <span class="pre">*o_pAsyncResult,</span> <span class="pre">double</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv438cuvis_acq_cont_auto_exp_comp_set_async7int32_tP7int32_td">
+<span id="_CPPv338cuvis_acq_cont_auto_exp_comp_set_async7int32_tP7int32_td"></span><span id="_CPPv238cuvis_acq_cont_auto_exp_comp_set_async7int32_tP7int32_td"></span><span id="cuvis_acq_cont_auto_exp_comp_set_async__int32_t.int32_tP.double"></span><span class="target" id="group__cuvis__acq_1ga5ca880ae1d97483365b879c3d6465996"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_auto_exp_comp_set_async</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pAsyncResult</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv438cuvis_acq_cont_auto_exp_comp_set_async7int32_tP7int32_td" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_auto_exp_comp asynchronously. </p>
 <p><p>Unit: “set auto exposure compensation”</p>
 <p>Use</p>
@@ -1803,8 +1845,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga3d3a328a8563d4eb6ff7dc4e663de255"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_binning_get</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">int32_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv426cuvis_acq_cont_binning_get7int32_tP7int32_t">
+<span id="_CPPv326cuvis_acq_cont_binning_get7int32_tP7int32_t"></span><span id="_CPPv226cuvis_acq_cont_binning_get7int32_tP7int32_t"></span><span id="cuvis_acq_cont_binning_get__int32_t.int32_tP"></span><span class="target" id="group__cuvis__acq_1ga0d5fb0e2a85c0e5702739aed733bd124"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_binning_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426cuvis_acq_cont_binning_get7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_acq_cont_binning function. </p>
 <p><p>Details: “0 = disable, 1 = enable”</p>
 <p>Result is written to o_pvalue</p>
@@ -1812,8 +1854,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga0f0d483d44f4d299e4268069f175b7e5"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_binning_set</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">int32_t</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv426cuvis_acq_cont_binning_set7int32_t7int32_t">
+<span id="_CPPv326cuvis_acq_cont_binning_set7int32_t7int32_t"></span><span id="_CPPv226cuvis_acq_cont_binning_set7int32_t7int32_t"></span><span id="cuvis_acq_cont_binning_set__int32_t.int32_t"></span><span class="target" id="group__cuvis__acq_1ga2b36389a033f9365af362c042675b1c2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_binning_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426cuvis_acq_cont_binning_set7int32_t7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_binning . </p>
 <p><p>Unit: “0 = disable, 1 = enable”</p>
 <p>Block until done or failed</p>
@@ -1821,8 +1863,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga78855f44b0702881aab213eaa989a681"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_binning_set_async</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_ASYNC_CALL_RESULT</span> <span class="pre">*o_pAsyncResult,</span> <span class="pre">CUVIS_INT</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv432cuvis_acq_cont_binning_set_async7int32_tP7int32_t7int32_t">
+<span id="_CPPv332cuvis_acq_cont_binning_set_async7int32_tP7int32_t7int32_t"></span><span id="_CPPv232cuvis_acq_cont_binning_set_async7int32_tP7int32_t7int32_t"></span><span id="cuvis_acq_cont_binning_set_async__int32_t.int32_tP.int32_t"></span><span class="target" id="group__cuvis__acq_1ga7d5bb917ade8e4a321c7ace64961127b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_binning_set_async</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pAsyncResult</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432cuvis_acq_cont_binning_set_async7int32_tP7int32_t7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_binning asynchronously. </p>
 <p><p>Unit: “0 = disable, 1 = enable”</p>
 <p>Use</p>
@@ -1830,8 +1872,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga7c0917c45f666a5abd08cadb8961d907"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_operation_mode_get</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">enum</span> <span class="pre">cuvis_operation_mode_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv433cuvis_acq_cont_operation_mode_get7int32_tP22cuvis_operation_mode_t">
+<span id="_CPPv333cuvis_acq_cont_operation_mode_get7int32_tP22cuvis_operation_mode_t"></span><span id="_CPPv233cuvis_acq_cont_operation_mode_get7int32_tP22cuvis_operation_mode_t"></span><span id="cuvis_acq_cont_operation_mode_get__int32_t.cuvis_operation_mode_tP"></span><span class="target" id="group__cuvis__acq_1ga5c8d96533cc9c0298904b6d3cb76d3a3"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_operation_mode_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422cuvis_operation_mode_t" title="cuvis_operation_mode_t"><span class="n"><span class="pre">cuvis_operation_mode_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433cuvis_acq_cont_operation_mode_get7int32_tP22cuvis_operation_mode_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_acq_cont_operation_mode function. </p>
 <p><p>Details: “enumeration value”</p>
 <p>Result is written to o_pvalue</p>
@@ -1839,8 +1881,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga3c03c8af51d01a6a8587c8660b0f6309"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_operation_mode_set</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">enum</span> <span class="pre">cuvis_operation_mode_t</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv433cuvis_acq_cont_operation_mode_set7int32_t22cuvis_operation_mode_t">
+<span id="_CPPv333cuvis_acq_cont_operation_mode_set7int32_t22cuvis_operation_mode_t"></span><span id="_CPPv233cuvis_acq_cont_operation_mode_set7int32_t22cuvis_operation_mode_t"></span><span id="cuvis_acq_cont_operation_mode_set__int32_t.cuvis_operation_mode_t"></span><span class="target" id="group__cuvis__acq_1gab1da4e5976dd0b8bddda0f301f66b2b7"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_operation_mode_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422cuvis_operation_mode_t" title="cuvis_operation_mode_t"><span class="n"><span class="pre">cuvis_operation_mode_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433cuvis_acq_cont_operation_mode_set7int32_t22cuvis_operation_mode_t" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_operation_mode . </p>
 <p><p>Unit: “enumeration value”</p>
 <p>Block until done or failed</p>
@@ -1848,8 +1890,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1gab1d0620a9bd8a59be0e68f2e18e9cab8"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_operation_mode_set_async</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_ASYNC_CALL_RESULT</span> <span class="pre">*o_pAsyncResult,</span> <span class="pre">CUVIS_OPERATION_MODE</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv439cuvis_acq_cont_operation_mode_set_async7int32_tP7int32_t22cuvis_operation_mode_t">
+<span id="_CPPv339cuvis_acq_cont_operation_mode_set_async7int32_tP7int32_t22cuvis_operation_mode_t"></span><span id="_CPPv239cuvis_acq_cont_operation_mode_set_async7int32_tP7int32_t22cuvis_operation_mode_t"></span><span id="cuvis_acq_cont_operation_mode_set_async__int32_t.int32_tP.cuvis_operation_mode_t"></span><span class="target" id="group__cuvis__acq_1ga8873b3198a9b9281e013ebfa664ac5d4"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_operation_mode_set_async</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pAsyncResult</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422cuvis_operation_mode_t" title="cuvis_operation_mode_t"><span class="n"><span class="pre">cuvis_operation_mode_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv439cuvis_acq_cont_operation_mode_set_async7int32_tP7int32_t22cuvis_operation_mode_t" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_operation_mode asynchronously. </p>
 <p><p>Unit: “enumeration value”</p>
 <p>Use</p>
@@ -1857,8 +1899,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga00d34f6e59af780df959e086de091df9"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_continuous_set</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">int32_t</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv429cuvis_acq_cont_continuous_set7int32_t7int32_t">
+<span id="_CPPv329cuvis_acq_cont_continuous_set7int32_t7int32_t"></span><span id="_CPPv229cuvis_acq_cont_continuous_set7int32_t7int32_t"></span><span id="cuvis_acq_cont_continuous_set__int32_t.int32_t"></span><span class="target" id="group__cuvis__acq_1ga17608056959b6465e6333d224d6137ce"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_continuous_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429cuvis_acq_cont_continuous_set7int32_t7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_continuous . </p>
 <p><p>Unit: “0 = stop, 1 = run”</p>
 <p>Block until done or failed</p>
@@ -1866,8 +1908,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga00c6a0bcb637232c33469e09c06bd903"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_continuous_set_async</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_ASYNC_CALL_RESULT</span> <span class="pre">*o_pAsyncResult,</span> <span class="pre">CUVIS_INT</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv435cuvis_acq_cont_continuous_set_async7int32_tP7int32_t7int32_t">
+<span id="_CPPv335cuvis_acq_cont_continuous_set_async7int32_tP7int32_t7int32_t"></span><span id="_CPPv235cuvis_acq_cont_continuous_set_async7int32_tP7int32_t7int32_t"></span><span id="cuvis_acq_cont_continuous_set_async__int32_t.int32_tP.int32_t"></span><span class="target" id="group__cuvis__acq_1ga6ff94d4ee2cff6a3e88e09d88e8e74cb"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_continuous_set_async</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pAsyncResult</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv435cuvis_acq_cont_continuous_set_async7int32_tP7int32_t7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_continuous asynchronously. </p>
 <p><p>Unit: “0 = stop, 1 = run”</p>
 <p>Use</p>
@@ -1875,8 +1917,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga8e18262de94b77131ccc385f676dc8bf"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_bandwidth_get</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">int32_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv428cuvis_acq_cont_bandwidth_get7int32_tP7int32_t">
+<span id="_CPPv328cuvis_acq_cont_bandwidth_get7int32_tP7int32_t"></span><span id="_CPPv228cuvis_acq_cont_bandwidth_get7int32_tP7int32_t"></span><span id="cuvis_acq_cont_bandwidth_get__int32_t.int32_tP"></span><span class="target" id="group__cuvis__acq_1ga3a9b4e837cc00a3a1687e6cd909d829a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_bandwidth_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428cuvis_acq_cont_bandwidth_get7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_acq_cont_bandwidth function. </p>
 <p><p>Details: “bandwidth in MBit/s”</p>
 <p>Result is written to o_pvalue</p>
@@ -1884,8 +1926,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1gaf81195ee8b1977092ea02b8fdeef6eb3"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_queue_size_get</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">int32_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv429cuvis_acq_cont_queue_size_get7int32_tP7int32_t">
+<span id="_CPPv329cuvis_acq_cont_queue_size_get7int32_tP7int32_t"></span><span id="_CPPv229cuvis_acq_cont_queue_size_get7int32_tP7int32_t"></span><span id="cuvis_acq_cont_queue_size_get__int32_t.int32_tP"></span><span class="target" id="group__cuvis__acq_1ga5fee6858147a4e157bff2934239714bb"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_queue_size_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429cuvis_acq_cont_queue_size_get7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_acq_cont_queue_size function. </p>
 <p><p>Details: “size of measurement queue”</p>
 <p>Result is written to o_pvalue</p>
@@ -1893,8 +1935,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__acq_1ga1f650bc17412448e6a440671c3a13f6f"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_queue_used_get</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">int32_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv429cuvis_acq_cont_queue_used_get7int32_tP7int32_t">
+<span id="_CPPv329cuvis_acq_cont_queue_used_get7int32_tP7int32_t"></span><span id="_CPPv229cuvis_acq_cont_queue_used_get7int32_tP7int32_t"></span><span id="cuvis_acq_cont_queue_used_get__int32_t.int32_tP"></span><span class="target" id="group__cuvis__acq_1ga0079163d84a6192bcb07bbd315e1c5a0"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_queue_used_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429cuvis_acq_cont_queue_used_get7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_acq_cont_queue_used function. </p>
 <p><p>Details: “used part of measurement queue”</p>
 <p>Result is written to o_pvalue</p>
@@ -1913,8 +1955,8 @@ Example:</p>
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1gaf5a7bb3385ec20e921a10a6123ba83a3"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_online_get</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">int32_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv421cuvis_comp_online_get7int32_t7int32_tP7int32_t">
+<span id="_CPPv321cuvis_comp_online_get7int32_t7int32_tP7int32_t"></span><span id="_CPPv221cuvis_comp_online_get7int32_t7int32_tP7int32_t"></span><span id="cuvis_comp_online_get__int32_t.int32_t.int32_tP"></span><span class="target" id="group__cuvis__comp_1gae43f6d9e6de5a2151781890cb1a6c6d8"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_online_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421cuvis_comp_online_get7int32_t7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_comp_online function. </p>
 <p><p>Details: “0 = false, 1 = true”</p>
 <p>Result is written to o_pvalue</p>
@@ -1922,8 +1964,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1ga34a390d56bd339f0b6ca904991d1675e"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_temperature_get</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">double</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv426cuvis_comp_temperature_get7int32_t7int32_tPd">
+<span id="_CPPv326cuvis_comp_temperature_get7int32_t7int32_tPd"></span><span id="_CPPv226cuvis_comp_temperature_get7int32_t7int32_tPd"></span><span id="cuvis_comp_temperature_get__int32_t.int32_t.doubleP"></span><span class="target" id="group__cuvis__comp_1gae456105d1ad5fd6e6fcccece5d32beb1"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_temperature_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426cuvis_comp_temperature_get7int32_t7int32_tPd" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_comp_temperature function. </p>
 <p><p>Details: “temperature in degrees celsius”</p>
 <p>Result is written to o_pvalue</p>
@@ -1931,8 +1973,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1ga7f43cc2a2fcc855fd2c5abed2f2b1bce"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_bandwidth_get</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">int32_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv424cuvis_comp_bandwidth_get7int32_t7int32_tP7int32_t">
+<span id="_CPPv324cuvis_comp_bandwidth_get7int32_t7int32_tP7int32_t"></span><span id="_CPPv224cuvis_comp_bandwidth_get7int32_t7int32_tP7int32_t"></span><span id="cuvis_comp_bandwidth_get__int32_t.int32_t.int32_tP"></span><span class="target" id="group__cuvis__comp_1ga9209f104ae215e632d61950862088c0b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_bandwidth_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424cuvis_comp_bandwidth_get7int32_t7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_comp_bandwidth function. </p>
 <p><p>Details: “bandwidth in MBit/s”</p>
 <p>Result is written to o_pvalue</p>
@@ -1940,8 +1982,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1gaa3b482af38201bc47c6ed524e5f4a60c"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_driver_queue_size_get</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">int32_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv432cuvis_comp_driver_queue_size_get7int32_t7int32_tP7int32_t">
+<span id="_CPPv332cuvis_comp_driver_queue_size_get7int32_t7int32_tP7int32_t"></span><span id="_CPPv232cuvis_comp_driver_queue_size_get7int32_t7int32_tP7int32_t"></span><span id="cuvis_comp_driver_queue_size_get__int32_t.int32_t.int32_tP"></span><span class="target" id="group__cuvis__comp_1ga232031a438b6fef24707f93972d42154"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_driver_queue_size_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432cuvis_comp_driver_queue_size_get7int32_t7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_comp_driver_queue_size function. </p>
 <p><p>Details: “driver’s internal receiving queue size”</p>
 <p>Result is written to o_pvalue</p>
@@ -1949,8 +1991,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1ga6a5e740af5bf811d5a7e758fd35b6a03"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_driver_queue_used_get</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">int32_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv432cuvis_comp_driver_queue_used_get7int32_t7int32_tP7int32_t">
+<span id="_CPPv332cuvis_comp_driver_queue_used_get7int32_t7int32_tP7int32_t"></span><span id="_CPPv232cuvis_comp_driver_queue_used_get7int32_t7int32_tP7int32_t"></span><span id="cuvis_comp_driver_queue_used_get__int32_t.int32_t.int32_tP"></span><span class="target" id="group__cuvis__comp_1gaf0e26082d3dfa7d090cde54faa8f164f"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_driver_queue_used_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432cuvis_comp_driver_queue_used_get7int32_t7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_comp_driver_queue_used function. </p>
 <p><p>Details: “driver’s internal receiving queue used”</p>
 <p>Result is written to o_pvalue</p>
@@ -1958,8 +2000,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1ga46d30e488fd43c66ce592e363e183c1b"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_hardware_queue_size_get</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">int32_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv434cuvis_comp_hardware_queue_size_get7int32_t7int32_tP7int32_t">
+<span id="_CPPv334cuvis_comp_hardware_queue_size_get7int32_t7int32_tP7int32_t"></span><span id="_CPPv234cuvis_comp_hardware_queue_size_get7int32_t7int32_tP7int32_t"></span><span id="cuvis_comp_hardware_queue_size_get__int32_t.int32_t.int32_tP"></span><span class="target" id="group__cuvis__comp_1gacfc988ed4d6ebd6224b165bf3999ae81"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_hardware_queue_size_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434cuvis_comp_hardware_queue_size_get7int32_t7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_comp_hardware_queue_size function. </p>
 <p><p>Details: “internal hardware buffer size (if supported)”</p>
 <p>Result is written to o_pvalue</p>
@@ -1967,8 +2009,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1ga268bc589d25e00d76159c0573edf005d"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_hardware_queue_used_get</span> <span class="pre">(CUVIS_INT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">int32_t</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv434cuvis_comp_hardware_queue_used_get7int32_t7int32_tP7int32_t">
+<span id="_CPPv334cuvis_comp_hardware_queue_used_get7int32_t7int32_tP7int32_t"></span><span id="_CPPv234cuvis_comp_hardware_queue_used_get7int32_t7int32_tP7int32_t"></span><span id="cuvis_comp_hardware_queue_used_get__int32_t.int32_t.int32_tP"></span><span class="target" id="group__cuvis__comp_1ga30ae0d6b53e1201a8adfdb4bc9835fe9"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_hardware_queue_used_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434cuvis_comp_hardware_queue_used_get7int32_t7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_comp_hardware_queue_used function. </p>
 <p><p>Details: “internal hardware buffer used (if supported)”</p>
 <p>Result is written to o_pvalue</p>
@@ -1976,8 +2018,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1gaf321f95ae7245132016c865dc2d50045"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_gain_get</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">double</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv419cuvis_comp_gain_get7int32_t7int32_tPd">
+<span id="_CPPv319cuvis_comp_gain_get7int32_t7int32_tPd"></span><span id="_CPPv219cuvis_comp_gain_get7int32_t7int32_tPd"></span><span id="cuvis_comp_gain_get__int32_t.int32_t.doubleP"></span><span class="target" id="group__cuvis__comp_1ga6f199c12b21ae1b0ad40947688699216"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_gain_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419cuvis_comp_gain_get7int32_t7int32_tPd" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_comp_gain function. </p>
 <p><p>Details: “a.u.”</p>
 <p>Result is written to o_pvalue</p>
@@ -1985,8 +2027,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1gac6446f4ec9f5c8e157408ad2740ce53b"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_gain_set</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">double</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv419cuvis_comp_gain_set7int32_t7int32_td">
+<span id="_CPPv319cuvis_comp_gain_set7int32_t7int32_td"></span><span id="_CPPv219cuvis_comp_gain_set7int32_t7int32_td"></span><span id="cuvis_comp_gain_set__int32_t.int32_t.double"></span><span class="target" id="group__cuvis__comp_1gae69e546ee46e62ff52915e7d7a83b15a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_gain_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419cuvis_comp_gain_set7int32_t7int32_td" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_comp_gain . </p>
 <p><p>Unit: “a.u.”</p>
 <p>Block until done or failed</p>
@@ -1994,8 +2036,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1gaa412e10a014ac5ffc5bfa7a6ef2ed1d6"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_gain_set_async</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">CUVIS_ASYNC_CALL_RESULT</span> <span class="pre">*o_pAsyncResult,</span> <span class="pre">double</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv425cuvis_comp_gain_set_async7int32_t7int32_tP7int32_td">
+<span id="_CPPv325cuvis_comp_gain_set_async7int32_t7int32_tP7int32_td"></span><span id="_CPPv225cuvis_comp_gain_set_async7int32_t7int32_tP7int32_td"></span><span id="cuvis_comp_gain_set_async__int32_t.int32_t.int32_tP.double"></span><span class="target" id="group__cuvis__comp_1ga2f39e02a633ec43af1a4521ef2c3a001"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_gain_set_async</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pAsyncResult</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425cuvis_comp_gain_set_async7int32_t7int32_tP7int32_td" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_comp_gain asynchronously. </p>
 <p><p>Unit: “a.u.”</p>
 <p>Use</p>
@@ -2003,8 +2045,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1ga09ebab4c81157a2fc84989a451dea2ac"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_integration_time_factor_get</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">double</span> <span class="pre">*o_pvalue)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv438cuvis_comp_integration_time_factor_get7int32_t7int32_tPd">
+<span id="_CPPv338cuvis_comp_integration_time_factor_get7int32_t7int32_tPd"></span><span id="_CPPv238cuvis_comp_integration_time_factor_get7int32_t7int32_tPd"></span><span id="cuvis_comp_integration_time_factor_get__int32_t.int32_t.doubleP"></span><span class="target" id="group__cuvis__comp_1gafcd16682f1fec109bb5e784f4baf7314"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_integration_time_factor_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv438cuvis_comp_integration_time_factor_get7int32_t7int32_tPd" title="Link to this definition"></a><br /></dt>
 <dd><p>Get cuvis_comp_integration_time_factor function. </p>
 <p><p>Details: “factor to main integration time”</p>
 <p>Result is written to o_pvalue</p>
@@ -2012,8 +2054,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1ga779cb9d4d4a9d95bd98b8c828a39bac9"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">cuvis_status_t</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_integration_time_factor_set</span> <span class="pre">(int32_t</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">double</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv438cuvis_comp_integration_time_factor_set7int32_t7int32_td">
+<span id="_CPPv338cuvis_comp_integration_time_factor_set7int32_t7int32_td"></span><span id="_CPPv238cuvis_comp_integration_time_factor_set7int32_t7int32_td"></span><span id="cuvis_comp_integration_time_factor_set__int32_t.int32_t.double"></span><span class="target" id="group__cuvis__comp_1ga63264b716add1685d67213a333c729df"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_integration_time_factor_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv438cuvis_comp_integration_time_factor_set7int32_t7int32_td" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_comp_integration_time_factor . </p>
 <p><p>Unit: “factor to main integration time”</p>
 <p>Block until done or failed</p>
@@ -2021,8 +2063,8 @@ Example:</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__comp_1ga1addfa46175e007b25aae31422787671"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_comp_integration_time_factor_set_async</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">CUVIS_ASYNC_CALL_RESULT</span> <span class="pre">*o_pAsyncResult,</span> <span class="pre">double</span> <span class="pre">value)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv444cuvis_comp_integration_time_factor_set_async7int32_t7int32_tP7int32_td">
+<span id="_CPPv344cuvis_comp_integration_time_factor_set_async7int32_t7int32_tP7int32_td"></span><span id="_CPPv244cuvis_comp_integration_time_factor_set_async7int32_t7int32_tP7int32_td"></span><span id="cuvis_comp_integration_time_factor_set_async__int32_t.int32_t.int32_tP.double"></span><span class="target" id="group__cuvis__comp_1ga21b6e5fcf8dc8f22929509e21214f071"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_comp_integration_time_factor_set_async</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_id</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pAsyncResult</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv444cuvis_comp_integration_time_factor_set_async7int32_t7int32_tP7int32_td" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_comp_integration_time_factor asynchronously. </p>
 <p><p>Unit: “factor to main integration time”</p>
 <p>Use</p>
@@ -2038,7 +2080,7 @@ Example:</p>
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__exporter"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Export</span> <span class="pre">API</span></span></dt>
-<dd><p>How to export Measurement captured with the SDK.</p>
+<dd><p>How to export Measurement captured with the SDK. </p>
 <p>A handle for each of the exporter can be obtainend by calling either <a class="reference internal" href="#group__cuvis__exporter_1gac8dbccda0642d3ed2cbcf432ab699712"><span class="std std-ref">cuvis_exporter_create_cube</span></a>, <a class="reference internal" href="#group__cuvis__exporter_1ga059d334204d89ce35d46d8f3a58f8ea1"><span class="std std-ref">cuvis_exporter_create_envi</span></a>, <a class="reference internal" href="#group__cuvis__exporter_1ga11c92466098f336746a7c12f1b47e73d"><span class="std std-ref">cuvis_exporter_create_tiff</span></a> or <a class="reference internal" href="#group__cuvis__exporter_1ga0563d72ab50f589a7737b8213e915952"><span class="std std-ref">cuvis_exporter_create_view</span></a>. Each of the so created exporter can then export a <a class="reference internal" href="#group__cuvis__mesu"><span class="std std-ref">Measurement</span></a> to the respective format by calling <a class="reference internal" href="#group__cuvis__exporter_1ga6f0c3dbfef8cfb65159d9ee47786aa6b"><span class="std std-ref">cuvis_exporter_apply</span></a>. Each exporter takes options in form of <a class="reference internal" href="#structcuvis__export__general__settings__t"><span class="std std-ref">cuvis_export_general_settings_t</span></a> and one of the following format specific structs <a class="reference internal" href="#structcuvis__save__args__t"><span class="std std-ref">cuvis_save_args_t</span></a>, <a class="reference internal" href="#structcuvis__export__view__settings__t"><span class="std std-ref">cuvis_export_view_settings_t</span></a>, <a class="reference internal" href="#structcuvis__export__tiff__settings__t"><span class="std std-ref">cuvis_export_tiff_settings_t</span></a></p>
 <p>See the respective struct documentations for more information on the individual options </p>
 <div class="breathe-sectiondef docutils container">
@@ -2269,36 +2311,28 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <p><blockquote>
 <div><p>write to disk: #14 </p>
 </div></blockquote>
-</p>
-<p><blockquote>
+<blockquote>
 <div><p>cache: #16,#17,…#24 [soft limit: 10] </p>
 </div></blockquote>
-</p>
-<p><blockquote>
+<blockquote>
 <div><p>insert: #25 </p>
 </div></blockquote>
-</p>
-<p><blockquote>
+<blockquote>
 <div><p>write to disk: #16 </p>
 </div></blockquote>
-</p>
-<p><blockquote>
+<blockquote>
 <div><p>cache: #17,…#24, #25 [soft limit: 10] </p>
 </div></blockquote>
-</p>
-<p><blockquote>
+<blockquote>
 <div><p>insert: #15 </p>
 </div></blockquote>
-</p>
-<p><blockquote>
+<blockquote>
 <div><p>write to disk: #15 </p>
 </div></blockquote>
-</p>
-<p><blockquote>
+<blockquote>
 <div><p>cache: #17,…#24, #25 [soft limit: 10] </p>
 </div></blockquote>
-</p>
-<p>This behaviour is a compromise between keeping the seuqence in order and at the same time not storing too many images if a frame was acutally dropped. Increase the soft_limit to a value same or grater the <a class="reference internal" href="#structcuvis__save__args__t_1ae6faf43ac22bf2d91dd7e85106f78ca3"><span class="std std-ref">hard_limit</span></a> to disable this behaviour. </p>
+This behaviour is a compromise between keeping the seuqence in order and at the same time not storing too many images if a frame was acutally dropped. Increase the soft_limit to a value same or grater the <a class="reference internal" href="#structcuvis__save__args__t_1ae6faf43ac22bf2d91dd7e85106f78ca3"><span class="std std-ref">hard_limit</span></a> to disable this behaviour. </p>
 </dd></dl>
 
 <dl class="cpp var">
@@ -2486,7 +2520,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__async_1ga46a8396e205c046e1e081d9a5ab3c71c"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_async_call_get</span> <span class="pre">(CUVIS_ASYNC_CALL_RESULT</span> <span class="pre">*io_pAsyncResult,</span> <span class="pre">CUVIS_INT</span> <span class="pre">timeout_ms)</span></span></dt>
 <dd><p>get the result of a async call. </p>
-<p>Get the return code (and error message, if applicable) of an async function, that has been called. If result is not <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> use the <a class="reference internal" href="#group__cuvis__returns_1gadcf43d47d223a79e52e79f0e42de9f94"><span class="std std-ref">cuvis_get_last_error_msg</span></a> function to get details.</p>
+<p>Get the return code (and error message, if applicable) of an async function, that has been called. If result is not <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> use the <a class="reference internal" href="#group__cuvis__returns_1ga4544e7f751ab4ee5258d485d82782be1"><span class="std std-ref">cuvis_get_last_error_msg</span></a> function to get details.</p>
 <p>If the timeout is used (value above 0ms), <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da19319d05fb8a35cc93f77e40e06b9617"><span class="std std-ref">status_timeout</span></a> or <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da6acc681a06a7b43d360c92098a2a8653"><span class="std std-ref">status_deferred</span></a> will be returned, if the function is not yet finished. In that case, the asyncResult handle is still valid and can be used again. If the result is <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> the function has finished. For both <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> and <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9da405da0d107497b3596a3818a48478c9f"><span class="std std-ref">status_error</span></a>, the handle is now invalid.</p>
 <p>If the result is <a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dab9c7d639068225756a5de56a3279fab5"><span class="std std-ref">status_overwritten</span></a> the function’s call was overwritten by another (similar) call. The actual value set by this async function was not used, but the one of the other call. On this result, the handle is now invalid.</p>
 <dl class="field-list simple">
@@ -2796,7 +2830,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__viewer"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Viewer</span></span></dt>
-<dd><p>Something about the viewer </p>
+<dd><p>Something about the viewer. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
@@ -3212,7 +3246,7 @@ This option is ignored, when <a class="reference internal" href="#structcuvis__s
 <dl>
 <dt class="sig sig-object cpp">
 <span class="target" id="group__c__examples"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">Examples</span></span></dt>
-<dd><p>There are several examples delivered with the SDK</p>
+<dd><p>There are several examples delivered with the SDK. </p>
 <section id="group__c__examples_1autotoc_md3">
 <h3>Overview<a class="headerlink" href="#group__c__examples_1autotoc_md3" title="Link to this heading"></a></h3>
 <p id="group__c__examples_1autotoc_md3">Under Windows you can find the examples in your installation directory (Default: “C:\Program Files\Cuvis\sdk\cuvis_c\examples” or “C:\Program Files\Cuvis\sdk\cuvis_cpp\examples”), under Linux they can be found in “/lib/cuvis/cuvis_c/examples” or “/lib/cuvis/cuvis_cpp/examples” . Each Example comes with the precompiled binary, a short .sh-script to run the application and the source code file. The .sh-script requires the bash console. Under windows we recommend to use Git Bash.</p>
