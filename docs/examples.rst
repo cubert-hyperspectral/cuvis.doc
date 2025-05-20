@@ -133,3 +133,15 @@ This example demonstrates how to simulate recording a hyperspectral video sequen
    .. group-tab:: Python
 	  .. language:: python
       .. literalinclude:: ../cuvis.python.examples/EX07_recordVideoFromSessionFile.py
+	  
+Applying Pan-Sharpening to recorded Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This example demonstrates how to apply Pan-Sharpening on recorded data.
+For this to work the camera needs an additional pan-sensor.
+	  
+.. tabs::
+
+   .. group-tab:: Python
+	  .. language:: python
+      .. literalinclude:: ../cuvis.python.examples/EX08_pansharpenMeasurement.py
