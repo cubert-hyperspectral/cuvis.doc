@@ -1,0 +1,16 @@
+var searchData=
+[
+  ['calibration_5fdate_1258',['calibration_date',['../structcuvis__calibration__info__t.html#ac965c2eb3d26f9c4fc92f93db10a4d4e',1,'cuvis_calibration_info_t::calibration_date()'],['../structcuvis_1_1_calibration_info.html#a86933477a36fe9e95a9641abbe4a32af',1,'cuvis::CalibrationInfo::calibration_date()']]],
+  ['can_5fdrop_5fresults_1259',['can_drop_results',['../structcuvis_1_1_worker_args.html#a5962ae6021562cd1c7c3c1b317298265',1,'cuvis::WorkerArgs::can_drop_results()'],['../structcuvis__worker__settings__t.html#aa0e586fb80777b480729b350007eae4a',1,'cuvis_worker_settings_t::can_drop_results()']]],
+  ['can_5fskip_5fmeasurements_1260',['can_skip_measurements',['../structcuvis_1_1_worker_args.html#a515318cd95a910cff36fd4e1269a1d2d',1,'cuvis::WorkerArgs::can_skip_measurements()'],['../structcuvis__worker__settings__t.html#a1cc57943fddd0ceaf4b85f9b1c4cfc09',1,'cuvis_worker_settings_t::can_skip_measurements()']]],
+  ['can_5fskip_5fsupplementary_5fsteps_1261',['can_skip_supplementary_steps',['../structcuvis_1_1_worker_args.html#a85b33e065e3e323789e10ab730c048c1',1,'cuvis::WorkerArgs::can_skip_supplementary_steps()'],['../structcuvis__worker__settings__t.html#a0690f3037573fde6e3c2c17a33b0ec49',1,'cuvis_worker_settings_t::can_skip_supplementary_steps()']]],
+  ['capture_5ftime_1262',['capture_time',['../structcuvis_1_1_measurement_meta_data.html#ad4ff7d9979081154fa392afcc0d7817c',1,'cuvis::MeasurementMetaData::capture_time()'],['../structcuvis__mesu__metadata__t.html#a69142fa37ea8c4e9990bfc1b08254cbe',1,'cuvis_mesu_metadata_t::capture_time()']]],
+  ['category_1263',['category',['../structcuvis__view__data__t.html#ae9efcd35f86ceaff488769e2aa357a8a',1,'cuvis_view_data_t']]],
+  ['channel_5fselection_1264',['channel_selection',['../structcuvis_1_1_general_export_args.html#a6bde34e8d8e3931673f2d313dcaaa7a4',1,'cuvis::GeneralExportArgs::channel_selection()'],['../structcuvis__export__general__settings__t.html#a91902d05ce4b5bb04c193c17640a4c8f',1,'cuvis_export_general_settings_t::channel_selection()']]],
+  ['channels_1265',['channels',['../structcuvis__imbuffer__t.html#a2ae13fdba748fc598fc243496ba4501f',1,'cuvis_imbuffer_t']]],
+  ['comment_1266',['comment',['../structcuvis_1_1_measurement_meta_data.html#af977b5d48729efa8aeb2b8de113a39df',1,'cuvis::MeasurementMetaData::comment()'],['../structcuvis__mesu__metadata__t.html#aa845a271ca3465dfda509f543de216f2',1,'cuvis_mesu_metadata_t::comment()']]],
+  ['compent_5fid_1267',['compent_id',['../structcuvis__event__component__data__t.html#a553e34e5dae1930c342b94eba59a5267',1,'cuvis_event_component_data_t']]],
+  ['complete_1268',['complete',['../structcuvis_1_1_view_args.html#ae5fa35a4776b03692a5778ab7787d7df',1,'cuvis::ViewArgs::complete()'],['../structcuvis__viewer__settings__t.html#a69c07fa2ed83551ece1b7f4c12cc22c3',1,'cuvis_viewer_settings_t::complete()']]],
+  ['compression_5fmode_1269',['compression_mode',['../structcuvis_1_1_tiff_args.html#a09897803da3d06e7aa9b700ff06aa835',1,'cuvis::TiffArgs::compression_mode()'],['../structcuvis__export__tiff__settings__t.html#a373df82c1d96cf000e27d465996e1c49',1,'cuvis_export_tiff_settings_t::compression_mode()']]],
+  ['count_1270',['count',['../structcuvis_1_1aux_1_1spectral_1_1histogram__t.html#a5bec5617aaf5484162a9303aaef80143',1,'cuvis::aux::spectral::histogram_t']]]
+];

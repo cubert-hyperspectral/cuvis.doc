@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['id_566',['id',['../structcuvis__view__data__t.html#a13c9274df0a1baf226e0c9935e8b5283',1,'cuvis_view_data_t']]],
+  ['image_5fdata_5ft_567',['image_data_t',['../classcuvis_1_1_measurement.html#af0a42b585d257b7a20f4c056e77dcb73',1,'cuvis::Measurement']]],
+  ['image_5ft_568',['image_t',['../structcuvis_1_1image__t.html',1,'cuvis']]],
+  ['image_5fvariant_5ft_569',['image_variant_t',['../classcuvis_1_1_measurement.html#a8f5bcf7edd7be5a32f23262de2cc634a',1,'cuvis::Measurement']]],
+  ['imbuffer_5fformat_5ffloat_570',['imbuffer_format_float',['../cuvis_8h.html#a79c1ae4a602b0d2128bad82cdc665a95abc94e40971cd90890732e91bb3f2000e',1,'cuvis.h']]],
+  ['imbuffer_5fformat_5fuint16_571',['imbuffer_format_uint16',['../cuvis_8h.html#a79c1ae4a602b0d2128bad82cdc665a95ab523336190424e9e2358a04736d6e330',1,'cuvis.h']]],
+  ['imbuffer_5fformat_5fuint32_572',['imbuffer_format_uint32',['../cuvis_8h.html#a79c1ae4a602b0d2128bad82cdc665a95ace36e0ad0fcb530253737c0df61395f2',1,'cuvis.h']]],
+  ['imbuffer_5fformat_5fuint8_573',['imbuffer_format_uint8',['../cuvis_8h.html#a79c1ae4a602b0d2128bad82cdc665a95aece6e08a788407dfeffab0e24a4af858',1,'cuvis.h']]],
+  ['imbuffer_5fget_574',['IMBUFFER_GET',['../cuvis_8h.html#a42486d373c806e296f4d01c4c869cd3d',1,'cuvis.h']]],
+  ['ingest_5fmeasurement_575',['ingest_measurement',['../classcuvis_1_1_worker.html#acdbcac32f6493e42cc30a92ad87deaff',1,'cuvis::Worker']]],
+  ['ingest_5fsession_5ffile_576',['ingest_session_file',['../classcuvis_1_1_worker.html#a377bab042db34c0bd5b98b569f7a562c',1,'cuvis::Worker']]],
+  ['init_577',['init',['../classcuvis_1_1_general.html#a5f3b1fe286fc8c51170f6431222dba42',1,'cuvis::General']]],
+  ['input_5fqueue_5fsize_578',['input_queue_size',['../structcuvis_1_1_worker_args.html#a83dfc0db1cba8ccdd64bf91e277d10b2',1,'cuvis::WorkerArgs::input_queue_size()'],['../structcuvis__worker__settings__t.html#acf9948db52d54ff6d65aa9b02c08affc',1,'cuvis_worker_settings_t::input_queue_size()']]],
+  ['int_5ft_579',['int_t',['../group__typedefs.html#ga4717b13a9aa1a71a4f9603955158ee7e',1,'cuvis']]],
+  ['integration_5ftime_580',['integration_time',['../structcuvis__mesu__metadata__t.html#a1fe5335390ad6285816962a15510fb73',1,'cuvis_mesu_metadata_t::integration_time()'],['../structcuvis_1_1_measurement_meta_data.html#a194747c2b96a96580b94c172d637c490',1,'cuvis::MeasurementMetaData::integration_time()']]],
+  ['is_5fcapable_581',['is_capable',['../classcuvis_1_1_processing_context.html#ab5ad6291bc9634c85055303a98c93180',1,'cuvis::ProcessingContext']]],
+  ['is_5fonline_582',['is_online',['../structcuvis_1_1_acquisition_context_1_1component__state__info__t.html#a6c3cf27adaeab2524e7fe9328b291728',1,'cuvis::AcquisitionContext::component_state_info_t']]],
+  ['is_5fprocessing_583',['is_processing',['../classcuvis_1_1_worker.html#aca3709d8ba8f1b37810e50c8398168f1',1,'cuvis::Worker']]],
+  ['is_5fprocessing_5fmandatory_584',['is_processing_mandatory',['../classcuvis_1_1_worker.html#a50870e6c25247955eb775f75bf11d4f7',1,'cuvis::Worker']]],
+  ['is_5fready_585',['is_ready',['../classcuvis_1_1_acquisition_context.html#abd3355b45d76bf01d1389467938e6e2e',1,'cuvis::AcquisitionContext']]],
+  ['isprocessing_586',['isProcessing',['../structcuvis_1_1_worker_1_1worker__state__t.html#ad57f9c65cc350724ba81c03c8962986b',1,'cuvis::Worker::worker_state_t::isProcessing()'],['../structcuvis__worker__state__t.html#a10b1b3d02ad962cda616bfe929333083',1,'cuvis_worker_state_t::isProcessing()']]]
+];
