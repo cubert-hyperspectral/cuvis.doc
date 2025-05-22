@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - feature/switch_docker_base_image
       
 permissions:
   contents: write

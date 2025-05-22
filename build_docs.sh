@@ -30,8 +30,7 @@ cmake -B _build .
 cmake --build "_build"
 
 python3.10 -m sphinx -b html -Dbreathe_projects.cuvis=_build/doc/xml docs _build
-apt-get install tree
-tree "_build"
+
 
 
 
