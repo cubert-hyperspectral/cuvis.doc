@@ -2,3 +2,6 @@
 /.venv
 /docs/_build
 /docs/_buildhtml
+/venv
+/_build
+/_pyil
