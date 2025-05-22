@@ -26,7 +26,6 @@ echo "======================="
 echo "Build Documentation"
 echo "======================="
 
-source venv/bin/activate
 mkdir -p _build
 cmake -B _build .
 cmake --build "_build"
