@@ -13,4 +13,6 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.25.1/cmake-3.25.1
 	./cmake_install.sh --skip-license --prefix=/opt/cmake-3.25.1 && \
 	ln -s /opt/cmake-3.25.1/bin/* /usr/local/bin
 
+ENV CUVIS=/lib/cuvis
+
 WORKDIR /app
