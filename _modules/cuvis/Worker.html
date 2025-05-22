@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cuvis.Worker &mdash; Cuvis SDK 3.2.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=eb155f5e"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Cuvis SDK
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdkuserguide.html">SDK User’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cwrapper.html">Cuvis C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cppwrapper.html">Cuvis C++ API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pythonwrapper.html">Cuvis Python API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Cuvis SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">cuvis.Worker</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for cuvis.Worker</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">._cuvis_il</span><span class="w"> </span><span class="kn">import</span> <span class="n">cuvis_il</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Measurement</span><span class="w"> </span><span class="kn">import</span> <span class="n">Measurement</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Viewer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Viewer</span><span class="p">,</span> <span class="n">ImageData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.cuvis_aux</span><span class="w"> </span><span class="kn">import</span> <span class="n">SDKException</span><span class="p">,</span> <span class="n">WorkerState</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.AcquisitionContext</span><span class="w"> </span><span class="kn">import</span> <span class="n">AcquisitionContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.ProcessingContext</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProcessingContext</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Export</span><span class="w"> </span><span class="kn">import</span> <span class="n">Exporter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.SessionFile</span><span class="w"> </span><span class="kn">import</span> <span class="n">SessionFile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Measurement</span><span class="w"> </span><span class="kn">import</span> <span class="n">Measurement</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.FileWriteSettings</span><span class="w"> </span><span class="kn">import</span> <span class="n">WorkerSettings</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">a</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.doc</span><span class="w"> </span><span class="kn">import</span> <span class="n">copydoc</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Awaitable</span>
+
+
+<div class="viewcode-block" id="WorkerResult">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.WorkerResult">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">WorkerResult</span><span class="p">:</span>
+    <span class="n">mesu</span><span class="p">:</span> <span class="n">Measurement</span>
+    <span class="n">view</span><span class="p">:</span> <span class="n">ImageData</span></div>
+
+
+
+<div class="viewcode-block" id="Worker">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Worker</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">:</span> <span class="n">WorkerSettings</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_exporter_set</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_acquisition_set</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_processing_set</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_viewer_set</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_session_file_set</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_worker_poll_task</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="n">settings</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">_get_internal</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_create</span><span class="p">(</span><span class="n">_ptr</span><span class="p">,</span> <span class="n">settings</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="Worker.set_acquisition_context">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.set_acquisition_context">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_set_acq_cont</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_acquisition_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">AcquisitionContext</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_set_acq_cont</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">base</span><span class="o">.</span><span class="n">_handle</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_acquisition_set</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_set_acq_cont</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_acquisition_set</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Worker.set_processing_context">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.set_processing_context">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_set_proc_cont</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_processing_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">ProcessingContext</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_set_proc_cont</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">base</span><span class="o">.</span><span class="n">_handle</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_processing_set</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_set_proc_cont</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_processing_set</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Worker.set_exporter">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.set_exporter">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_set_exporter</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_exporter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">Exporter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_set_exporter</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">base</span><span class="o">.</span><span class="n">_handle</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_exporter_set</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_set_exporter</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_exporter_set</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Worker.set_viewer">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.set_viewer">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_set_viewer</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_viewer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">Viewer</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_set_viewer</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">base</span><span class="o">.</span><span class="n">_handle</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_viewer_set</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_set_viewer</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_viewer_set</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Worker.ingest_session_file">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.ingest_session_file">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_ingest_session_file</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ingest_session_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">SessionFile</span><span class="p">,</span> <span class="n">frame_selection</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_ingest_session_file</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">session</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">frame_selection</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Worker.ingest_mesu">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.ingest_mesu">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_ingest_mesu</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ingest_mesu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesu</span><span class="p">:</span> <span class="n">Measurement</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_ingest_mesu</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">mesu</span><span class="o">.</span><span class="n">_handle</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_query_session_progress</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">query_session_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_double</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> \
+                <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_query_session_progress</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span>
+                                                             <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_double_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Worker.has_next_result">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.has_next_result">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_has_next_result</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_next_result</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_has_next_result</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="Worker.get_next_result">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.get_next_result">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_next_result</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_next_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WorkerResult</span><span class="p">:</span>
+        <span class="n">ptr_mesu</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="n">ptr_view</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_next_result</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">ptr_mesu</span><span class="p">,</span> <span class="n">ptr_view</span><span class="p">,</span> <span class="n">timeout</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="n">mesu</span> <span class="o">=</span> <span class="n">Measurement</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">ptr_mesu</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewer_set</span><span class="p">:</span>
+            <span class="n">view</span> <span class="o">=</span> <span class="n">Viewer</span><span class="o">.</span><span class="n">_create_view_data</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">ptr_view</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">view</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">WorkerResult</span><span class="p">(</span><span class="n">mesu</span><span class="p">,</span> <span class="n">view</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Worker.get_next_result_async">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.get_next_result_async">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_next_result_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WorkerResult</span><span class="p">:</span>
+        <span class="n">poll_intervall</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">ptr_mesu</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="n">ptr_view</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+
+        <span class="n">tries</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">tries</span> <span class="o">*</span> <span class="n">poll_intervall</span> <span class="o">&lt;</span> <span class="n">timeout</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_next_result</span><span class="p">():</span>
+                <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_next_result</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">ptr_mesu</span><span class="p">,</span> <span class="n">ptr_view</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tries</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">poll_intervall</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="n">mesu</span> <span class="o">=</span> <span class="n">Measurement</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">ptr_mesu</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_viewer_set</span><span class="p">:</span>
+            <span class="n">view</span> <span class="o">=</span> <span class="n">Viewer</span><span class="o">.</span><span class="n">_create_view_data</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">ptr_view</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">view</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">WorkerResult</span><span class="p">(</span><span class="n">mesu</span><span class="p">,</span> <span class="n">view</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_input_queue_limit</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">input_queue_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_ulong</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_input_queue_limit</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_ulong_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_mandatory_queue_limit</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mandatory_queue_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_ulong</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_mandatory_queue_limit</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_ulong_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_supplementary_queue_limit</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">supplementary_queue_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_ulong</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_supplementary_queue_limit</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_ulong_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_output_queue_limit</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">output_queue_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_ulong</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_output_queue_limit</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_ulong_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_queue_used</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">queue_used</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_queue_used</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_can_drop_results</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">can_drop_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_can_drop_results</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_can_skip_measurements</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">can_skip_measurements</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_can_skip_measurements</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_can_skip_supplementary</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">can_skip_supplementary</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_can_skip_supplementary</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_is_processing_mandatory</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_processing_mandatory</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_is_processing_mandatory</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_is_processing</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_is_processing</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_threads_busy</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">threads_busy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_threads_busy</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_state</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WorkerState</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_state_t</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_get_state</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">WorkerState</span><span class="o">.</span><span class="n">_from_internal</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Worker.start_processing">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.start_processing">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_start</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_start</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Worker.stop_processing">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.stop_processing">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_stop</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stop_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_stop</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Worker.drop_all_queued">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.drop_all_queued">[docs]</a>
+    <span class="nd">@copydoc</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_drop_all_queued</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">drop_all_queued</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_drop_all_queued</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Worker.register_worker_callback">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.register_worker_callback">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">register_worker_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">WorkerResult</span><span class="p">],</span> <span class="n">Awaitable</span><span class="p">[</span><span class="kc">None</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_worker_callback</span><span class="p">()</span>
+        <span class="n">poll_time</span> <span class="o">=</span> <span class="mf">0.001</span>
+
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_internal_worker_loop</span><span class="p">():</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_next_result</span><span class="p">():</span>
+                    <span class="n">workerContainer</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_next_result_async</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+                    <span class="n">task</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">callback</span><span class="p">(</span><span class="n">workerContainer</span><span class="p">))</span>
+
+                    <span class="c1"># TODO limit number of created task objects like in the cpp wrapper</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">await</span> <span class="n">a</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">poll_time</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_worker_poll_task</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">_internal_worker_loop</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="Worker.reset_worker_callback">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.Worker.Worker.reset_worker_callback">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reset_worker_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_worker_poll_task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_worker_poll_task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_worker_poll_task</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_worker_callback</span><span class="p">()</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_assign</span><span class="p">(</span><span class="n">_ptr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">)</span>
+        <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_worker_free</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;This functions is not permitted due to the class only keeping a handle, that is managed by the cuvis sdk.&#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Deep copying is not supported for Worker&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;This functions is not permitted due to the class only keeping a handle, that is managed by the cuvis sdk.&#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Shallow copying is not supported for Worker&#39;</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Cubert GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

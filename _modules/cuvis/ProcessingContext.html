@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cuvis.ProcessingContext &mdash; Cuvis SDK 3.2.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=eb155f5e"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Cuvis SDK
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdkuserguide.html">SDK User’s Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cwrapper.html">Cuvis C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cppwrapper.html">Cuvis C++ API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pythonwrapper.html">Cuvis Python API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Cuvis SDK</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">cuvis.ProcessingContext</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for cuvis.ProcessingContext</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">._cuvis_il</span><span class="w"> </span><span class="kn">import</span> <span class="n">cuvis_il</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Calibration</span><span class="w"> </span><span class="kn">import</span> <span class="n">Calibration</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.FileWriteSettings</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProcessingArgs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Measurement</span><span class="w"> </span><span class="kn">import</span> <span class="n">Measurement</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.SessionFile</span><span class="w"> </span><span class="kn">import</span> <span class="n">SessionFile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.cuvis_aux</span><span class="w"> </span><span class="kn">import</span> <span class="n">SDKException</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.cuvis_types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReferenceType</span><span class="p">,</span> <span class="n">ProcessingMode</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">cuvis.cuvis_types</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">internal</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">dataclasses</span>
+
+
+<div class="viewcode-block" id="ProcessingContext">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.ProcessingContext.ProcessingContext">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ProcessingContext</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Calibration</span><span class="p">,</span> <span class="n">SessionFile</span><span class="p">,</span> <span class="n">Measurement</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_modeArgs</span> <span class="o">=</span> <span class="n">ProcessingArgs</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">Calibration</span><span class="p">):</span>
+            <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_create_from_calib</span><span class="p">(</span>
+                    <span class="n">base</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_ptr</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">SessionFile</span><span class="p">):</span>
+            <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> \
+                    <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_create_from_session_file</span><span class="p">(</span>
+                        <span class="n">base</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_ptr</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">Measurement</span><span class="p">):</span>
+            <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_create_from_mesu</span><span class="p">(</span>
+                    <span class="n">base</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_ptr</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">(</span>
+                <span class="s2">&quot;could not interpret input of type </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">base</span><span class="p">)))</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="ProcessingContext.apply">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.ProcessingContext.ProcessingContext.apply">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesu</span><span class="p">:</span> <span class="n">Measurement</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Measurement</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mesu</span><span class="p">,</span> <span class="n">Measurement</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_apply</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">mesu</span><span class="o">.</span><span class="n">_handle</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+            <span class="n">mesu</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">mesu</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">(</span>
+                <span class="s2">&quot;Can only apply ProcessingContext to Measurement!&quot;</span><span class="p">)</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="ProcessingContext.set_reference">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.ProcessingContext.ProcessingContext.set_reference">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesu</span><span class="p">:</span> <span class="n">Measurement</span><span class="p">,</span> <span class="n">refType</span><span class="p">:</span> <span class="n">ReferenceType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_set_reference</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">mesu</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span>
+                <span class="n">internal</span><span class="o">.</span><span class="n">__CuvisReferenceType__</span><span class="p">[</span><span class="n">refType</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="ProcessingContext.clear_reference">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.ProcessingContext.ProcessingContext.clear_reference">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">refType</span><span class="p">:</span> <span class="n">ReferenceType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_clear_reference</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">internal</span><span class="o">.</span><span class="n">__CuvisReferenceType__</span><span class="p">[</span><span class="n">refType</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="ProcessingContext.get_reference">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.ProcessingContext.ProcessingContext.get_reference">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">refType</span><span class="p">:</span> <span class="n">ReferenceType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Measurement</span><span class="p">:</span>
+
+        <span class="n">has_ref</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_reference</span><span class="p">(</span><span class="n">refType</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_ref</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_get_reference</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">_ptr</span><span class="p">,</span>
+                <span class="n">internal</span><span class="o">.</span><span class="n">__CuvisReferenceType__</span><span class="p">[</span><span class="n">refType</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Measurement</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="ProcessingContext.has_reference">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.ProcessingContext.ProcessingContext.has_reference">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">refType</span><span class="p">:</span> <span class="n">ReferenceType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_has_reference</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">internal</span><span class="o">.</span><span class="n">__CuvisReferenceType__</span><span class="p">[</span><span class="n">refType</span><span class="p">],</span>
+                <span class="n">_ptr</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">))</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">processing_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProcessingMode</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeArgs</span><span class="o">.</span><span class="n">processing_mode</span>
+
+    <span class="nd">@processing_mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">processing_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pMode</span><span class="p">:</span> <span class="n">ProcessingMode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_modeArgs</span><span class="o">.</span><span class="n">processing_mode</span> <span class="o">=</span> <span class="n">pMode</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_set_args</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeArgs</span><span class="o">.</span><span class="n">_get_internal</span><span class="p">()):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="ProcessingContext.set_processing_args">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.ProcessingContext.ProcessingContext.set_processing_args">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_processing_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pa</span><span class="p">:</span> <span class="n">ProcessingArgs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_modeArgs</span> <span class="o">=</span> <span class="n">dataclasses</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">pa</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_set_args</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modeArgs</span><span class="o">.</span><span class="n">_get_internal</span><span class="p">()):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="ProcessingContext.get_processing_args">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.ProcessingContext.ProcessingContext.get_processing_args">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_processing_args</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProcessingArgs</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">dataclasses</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_modeArgs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ProcessingContext.is_capable">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.ProcessingContext.ProcessingContext.is_capable">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_capable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mesu</span><span class="p">:</span> <span class="n">Measurement</span><span class="p">,</span> <span class="n">pa</span><span class="p">:</span> <span class="n">ProcessingArgs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">_get_internal</span><span class="p">()</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_is_capable</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">mesu</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">_ptr</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="ProcessingContext.calc_distance">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.ProcessingContext.ProcessingContext.calc_distance">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distMM</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_calc_distance</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">distMM</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calibration_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">_id</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_get_calib_id_swig</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_id</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">_ptr</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">new_p_int</span><span class="p">()</span>
+        <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_assign</span><span class="p">(</span><span class="n">_ptr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">)</span>
+        <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_cont_free</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">p_int_value</span><span class="p">(</span><span class="n">_ptr</span><span class="p">)</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;This functions is not permitted due to the class only keeping a handle, that is managed by the cuvis sdk.&#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Deep copying is not supported for ProcessingContext&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;This functions is not permitted due to the class only keeping a handle, that is managed by the cuvis sdk.&#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+            <span class="s1">&#39;Shallow copying is not supported for ProcessingContext&#39;</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Cubert GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
