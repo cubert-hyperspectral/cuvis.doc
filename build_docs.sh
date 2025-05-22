@@ -8,7 +8,7 @@ source venv/bin/activate
 python3.10 -m pip install -r docs/requirements.txt
 
 echo "======================="
-echo "Build Pyil Wrapper"
+echo "Build Python wrapper Wrapper"
 echo "======================="
 
 source venv/bin/activate
