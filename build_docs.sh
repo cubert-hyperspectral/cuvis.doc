@@ -31,6 +31,6 @@ mkdir -p _build
 cmake -B _build .
 cmake --build "_build"
 python3.10 -m sphinx -b html -Dbreathe_projects.cuvis=_build/doc/xml docs _build
-touch _build/html/.nojekyll
+touch /app/_build/html/.nojekyll
 
 
