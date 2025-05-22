@@ -3,63 +3,23 @@ on:
   push:
     branches:
       - main
+      - feature/switch_docker_base_image
       
 permissions:
   contents: write
 
-
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
-      - name: Install Dependencies
-        run: |
-          sudo apt install doxygen swig -y
-          sudo apt install python3.10 python3.10-dev python3.10-venv -y
-          curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
-          wget https://cloud.cubert-gmbh.de/index.php/s/qpxkyWkycrmBK9m/download
-          unzip download
-          cd Cuvis\ 3.3
-          cd Cuvis\ 3.3.3
-          cd Ubuntu\ 22.04-amd64-nocuda/
-          sudo apt install ./cuviscommon_3.3.3-1.deb -y
-          sudo dpkg -i --force-overwrite ./libcuvis_3.3.3-1.deb
-          cd ../../..
-          python3.10 -m venv venv
-          source venv/bin/activate
-          python3.10 -m pip install -r docs/requirements.txt
-      - name: Build Pyil Wrapper
-        run: |
-          source venv/bin/activate
-          python --version
-          python3.10 -m pip install numpy==1.22.0
-          mkdir _pyil
-          cmake  -DCMAKE_BUILD_TYPE=Release -B ./_pyil -DPython_ROOT_DIR=./venv cuvis.pyil
-          cmake --build "_pyil" --target cuvis_pyil --config Release
-          cp _pyil/_cuvis_pyil.so ./cuvis.pyil/cuvis_il
-          cp _pyil/cuvis_il.py ./cuvis.pyil/cuvis_il
-          cat _pyil/cuvis_il.py
-          cd cuvis.pyil
-          python3.10 -m pip install .
-          cd ../cuvis.python
-          python3.10 -m pip install .
-          cd ..
-      - name: Build Documentation
-        run: |
-          source venv/bin/activate
-          export CUVIS=/lib/cuvis
-          mkdir _build
-          cmake -B _build .
-          cmake --build "_build"
-          python3.10 -m sphinx -b html -Dbreathe_projects.cuvis=_build/doc/xml ./docs ./_build
-          touch ./_build/doc/sphinx/.nojekyll
+      - name: Build docker image
+        run: docker build -t "cuvis_doc" .
+      - name: Run docker container and build Documentations
+        run: docker run --mount type=bind,source="$(pwd)",target=/app cuvis_doc /bin/bash /app/build_docs.sh
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: ./_build/doc/sphinx
-
