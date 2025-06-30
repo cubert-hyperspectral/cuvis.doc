@@ -19,7 +19,7 @@ These languages include:
 
 Installation of the SDK
 -----------------------
-- Run the latest installer from [here](https://cloud.cubert-gmbh.de/s/qpxkyWkycrmBK9m).
+- Run the latest installer from `here<https://cloud.cubert-gmbh.de/s/qpxkyWkycrmBK9m>`.
 - Ensure the environment variable `CUVIS` is set to your SDK root.
 
 
@@ -62,7 +62,7 @@ Calibration
 
 Acquisition
 ===========
-**[`AcquisitionContext`](#)**: Manages real-time image acquisition from the camera.
+**:ref:`AcquisitionContext`**: Manages real-time image acquisition from the camera.
 
 .. code-block:: python
 
