@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - feature/adjust_styling
       
 permissions:
   contents: write
