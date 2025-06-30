@@ -43,7 +43,25 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-of-the-sdk">Installation of the SDK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-of-the-python-api">Installation of the Python API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#python-api-quick-start">Python API: Quick Start</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initialization">Initialization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calibration">Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acquisition">Acquisition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#processing">Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#measurement-and-data">Measurement and Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exporting">Exporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#worker">Worker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#viewer">Viewer</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="sdkuserguide.html">SDK User’s Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cwrapper.html">Cuvis C API</a></li>
@@ -77,6 +95,138 @@
              
   <section id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>The purpose of this guide is to show how to get started with using the <cite>cuvis</cite> SDK.
+While most of the examples here will be shown in Python,
+the <cite>cuvis</cite> SDK is also available in other languages.</p>
+<p>These languages include:
+- C API, usable by many other languages that support C-Style bindings,</p>
+<blockquote>
+<div><p>but requires more lines of code and offers less convenience.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>C++ API, provides the a similar class-oriented design to the Python API,
+but is usable within C++ and uses the STL where applicable.</p></li>
+<li><p>Deprecated: C-# and Matlab. While they are available on Github,
+they are no longer guaranteed to be actively maintained.</p></li>
+</ul>
+<section id="installation-of-the-sdk">
+<h3>Installation of the SDK<a class="headerlink" href="#installation-of-the-sdk" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Run the latest installer from [here](<a class="reference external" href="https://cloud.cubert-gmbh.de/s/qpxkyWkycrmBK9m">https://cloud.cubert-gmbh.de/s/qpxkyWkycrmBK9m</a>).</p></li>
+<li><p>Ensure the environment variable <cite>CUVIS</cite> is set to your SDK root.</p></li>
+</ul>
+</section>
+<section id="installation-of-the-python-api">
+<h3>Installation of the Python API<a class="headerlink" href="#installation-of-the-python-api" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Recommended: Set up a virtual environment.</p></li>
+<li><p>Install via <cite>pip install cuvis</cite></p></li>
+</ul>
+<p>You can now test the installation via:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cuvis</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cuvis</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>This should now print the version of the installed SDK. You are set up to get started.</p>
+</section>
+</section>
+<section id="python-api-quick-start">
+<h2>Python API: Quick Start<a class="headerlink" href="#python-api-quick-start" title="Link to this heading"></a></h2>
+<section id="initialization">
+<h3>Initialization<a class="headerlink" href="#initialization" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cuvis</span>
+<span class="n">cuvis</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">&quot;path/to/settings&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>[`cuvis.init`](#)</strong>: Initializes the SDK with the provided user settings directory.
+<strong>[`cuvis.shutdown`](#)</strong>: Cleanly shuts down the SDK.
+<strong>[`cuvis.set_log_level`](#)</strong>: Set verbosity of logging, e.g., <cite>“info”</cite>, <cite>“debug”</cite>.</p>
+</section>
+</section>
+<section id="calibration">
+<h2>Calibration<a class="headerlink" href="#calibration" title="Link to this heading"></a></h2>
+<p><strong>[`Calibration`](#)</strong>: Load calibration data from a directory or session file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">calib</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">Calibration</span><span class="p">(</span><span class="s2">&quot;path/to/calibration&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="acquisition">
+<h2>Acquisition<a class="headerlink" href="#acquisition" title="Link to this heading"></a></h2>
+<p><strong>[`AcquisitionContext`](#)</strong>: Manages real-time image acquisition from the camera.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">acq</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">AcquisitionContext</span><span class="p">(</span><span class="n">calib</span><span class="p">)</span>
+<span class="n">acq</span><span class="o">.</span><span class="n">integration_time</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">mesu</span> <span class="o">=</span> <span class="n">acq</span><span class="o">.</span><span class="n">capture_at</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>[`Component`](#)</strong>: Access metadata and settings for each hardware component.
+.. code-block:: python</p>
+<blockquote>
+<div><dl class="simple">
+<dt>for comp in acq.components():</dt><dd><p>print(comp.info.display_name, comp.online)</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="processing">
+<h2>Processing<a class="headerlink" href="#processing" title="Link to this heading"></a></h2>
+<p><strong>[`ProcessingContext`](#)</strong>: Apply calibration and processing (e.g. Reflectance) to raw measurements.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">ProcessingContext</span><span class="p">(</span><span class="n">mesu</span><span class="p">)</span>
+<span class="n">pc</span><span class="o">.</span><span class="n">processing_mode</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">ProcessingMode</span><span class="o">.</span><span class="n">Reflectance</span>
+<span class="n">pc</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">mesu</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="measurement-and-data">
+<h2>Measurement and Data<a class="headerlink" href="#measurement-and-data" title="Link to this heading"></a></h2>
+<p><strong>[`Measurement`](#)</strong>: Encapsulates a single captured or loaded dataset.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">SessionFile</span><span class="p">(</span><span class="s2">&quot;file.cu3s&quot;</span><span class="p">)</span>
+<span class="n">mesu</span> <span class="o">=</span> <span class="n">session</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">mesu</span><span class="o">.</span><span class="n">cube</span>
+</pre></div>
+</div>
+<p><strong>[`ImageData`](#)</strong>: Handles spectral image arrays and metadata.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">spectrum</span> <span class="o">=</span> <span class="n">cube</span><span class="p">[</span><span class="mi">120</span><span class="p">,</span> <span class="mi">200</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># values at x=120, y=200</span>
+</pre></div>
+</div>
+<p><strong>[`SessionFile`](#)</strong>: Load and iterate over measurements in a session file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">SessionFile</span><span class="p">(</span><span class="s2">&quot;video.cu3s&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">mesu</span> <span class="ow">in</span> <span class="n">session</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mesu</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="exporting">
+<h2>Exporting<a class="headerlink" href="#exporting" title="Link to this heading"></a></h2>
+<p><strong>[`CubeExporter`](#)</strong>, <strong>[`TiffExporter`](#)</strong>, <strong>[`EnviExporter`](#)</strong>, <strong>[`ViewExporter`](#)</strong>:
+Export processed measurements to various formats.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">cuvis</span><span class="w"> </span><span class="kn">import</span> <span class="n">TiffExportSettings</span><span class="p">,</span> <span class="n">TiffExporter</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="n">TiffExportSettings</span><span class="p">(</span><span class="n">export_dir</span><span class="o">=</span><span class="s2">&quot;output&quot;</span><span class="p">)</span>
+<span class="n">exporter</span> <span class="o">=</span> <span class="n">TiffExporter</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="n">exporter</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">mesu</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="worker">
+<h2>Worker<a class="headerlink" href="#worker" title="Link to this heading"></a></h2>
+<p><strong>[`Worker`](#)</strong>: High-level interface to manage acquisition, processing, and exporting in a pipeline.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">worker</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">Worker</span><span class="p">(</span><span class="n">cuvis</span><span class="o">.</span><span class="n">WorkerSettings</span><span class="p">())</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">set_acquisition_context</span><span class="p">(</span><span class="n">acq</span><span class="p">)</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">set_processing_context</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">set_exporter</span><span class="p">(</span><span class="n">exporter</span><span class="p">)</span>
+<span class="n">worker</span><span class="o">.</span><span class="n">start_processing</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="viewer">
+<h2>Viewer<a class="headerlink" href="#viewer" title="Link to this heading"></a></h2>
+<p><strong>[`Viewer`](#)</strong>: Renders view data from measurements using user-defined plugins.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">Viewer</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="n">images</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">mesu</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
