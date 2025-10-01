@@ -1,4 +1,4 @@
-FROM cubertgmbh/cuvis_base:3.3.3-ubuntu22.04
+FROM cubertgmbh/cuvis_base:3.4.1-ubuntu22.04
 
 RUN apt-get update && \
     apt-get install curl gcc g++ make swig doxygen -y && \
