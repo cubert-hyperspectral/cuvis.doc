@@ -80,39 +80,25 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">._cuvis_il</span><span class="w"> </span><span class="kn">import</span> <span class="n">cuvis_il</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.cuvis_aux</span><span class="w"> </span><span class="kn">import</span> <span class="n">SDKException</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.cuvis_types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ComponentType</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">cuvis.cuvis_types</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">internal</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span>
 
 
 <div class="viewcode-block" id="init">
 <a class="viewcode-back" href="../../pythonwrapper.html#cuvis.General.init">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="n">settings_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">log_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">global_loglevel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>
-    <span class="n">FORMAT</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> -- </span><span class="si">%(levelname)s</span><span class="s1">: </span><span class="si">%(message)s</span><span class="s1">&#39;</span>
-    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">log_path</span><span class="p">):</span>
-        <span class="k">pass</span>
-    <span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Linux&quot;</span><span class="p">:</span>
-        <span class="n">log_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">),</span> <span class="s2">&quot;.cuvis&quot;</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">log_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
-        <span class="n">log_path</span> <span class="o">=</span> <span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">ProgramData</span><span class="se">\\</span><span class="s2">cuvis&quot;</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">log_path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="n">settings_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">global_loglevel</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="n">logfile_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;CUVIS_SETTINGS&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="ow">and</span> <span class="n">settings_path</span> <span class="o">==</span> <span class="s2">&quot;.&quot;</span><span class="p">:</span>
+        <span class="c1"># env variable is set and settings path is default kwarg</span>
+        <span class="n">settings_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;CUVIS_SETTINGS&#39;</span><span class="p">]</span>
 
-    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">log_path</span><span class="p">):</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">log_path</span><span class="p">,</span> <span class="s2">&quot;cuvisSDK_python.log&quot;</span><span class="p">),</span>
-                            <span class="nb">format</span><span class="o">=</span><span class="n">FORMAT</span><span class="p">,</span>
-                            <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span>
-                            <span class="n">level</span><span class="o">=</span><span class="n">global_loglevel</span><span class="p">,</span>
-                            <span class="n">filemode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">SDKException</span><span class="p">(</span>
-            <span class="s2">&quot;path </span><span class="si">{}</span><span class="s2"> does not exist...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">log_path</span><span class="p">)))</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Logger ready.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">global_loglevel</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="c1"># also support string as input argument</span>
+        <span class="n">global_loglevel</span> <span class="o">=</span> <span class="n">internal</span><span class="o">.</span><span class="n">__strToLogLevel__</span><span class="p">[</span><span class="n">global_loglevel</span><span class="p">]</span>
 
-    <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">settings_path</span><span class="p">,</span> <span class="n">internal</span><span class="o">.</span><span class="n">__CuvisLoglevel__</span><span class="p">[</span><span class="n">global_loglevel</span><span class="p">]):</span>
+    <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">settings_path</span><span class="p">,</span> <span class="n">internal</span><span class="o">.</span><span class="n">__CuvisLoglevel__</span><span class="p">[</span><span class="n">global_loglevel</span><span class="p">],</span> <span class="n">logfile_name</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span></div>
 
 
@@ -150,50 +136,14 @@
 
 <div class="viewcode-block" id="set_log_level">
 <a class="viewcode-back" href="../../pythonwrapper.html#cuvis.General.set_log_level">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">set_log_level</span><span class="p">(</span><span class="n">lvl</span><span class="p">):</span>
-    <span class="n">lvl_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;cuvis&quot;</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">loglevel_info</span><span class="p">,</span>
-                         <span class="s2">&quot;logging&quot;</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">},</span>
-                <span class="s2">&quot;debug&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;cuvis&quot;</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">loglevel_debug</span><span class="p">,</span>
-                          <span class="s2">&quot;logging&quot;</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">},</span>
-                <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;cuvis&quot;</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">loglevel_error</span><span class="p">,</span>
-                          <span class="s2">&quot;logging&quot;</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">},</span>
-                <span class="s2">&quot;fatal&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;cuvis&quot;</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">loglevel_fatal</span><span class="p">,</span>
-                          <span class="s2">&quot;logging&quot;</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">},</span>
-                <span class="s2">&quot;warning&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;cuvis&quot;</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">loglevel_warning</span><span class="p">,</span>
-                            <span class="s2">&quot;logging&quot;</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">},</span>
-                <span class="p">}</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_log_level</span><span class="p">(</span><span class="n">lvl</span><span class="p">:</span>  <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]):</span>
 
-    <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_set_log_level</span><span class="p">(</span><span class="n">lvl_dict</span><span class="p">[</span><span class="n">lvl</span><span class="p">][</span><span class="s2">&quot;cuvis&quot;</span><span class="p">])</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">lvl_dict</span><span class="p">[</span><span class="n">lvl</span><span class="p">][</span><span class="s2">&quot;logging&quot;</span><span class="p">])</span></div>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lvl</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="c1"># also support string as input argument</span>
+        <span class="n">lvl</span> <span class="o">=</span> <span class="n">internal</span><span class="o">.</span><span class="n">__strToLogLevel__</span><span class="p">[</span><span class="n">lvl</span><span class="p">]</span>
 
-
-
-<div class="viewcode-block" id="ComponentInfo">
-<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.General.ComponentInfo">[docs]</a>
-<span class="nd">@dataclass</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">ComponentInfo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="nb">type</span><span class="p">:</span> <span class="n">ComponentType</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">display_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">sensor_info</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">user_field</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">pixel_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_get_internal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">ci</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_component_info_t</span><span class="p">()</span>
-        <span class="n">ci</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">internal</span><span class="o">.</span><span class="n">__CuvisComponentType__</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">]</span>
-        <span class="n">ci</span><span class="o">.</span><span class="n">displayname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">display_name</span>
-        <span class="n">ci</span><span class="o">.</span><span class="n">sensorinfo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor_info</span>
-        <span class="n">ci</span><span class="o">.</span><span class="n">userfield</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_field</span>
-        <span class="n">ci</span><span class="o">.</span><span class="n">pixelformat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel_format</span>
-        <span class="k">return</span> <span class="n">ci</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ci</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">internal</span><span class="o">.</span><span class="n">__ComponentType__</span><span class="p">[</span><span class="n">ci</span><span class="o">.</span><span class="n">type</span><span class="p">],</span>
-                   <span class="n">display_name</span><span class="o">=</span><span class="n">ci</span><span class="o">.</span><span class="n">displayname</span><span class="p">,</span>
-                   <span class="n">sensor_info</span><span class="o">=</span><span class="n">ci</span><span class="o">.</span><span class="n">sensorinfo</span><span class="p">,</span>
-                   <span class="n">user_field</span><span class="o">=</span><span class="n">ci</span><span class="o">.</span><span class="n">userfield</span><span class="p">,</span>
-                   <span class="n">pixel_format</span><span class="o">=</span><span class="n">ci</span><span class="o">.</span><span class="n">pixelformat</span><span class="p">)</span></div>
+    <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_set_log_level</span><span class="p">(</span><span class="n">internal</span><span class="o">.</span><span class="n">__CuvisLoglevel__</span><span class="p">[</span><span class="n">lvl</span><span class="p">])</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">lvl</span><span class="p">)</span></div>
 
 </pre></div>
 

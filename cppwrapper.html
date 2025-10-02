@@ -56,7 +56,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General31register_log_callback_localizedENSt8functionIFvPKw10loglevel_tEEE5int_tRKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">register_log_callback_localized()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General28reset_log_callback_localizedEv"><code class="docutils literal notranslate"><span class="pre">reset_log_callback_localized()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General7versionEv"><code class="docutils literal notranslate"><span class="pre">version()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General4initERKNSt6stringEi"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General4initERKNSt6stringEiNSt6stringE"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General8shutdownEv"><code class="docutils literal notranslate"><span class="pre">shutdown()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General23register_event_callbackE20cpp_event_callback_t5int_t"><code class="docutils literal notranslate"><span class="pre">register_event_callback()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis7General25unregister_event_callbackE5int_t"><code class="docutils literal notranslate"><span class="pre">unregister_event_callback()</span></code></a></li>
@@ -68,6 +68,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration16get_capabilitiesE20CUVIS_OPERATION_MODE"><code class="docutils literal notranslate"><span class="pre">get_capabilities()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration8get_infoEv"><code class="docutils literal notranslate"><span class="pre">get_info()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration6get_idEv"><code class="docutils literal notranslate"><span class="pre">get_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration19get_component_countEv"><code class="docutils literal notranslate"><span class="pre">get_component_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration18get_component_infoE5int_t"><code class="docutils literal notranslate"><span class="pre">get_component_info()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration10get_handleEv"><code class="docutils literal notranslate"><span class="pre">get_handle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Calibration15get_handle_copyEv"><code class="docutils literal notranslate"><span class="pre">get_handle_copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Calibration11CalibrationE11CUVIS_CALIB"><code class="docutils literal notranslate"><span class="pre">Calibration()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis11MeasurementE"><code class="docutils literal notranslate"><span class="pre">cuvis::Measurement</span></code></a><ul>
@@ -94,6 +99,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement10clear_cubeEv"><code class="docutils literal notranslate"><span class="pre">clear_cube()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement24clear_implicit_referenceE16reference_type_t"><code class="docutils literal notranslate"><span class="pre">clear_implicit_reference()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement7refreshEv"><code class="docutils literal notranslate"><span class="pre">refresh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement10get_handleEv"><code class="docutils literal notranslate"><span class="pre">get_handle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11Measurement15get_handle_copyEv"><code class="docutils literal notranslate"><span class="pre">get_handle_copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11Measurement11MeasurementE10CUVIS_MESU"><code class="docutils literal notranslate"><span class="pre">Measurement()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis11SessionFileE"><code class="docutils literal notranslate"><span class="pre">cuvis::SessionFile</span></code></a><ul>
@@ -105,6 +113,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile7get_fpsEv"><code class="docutils literal notranslate"><span class="pre">get_fps()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile8get_hashEv"><code class="docutils literal notranslate"><span class="pre">get_hash()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile18get_operation_modeEv"><code class="docutils literal notranslate"><span class="pre">get_operation_mode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile10get_handleEv"><code class="docutils literal notranslate"><span class="pre">get_handle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis11SessionFile15get_handle_copyEv"><code class="docutils literal notranslate"><span class="pre">get_handle_copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis11SessionFile11SessionFileE18CUVIS_SESSION_FILE"><code class="docutils literal notranslate"><span class="pre">SessionFile()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContextE"><code class="docutils literal notranslate"><span class="pre">cuvis::ProcessingContext</span></code></a><ul>
@@ -121,6 +132,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext10is_capableERK11MeasurementRK14ProcessingArgs"><code class="docutils literal notranslate"><span class="pre">is_capable()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext13has_referenceE16reference_type_t"><code class="docutils literal notranslate"><span class="pre">has_reference()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext12get_calib_idEv"><code class="docutils literal notranslate"><span class="pre">get_calib_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext10get_handleEv"><code class="docutils literal notranslate"><span class="pre">get_handle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis17ProcessingContext15get_handle_copyEv"><code class="docutils literal notranslate"><span class="pre">get_handle_copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis17ProcessingContext17ProcessingContextE15CUVIS_PROC_CONT"><code class="docutils literal notranslate"><span class="pre">ProcessingContext()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContextE"><code class="docutils literal notranslate"><span class="pre">cuvis::AcquisitionContext</span></code></a><ul>
@@ -150,7 +164,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext20get_integration_timeEv"><code class="docutils literal notranslate"><span class="pre">get_integration_time()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext12get_auto_expEv"><code class="docutils literal notranslate"><span class="pre">get_auto_exp()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext17get_auto_exp_compEv"><code class="docutils literal notranslate"><span class="pre">get_auto_exp_comp()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext11get_binningEv"><code class="docutils literal notranslate"><span class="pre">get_binning()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18get_operation_modeEv"><code class="docutils literal notranslate"><span class="pre">get_operation_mode()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext11get_averageEv"><code class="docutils literal notranslate"><span class="pre">get_average()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext13get_bandwidthEv"><code class="docutils literal notranslate"><span class="pre">get_bandwidth()</span></code></a></li>
@@ -160,7 +173,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext20set_integration_timeEd"><code class="docutils literal notranslate"><span class="pre">set_integration_time()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext12set_auto_expEb"><code class="docutils literal notranslate"><span class="pre">set_auto_exp()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext17set_auto_exp_compEd"><code class="docutils literal notranslate"><span class="pre">set_auto_exp_comp()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext11set_binningEb"><code class="docutils literal notranslate"><span class="pre">set_binning()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18set_operation_modeE16operation_mode_t"><code class="docutils literal notranslate"><span class="pre">set_operation_mode()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext11set_averageEi"><code class="docutils literal notranslate"><span class="pre">set_average()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext14set_continuousEi"><code class="docutils literal notranslate"><span class="pre">set_continuous()</span></code></a></li>
@@ -176,6 +188,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext18set_component_gainE6size_td"><code class="docutils literal notranslate"><span class="pre">set_component_gain()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext37set_component_integration_time_factorE6size_td"><code class="docutils literal notranslate"><span class="pre">set_component_integration_time_factor()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext10get_handleEv"><code class="docutils literal notranslate"><span class="pre">get_handle()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis18AcquisitionContext15get_handle_copyEv"><code class="docutils literal notranslate"><span class="pre">get_handle_copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext18AcquisitionContextE14CUVIS_ACQ_CONT"><code class="docutils literal notranslate"><span class="pre">AcquisitionContext()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext22component_state_info_tE"><code class="docutils literal notranslate"><span class="pre">cuvis::AcquisitionContext::component_state_info_t</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext22component_state_info_t12display_nameE"><code class="docutils literal notranslate"><span class="pre">display_name</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis18AcquisitionContext22component_state_info_t9is_onlineE"><code class="docutils literal notranslate"><span class="pre">is_online</span></code></a></li>
@@ -225,7 +239,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker13is_processingEv"><code class="docutils literal notranslate"><span class="pre">is_processing()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker16get_threads_busyEv"><code class="docutils literal notranslate"><span class="pre">get_threads_busy()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4NK5cuvis6Worker9get_stateEv"><code class="docutils literal notranslate"><span class="pre">get_state()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker24register_worker_callbackE17worker_callback_tj"><code class="docutils literal notranslate"><span class="pre">register_worker_callback()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker24register_worker_callbackE17worker_callback_tj6size_t"><code class="docutils literal notranslate"><span class="pre">register_worker_callback()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker21reset_worker_callbackEv"><code class="docutils literal notranslate"><span class="pre">reset_worker_callback()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15worker_return_tE"><code class="docutils literal notranslate"><span class="pre">cuvis::Worker::worker_return_t</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N5cuvis6Worker15worker_return_t4mesuE"><code class="docutils literal notranslate"><span class="pre">mesu</span></code></a></li>
@@ -368,14 +382,15 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5cuvis7General4initERKNSt6stringEi">
-<span id="_CPPv3N5cuvis7General4initERKNSt6stringEi"></span><span id="_CPPv2N5cuvis7General4initERKNSt6stringEi"></span><span id="cuvis::General::init__ssCR.i"></span><span class="target" id="classcuvis_1_1_general_1a5f3b1fe286fc8c51170f6431222dba42"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">settings_path</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">global_loglevel</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis7General4initERKNSt6stringEi" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis7General4initERKNSt6stringEiNSt6stringE">
+<span id="_CPPv3N5cuvis7General4initERKNSt6stringEiNSt6stringE"></span><span id="_CPPv2N5cuvis7General4initERKNSt6stringEiNSt6stringE"></span><span id="cuvis::General::init__ssCR.i.ss"></span><span class="target" id="classcuvis_1_1_general_1ac7dc567169f37cc6d985bfc3abc8f097"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">init</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">settings_path</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">global_loglevel</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">logfile_name</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis7General4initERKNSt6stringEiNSt6stringE" title="Link to this definition"></a><br /></dt>
 <dd><p>The init function set the settings path. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>i_settings_path</strong> – <strong>[in]</strong> The path to the settings directory. </p></li>
 <li><p><strong>i_global_loglevel</strong> – <strong>[in]</strong> The log level that will be used for the backend logging system </p></li>
+<li><p><strong>i_logfile_name</strong> – <strong>[in]</strong> The name of the logfile that is going to be written </p></li>
 </ul>
 </dd>
 </dl>
@@ -465,6 +480,38 @@
 <dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11Calibration6get_idEv">
 <span id="_CPPv3NK5cuvis11Calibration6get_idEv"></span><span id="_CPPv2NK5cuvis11Calibration6get_idEv"></span><span id="cuvis::Calibration::get_idC"></span><span class="target" id="classcuvis_1_1_calibration_1a71eb7ebb931402d7fcbf7a31336ad32e"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_id</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11Calibration6get_idEv" title="Link to this definition"></a><br /></dt>
 <dd><p>get the calibration id </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11Calibration19get_component_countEv">
+<span id="_CPPv3NK5cuvis11Calibration19get_component_countEv"></span><span id="_CPPv2NK5cuvis11Calibration19get_component_countEv"></span><span id="cuvis::Calibration::get_component_countC"></span><span class="target" id="classcuvis_1_1_calibration_1afe46d4375b60c21abc92d377d48f3011"></span><span class="n"><span class="pre">int_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_component_count</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11Calibration19get_component_countEv" title="Link to this definition"></a><br /></dt>
+<dd><p>get number of components </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11Calibration18get_component_infoE5int_t">
+<span id="_CPPv3NK5cuvis11Calibration18get_component_infoE5int_t"></span><span id="_CPPv2NK5cuvis11Calibration18get_component_infoE5int_t"></span><span id="cuvis::Calibration::get_component_info__int_tC"></span><span class="target" id="classcuvis_1_1_calibration_1a35e36c1acf8993700b0e9a57c1c5f355"></span><span class="n"><span class="pre">CUVIS_COMPONENT_INFO</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_component_info</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11Calibration18get_component_infoE5int_t" title="Link to this definition"></a><br /></dt>
+<dd><p>get a components information </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11Calibration10get_handleEv">
+<span id="_CPPv3NK5cuvis11Calibration10get_handleEv"></span><span id="_CPPv2NK5cuvis11Calibration10get_handleEv"></span><span id="cuvis::Calibration::get_handleC"></span><span class="target" id="classcuvis_1_1_calibration_1ac509ccc09725037e79d80939dcca6181"></span><span class="n"><span class="pre">CUVIS_CALIB</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_handle</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11Calibration10get_handleEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Return the current handle of the wrapper class. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11Calibration15get_handle_copyEv">
+<span id="_CPPv3NK5cuvis11Calibration15get_handle_copyEv"></span><span id="_CPPv2NK5cuvis11Calibration15get_handle_copyEv"></span><span id="cuvis::Calibration::get_handle_copyC"></span><span class="target" id="classcuvis_1_1_calibration_1a5d5e688688b8cfb512fa82ef0717391f"></span><span class="n"><span class="pre">CUVIS_CALIB</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_handle_copy</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11Calibration15get_handle_copyEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Create a copy of the current handle of the wrapper class and return it. </p>
+<p>This handle needs to be also freed before the resource will be released by the sdk. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis11Calibration11CalibrationE11CUVIS_CALIB">
+<span id="_CPPv3N5cuvis11Calibration11CalibrationE11CUVIS_CALIB"></span><span id="_CPPv2N5cuvis11Calibration11CalibrationE11CUVIS_CALIB"></span><span id="cuvis::Calibration::Calibration__CUVIS_CALIB"></span><span class="target" id="classcuvis_1_1_calibration_1a95ec20623fa53f84d709063b2ed7169b"></span><span class="sig-name descname"><span class="n"><span class="pre">Calibration</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">CUVIS_CALIB</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis11Calibration11CalibrationE11CUVIS_CALIB" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Create a wrapper class around a handle. </p>
+<p>This only allowed once per handle, otherwise the handle could be freed before all instances of the wrapper class are deleted. This can be useful if a previously a handle has been copied and now should be wrapped at another place in a program. Most of the time this is not necesarry and the wrapper class can be copied just as well </p>
 </dd></dl>
 
 </div>
@@ -659,6 +706,26 @@
 <p>usally this does not have to be called manually, but is rather called internally by any operation that may result in invalidated (meta-)data </p>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11Measurement10get_handleEv">
+<span id="_CPPv3NK5cuvis11Measurement10get_handleEv"></span><span id="_CPPv2NK5cuvis11Measurement10get_handleEv"></span><span id="cuvis::Measurement::get_handleC"></span><span class="target" id="classcuvis_1_1_measurement_1aa21f959022b9cf4df9479c10ca7082cb"></span><span class="n"><span class="pre">CUVIS_MESU</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_handle</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11Measurement10get_handleEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Return the current handle of the wrapper class. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11Measurement15get_handle_copyEv">
+<span id="_CPPv3NK5cuvis11Measurement15get_handle_copyEv"></span><span id="_CPPv2NK5cuvis11Measurement15get_handle_copyEv"></span><span id="cuvis::Measurement::get_handle_copyC"></span><span class="target" id="classcuvis_1_1_measurement_1a47d44c7b273ab68577e3bb4bf1226b3d"></span><span class="n"><span class="pre">CUVIS_MESU</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_handle_copy</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11Measurement15get_handle_copyEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Create a copy of the current handle of the wrapper class and return it. </p>
+<p>This handle needs to be also freed before the resource will be released by the sdk. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis11Measurement11MeasurementE10CUVIS_MESU">
+<span id="_CPPv3N5cuvis11Measurement11MeasurementE10CUVIS_MESU"></span><span id="_CPPv2N5cuvis11Measurement11MeasurementE10CUVIS_MESU"></span><span id="cuvis::Measurement::Measurement__CUVIS_MESU"></span><span class="target" id="classcuvis_1_1_measurement_1ad2ea37baf86648e0589e555d683e7534"></span><span class="sig-name descname"><span class="n"><span class="pre">Measurement</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">CUVIS_MESU</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis11Measurement11MeasurementE10CUVIS_MESU" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Create a wrapper class around a handle. </p>
+<p>This only allowed once per handle, otherwise the handle could be freed before all instances of the wrapper class are deleted. This can be useful if a previously a handle has been copied and now should be wrapped at another place in a program. Most of the time this is not necesarry and the wrapper class can be copied just as well </p>
+</dd></dl>
+
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-friends">Friends</p>
@@ -746,6 +813,26 @@
 <dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11SessionFile18get_operation_modeEv">
 <span id="_CPPv3NK5cuvis11SessionFile18get_operation_modeEv"></span><span id="_CPPv2NK5cuvis11SessionFile18get_operation_modeEv"></span><span id="cuvis::SessionFile::get_operation_modeC"></span><span class="target" id="classcuvis_1_1_session_file_1aa04afe183e0dba82bb94517374a3d88b"></span><span class="n"><span class="pre">CUVIS_OPERATION_MODE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_operation_mode</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11SessionFile18get_operation_modeEv" title="Link to this definition"></a><br /></dt>
 <dd><p>get operation mode of the session </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11SessionFile10get_handleEv">
+<span id="_CPPv3NK5cuvis11SessionFile10get_handleEv"></span><span id="_CPPv2NK5cuvis11SessionFile10get_handleEv"></span><span id="cuvis::SessionFile::get_handleC"></span><span class="target" id="classcuvis_1_1_session_file_1aab58542db25f126e8297cb8f8ae22d00"></span><span class="n"><span class="pre">CUVIS_SESSION_FILE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_handle</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11SessionFile10get_handleEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Return the current handle of the wrapper class. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis11SessionFile15get_handle_copyEv">
+<span id="_CPPv3NK5cuvis11SessionFile15get_handle_copyEv"></span><span id="_CPPv2NK5cuvis11SessionFile15get_handle_copyEv"></span><span id="cuvis::SessionFile::get_handle_copyC"></span><span class="target" id="classcuvis_1_1_session_file_1a491d52073f5c6fdcd656e1171712f143"></span><span class="n"><span class="pre">CUVIS_SESSION_FILE</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_handle_copy</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis11SessionFile15get_handle_copyEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Create a copy of the current handle of the wrapper class and return it. </p>
+<p>This handle needs to be also freed before the resource will be released by the sdk. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis11SessionFile11SessionFileE18CUVIS_SESSION_FILE">
+<span id="_CPPv3N5cuvis11SessionFile11SessionFileE18CUVIS_SESSION_FILE"></span><span id="_CPPv2N5cuvis11SessionFile11SessionFileE18CUVIS_SESSION_FILE"></span><span id="cuvis::SessionFile::SessionFile__CUVIS_SESSION_FILE"></span><span class="target" id="classcuvis_1_1_session_file_1ae31f7af0e30cb771be719e3f802952e0"></span><span class="sig-name descname"><span class="n"><span class="pre">SessionFile</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">CUVIS_SESSION_FILE</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis11SessionFile11SessionFileE18CUVIS_SESSION_FILE" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Create a wrapper class around a handle. </p>
+<p>This only allowed once per handle, otherwise the handle could be freed before all instances of the wrapper class are deleted. This can be useful if a previously a handle has been copied and now should be wrapped at another place in a program. Most of the time this is not necesarry and the wrapper class can be copied just as well </p>
 </dd></dl>
 
 </div>
@@ -853,6 +940,26 @@
 <dt class="sig sig-object cpp" id="_CPPv4NK5cuvis17ProcessingContext12get_calib_idEv">
 <span id="_CPPv3NK5cuvis17ProcessingContext12get_calib_idEv"></span><span id="_CPPv2NK5cuvis17ProcessingContext12get_calib_idEv"></span><span id="cuvis::ProcessingContext::get_calib_idC"></span><span class="target" id="classcuvis_1_1_processing_context_1addec3bf1cad154dc181e8eea69aec9a6"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_calib_id</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis17ProcessingContext12get_calib_idEv" title="Link to this definition"></a><br /></dt>
 <dd><p>get the calibration id of the procession context </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis17ProcessingContext10get_handleEv">
+<span id="_CPPv3NK5cuvis17ProcessingContext10get_handleEv"></span><span id="_CPPv2NK5cuvis17ProcessingContext10get_handleEv"></span><span id="cuvis::ProcessingContext::get_handleC"></span><span class="target" id="classcuvis_1_1_processing_context_1a8a46efe5058fd920a5523401508166d7"></span><span class="n"><span class="pre">CUVIS_PROC_CONT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_handle</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis17ProcessingContext10get_handleEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Return the current handle of the wrapper class. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis17ProcessingContext15get_handle_copyEv">
+<span id="_CPPv3NK5cuvis17ProcessingContext15get_handle_copyEv"></span><span id="_CPPv2NK5cuvis17ProcessingContext15get_handle_copyEv"></span><span id="cuvis::ProcessingContext::get_handle_copyC"></span><span class="target" id="classcuvis_1_1_processing_context_1a1a1a2b2d0ced05d2e52e8b23c84f168b"></span><span class="n"><span class="pre">CUVIS_PROC_CONT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_handle_copy</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis17ProcessingContext15get_handle_copyEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Create a copy of the current handle of the wrapper class and return it. </p>
+<p>This handle needs to be also freed before the resource will be released by the sdk. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis17ProcessingContext17ProcessingContextE15CUVIS_PROC_CONT">
+<span id="_CPPv3N5cuvis17ProcessingContext17ProcessingContextE15CUVIS_PROC_CONT"></span><span id="_CPPv2N5cuvis17ProcessingContext17ProcessingContextE15CUVIS_PROC_CONT"></span><span id="cuvis::ProcessingContext::ProcessingContext__CUVIS_PROC_CONT"></span><span class="target" id="classcuvis_1_1_processing_context_1a90eff03da4ceef1e4a1051573a765894"></span><span class="sig-name descname"><span class="n"><span class="pre">ProcessingContext</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">CUVIS_PROC_CONT</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis17ProcessingContext17ProcessingContextE15CUVIS_PROC_CONT" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Create a wrapper class around a handle. </p>
+<p>This only allowed once per handle, otherwise the handle could be freed before all instances of the wrapper class are deleted. This can be useful if a previously a handle has been copied and now should be wrapped at another place in a program. Most of the time this is not necesarry and the wrapper class can be copied just as well </p>
 </dd></dl>
 
 </div>
@@ -997,11 +1104,6 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext11get_binningEv">
-<span id="_CPPv3NK5cuvis18AcquisitionContext11get_binningEv"></span><span id="_CPPv2NK5cuvis18AcquisitionContext11get_binningEv"></span><span id="cuvis::AcquisitionContext::get_binningC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1a7276de2f107537e5df73a0d43b6c287f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_binning</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext11get_binningEv" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext18get_operation_modeEv">
 <span id="_CPPv3NK5cuvis18AcquisitionContext18get_operation_modeEv"></span><span id="_CPPv2NK5cuvis18AcquisitionContext18get_operation_modeEv"></span><span id="cuvis::AcquisitionContext::get_operation_modeC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1a4ae30e92bbff03f6a63ca324b6f06f3c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">operation_mode_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_operation_mode</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext18get_operation_modeEv" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -1044,11 +1146,6 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext17set_auto_exp_compEd">
 <span id="_CPPv3NK5cuvis18AcquisitionContext17set_auto_exp_compEd"></span><span id="_CPPv2NK5cuvis18AcquisitionContext17set_auto_exp_compEd"></span><span id="cuvis::AcquisitionContext::set_auto_exp_comp__doubleC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1adbd1e6496716cb519542041eed180bc9"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5cuvis5AsyncE" title="cuvis::Async"><span class="n"><span class="pre">Async</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_auto_exp_comp</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext17set_auto_exp_compEd" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext11set_binningEb">
-<span id="_CPPv3NK5cuvis18AcquisitionContext11set_binningEb"></span><span id="_CPPv2NK5cuvis18AcquisitionContext11set_binningEb"></span><span id="cuvis::AcquisitionContext::set_binning__bC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1ab987b7f91bf4689a187c98369a5b9778"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5cuvis5AsyncE" title="cuvis::Async"><span class="n"><span class="pre">Async</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">set_binning</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext11set_binningEb" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -1124,7 +1221,22 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext10get_handleEv">
 <span id="_CPPv3NK5cuvis18AcquisitionContext10get_handleEv"></span><span id="_CPPv2NK5cuvis18AcquisitionContext10get_handleEv"></span><span id="cuvis::AcquisitionContext::get_handleC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1a99c76b2e60afc4bee650eaa135763a6d"></span><span class="n"><span class="pre">CUVIS_ACQ_CONT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_handle</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext10get_handleEv" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Expert: Return the current handle of the wrapper class. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cuvis18AcquisitionContext15get_handle_copyEv">
+<span id="_CPPv3NK5cuvis18AcquisitionContext15get_handle_copyEv"></span><span id="_CPPv2NK5cuvis18AcquisitionContext15get_handle_copyEv"></span><span id="cuvis::AcquisitionContext::get_handle_copyC"></span><span class="target" id="classcuvis_1_1_acquisition_context_1ac1b3a3a170531da3fad58417c4104b7f"></span><span class="n"><span class="pre">CUVIS_ACQ_CONT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_handle_copy</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cuvis18AcquisitionContext15get_handle_copyEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Create a copy of the current handle of the wrapper class and return it. </p>
+<p>This handle needs to be also freed before the resource will be released by the sdk. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis18AcquisitionContext18AcquisitionContextE14CUVIS_ACQ_CONT">
+<span id="_CPPv3N5cuvis18AcquisitionContext18AcquisitionContextE14CUVIS_ACQ_CONT"></span><span id="_CPPv2N5cuvis18AcquisitionContext18AcquisitionContextE14CUVIS_ACQ_CONT"></span><span id="cuvis::AcquisitionContext::AcquisitionContext__CUVIS_ACQ_CONT"></span><span class="target" id="classcuvis_1_1_acquisition_context_1a89cafc53ca17035721a077d9e0baa674"></span><span class="sig-name descname"><span class="n"><span class="pre">AcquisitionContext</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">CUVIS_ACQ_CONT</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">handle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis18AcquisitionContext18AcquisitionContextE14CUVIS_ACQ_CONT" title="Link to this definition"></a><br /></dt>
+<dd><p>Expert: Create a wrapper class around a handle. </p>
+<p>This only allowed once per handle, otherwise the handle could be freed before all instances of the wrapper class are deleted. This can be useful if a previously a handle has been copied and now should be wrapped at another place in a program. Most of the time this is not necesarry and the wrapper class can be copied just as well </p>
+</dd></dl>
 
 </div>
 <dl class="cpp struct">
@@ -1344,8 +1456,8 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker24register_worker_callbackE17worker_callback_tj">
-<span id="_CPPv3N5cuvis6Worker24register_worker_callbackE17worker_callback_tj"></span><span id="_CPPv2N5cuvis6Worker24register_worker_callbackE17worker_callback_tj"></span><span id="cuvis::Worker::register_worker_callback__worker_callback_t.unsigned"></span><span class="target" id="classcuvis_1_1_worker_1a46c72634fbc7d9fa3b694bc5785b7190"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">register_worker_callback</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5cuvis6Worker17worker_callback_tE" title="cuvis::Worker::worker_callback_t"><span class="n"><span class="pre">worker_callback_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">callback</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">concurrency</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker24register_worker_callbackE17worker_callback_tj" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N5cuvis6Worker24register_worker_callbackE17worker_callback_tj6size_t">
+<span id="_CPPv3N5cuvis6Worker24register_worker_callbackE17worker_callback_tj6size_t"></span><span id="_CPPv2N5cuvis6Worker24register_worker_callbackE17worker_callback_tj6size_t"></span><span id="cuvis::Worker::register_worker_callback__worker_callback_t.unsigned.s"></span><span class="target" id="classcuvis_1_1_worker_1a1abaef81f75e654d4878e366c28a405c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">register_worker_callback</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N5cuvis6Worker17worker_callback_tE" title="cuvis::Worker::worker_callback_t"><span class="n"><span class="pre">worker_callback_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">callback</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">concurrency</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">measurement_timeout_ms</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1000</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cuvis6Worker24register_worker_callbackE17worker_callback_tj6size_t" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">

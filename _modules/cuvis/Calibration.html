@@ -123,13 +123,7 @@
         <span class="k">if</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">status_ok</span> <span class="o">!=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_calib_get_info</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">ret</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">SDKException</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">CalibrationInfo</span><span class="p">(</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">serial_no</span><span class="p">,</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">calibration_date</span><span class="p">,</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">annotation_name</span><span class="p">,</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">unique_id</span><span class="p">,</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">CalibrationInfo</span><span class="o">.</span><span class="n">_from_internal</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>

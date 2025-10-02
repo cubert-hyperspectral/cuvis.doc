@@ -138,15 +138,38 @@
     <span class="n">annotation_name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">unique_id</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">cube_width</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">cube_height</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">cube_channels</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">cube_wavelengths</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;&#39;Calibration: model: </span><span class="si">{}</span><span class="s2">, serial no.: </span><span class="si">{}</span><span class="s2">, calibration date: </span><span class="si">{}</span><span class="s2">, annotation: </span><span class="si">{}</span><span class="s2">, unique ID: </span><span class="si">{}</span><span class="s2">, file: </span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="k">return</span> <span class="s2">&quot;&#39;Calibration: model: </span><span class="si">{}</span><span class="s2">, serial no.: </span><span class="si">{}</span><span class="s2">, calibration date: </span><span class="si">{}</span><span class="s2">, annotation: </span><span class="si">{}</span><span class="s2">, unique ID: </span><span class="si">{}</span><span class="s2">, file: </span><span class="si">{}</span><span class="s2">, resolution: </span><span class="si">{}</span><span class="s2">x</span><span class="si">{}</span><span class="s2">x</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">serial_no</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">calibration_date</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">annotation_name</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">unique_id</span><span class="p">,</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cube_width</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cube_height</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cube_channels</span>
+        <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ci</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_calibration_info_t</span><span class="p">):</span>
+        <span class="n">wls</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_read_calib_info_wl_vec</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">ci</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
+            <span class="n">ci</span><span class="o">.</span><span class="n">serial_no</span><span class="p">,</span>
+            <span class="n">ci</span><span class="o">.</span><span class="n">calibration_date</span><span class="p">,</span>
+            <span class="n">ci</span><span class="o">.</span><span class="n">annotation_name</span><span class="p">,</span>
+            <span class="n">ci</span><span class="o">.</span><span class="n">unique_id</span><span class="p">,</span>
+            <span class="n">ci</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span>
+            <span class="n">ci</span><span class="o">.</span><span class="n">cube_width</span><span class="p">,</span>
+            <span class="n">ci</span><span class="o">.</span><span class="n">cube_height</span><span class="p">,</span>
+            <span class="n">ci</span><span class="o">.</span><span class="n">cube_channels</span><span class="p">,</span>
+            <span class="n">wls</span><span class="p">)</span></div>
 
 
 
@@ -186,7 +209,7 @@
     <span class="n">height</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">raw_frame_id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">pixel_format</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">binning</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">integration_time</span><span class="p">:</span> <span class="nb">float</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">info</span><span class="p">):</span>
@@ -199,7 +222,7 @@
                    <span class="n">height</span><span class="o">=</span><span class="n">info</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
                    <span class="n">raw_frame_id</span><span class="o">=</span><span class="n">info</span><span class="o">.</span><span class="n">raw_frame_id</span><span class="p">,</span>
                    <span class="n">pixel_format</span><span class="o">=</span><span class="n">info</span><span class="o">.</span><span class="n">pixel_format</span><span class="p">,</span>
-                   <span class="n">binning</span><span class="o">=</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">binning</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span></div>
+                   <span class="n">integration_time</span><span class="o">=</span><span class="n">info</span><span class="o">.</span><span class="n">integration_time</span><span class="p">)</span></div>
 
 
 
@@ -224,6 +247,26 @@
                    <span class="n">resultsInQueue</span><span class="o">=</span><span class="n">state</span><span class="o">.</span><span class="n">resultsInQueue</span><span class="p">,</span>
                    <span class="n">hasAcquisitionContext</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">hasAcquisitionContext</span><span class="p">),</span>
                    <span class="n">isProcessing</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">isProcessing</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="ComponentInfo">
+<a class="viewcode-back" href="../../pythonwrapper.html#cuvis.cuvis_aux.ComponentInfo">[docs]</a>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ComponentInfo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">internal</span><span class="o">.</span><span class="n">ComponentType</span>
+    <span class="n">display_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">sensor_info</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">user_field</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">pixel_format</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ci</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">internal</span><span class="o">.</span><span class="n">__ComponentType__</span><span class="p">[</span><span class="n">ci</span><span class="o">.</span><span class="n">type</span><span class="p">],</span>
+                   <span class="n">display_name</span><span class="o">=</span><span class="n">ci</span><span class="o">.</span><span class="n">displayname</span><span class="p">,</span>
+                   <span class="n">sensor_info</span><span class="o">=</span><span class="n">ci</span><span class="o">.</span><span class="n">sensorinfo</span><span class="p">,</span>
+                   <span class="n">user_field</span><span class="o">=</span><span class="n">ci</span><span class="o">.</span><span class="n">userfield</span><span class="p">,</span>
+                   <span class="n">pixel_format</span><span class="o">=</span><span class="n">ci</span><span class="o">.</span><span class="n">pixelformat</span><span class="p">)</span></div>
 
 
 

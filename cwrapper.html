@@ -134,9 +134,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv432cuvis_acq_cont_auto_exp_comp_get7int32_tPd"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_auto_exp_comp_get()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv432cuvis_acq_cont_auto_exp_comp_set7int32_td"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_auto_exp_comp_set()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv438cuvis_acq_cont_auto_exp_comp_set_async7int32_tP7int32_td"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_auto_exp_comp_set_async()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv426cuvis_acq_cont_binning_get7int32_tP7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_binning_get()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv426cuvis_acq_cont_binning_set7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_binning_set()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv432cuvis_acq_cont_binning_set_async7int32_tP7int32_t7int32_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_binning_set_async()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv433cuvis_acq_cont_operation_mode_get7int32_tP22cuvis_operation_mode_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_operation_mode_get()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv433cuvis_acq_cont_operation_mode_set7int32_t22cuvis_operation_mode_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_operation_mode_set()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv439cuvis_acq_cont_operation_mode_set_async7int32_tP7int32_t22cuvis_operation_mode_t"><code class="docutils literal notranslate"><span class="pre">cuvis_acq_cont_operation_mode_set_async()</span></code></a></li>
@@ -194,6 +191,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv428cuvis_export_view_settings_t"><code class="docutils literal notranslate"><span class="pre">cuvis_export_view_settings_t</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N28cuvis_export_view_settings_t10userpluginE"><code class="docutils literal notranslate"><span class="pre">userplugin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N28cuvis_export_view_settings_t12pan_failbackE"><code class="docutils literal notranslate"><span class="pre">pan_failback</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#_CPPv428cuvis_export_tiff_settings_t"><code class="docutils literal notranslate"><span class="pre">cuvis_export_tiff_settings_t</span></code></a><ul>
@@ -382,6 +380,24 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__calib_1gac2b147a52e78be2e3762e8b3d5258908"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_calib_copy_handle</span> <span class="pre">(CUVIS_CALIB</span> <span class="pre">i_calibration,</span> <span class="pre">CUVIS_CALIB</span> <span class="pre">*o_pCalibration)</span></span></dt>
+<dd><p>Creates an additional calibration handle. </p>
+<p>Creates an additional handle that points to the same instance as the supplied handle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_calibration</strong> – <strong>[in]</strong> The handle of the calibration to copy </p></li>
+<li><p><strong>o_pCalibration</strong> – <strong>[out]</strong> The new handle of the calibration. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> if the calibration handle could be doubled </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__calib_1ga5dab63eb810fa988d1fbe68ce982d9f0"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_calib_create_from_path</span> <span class="pre">(const</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">*i_factoryDir,</span> <span class="pre">CUVIS_CALIB</span> <span class="pre">*o_pCalibration)</span></span></dt>
 <dd><p>Create a calibration from factory path. </p>
 <p>The calibration is created from a factory path, containing the license and calibration file “init.daq” as well as further calibration files (e.g. SpRad.cu3).</p>
@@ -470,6 +486,43 @@
 </dl>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__calib_1gab7f128eadef6e014c11d921b948192ae"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_calib_get_component_info</span> <span class="pre">(CUVIS_CALIB</span> <span class="pre">i_calib,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_id,</span> <span class="pre">CUVIS_COMPONENT_INFO</span> <span class="pre">*o_pCompInfo)</span></span></dt>
+<dd><p>Get components general info. </p>
+<p>Return general component information about a component build into the acquisition hardware the calibration is made for. This helps identifying the correct component for settings specific component settings (e.g. gain)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_calib</strong> – <strong>[in]</strong> the calibration </p></li>
+<li><p><strong>i_id</strong> – <strong>[in]</strong> the device id (value between 0 and below <a class="reference internal" href="#group__cuvis__acq_1ga03a66ef6671c16be2cd8ebc7fbdad160"><span class="std std-ref">cuvis_acq_cont_get_component_count</span></a>) </p></li>
+<li><p><strong>o_pCompInfo</strong> – <strong>[out]</strong> the component info to be filled </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>cuvis_ok if the info fields could be filled. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__calib_1gabed2ce89b3e0afac1d893a917ea04489"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_calib_get_component_count</span> <span class="pre">(CUVIS_CALIB</span> <span class="pre">i_calib,</span> <span class="pre">CUVIS_INT</span> <span class="pre">*o_pCount)</span></span></dt>
+<dd><p>Get the number of components. </p>
+<p>The acquisition hardware is build from one or more components. Get the component count. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_calib</strong> – <strong>[in]</strong> the calibration </p></li>
+<li><p><strong>o_pCount</strong> – <strong>[out]</strong> the number of components is written here </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>cuvis_ok if the number of components could be set </p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 </dd></dl>
 
@@ -482,6 +535,24 @@
 <dd><p>How to interact with the Measurements taken by the SDK. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__mesu_1gaabd0d6b252996e7bb4fd0f7013ffd0f9"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_measurement_copy_handle</span> <span class="pre">(CUVIS_MESU</span> <span class="pre">i_mesu,</span> <span class="pre">CUVIS_MESU</span> <span class="pre">*o_pMesu)</span></span></dt>
+<dd><p>Creates an additional measurement handle. </p>
+<p>Creates an additional handle that points to the same instance as the supplied handle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_mesu</strong> – <strong>[in]</strong> The handle of the measurement to copy </p></li>
+<li><p><strong>o_pMesu</strong> – <strong>[out]</strong> The new handle of the measurement. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> if the measurement handle could be doubled </p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__mesu_1ga1750ee4b61354f7d28d57b612ed24327"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_measurement_load</span> <span class="pre">(const</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">*i_path,</span> <span class="pre">CUVIS_MESU</span> <span class="pre">*o_pMesu)</span></span></dt>
@@ -787,6 +858,24 @@
 <dd><p>The main file format of the SDK. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__session_1ga246e959c429baf4ceff96764c670a2bb"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_session_file_copy_handle</span> <span class="pre">(CUVIS_SESSION_FILE</span> <span class="pre">i_sess,</span> <span class="pre">CUVIS_SESSION_FILE</span> <span class="pre">*o_pSess)</span></span></dt>
+<dd><p>Creates an additional session file handle. </p>
+<p>Creates an additional handle that points to the same instance as the supplied handle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_sess</strong> – <strong>[in]</strong> The handle of the session file to copy </p></li>
+<li><p><strong>o_pSess</strong> – <strong>[out]</strong> The new handle of the session file. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> if the session file handle could be doubled </p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__session_1ga9d470ba12611e6b5112a5d7d991c8228"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_session_file_load</span> <span class="pre">(const</span> <span class="pre">CUVIS_CHAR</span> <span class="pre">*i_path,</span> <span class="pre">CUVIS_SESSION_FILE</span> <span class="pre">*o_pSess)</span></span></dt>
@@ -1443,6 +1532,24 @@ Example:</p>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__acq_1gab97775a8e54bb071a71594bc362a6a33"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_copy_handle</span> <span class="pre">(CUVIS_ACQ_CONT</span> <span class="pre">i_acqCont,</span> <span class="pre">CUVIS_ACQ_CONT</span> <span class="pre">*o_pAcqCont)</span></span></dt>
+<dd><p>Creates an additional acquisition context handle. </p>
+<p>Creates an additional handle that points to the same instance as the supplied handle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_acqCont</strong> – <strong>[in]</strong> The handle of the acquisition context to copy </p></li>
+<li><p><strong>o_pAcqCont</strong> – <strong>[out]</strong> The new handle of the acquisition context. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> if the acquisition context handle could be doubled </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__acq_1ga345474f005bc96e7460567ee368ffe25"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_acq_cont_create_from_calib</span> <span class="pre">(CUVIS_CALIB</span> <span class="pre">i_calib,</span> <span class="pre">CUVIS_ACQ_CONT</span> <span class="pre">*o_pAcqCont)</span></span></dt>
 <dd><p>Load a acquisition context from a given calibration. </p>
 <p>Load the acquisition context from the calibration. This will load the hardware and initialize it. Do not load multiple instances of the came calibration / camera.</p>
@@ -1847,33 +1954,6 @@ Example:</p>
 <span id="_CPPv338cuvis_acq_cont_auto_exp_comp_set_async7int32_tP7int32_td"></span><span id="_CPPv238cuvis_acq_cont_auto_exp_comp_set_async7int32_tP7int32_td"></span><span id="cuvis_acq_cont_auto_exp_comp_set_async__int32_t.int32_tP.double"></span><span class="target" id="group__cuvis__acq_1ga5ca880ae1d97483365b879c3d6465996"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_auto_exp_comp_set_async</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pAsyncResult</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv438cuvis_acq_cont_auto_exp_comp_set_async7int32_tP7int32_td" title="Link to this definition"></a><br /></dt>
 <dd><p>set cuvis_acq_cont_auto_exp_comp asynchronously. </p>
 <p><p>Unit: “set auto exposure compensation”</p>
-<p>Use</p>
-<a class="reference internal" href="#group__cuvis__async_1ga46a8396e205c046e1e081d9a5ab3c71c"><span class="std std-ref">cuvis_async_call_get</span></a> to sync again </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv426cuvis_acq_cont_binning_get7int32_tP7int32_t">
-<span id="_CPPv326cuvis_acq_cont_binning_get7int32_tP7int32_t"></span><span id="_CPPv226cuvis_acq_cont_binning_get7int32_tP7int32_t"></span><span id="cuvis_acq_cont_binning_get__int32_t.int32_tP"></span><span class="target" id="group__cuvis__acq_1ga0d5fb0e2a85c0e5702739aed733bd124"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_binning_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pvalue</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426cuvis_acq_cont_binning_get7int32_tP7int32_t" title="Link to this definition"></a><br /></dt>
-<dd><p>Get cuvis_acq_cont_binning function. </p>
-<p><p>Details: “0 = disable, 1 = enable”</p>
-<p>Result is written to o_pvalue</p>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv426cuvis_acq_cont_binning_set7int32_t7int32_t">
-<span id="_CPPv326cuvis_acq_cont_binning_set7int32_t7int32_t"></span><span id="_CPPv226cuvis_acq_cont_binning_set7int32_t7int32_t"></span><span id="cuvis_acq_cont_binning_set__int32_t.int32_t"></span><span class="target" id="group__cuvis__acq_1ga2b36389a033f9365af362c042675b1c2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_binning_set</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426cuvis_acq_cont_binning_set7int32_t7int32_t" title="Link to this definition"></a><br /></dt>
-<dd><p>set cuvis_acq_cont_binning . </p>
-<p><p>Unit: “0 = disable, 1 = enable”</p>
-<p>Block until done or failed</p>
-</p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv432cuvis_acq_cont_binning_set_async7int32_tP7int32_t7int32_t">
-<span id="_CPPv332cuvis_acq_cont_binning_set_async7int32_tP7int32_t7int32_t"></span><span id="_CPPv232cuvis_acq_cont_binning_set_async7int32_tP7int32_t7int32_t"></span><span id="cuvis_acq_cont_binning_set_async__int32_t.int32_tP.int32_t"></span><span class="target" id="group__cuvis__acq_1ga7d5bb917ade8e4a321c7ace64961127b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414cuvis_status_t" title="cuvis_status_t"><span class="n"><span class="pre">cuvis_status_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cuvis_acq_cont_binning_set_async</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i_acqCont</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">o_pAsyncResult</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432cuvis_acq_cont_binning_set_async7int32_tP7int32_t7int32_t" title="Link to this definition"></a><br /></dt>
-<dd><p>set cuvis_acq_cont_binning asynchronously. </p>
-<p><p>Unit: “0 = disable, 1 = enable”</p>
 <p>Use</p>
 <a class="reference internal" href="#group__cuvis__async_1ga46a8396e205c046e1e081d9a5ab3c71c"><span class="std std-ref">cuvis_async_call_get</span></a> to sync again </p>
 </dd></dl>
@@ -2482,6 +2562,12 @@ This behaviour is a compromise between keeping the seuqence in order and at the 
 <p>See userplugin manual. </p>
 </dd></dl>
 
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N28cuvis_export_view_settings_t12pan_failbackE">
+<span id="_CPPv3N28cuvis_export_view_settings_t12pan_failbackE"></span><span id="_CPPv2N28cuvis_export_view_settings_t12pan_failbackE"></span><span id="cuvis_export_view_settings_t::pan_failback__CUVIS_INT"></span><span class="target" id="structcuvis__export__view__settings__t_1ab31820405e04cf5e800015e81c8cefa1"></span><span class="n"><span class="pre">CUVIS_INT</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pan_failback</span></span></span><a class="headerlink" href="#_CPPv4N28cuvis_export_view_settings_t12pan_failbackE" title="Link to this definition"></a><br /></dt>
+<dd><p>failback to pan image if cube is not available </p>
+</dd></dl>
+
 </div>
 </dd></dl>
 
@@ -2579,6 +2665,24 @@ This behaviour is a compromise between keeping the seuqence in order and at the 
 <dd><p>Processing Images with the SDK. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__proc_1ga5e05f01deee882101ee089afdcfaf91b"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_proc_cont_copy_handle</span> <span class="pre">(CUVIS_PROC_CONT</span> <span class="pre">i_procCont,</span> <span class="pre">CUVIS_PROC_CONT</span> <span class="pre">*o_pProcCont)</span></span></dt>
+<dd><p>Creates an additional processing context handle. </p>
+<p>Creates an additional handle that points to the same instance as the supplied handle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_procCont</strong> – <strong>[in]</strong> The handle of the processing context to copy </p></li>
+<li><p><strong>o_pProcCont</strong> – <strong>[out]</strong> The new handle of the processing context. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> if the processing context handle could be doubled </p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__proc_1ga96ddd0a000f2f5f452ecb9e6ac70c01c"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_proc_cont_create_from_calib</span> <span class="pre">(CUVIS_CALIB</span> <span class="pre">i_calib,</span> <span class="pre">CUVIS_PROC_CONT</span> <span class="pre">*o_pProcCont)</span></span></dt>
@@ -2842,6 +2946,24 @@ This behaviour is a compromise between keeping the seuqence in order and at the 
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
+<span class="target" id="group__cuvis__viewer_1gaae72f7dda2c3499dea292f20a27d7712"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_viewer_copy_handle</span> <span class="pre">(CUVIS_VIEWER</span> <span class="pre">i_viewer,</span> <span class="pre">CUVIS_VIEWER</span> <span class="pre">*o_pViewer)</span></span></dt>
+<dd><p>Creates an additional viewer handle. </p>
+<p>Creates an additional handle that points to the same instance as the supplied handle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i_viewer</strong> – <strong>[in]</strong> The handle of the viewer to copy </p></li>
+<li><p><strong>o_pViewer</strong> – <strong>[out]</strong> The new handle of the viewer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#group__cuvis__returns_1ggaa06c62ba25240f4763da0e590ebf3b9dad52787b0cfb0da2c053a68bcdc54bc6f"><span class="std std-ref">status_ok</span></a> if the viewer handle could be doubled </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__viewer_1gaefdab62389cfc47aabc364a8fe4b55a5"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_viewer_create</span> <span class="pre">(CUVIS_VIEWER</span> <span class="pre">*o_pViewer,</span> <span class="pre">CUVIS_VIEWER_SETTINGS</span> <span class="pre">viewerSettings)</span></span></dt>
 <dd><p>Create a viewer. </p>
 <p>Not to be confused with the view exporter. The viewer returns the view in the memory</p>
@@ -2862,7 +2984,7 @@ This behaviour is a compromise between keeping the seuqence in order and at the 
 <dt class="sig sig-object cpp">
 <span class="target" id="group__cuvis__viewer_1gad734cca465e9fa3d2d43dd88c437fb10"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_viewer_apply</span> <span class="pre">(CUVIS_VIEWER</span> <span class="pre">i_viewer,</span> <span class="pre">CUVIS_MESU</span> <span class="pre">i_mesu,</span> <span class="pre">CUVIS_VIEW</span> <span class="pre">*o_pView)</span></span></dt>
 <dd><p>Generate a view from a measurement. </p>
-<p>The view is processed from a measurement by the viewer. The resulting view handle can be accessed by the <a class="reference internal" href="#group__cuvis__viewer_1gad1a5390d0f5f37b2aeb999614446106e"><span class="std std-ref">cuvis_view_get_data_count</span></a> to get number of elements, <a class="reference internal" href="#group__cuvis__viewer_1ga4decb305c6bc12c6a134157559329ca4"><span class="std std-ref">cuvis_view_get_data</span></a> to get a single date element and <a class="reference internal" href="#group__cuvis__viewer_1ga2f458a19c7fcc4000b3890ff7f1b2558"><span class="std std-ref">cuvis_view_free</span></a> to release the view (this must always be called)</p>
+<p>The view is processed from a measurement by the viewer. The resulting view handle can be accessed by the <a class="reference internal" href="#group__cuvis__viewer_1ga8bc5efb8826289c447dfa49c167ed133"><span class="std std-ref">cuvis_view_get_data_count</span></a> to get number of elements, <a class="reference internal" href="#group__cuvis__viewer_1ga61f38b6fef05af6f48686b857fafcc19"><span class="std std-ref">cuvis_view_get_data</span></a> to get a single date element and <a class="reference internal" href="#group__cuvis__viewer_1ga2f458a19c7fcc4000b3890ff7f1b2558"><span class="std std-ref">cuvis_view_free</span></a> to release the view (this must always be called)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -2893,7 +3015,7 @@ This behaviour is a compromise between keeping the seuqence in order and at the 
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__viewer_1gad1a5390d0f5f37b2aeb999614446106e"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_view_get_data_count</span> <span class="pre">(CUVIS_MESU</span> <span class="pre">i_view,</span> <span class="pre">CUVIS_INT</span> <span class="pre">*o_pCount)</span></span></dt>
+<span class="target" id="group__cuvis__viewer_1ga8bc5efb8826289c447dfa49c167ed133"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_view_get_data_count</span> <span class="pre">(CUVIS_VIEW</span> <span class="pre">i_view,</span> <span class="pre">CUVIS_INT</span> <span class="pre">*o_pCount)</span></span></dt>
 <dd><p>retrieves the number of view data elements </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2907,7 +3029,7 @@ This behaviour is a compromise between keeping the seuqence in order and at the 
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="group__cuvis__viewer_1ga4decb305c6bc12c6a134157559329ca4"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_view_get_data</span> <span class="pre">(CUVIS_MESU</span> <span class="pre">i_view,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_index,</span> <span class="pre">CUVIS_VIEW_DATA</span> <span class="pre">*o_pData)</span></span></dt>
+<span class="target" id="group__cuvis__viewer_1ga61f38b6fef05af6f48686b857fafcc19"></span><span class="sig-name descname"><span class="pre">SDK_CAPI</span> <span class="pre">CUVIS_STATUS</span> <span class="pre">SDK_CCALL</span> <span class="pre">cuvis_view_get_data</span> <span class="pre">(CUVIS_VIEW</span> <span class="pre">i_view,</span> <span class="pre">CUVIS_INT</span> <span class="pre">i_index,</span> <span class="pre">CUVIS_VIEW_DATA</span> <span class="pre">*o_pData)</span></span></dt>
 <dd><p>Obtain data from view. </p>
 <p>The data contains the actual view</p>
 <dl class="field-list simple">

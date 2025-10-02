@@ -169,12 +169,6 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.bandwidth">bandwidth (cuvis.AcquisitionContext.AcquisitionContext property)</a>
 </li>
-      <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.binning">binning (cuvis.AcquisitionContext.AcquisitionContext property)</a>
-
-      <ul>
-        <li><a href="pythonwrapper.html#cuvis.cuvis_aux.SensorInfo.binning">(cuvis.cuvis_aux.SensorInfo attribute)</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pythonwrapper.html#cuvis.cuvis_aux.Bitset">Bitset (class in cuvis.cuvis_aux)</a>
@@ -243,7 +237,7 @@
 </li>
       <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.component_count">component_count (cuvis.AcquisitionContext.AcquisitionContext property)</a>
 </li>
-      <li><a href="pythonwrapper.html#cuvis.General.ComponentInfo">ComponentInfo (class in cuvis.General)</a>
+      <li><a href="pythonwrapper.html#cuvis.cuvis_aux.ComponentInfo">ComponentInfo (class in cuvis.cuvis_aux)</a>
 </li>
       <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.components">components() (cuvis.AcquisitionContext.AcquisitionContext method)</a>
 </li>
@@ -252,6 +246,14 @@
       <li><a href="pythonwrapper.html#cuvis.FileWriteSettings.TiffExportSettings.compression_mode">compression_mode (cuvis.FileWriteSettings.TiffExportSettings attribute)</a>
 </li>
       <li><a href="pythonwrapper.html#cuvis.Measurement.Measurement.cube">cube (cuvis.Measurement.Measurement property)</a>
+</li>
+      <li><a href="pythonwrapper.html#cuvis.cuvis_aux.CalibrationInfo.cube_channels">cube_channels (cuvis.cuvis_aux.CalibrationInfo attribute)</a>
+</li>
+      <li><a href="pythonwrapper.html#cuvis.cuvis_aux.CalibrationInfo.cube_height">cube_height (cuvis.cuvis_aux.CalibrationInfo attribute)</a>
+</li>
+      <li><a href="pythonwrapper.html#cuvis.cuvis_aux.CalibrationInfo.cube_wavelengths">cube_wavelengths (cuvis.cuvis_aux.CalibrationInfo attribute)</a>
+</li>
+      <li><a href="pythonwrapper.html#cuvis.cuvis_aux.CalibrationInfo.cube_width">cube_width (cuvis.cuvis_aux.CalibrationInfo attribute)</a>
 </li>
       <li><a href="pythonwrapper.html#cuvis.Export.CubeExporter">CubeExporter (class in cuvis.Export)</a>
 </li>
@@ -354,7 +356,7 @@
       </ul></li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis18AcquisitionContextE">cuvis::AcquisitionContext (C++ class)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4N5cuvis18AcquisitionContext18AcquisitionContextERK11Calibration">cuvis::AcquisitionContext::AcquisitionContext (C++ function)</a>, <a href="cppwrapper.html#_CPPv4N5cuvis18AcquisitionContext18AcquisitionContextERK11SessionFileb">[1]</a>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis18AcquisitionContext18AcquisitionContextE14CUVIS_ACQ_CONT">cuvis::AcquisitionContext::AcquisitionContext (C++ function)</a>, <a href="cppwrapper.html#_CPPv4N5cuvis18AcquisitionContext18AcquisitionContextERK11Calibration">[1]</a>, <a href="cppwrapper.html#_CPPv4N5cuvis18AcquisitionContext18AcquisitionContextERK11SessionFileb">[2]</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis18AcquisitionContext7captureEv">cuvis::AcquisitionContext::capture (C++ function)</a>
 </li>
@@ -375,8 +377,6 @@
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext11get_averageEv">cuvis::AcquisitionContext::get_average (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext13get_bandwidthE6size_t">cuvis::AcquisitionContext::get_bandwidth (C++ function)</a>, <a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext13get_bandwidthEv">[1]</a>
-</li>
-      <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext11get_binningEv">cuvis::AcquisitionContext::get_binning (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext37get_component_available_pixel_formatsE5int_t">cuvis::AcquisitionContext::get_component_available_pixel_formats (C++ function)</a>
 </li>
@@ -399,6 +399,8 @@
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext7get_fpsEv">cuvis::AcquisitionContext::get_fps (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext10get_handleEv">cuvis::AcquisitionContext::get_handle (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext15get_handle_copyEv">cuvis::AcquisitionContext::get_handle_copy (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext23get_hardware_queue_sizeE6size_t">cuvis::AcquisitionContext::get_hardware_queue_size (C++ function)</a>
 </li>
@@ -436,8 +438,6 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext11set_averageEi">cuvis::AcquisitionContext::set_average (C++ function)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext11set_binningEb">cuvis::AcquisitionContext::set_binning (C++ function)</a>
-</li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext18set_component_gainE6size_td">cuvis::AcquisitionContext::set_component_gain (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis18AcquisitionContext37set_component_integration_time_factorE6size_td">cuvis::AcquisitionContext::set_component_integration_time_factor (C++ function)</a>
@@ -470,9 +470,17 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis11CalibrationE">cuvis::Calibration (C++ class)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4N5cuvis11Calibration11CalibrationERK11SessionFile">cuvis::Calibration::Calibration (C++ function)</a>, <a href="cppwrapper.html#_CPPv4N5cuvis11Calibration11CalibrationERKNSt10filesystem4pathE">[1]</a>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis11Calibration11CalibrationE11CUVIS_CALIB">cuvis::Calibration::Calibration (C++ function)</a>, <a href="cppwrapper.html#_CPPv4N5cuvis11Calibration11CalibrationERK11SessionFile">[1]</a>, <a href="cppwrapper.html#_CPPv4N5cuvis11Calibration11CalibrationERKNSt10filesystem4pathE">[2]</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Calibration16get_capabilitiesE20CUVIS_OPERATION_MODE">cuvis::Calibration::get_capabilities (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Calibration19get_component_countEv">cuvis::Calibration::get_component_count (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Calibration18get_component_infoE5int_t">cuvis::Calibration::get_component_info (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Calibration10get_handleEv">cuvis::Calibration::get_handle (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Calibration15get_handle_copyEv">cuvis::Calibration::get_handle_copy (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Calibration6get_idEv">cuvis::Calibration::get_id (C++ function)</a>
 </li>
@@ -490,7 +498,7 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis7GeneralE">cuvis::General (C++ class)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4N5cuvis7General4initERKNSt6stringEi">cuvis::General::init (C++ function)</a>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis7General4initERKNSt6stringEiNSt6stringE">cuvis::General::init (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis7General23register_event_callbackE20cpp_event_callback_t5int_t">cuvis::General::register_event_callback (C++ function)</a>
 </li>
@@ -524,6 +532,10 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Measurement7get_gpsEv">cuvis::Measurement::get_gps (C++ function)</a>
 </li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Measurement10get_handleEv">cuvis::Measurement::get_handle (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Measurement15get_handle_copyEv">cuvis::Measurement::get_handle_copy (C++ function)</a>
+</li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Measurement10get_imdataEv">cuvis::Measurement::get_imdata (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11Measurement8get_metaEv">cuvis::Measurement::get_meta (C++ function)</a>
@@ -540,7 +552,7 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis11Measurement15image_variant_tE">cuvis::Measurement::image_variant_t (C++ type)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4N5cuvis11Measurement11MeasurementERK11Measurement">cuvis::Measurement::Measurement (C++ function)</a>, <a href="cppwrapper.html#_CPPv4N5cuvis11Measurement11MeasurementERKNSt10filesystem4pathE">[1]</a>, <a href="cppwrapper.html#_CPPv4N5cuvis11Measurement11MeasurementERR11Measurement">[2]</a>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis11Measurement11MeasurementE10CUVIS_MESU">cuvis::Measurement::Measurement (C++ function)</a>, <a href="cppwrapper.html#_CPPv4N5cuvis11Measurement11MeasurementERK11Measurement">[1]</a>, <a href="cppwrapper.html#_CPPv4N5cuvis11Measurement11MeasurementERKNSt10filesystem4pathE">[2]</a>, <a href="cppwrapper.html#_CPPv4N5cuvis11Measurement11MeasurementERR11Measurement">[3]</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis11MeasurementaSERK11Measurement">cuvis::Measurement::operator= (C++ function)</a>
 </li>
@@ -566,17 +578,21 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis17ProcessingContext12get_calib_idEv">cuvis::ProcessingContext::get_calib_id (C++ function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis17ProcessingContext10get_handleEv">cuvis::ProcessingContext::get_handle (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis17ProcessingContext15get_handle_copyEv">cuvis::ProcessingContext::get_handle_copy (C++ function)</a>
+</li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis17ProcessingContext18get_processingArgsEv">cuvis::ProcessingContext::get_processingArgs (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis17ProcessingContext13get_referenceE16reference_type_t">cuvis::ProcessingContext::get_reference (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis17ProcessingContext13has_referenceE16reference_type_t">cuvis::ProcessingContext::has_reference (C++ function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis17ProcessingContext10is_capableERK11MeasurementRK14ProcessingArgs">cuvis::ProcessingContext::is_capable (C++ function)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4N5cuvis17ProcessingContext17ProcessingContextERK11Calibration">cuvis::ProcessingContext::ProcessingContext (C++ function)</a>, <a href="cppwrapper.html#_CPPv4N5cuvis17ProcessingContext17ProcessingContextERK11Measurement">[1]</a>, <a href="cppwrapper.html#_CPPv4N5cuvis17ProcessingContext17ProcessingContextERK11SessionFile">[2]</a>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis17ProcessingContext17ProcessingContextE15CUVIS_PROC_CONT">cuvis::ProcessingContext::ProcessingContext (C++ function)</a>, <a href="cppwrapper.html#_CPPv4N5cuvis17ProcessingContext17ProcessingContextERK11Calibration">[1]</a>, <a href="cppwrapper.html#_CPPv4N5cuvis17ProcessingContext17ProcessingContextERK11Measurement">[2]</a>, <a href="cppwrapper.html#_CPPv4N5cuvis17ProcessingContext17ProcessingContextERK11SessionFile">[3]</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis17ProcessingContext18set_processingArgsERK14ProcessingArgs">cuvis::ProcessingContext::set_processingArgs (C++ function)</a>
 </li>
@@ -585,6 +601,10 @@
       <li><a href="cppwrapper.html#_CPPv4N5cuvis11SessionFileE">cuvis::SessionFile (C++ class)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11SessionFile7get_fpsEv">cuvis::SessionFile::get_fps (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis11SessionFile10get_handleEv">cuvis::SessionFile::get_handle (C++ function)</a>
+</li>
+      <li><a href="cppwrapper.html#_CPPv4NK5cuvis11SessionFile15get_handle_copyEv">cuvis::SessionFile::get_handle_copy (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11SessionFile8get_hashEv">cuvis::SessionFile::get_hash (C++ function)</a>
 </li>
@@ -598,7 +618,7 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4NK5cuvis11SessionFile13get_thumbnailEv">cuvis::SessionFile::get_thumbnail (C++ function)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4N5cuvis11SessionFile11SessionFileERKNSt10filesystem4pathE">cuvis::SessionFile::SessionFile (C++ function)</a>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis11SessionFile11SessionFileE18CUVIS_SESSION_FILE">cuvis::SessionFile::SessionFile (C++ function)</a>, <a href="cppwrapper.html#_CPPv4N5cuvis11SessionFile11SessionFileERKNSt10filesystem4pathE">[1]</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis6WorkerE">cuvis::Worker (C++ class)</a>
 </li>
@@ -638,7 +658,7 @@
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker22query_session_progressEv">cuvis::Worker::query_session_progress (C++ function)</a>
 </li>
-      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker24register_worker_callbackE17worker_callback_tj">cuvis::Worker::register_worker_callback (C++ function)</a>
+      <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker24register_worker_callbackE17worker_callback_tj6size_t">cuvis::Worker::register_worker_callback (C++ function)</a>
 </li>
       <li><a href="cppwrapper.html#_CPPv4N5cuvis6Worker21reset_worker_callbackEv">cuvis::Worker::reset_worker_callback (C++ function)</a>
 </li>
@@ -701,12 +721,6 @@
       <li><a href="cwrapper.html#_CPPv432cuvis_acq_cont_average_set_async7int32_tP7int32_t7int32_t">cuvis_acq_cont_average_set_async (C++ function)</a>
 </li>
       <li><a href="cwrapper.html#_CPPv428cuvis_acq_cont_bandwidth_get7int32_tP7int32_t">cuvis_acq_cont_bandwidth_get (C++ function)</a>
-</li>
-      <li><a href="cwrapper.html#_CPPv426cuvis_acq_cont_binning_get7int32_tP7int32_t">cuvis_acq_cont_binning_get (C++ function)</a>
-</li>
-      <li><a href="cwrapper.html#_CPPv426cuvis_acq_cont_binning_set7int32_t7int32_t">cuvis_acq_cont_binning_set (C++ function)</a>
-</li>
-      <li><a href="cwrapper.html#_CPPv432cuvis_acq_cont_binning_set_async7int32_tP7int32_t7int32_t">cuvis_acq_cont_binning_set_async (C++ function)</a>
 </li>
       <li><a href="cwrapper.html#_CPPv429cuvis_acq_cont_continuous_set7int32_t7int32_t">cuvis_acq_cont_continuous_set (C++ function)</a>
 </li>
@@ -791,6 +805,8 @@
       <li><a href="cwrapper.html#_CPPv4N28cuvis_export_tiff_settings_t6formatE">cuvis_export_tiff_settings_t::format (C++ member)</a>
 </li>
       <li><a href="cwrapper.html#_CPPv428cuvis_export_view_settings_t">cuvis_export_view_settings_t (C++ struct)</a>
+</li>
+      <li><a href="cwrapper.html#_CPPv4N28cuvis_export_view_settings_t12pan_failbackE">cuvis_export_view_settings_t::pan_failback (C++ member)</a>
 </li>
       <li><a href="cwrapper.html#_CPPv4N28cuvis_export_view_settings_t10userpluginE">cuvis_export_view_settings_t::userplugin (C++ member)</a>
 </li>
@@ -946,7 +962,7 @@
 </li>
       <li><a href="pythonwrapper.html#cuvis.cuvis_types.AsyncResult.deferred">deferred (cuvis.cuvis_types.AsyncResult attribute)</a>
 </li>
-      <li><a href="pythonwrapper.html#cuvis.General.ComponentInfo.display_name">display_name (cuvis.General.ComponentInfo attribute)</a>
+      <li><a href="pythonwrapper.html#cuvis.cuvis_aux.ComponentInfo.display_name">display_name (cuvis.cuvis_aux.ComponentInfo attribute)</a>
 </li>
       <li><a href="pythonwrapper.html#cuvis.cuvis_types.ReferenceType.Distance">Distance (cuvis.cuvis_types.ReferenceType attribute)</a>
 </li>
@@ -1101,6 +1117,8 @@
       <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.integration_time">integration_time (cuvis.AcquisitionContext.AcquisitionContext property)</a>
 
       <ul>
+        <li><a href="pythonwrapper.html#cuvis.cuvis_aux.SensorInfo.integration_time">(cuvis.cuvis_aux.SensorInfo attribute)</a>
+</li>
         <li><a href="pythonwrapper.html#cuvis.Measurement.Measurement.integration_time">(cuvis.Measurement.Measurement property)</a>
 </li>
       </ul></li>
@@ -1257,6 +1275,12 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pythonwrapper.html#cuvis.FileWriteSettings.ViewerSettings.pan_failback">pan_failback (cuvis.FileWriteSettings.ViewerSettings attribute)</a>
+
+      <ul>
+        <li><a href="pythonwrapper.html#cuvis.FileWriteSettings.ViewExportSettings.pan_failback">(cuvis.FileWriteSettings.ViewExportSettings attribute)</a>
+</li>
+      </ul></li>
       <li><a href="pythonwrapper.html#cuvis.FileWriteSettings.GeneralExportSettings.pan_scale">pan_scale (cuvis.FileWriteSettings.GeneralExportSettings attribute)</a>
 
       <ul>
@@ -1285,16 +1309,16 @@
 </li>
       <li><a href="pythonwrapper.html#cuvis.FileWriteSettings.GeneralExportSettings.permissive">permissive (cuvis.FileWriteSettings.GeneralExportSettings attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.Component.pixel_format">pixel_format (cuvis.AcquisitionContext.Component property)</a>
 
       <ul>
+        <li><a href="pythonwrapper.html#cuvis.cuvis_aux.ComponentInfo.pixel_format">(cuvis.cuvis_aux.ComponentInfo attribute)</a>
+</li>
         <li><a href="pythonwrapper.html#cuvis.cuvis_aux.SensorInfo.pixel_format">(cuvis.cuvis_aux.SensorInfo attribute)</a>
 </li>
-        <li><a href="pythonwrapper.html#cuvis.General.ComponentInfo.pixel_format">(cuvis.General.ComponentInfo attribute)</a>
-</li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pythonwrapper.html#cuvis.FileWriteSettings.GeneralExportSettings.pre_pan_sharpen_cube">pre_pan_sharpen_cube (cuvis.FileWriteSettings.GeneralExportSettings attribute)</a>
 
       <ul>
@@ -1391,7 +1415,7 @@
 </li>
       <li><a href="pythonwrapper.html#cuvis.cuvis_aux.SDKException">SDKException</a>
 </li>
-      <li><a href="pythonwrapper.html#cuvis.General.ComponentInfo.sensor_info">sensor_info (cuvis.General.ComponentInfo attribute)</a>
+      <li><a href="pythonwrapper.html#cuvis.cuvis_aux.ComponentInfo.sensor_info">sensor_info (cuvis.cuvis_aux.ComponentInfo attribute)</a>
 </li>
       <li><a href="pythonwrapper.html#cuvis.cuvis_aux.SensorInfo">SensorInfo (class in cuvis.cuvis_aux)</a>
 </li>
@@ -1425,16 +1449,14 @@
 </li>
       <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_average_async">set_average_async() (cuvis.AcquisitionContext.AcquisitionContext method)</a>
 </li>
-      <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_binning_async">set_binning_async() (cuvis.AcquisitionContext.AcquisitionContext method)</a>
-</li>
       <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_continuous">set_continuous() (cuvis.AcquisitionContext.AcquisitionContext method)</a>
 </li>
       <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_continuous_async">set_continuous_async() (cuvis.AcquisitionContext.AcquisitionContext method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pythonwrapper.html#cuvis.Worker.Worker.set_exporter">set_exporter() (cuvis.Worker.Worker method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_fps_async">set_fps_async() (cuvis.AcquisitionContext.AcquisitionContext method)</a>
 </li>
       <li><a href="pythonwrapper.html#cuvis.AcquisitionContext.AcquisitionContext.set_integration_time_async">set_integration_time_async() (cuvis.AcquisitionContext.AcquisitionContext method)</a>
@@ -1517,7 +1539,7 @@
 </li>
       <li><a href="pythonwrapper.html#cuvis.cuvis_types.AsyncResult.timeout">timeout (cuvis.cuvis_types.AsyncResult attribute)</a>
 </li>
-      <li><a href="pythonwrapper.html#cuvis.General.ComponentInfo.type">type (cuvis.General.ComponentInfo attribute)</a>
+      <li><a href="pythonwrapper.html#cuvis.cuvis_aux.ComponentInfo.type">type (cuvis.cuvis_aux.ComponentInfo attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1531,7 +1553,7 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pythonwrapper.html#cuvis.General.ComponentInfo.user_field">user_field (cuvis.General.ComponentInfo attribute)</a>
+      <li><a href="pythonwrapper.html#cuvis.cuvis_aux.ComponentInfo.user_field">user_field (cuvis.cuvis_aux.ComponentInfo attribute)</a>
 </li>
       <li><a href="pythonwrapper.html#cuvis.FileWriteSettings.ViewerSettings.userplugin">userplugin (cuvis.FileWriteSettings.ViewerSettings property)</a>
 

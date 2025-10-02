@@ -118,7 +118,7 @@
         <span class="k">return</span> <span class="n">ge</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ge</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ge</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_export_general_settings_t</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">export_dir</span><span class="o">=</span><span class="n">ge</span><span class="o">.</span><span class="n">export_dir</span><span class="p">,</span>
                    <span class="n">channel_selection</span><span class="o">=</span><span class="n">ge</span><span class="o">.</span><span class="n">channel_selection</span><span class="p">,</span>
                    <span class="n">spectra_multiplier</span><span class="o">=</span><span class="n">ge</span><span class="o">.</span><span class="n">spectra_multiplier</span><span class="p">,</span>
@@ -144,7 +144,8 @@
         <span class="k">return</span> <span class="n">ge</span><span class="p">,</span> <span class="n">es</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ge</span><span class="p">,</span> <span class="n">es</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span>
+                       <span class="n">ge</span><span class="p">:</span>  <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_export_general_settings_t</span><span class="p">,</span> <span class="n">es</span><span class="p">):</span>
         <span class="n">ge</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_from_internal</span><span class="p">(</span><span class="n">ge</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">ge</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span></div>
 
@@ -166,7 +167,9 @@
         <span class="k">return</span> <span class="n">ge</span><span class="p">,</span> <span class="n">ts</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ge</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span>
+                       <span class="n">ge</span><span class="p">:</span>  <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_export_general_settings_t</span><span class="p">,</span>
+                       <span class="n">ts</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_export_tiff_settings_t</span><span class="p">):</span>
         <span class="n">ge</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_from_internal</span><span class="p">(</span><span class="n">ge</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">ge</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span>
                    <span class="n">compression_mode</span><span class="o">=</span><span class="n">internal</span><span class="o">.</span><span class="n">__TiffCompressionMode__</span><span class="p">[</span>
@@ -180,6 +183,7 @@
 <span class="nd">@dataclass</span><span class="p">(</span><span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">ViewExportSettings</span><span class="p">(</span><span class="n">GeneralExportSettings</span><span class="p">):</span>
     <span class="n">userplugin</span><span class="p">:</span> <span class="n">InitVar</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">pan_failback</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">userplugin</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">userplugin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -216,13 +220,16 @@
         <span class="n">ge</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_get_internal</span><span class="p">()</span>
         <span class="n">vs</span> <span class="o">=</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_export_view_settings_t</span><span class="p">()</span>
         <span class="n">vs</span><span class="o">.</span><span class="n">userplugin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">userplugin</span>
+        <span class="n">vs</span><span class="o">.</span><span class="n">pan_failback</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pan_failback</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ge</span><span class="p">,</span> <span class="n">vs</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ge</span><span class="p">,</span> <span class="n">vs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span>
+                       <span class="n">ge</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_export_general_settings_t</span><span class="p">,</span>
+                       <span class="n">vs</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_viewer_settings_t</span><span class="p">):</span>
         <span class="n">ge</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_from_internal</span><span class="p">(</span><span class="n">ge</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">ge</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span>
-                   <span class="n">userplugin</span><span class="o">=</span><span class="n">vs</span><span class="o">.</span><span class="n">userplugin</span><span class="p">)</span></div>
+                   <span class="n">userplugin</span><span class="o">=</span><span class="n">vs</span><span class="o">.</span><span class="n">userplugin</span><span class="p">,</span> <span class="n">pan_failback</span><span class="o">=</span><span class="n">vs</span><span class="o">.</span><span class="n">pan_failback</span><span class="p">)</span></div>
 
 
 
@@ -260,7 +267,9 @@
         <span class="k">return</span> <span class="n">ge</span><span class="p">,</span> <span class="n">sa</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ge</span><span class="p">,</span> <span class="n">sa</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span>
+                       <span class="n">ge</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_export_general_settings_t</span><span class="p">,</span>
+                       <span class="n">sa</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_save_args_t</span><span class="p">):</span>
         <span class="n">ge</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_from_internal</span><span class="p">(</span><span class="n">ge</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">ge</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span>
                    <span class="n">allow_overwrite</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">sa</span><span class="o">.</span><span class="n">allow_overwrite</span><span class="p">),</span>
@@ -294,7 +303,7 @@
         <span class="k">return</span> <span class="n">pa</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">pa</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_from_internal</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">pa</span><span class="p">:</span> <span class="n">cuvis_il</span><span class="o">.</span><span class="n">cuvis_proc_args_t</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">allow_recalib</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">pa</span><span class="o">.</span><span class="n">allow_recalib</span><span class="p">),</span>
                    <span class="n">processing_mode</span><span class="o">=</span><span class="n">internal</span><span class="o">.</span><span class="n">__ProcessingMode__</span><span class="p">[</span><span class="n">pa</span><span class="o">.</span><span class="n">processing_mode</span><span class="p">])</span></div>
 
@@ -337,6 +346,7 @@
     <span class="n">pre_pan_sharpen_cube</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">complete</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">blend_opacity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">pan_failback</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">userplugin</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">userplugin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -380,6 +390,7 @@
         <span class="n">vs</span><span class="o">.</span><span class="n">pre_pan_sharpen_cube</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre_pan_sharpen_cube</span><span class="p">)</span>
         <span class="n">vs</span><span class="o">.</span><span class="n">complete</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">)</span>
         <span class="n">vs</span><span class="o">.</span><span class="n">blend_opacity</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blend_opacity</span><span class="p">)</span>
+        <span class="n">vs</span><span class="o">.</span><span class="n">pan_failback</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pan_failback</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">vs</span>
 
     <span class="nd">@classmethod</span>
@@ -392,7 +403,8 @@
                        <span class="n">vs</span><span class="o">.</span><span class="n">pan_algorithm</span><span class="p">],</span>
                    <span class="n">pre_pan_sharpen_cube</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">vs</span><span class="o">.</span><span class="n">pre_pan_sharpen_cube</span><span class="p">),</span>
                    <span class="n">complete</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">vs</span><span class="o">.</span><span class="n">complete</span><span class="p">),</span>
-                   <span class="n">blend_opacity</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">vs</span><span class="o">.</span><span class="n">blend_opacity</span><span class="p">))</span></div>
+                   <span class="n">blend_opacity</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">vs</span><span class="o">.</span><span class="n">blend_opacity</span><span class="p">),</span>
+                   <span class="n">pan_failback</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">vs</span><span class="o">.</span><span class="n">pan_failback</span><span class="p">))</span></div>
 
 </pre></div>
 

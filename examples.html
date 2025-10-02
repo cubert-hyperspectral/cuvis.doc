@@ -132,7 +132,7 @@
   <span class="n">printf</span><span class="p">(</span><span class="n">sessionLoc</span><span class="p">);</span>
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">loading user settings...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
-  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">,</span> <span class="n">NULL</span><span class="p">));</span>
   <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_set_log_level</span><span class="p">(</span><span class="n">loglevel_info</span><span class="p">));</span>
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;loading session...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
@@ -507,7 +507,7 @@
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">loading settings... </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
   <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
-  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">,</span> <span class="n">NULL</span><span class="p">));</span>
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;loading sessionfiles... </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
   <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
@@ -1056,7 +1056,7 @@ int main(int argc, char* argv[])
   printf(&quot;\nloading user settings...\n&quot;);
   fflush(stdout);
 
-  CUVIS_CHECK(cuvis_init(userSettingsDir, loglevel_debug));
+  CUVIS_CHECK(cuvis_init(userSettingsDir, loglevel_debug, NULL));
 #ifdef _DEBUG
   CUVIS_CHECK(cuvis_set_log_level(loglevel_debug));
 #else
@@ -1540,7 +1540,7 @@ int main(int argc, char* argv[])
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">loading settings... </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
   <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
-  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">,</span> <span class="n">NULL</span><span class="p">));</span>
 <span class="c1">#ifdef _DEBUG</span>
   <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_set_log_level</span><span class="p">(</span><span class="n">loglevel_debug</span><span class="p">));</span>
 <span class="c1">#else</span>
@@ -1830,12 +1830,34 @@ int main(int argc, char* argv[])
 <span class="c1">#include &lt;stdbool.h&gt;</span>
 <span class="c1">#include &lt;stdio.h&gt;</span>
 <span class="c1">#include &lt;stdlib.h&gt;</span>
+<span class="c1">#include &lt;sys/stat.h&gt;</span>
 
 <span class="c1">#ifdef WIN32</span>
   <span class="c1">#include &lt;Windows.h&gt;</span>
 <span class="c1">#else</span>
   <span class="c1">#include &lt;unistd.h&gt;</span>
 <span class="c1">#endif</span>
+
+<span class="nb">bool</span> <span class="n">is_directory</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">path</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">struct</span> <span class="n">stat</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">stat</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">st_mode</span> <span class="o">&amp;</span> <span class="n">S_IFDIR</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nb">bool</span> <span class="n">is_file</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">path</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">struct</span> <span class="n">stat</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">stat</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">st_mode</span> <span class="o">&amp;</span> <span class="n">S_IFREG</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
+<span class="p">}</span>
+
 
 <span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
 <span class="p">{</span>
@@ -1874,11 +1896,30 @@ int main(int argc, char* argv[])
   <span class="n">CUVIS_PROC_CONT</span> <span class="n">procCont</span><span class="p">;</span>
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;load user settings...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
-  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">,</span> <span class="n">NULL</span><span class="p">));</span>
   <span class="n">cuvis_set_log_level</span><span class="p">(</span><span class="n">loglevel_info</span><span class="p">);</span>
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;load calibration...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
-  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_calib_create_from_path</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">calib</span><span class="p">));</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">is_directory</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">))</span>
+  <span class="p">{</span>
+      <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_calib_create_from_path</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">calib</span><span class="p">));</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_file</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">strstr</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">,</span> <span class="s2">&quot;.cu3c&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;using .cu3c file as calibration instead of factory dir...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+      <span class="n">CUVIS_SESSION_FILE</span> <span class="n">sessionFile</span><span class="p">;</span>
+      <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_session_file_load</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sessionFile</span><span class="p">));</span>
+      <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_calib_create_from_session_file</span><span class="p">(</span><span class="n">sessionFile</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">calib</span><span class="p">));</span>
+      <span class="n">cuvis_session_file_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sessionFile</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+      <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Unrecognized file format: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">factoryDir</span><span class="p">);</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;initialize processing context...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
   <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_proc_cont_create_from_calib</span><span class="p">(</span><span class="n">calib</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">procCont</span><span class="p">));</span>
@@ -2022,13 +2063,16 @@ int main(int argc, char* argv[])
 
 <span class="c1">#include &lt;cassert&gt;</span>
 <span class="c1">#include &lt;iostream&gt;</span>
+<span class="c1">#include &lt;filesystem&gt;</span>
+
+<span class="n">namespace</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">std</span><span class="p">::</span><span class="n">filesystem</span><span class="p">;</span>
 
 <span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
 <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Too few Arguments! Please provide:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
-    <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;user settings directory&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;user settings directory  or .cu3c file&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;factory directory&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;name of recording directory&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;exposure time in ms&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
@@ -2038,7 +2082,7 @@ int main(int argc, char* argv[])
   <span class="p">}</span>
 
   <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">userSettingsDir</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-  <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">factoryDir</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+  <span class="n">fs</span><span class="p">::</span><span class="n">path</span> <span class="n">factoryDir</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
   <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">recDir</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
   <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">exposureString</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
   <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">nrImagesString</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
@@ -2048,7 +2092,7 @@ int main(int argc, char* argv[])
 
   <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Example 05 record single image &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
   <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;User Settings Dir: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">userSettingsDir</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Factory Dir: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">factoryDir</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Factory Dir or .cu3c file: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">factoryDir</span><span class="o">.</span><span class="n">string</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
   <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Recording Dir: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">recDir</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
   <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Exposure in ms: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">exposure_ms</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
   <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Number of Images: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">nrImages</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
@@ -2058,7 +2102,26 @@ int main(int argc, char* argv[])
   <span class="n">cuvis</span><span class="p">::</span><span class="n">General</span><span class="p">::</span><span class="n">set_log_level</span><span class="p">(</span><span class="n">loglevel_info</span><span class="p">);</span>
 
   <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Loading Calibration and processing context...&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="n">cuvis</span><span class="p">::</span><span class="n">Calibration</span> <span class="n">calib</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">);</span>
+
+  <span class="n">const</span> <span class="n">auto</span>  <span class="n">get_calib</span> <span class="o">=</span> <span class="p">[</span><span class="n">factoryDir</span><span class="p">]()</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">fs</span><span class="p">::</span><span class="n">is_directory</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="k">return</span>  <span class="n">cuvis</span><span class="p">::</span><span class="n">Calibration</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">fs</span><span class="p">::</span><span class="n">is_regular_file</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">factoryDir</span><span class="o">.</span><span class="n">extension</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;.cu3c&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; using .cu3c file as calibration instead of factory dir...&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">cuvis</span><span class="p">::</span><span class="n">SessionFile</span> <span class="n">calibFile</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">cuvis</span><span class="p">::</span><span class="n">Calibration</span><span class="p">(</span><span class="n">calibFile</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="p">{</span>
+        <span class="n">throw</span> <span class="n">std</span><span class="p">::</span><span class="n">invalid_argument</span><span class="p">(</span><span class="s2">&quot;Unrecognized file format.&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+
+  <span class="n">cuvis</span><span class="p">::</span><span class="n">Calibration</span> <span class="n">calib</span> <span class="o">=</span> <span class="n">get_calib</span><span class="p">();</span>
+
+
   <span class="n">cuvis</span><span class="p">::</span><span class="n">ProcessingContext</span> <span class="n">proc</span><span class="p">(</span><span class="n">calib</span><span class="p">);</span>
   <span class="n">cuvis</span><span class="p">::</span><span class="n">AcquisitionContext</span> <span class="n">acq</span><span class="p">(</span><span class="n">calib</span><span class="p">);</span>
 
@@ -2072,6 +2135,7 @@ int main(int argc, char* argv[])
   <span class="k">while</span> <span class="p">(</span><span class="n">cuvis</span><span class="p">::</span><span class="n">hardware_state_t</span><span class="p">::</span><span class="n">hardware_state_offline</span> <span class="o">==</span> <span class="n">acq</span><span class="o">.</span><span class="n">get_state</span><span class="p">())</span>
   <span class="p">{</span>
     <span class="n">std</span><span class="p">::</span><span class="n">this_thread</span><span class="p">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">chrono</span><span class="p">::</span><span class="n">seconds</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+    <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Waiting for camera to come online ...&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
   <span class="p">}</span>
 
   <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Camera is online&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
@@ -2085,7 +2149,7 @@ int main(int argc, char* argv[])
     <span class="n">auto</span> <span class="n">async_mesu</span> <span class="o">=</span> <span class="n">acq</span><span class="o">.</span><span class="n">capture</span><span class="p">();</span>
     <span class="n">auto</span> <span class="n">mesu_res</span> <span class="o">=</span> <span class="n">async_mesu</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">chrono</span><span class="p">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">500</span><span class="p">));</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">mesu_res</span><span class="o">.</span><span class="n">first</span> <span class="o">==</span> <span class="n">cuvis</span><span class="p">::</span><span class="n">async_result_t</span><span class="p">::</span><span class="n">done</span> <span class="o">&amp;&amp;</span>
-        <span class="n">mesu_res</span><span class="o">.</span><span class="n">second</span><span class="o">.</span><span class="n">has_value</span><span class="p">())</span>
+      <span class="n">mesu_res</span><span class="o">.</span><span class="n">second</span><span class="o">.</span><span class="n">has_value</span><span class="p">())</span>
     <span class="p">{</span>
       <span class="n">auto</span><span class="o">&amp;</span> <span class="n">mesu</span> <span class="o">=</span> <span class="n">mesu_res</span><span class="o">.</span><span class="n">second</span><span class="o">.</span><span class="n">value</span><span class="p">();</span>
 
@@ -2101,7 +2165,7 @@ int main(int argc, char* argv[])
   <span class="p">}</span>
 
   <span class="o">//</span><span class="n">uncomment</span> <span class="k">for</span> <span class="n">recording</span> <span class="ow">in</span> <span class="n">queue</span> <span class="n">mode</span>
-  <span class="o">/*</span> 
+  <span class="o">/*</span>
   <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">nrImages</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Record image #&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">k</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;... (queue)&quot;</span><span class="p">;</span>
@@ -2109,13 +2173,13 @@ int main(int argc, char* argv[])
     <span class="n">auto</span> <span class="n">mesu</span> <span class="o">=</span> <span class="n">acq</span><span class="o">.</span><span class="n">get_next_measurement</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">chrono</span><span class="p">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">500</span><span class="p">));</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">mesu</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="n">proc</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">mesu</span><span class="o">.</span><span class="n">value</span><span class="p">());</span>
-        <span class="n">exporter</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">mesu</span><span class="o">.</span><span class="n">value</span><span class="p">());</span>
-        <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;done&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+      <span class="n">proc</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">mesu</span><span class="o">.</span><span class="n">value</span><span class="p">());</span>
+      <span class="n">exporter</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">mesu</span><span class="o">.</span><span class="n">value</span><span class="p">());</span>
+      <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;done&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">else</span>
     <span class="p">{</span>
-        <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;failed&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+      <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;failed&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="n">std</span><span class="p">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;done&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
   <span class="p">}</span>
@@ -2138,18 +2202,25 @@ int main(int argc, char* argv[])
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">run_example_recordSingleImage</span><span class="p">(</span>
-        <span class="n">userSettingsDir</span><span class="p">,</span>
-        <span class="n">factoryDir</span><span class="p">,</span>
-        <span class="n">recDir</span><span class="p">,</span>
-        <span class="n">exposure</span><span class="p">,</span>
-        <span class="n">nrImgs</span><span class="p">):</span>
+        <span class="n">userSettingsDir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">factoryDir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+        <span class="n">recDir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">exposure</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">nrImgs</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loading user settings...&quot;</span><span class="p">)</span>
     <span class="n">cuvis</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">)</span>
     <span class="n">cuvis</span><span class="o">.</span><span class="n">set_log_level</span><span class="p">(</span><span class="s2">&quot;info&quot;</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span>
         <span class="s2">&quot;loading calibration, processing and acquisition context (factory)...&quot;</span><span class="p">)</span>
-    <span class="n">calibration</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">Calibration</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">factoryDir</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()):</span>
+        <span class="n">calibration</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">Calibration</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">factoryDir</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.cu3c&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;using .cu3c file as calibration instead of factory dir...&quot;</span><span class="p">)</span>
+        <span class="n">calibFile</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">SessionFile</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">)</span>
+        <span class="n">calibration</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">Calibration</span><span class="p">(</span><span class="n">calibFile</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized file format&#39;</span><span class="p">)</span>
     <span class="n">processingContext</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">ProcessingContext</span><span class="p">(</span><span class="n">calibration</span><span class="p">)</span>
     <span class="n">acquisitionContext</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">AcquisitionContext</span><span class="p">(</span><span class="n">calibration</span><span class="p">)</span>
 
@@ -2215,7 +2286,8 @@ int main(int argc, char* argv[])
     <span class="k">if</span> <span class="n">userSettingsDir</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">]:</span>
         <span class="n">userSettingsDir</span> <span class="o">=</span> <span class="n">loc_settings</span>
 
-    <span class="n">factoryDir</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Factory directory (default: </span><span class="si">{}</span><span class="s2">): &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_factory</span><span class="p">))</span>
+    <span class="n">factoryDir</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s2">&quot;Factory directory (default: </span><span class="si">{}</span><span class="s2">) or .cu3c file: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_factory</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">factoryDir</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">]:</span>
         <span class="n">factoryDir</span> <span class="o">=</span> <span class="n">loc_factory</span>
 
@@ -2235,7 +2307,7 @@ int main(int argc, char* argv[])
         <span class="n">nrImgs</span> <span class="o">=</span> <span class="n">loc_nimgs</span>
     <span class="n">nrImgs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">nrImgs</span><span class="p">)</span>
 
-    <span class="n">run_example_recordSingleImage</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">recDir</span><span class="p">),</span> <span class="n">exposure</span><span class="p">,</span>
+    <span class="n">run_example_recordSingleImage</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">),</span> <span class="n">Path</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">recDir</span><span class="p">),</span> <span class="n">exposure</span><span class="p">,</span>
                                   <span class="n">nrImgs</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2253,12 +2325,33 @@ int main(int argc, char* argv[])
 <span class="c1">#include &lt;stdbool.h&gt;</span>
 <span class="c1">#include &lt;stdio.h&gt;</span>
 <span class="c1">#include &lt;stdlib.h&gt;</span>
+<span class="c1">#include &lt;sys/stat.h&gt;</span>
 
 <span class="c1">#ifdef WIN32</span>
   <span class="c1">#include &lt;Windows.h&gt;</span>
 <span class="c1">#else</span>
   <span class="c1">#include &lt;unistd.h&gt;</span>
 <span class="c1">#endif</span>
+
+<span class="nb">bool</span> <span class="n">is_directory</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">path</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">struct</span> <span class="n">stat</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">stat</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">st_mode</span> <span class="o">&amp;</span> <span class="n">S_IFDIR</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nb">bool</span> <span class="n">is_file</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">path</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">struct</span> <span class="n">stat</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">stat</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">st_mode</span> <span class="o">&amp;</span> <span class="n">S_IFREG</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
+<span class="p">}</span>
 
 <span class="nb">int</span> <span class="n">keepRunning</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 
@@ -2319,11 +2412,28 @@ int main(int argc, char* argv[])
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;loading user settings...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
   <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
-  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">,</span> <span class="n">NULL</span><span class="p">));</span>
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;loading calibration...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
   <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
-  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_calib_create_from_path</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">calib</span><span class="p">));</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">is_directory</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">))</span>
+  <span class="p">{</span>
+      <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_calib_create_from_path</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">calib</span><span class="p">));</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_file</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">strstr</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">,</span> <span class="s2">&quot;.cu3c&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;using .cu3c file as calibration instead of factory dir...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+      <span class="n">CUVIS_SESSION_FILE</span> <span class="n">sessionFile</span><span class="p">;</span>
+      <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_session_file_load</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sessionFile</span><span class="p">));</span>
+      <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_calib_create_from_session_file</span><span class="p">(</span><span class="n">sessionFile</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">calib</span><span class="p">));</span>
+      <span class="n">cuvis_session_file_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sessionFile</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+  <span class="p">{</span>
+      <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Unrecognized file format: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">factoryDir</span><span class="p">);</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;loading acquisition context... </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
   <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
@@ -2443,7 +2553,6 @@ int main(int argc, char* argv[])
   <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_continuous_set</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
   <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_proc_cont_set_args</span><span class="p">(</span><span class="n">procCont</span><span class="p">,</span> <span class="n">procArgs</span><span class="p">));</span>
 
-  <span class="n">cuvis_acq_cont_binning_set</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
   <span class="n">CUVIS_WORKER</span> <span class="n">worker</span><span class="p">;</span>
   <span class="n">CUVIS_WORKER_SETTINGS</span> <span class="n">worker_settings</span><span class="p">;</span>
   <span class="n">worker_settings</span><span class="o">.</span><span class="n">can_skip_measurements</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>       <span class="o">//</span> <span class="n">Worker</span> <span class="n">cannot</span> <span class="n">skip</span> <span class="n">exporting</span> <span class="n">measurements</span>
@@ -2543,8 +2652,10 @@ int main(int argc, char* argv[])
 #include &lt;csignal&gt;
 #include &lt;ctime&gt;
 #include &lt;iostream&gt;
+#include &lt;filesystem&gt;
 
 using namespace std::literals::chrono_literals;
+namespace fs = std::filesystem;
 
 int keepRunning = 1;
 
@@ -2562,7 +2673,7 @@ int main(int argc, char* argv[])
   if (argc != 7)
   {
     std::cout &lt;&lt; std::endl &lt;&lt; &quot;Too few Arguments! Please provide:&quot; &lt;&lt; std::endl;
-    std::cout &lt;&lt; &quot;user settings directory&quot; &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;user settings directory  or .cu3c file&quot; &lt;&lt; std::endl;
     std::cout &lt;&lt; &quot;factory directory&quot; &lt;&lt; std::endl;
     std::cout &lt;&lt; &quot;name of recording directory&quot; &lt;&lt; std::endl;
     std::cout &lt;&lt; &quot;exposure time in ms&quot; &lt;&lt; std::endl;
@@ -2573,7 +2684,7 @@ int main(int argc, char* argv[])
   }
 
   char* userSettingsDir = argv[1];
-  char* factoryDir = argv[2];
+  fs::path factoryDir(argv[2]);
   char* recDir = argv[3];
   char* exposureString = argv[4];
   char* autoExpString = argv[5];
@@ -2585,7 +2696,7 @@ int main(int argc, char* argv[])
 
   std::cout &lt;&lt; &quot;Example 06 video cpp &quot; &lt;&lt; std::endl;
   std::cout &lt;&lt; &quot;User Settings Dir: &quot; &lt;&lt; userSettingsDir &lt;&lt; std::endl;
-  std::cout &lt;&lt; &quot;Factory Dir: &quot; &lt;&lt; factoryDir &lt;&lt; std::endl;
+  std::cout &lt;&lt; &quot;Factory Dir or .cu3c file: &quot; &lt;&lt; factoryDir.string() &lt;&lt; std::endl;
   std::cout &lt;&lt; &quot;Recording Dir: &quot; &lt;&lt; recDir &lt;&lt; std::endl;
   std::cout &lt;&lt; &quot;Exposure in ms: &quot; &lt;&lt; exposure_ms &lt;&lt; std::endl;
   std::cout &lt;&lt; &quot;Auto Exposure: &quot; &lt;&lt; autoExp &lt;&lt; std::endl;
@@ -2609,7 +2720,23 @@ int main(int argc, char* argv[])
       loglevel_info);
 
   std::cout &lt;&lt; &quot;loading calibration...&quot; &lt;&lt; std::endl;
-  cuvis::Calibration calib(factoryDir);
+  const auto  get_calib = [factoryDir]()
+      {
+          if (fs::is_directory(factoryDir))
+          {
+              return  cuvis::Calibration(factoryDir);
+          }
+          else if (fs::is_regular_file(factoryDir) &amp;&amp; factoryDir.extension() == &quot;.cu3c&quot;) {
+              std::cout &lt;&lt; &quot; using .cu3c file as calibration instead of factory dir...&quot; &lt;&lt; std::endl;
+              cuvis::SessionFile calibFile(factoryDir);
+              return cuvis::Calibration(calibFile);
+          }
+          else {
+              throw std::invalid_argument(&quot;Unrecognized file format.&quot;);
+          }
+      };
+
+  cuvis::Calibration calib = get_calib();
 
   std::cout &lt;&lt; &quot;loading acquisition context...&quot; &lt;&lt; std::endl;
   cuvis::AcquisitionContext acq(calib);
@@ -2666,7 +2793,7 @@ int main(int argc, char* argv[])
   while (acq.get_state() == hardware_state_offline)
   {
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    std::cout &lt;&lt; &quot;.&quot;;
+    std::cout &lt;&lt; &quot;Waiting for camera to come online ...&quot; &lt;&lt; std::endl;
   }
   std::cout &lt;&lt; std::endl;
 
@@ -2783,18 +2910,25 @@ int main(int argc, char* argv[])
 <span class="kn">import</span><span class="w"> </span><span class="nn">cuvis</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">run_example_recordVideo</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span>
-                            <span class="n">factoryDir</span><span class="p">,</span>
-                            <span class="n">recDir</span><span class="p">,</span>
-                            <span class="n">exposure</span><span class="p">,</span>
-                            <span class="n">autoExp</span><span class="p">,</span>
-                            <span class="n">fps</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_example_recordVideo</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                            <span class="n">factoryDir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+                            <span class="n">recDir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                            <span class="n">exposure</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                            <span class="n">autoExp</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+                            <span class="n">fps</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loading user settings...&quot;</span><span class="p">)</span>
     <span class="n">cuvis</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">)</span>
     <span class="n">cuvis</span><span class="o">.</span><span class="n">set_log_level</span><span class="p">(</span><span class="s2">&quot;info&quot;</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loading calibration (factory)...&quot;</span><span class="p">)</span>
-    <span class="n">calibration</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">Calibration</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">factoryDir</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()):</span>
+        <span class="n">calibration</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">Calibration</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">factoryDir</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.cu3c&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;using .cu3c file as calibration instead of factory dir...&quot;</span><span class="p">)</span>
+        <span class="n">calibFile</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">SessionFile</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">)</span>
+        <span class="n">calibration</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">Calibration</span><span class="p">(</span><span class="n">calibFile</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized file format&#39;</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loading acquisition context...&quot;</span><span class="p">)</span>
     <span class="n">acquisitionContext</span> <span class="o">=</span> <span class="n">cuvis</span><span class="o">.</span><span class="n">AcquisitionContext</span><span class="p">(</span><span class="n">calibration</span><span class="p">)</span>
@@ -2907,7 +3041,8 @@ int main(int argc, char* argv[])
     <span class="k">if</span> <span class="n">userSettingsDir</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">]:</span>
         <span class="n">userSettingsDir</span> <span class="o">=</span> <span class="n">loc_settings</span>
 
-    <span class="n">factoryDir</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Factory directory (default: </span><span class="si">{}</span><span class="s2">): &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_factory</span><span class="p">))</span>
+    <span class="n">factoryDir</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="s2">&quot;Factory directory (default: </span><span class="si">{}</span><span class="s2">) or .cu3c file: &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_factory</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">factoryDir</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">]:</span>
         <span class="n">factoryDir</span> <span class="o">=</span> <span class="n">loc_factory</span>
 
@@ -2932,9 +3067,9 @@ int main(int argc, char* argv[])
         <span class="s2">&quot;Target frames per second (fps) (default: </span><span class="si">{}</span><span class="s2">): &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc_fps</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">fps</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">]:</span>
         <span class="n">fps</span> <span class="o">=</span> <span class="n">loc_fps</span>
-    <span class="n">fps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fps</span><span class="p">)</span>
+    <span class="n">fps</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">fps</span><span class="p">)</span>
 
-    <span class="n">run_example_recordVideo</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">recDir</span><span class="p">),</span> <span class="n">exposure</span><span class="p">,</span>
+    <span class="n">run_example_recordVideo</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">),</span> <span class="n">Path</span><span class="p">(</span><span class="n">factoryDir</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">recDir</span><span class="p">),</span> <span class="n">exposure</span><span class="p">,</span>
                             <span class="n">autoExp</span><span class="p">,</span> <span class="n">fps</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3018,7 +3153,7 @@ int main(int argc, char* argv[])
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;loading user settings...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
   <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
-  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">));</span>
+  <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_init</span><span class="p">(</span><span class="n">userSettingsDir</span><span class="p">,</span> <span class="n">loglevel_debug</span><span class="p">,</span> <span class="n">NULL</span><span class="p">));</span>
 
   <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;loading session file... </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
   <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
@@ -3135,7 +3270,6 @@ int main(int argc, char* argv[])
   <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_acq_cont_continuous_set</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
   <span class="n">CUVIS_CHECK</span><span class="p">(</span><span class="n">cuvis_proc_cont_set_args</span><span class="p">(</span><span class="n">procCont</span><span class="p">,</span> <span class="n">procArgs</span><span class="p">));</span>
 
-  <span class="n">cuvis_acq_cont_binning_set</span><span class="p">(</span><span class="n">acqCont</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
   <span class="n">CUVIS_WORKER</span> <span class="n">worker</span><span class="p">;</span>
   <span class="n">CUVIS_WORKER_SETTINGS</span> <span class="n">worker_settings</span><span class="p">;</span>
   <span class="n">worker_settings</span><span class="o">.</span><span class="n">can_skip_measurements</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>        <span class="o">//</span> <span class="n">Worker</span> <span class="n">cannot</span> <span class="n">skip</span> <span class="n">exporting</span> <span class="n">measurements</span>
