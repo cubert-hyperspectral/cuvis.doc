@@ -3,8 +3,7 @@ on:
   push:
     branches:
       - main
-      - feature/update_doc_to_3.4.1
-      
+
 permissions:
   contents: write
 
